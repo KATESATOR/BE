@@ -10,3 +10,5 @@ Feature: Enter TT interface
     And I enter 2 in the tt_field
     And I click save_button
     Then I can see a text You cannot enter time-track for the future. on the page
+
+  Scenario: Test commit
