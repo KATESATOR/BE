@@ -21,8 +21,30 @@ def open_a_page(context, page):
         raise
 
 
+@given('I am logged in as admin')
+def login_as_admin(context):
+    context.execute_steps(f"""
+           Given I open a page {'http://rdbuild-agent:8080/cur/login.do'}
+           When {'at_login_page'} is visible
+           And I enter {'admin'} in the {'username_field'}
+           And I enter {'manager'} in the {'password_field'}
+           And I click {'login_button'}
+       """)
+
+
+@given('I am logged in as user')
+def login_as_user(context):
+    context.execute_steps(f"""
+           Given I open a page {'http://rdbuild-agent:8080/cur/login.do'}
+           When {'at_login_page'} is visible
+           And I enter {'user'} in the {'username_field'}
+           And I enter {'user'} in the {'password_field'}
+           And I click {'login_button'}
+       """)
+
+
 # указание на какой странице находимся, для взаимодеймствия с элементами с этой страницы
-@when('{page} is visible')
+@step('{page} is visible')
 def set_the_page(context, page):
     global set_page
     set_page = getattr(context.web_elements, page.replace(" ", "_"))
