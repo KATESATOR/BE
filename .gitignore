@@ -1,5 +1,6 @@
 .idea
 */**/_pycache_
-features/results/logs/*
-features/results/screenshots/*
+*.log
+*.png
+*.[oa]
 //
