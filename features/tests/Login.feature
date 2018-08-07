@@ -7,7 +7,7 @@ Feature: Login pages
     And I enter manager in the password_field
     And I click login_button
     And general_page is visible
-    Then I can see a web element logout_button
+    Then I should see a web element logout_button
 
   Scenario: Incorrect login in actiTIME
     Given I open a page http://rdbuild-agent:8080/cur/login.do
@@ -16,7 +16,29 @@ Feature: Login pages
     And I enter qwe in the password_field
     And I click login_button
     And I wait 2 seconds for animation stops
-    Then I can see a text Username or Password is invalid. on the page
+    Then I should see a text Username or Password is invalid. on the page
+
+  Scenario: Login in actiTIME with 'Remember me' option
+    Given I open a page http://rdbuild-agent:8080/cur/login.do
+    When at_login_page is visible
+    And I enter admin in the username_field
+    And I enter manager in the password_field
+    And I perform select in the keep_me_logged_in_checkbox
+    And I click login_button
+    And I wait 2 seconds for animation stops
+    And I restart browser and open a page http://rdbuild-agent:8080/cur/
+    And general_page is visible
+    Then I should see a web element logout_button
+
+  Scenario: Login in actiTIME without 'Remember me' option
+    Given I open a page http://rdbuild-agent:8080/cur/login.do
+    When at_login_page is visible
+    And I enter admin in the username_field
+    And I enter manager in the password_field
+    And I click login_button
+    And I wait 2 seconds for animation stops
+    And I restart browser and open a page http://rdbuild-agent:8080/cur/
+    Then I should see a text Please identify yourself on the page
 
   Scenario: Login in actiPLANS
     Given I open a page http://192.168.101.103:8080/cur/login.do
@@ -25,7 +47,7 @@ Feature: Login pages
     And I enter manager in the password field
     And I click login button
     And general_page is visible
-    Then I can see a web element logout_button
+    Then I should see a web element logout_button
 
   Scenario: Incorrect login in actiPLANS
     Given I open a page http://192.168.101.103:8080/cur/login.do
@@ -34,4 +56,26 @@ Feature: Login pages
     And I enter qwe in the password_field
     And I click login_button
     And I wait 2 seconds for animation stops
-    Then I can see a text Username or Password is invalid. on the page
+    Then I should see a text Username or Password is invalid. on the page
+
+  Scenario: Login in actiPLANS with 'Remember me' option
+    Given I open a page http://192.168.101.103:8080/cur/login.do
+    When ap_login_page is visible
+    And I enter admin in the username_field
+    And I enter manager in the password_field
+    And I perform select in the keep_me_logged_in_checkbox
+    And I click login_button
+    And I wait 2 seconds for animation stops
+    And I restart browser and open a page http://192.168.101.103:8080/cur/
+    And general_page is visible
+    Then I should see a web element logout_button
+
+  Scenario: Login in actiPLANS without 'Remember me' option
+    Given I open a page http://192.168.101.103:8080/cur/login.do
+    When ap_login_page is visible
+    And I enter admin in the username_field
+    And I enter manager in the password_field
+    And I click login_button
+    And I wait 2 seconds for animation stops
+    And I restart browser and open a page http://192.168.101.103:8080/cur/
+    Then I should see a text Please identify yourself on the page

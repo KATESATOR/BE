@@ -64,7 +64,7 @@ def click_the_button(context, button):
         raise
 
 
-@step('I {select|deselect} the {checkbox}')
+@step('I perform {option} in the {checkbox}')
 def select_or_deselect_checkbox(context, option, checkbox):
     page = set_page
     checkbox = getattr(page, checkbox.replace(" ", "_"))
@@ -92,7 +92,7 @@ def take_the_screenshot(context, name):
     context.screenshot.take_screenshot(name)
 
 
-@when('I wait {seconds} seconds for animation stops')
+@step('I wait {seconds} seconds for animation stops')
 def wait(context, seconds):
     time.sleep(int(seconds))
 
@@ -133,7 +133,30 @@ def set_focus_to_next_tab(context):
     context.pages_and_tabs.set_focus_to_next_tab()
 
 
-@then('I can see a web element {web_element}')
+@when('I check {parameter} of the {element}')
+def check_parameter(context, parameter, element):
+    page = set_page
+    element = getattr(page, element.replace(" ", "_"))
+    try:
+        value = element.get_attr(parameter)
+        context.log.info(element + " have " + parameter + " = " + value)
+    except:
+        context.log.warn(element + " haven't " + parameter + " = " + value)
+        context.screenshot.take_screenshot("Value has not been found in " + element)
+        raise
+
+
+@when('I restart browser and open a page {page}')
+def restart_browser(context, page):
+    x = context.driver.get_cookie('ALIUN')
+    if x is not None:
+        context.driver.get(page)
+    elif x is None:
+        context.driver.delete_all_cookies()
+        context.driver.get(page)
+
+
+@then('I should see a web element {web_element}')
 def assert_web_element_is_displayed(context, web_element):
     page = set_page
     web_element = getattr(page, web_element.replace(" ", "_"))
@@ -146,7 +169,7 @@ def assert_web_element_is_displayed(context, web_element):
         raise
 
 
-@then('I can see a text {text} on the page')
+@then('I should see a text {text} on the page')
 def assert_text_is_displayed(context, text):
     try:
         assert text in context.driver.page_source
@@ -157,7 +180,7 @@ def assert_text_is_displayed(context, text):
         raise
 
 
-@then('My current URL contains {URL}')
+@then('My current URL should contain {URL}')
 def assert_url(context, URL):
     current_url = context.driver.current_url
     result = re.search(URL, current_url)
@@ -167,4 +190,32 @@ def assert_url(context, URL):
     except:
         context.log.warn(URL + " isn't opened!")
         context.screenshot.take_screenshot("URL isn't opened!")
+        raise
+
+
+@then('{element} should contain {parameter} with {value}')
+def parameter_contain_value(context, element, parameter, value):
+    page = set_page
+    element = getattr(page, element.replace(" ", "_"))
+    value2 = element.get_attr(parameter)
+    try:
+        assert value2 == value
+        context.log.info(element.name + " contain " + parameter + " with value " + value)
+    except:
+        context.log.warn(element.name + " doesn't contain " + parameter + " with value " + value)
+        context.screenshot.take_screenshot("Value has not been found in " + element.name)
+        raise
+
+
+@then('{element} should contain {value}')
+def parameter_contain_value(context, element, value):
+    page = set_page
+    element = getattr(page, element.replace(" ", "_"))
+    x = element.get_attr('innerHTML')
+    try:
+        assert value == x
+        context.log.info(element.name + " contain value " + value)
+    except:
+        context.log.warn(element.name + " doesn't contain value " + value)
+        context.screenshot.take_screenshot("Text has not been found in " + element.name)
         raise

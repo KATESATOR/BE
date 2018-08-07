@@ -71,6 +71,15 @@ class Element:
         except:
             self.log.warn("Element hasn't appeared on the web page")
 
+    def get_attr(self, parameter):
+
+        try:
+            web_element = self.web_element()
+            value = web_element.get_attribute(parameter)
+        except:
+            raise
+        return value
+
 
 class Button(Element):
 
@@ -123,7 +132,6 @@ class CheckBox(Element):
 
     def __init__(self, locator, locator_type, name=""):
         super().__init__(locator, locator_type, name)
-
 
     @retry(wait_fixed=1000, stop_max_delay=10000)
     def select(self):
@@ -202,7 +210,7 @@ class TextField(Element):
             self.wait_for_element('present')
             self.web_element().clear()
             self.web_element().send_keys(text)
-        except :
+        except:
             raise
 
     def is_displayed(self):
@@ -223,8 +231,8 @@ class TextField(Element):
 
 
 class Selector(Element):
-
     a = 120
+
     def __init__(self, locator, locator_type, name=""):
         super().__init__(locator, locator_type, name)
 
@@ -278,7 +286,8 @@ class Slider(Element):
     def moving_slider(self, attribute='text()', quantity=None):
         try:
             self.wait_for_element('present')
-            position = Config.driver.find_element_by_xpath("//span[@class='irs-grid']//span[{}='{}']".format(attribute, quantity))
+            position = Config.driver.find_element_by_xpath(
+                "//span[@class='irs-grid']//span[{}='{}']".format(attribute, quantity))
             Config.get_actions().click_and_hold(self.web_element()).move_to_element(position).release().perform()
         except:
             raise
@@ -301,10 +310,10 @@ class Slider(Element):
             if web_element is not None:
                 is_displayed = web_element.is_displayed()
                 self.log.info("Element is displayed with locator: " + self.locator +
-                             " locatorType: " + self.locator_type)
+                              " locatorType: " + self.locator_type)
             else:
                 self.log.warn("Element is not displayed with locator: " + self.locator +
-                             " locatorType: " + self.locator_type)
+                              " locatorType: " + self.locator_type)
             return is_displayed
         except:
             return False
