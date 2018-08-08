@@ -21,7 +21,7 @@ def open_a_page(context, page):
         raise
 
 
-@given('I am logged in as admin')
+@step('I am logged in as admin')
 def login_as_admin(context):
     context.execute_steps(f"""
            Given I open a page {'http://rdbuild-agent:8080/cur/login.do'}
@@ -32,7 +32,7 @@ def login_as_admin(context):
        """)
 
 
-@given('I am logged in as user')
+@step('I am logged in as user')
 def login_as_user(context):
     context.execute_steps(f"""
            Given I open a page {'http://rdbuild-agent:8080/cur/login.do'}
@@ -87,7 +87,7 @@ def select_or_deselect_checkbox(context, option, checkbox):
             raise
 
 
-@when('I take a screenshot with name {name}')
+@step('I take a screenshot with name {name}')
 def take_the_screenshot(context, name):
     context.screenshot.take_screenshot(name)
 
@@ -97,7 +97,7 @@ def wait(context, seconds):
     time.sleep(int(seconds))
 
 
-@when('I enter {text} in the {text_field}')
+@step('I enter {text} in the {text_field}')
 def filling_the_text_field(context, text, text_field):
     page = set_page
     text_field = getattr(page, text_field.replace(" ", "_"))
@@ -110,7 +110,7 @@ def filling_the_text_field(context, text, text_field):
         raise
 
 
-@when('I choose {value} in {selector}')
+@step('I choose {value} in {selector}')
 def choosing_value_in_selector(context, value, selector):
     page = set_page
     selector = getattr(page, selector.replace(" ", "_"))
@@ -123,17 +123,17 @@ def choosing_value_in_selector(context, value, selector):
         raise
 
 
-@when('I set focus to tab {value}')
+@step('I set focus to tab {value}')
 def set_focus_to_tab(context, value):
     context.pages_and_tabs.set_focus_to_tab(value)
 
 
-@when('I set focus to next tab')
+@step('I set focus to next tab')
 def set_focus_to_next_tab(context):
     context.pages_and_tabs.set_focus_to_next_tab()
 
 
-@when('I check {parameter} of the {element}')
+@step('I check {parameter} of the {element}')
 def check_parameter(context, parameter, element):
     page = set_page
     element = getattr(page, element.replace(" ", "_"))
@@ -146,7 +146,12 @@ def check_parameter(context, parameter, element):
         raise
 
 
-@when('I restart browser and open a page {page}')
+@step('I refresh the page')
+def refresh_page(context):
+    context.driver.refresh()
+
+
+@step('I restart browser and open a page {page}')
 def restart_browser(context, page):
     x = context.driver.get_cookie('ALIUN')
     if x is not None:
@@ -156,7 +161,7 @@ def restart_browser(context, page):
         context.driver.get(page)
 
 
-@then('I should see a web element {web_element}')
+@step('I should see a web element {web_element}')
 def assert_web_element_is_displayed(context, web_element):
     page = set_page
     web_element = getattr(page, web_element.replace(" ", "_"))
@@ -169,7 +174,20 @@ def assert_web_element_is_displayed(context, web_element):
         raise
 
 
-@then('I should see a text {text} on the page')
+@step('I should not see a web element {web_element}')
+def assert_web_element_is_not_displayed(context, web_element):
+    page = set_page
+    web_element = getattr(page, web_element.replace(" ", "_"))
+    if web_element.is_displayed():
+        context.log.warn(web_element.name + " is visible!")
+        context.screenshot.take_screenshot(web_element.name + " is visible!")
+        raise Exception(web_element.name + " is found!")
+    else:
+        context.log.info(web_element.name + " isn't visible")
+        pass
+
+
+@step('I should see a text {text} on the page')
 def assert_text_is_displayed(context, text):
     try:
         assert text in context.driver.page_source
@@ -180,7 +198,18 @@ def assert_text_is_displayed(context, text):
         raise
 
 
-@then('My current URL should contain {URL}')
+@step('I should not see a text {text} on the page')
+def assert_text_is_not_displayed(context, text):
+    if text in context.driver.page_source:
+        context.log.warn(text + " is visible!")
+        context.screenshot.take_screenshot("Text is visible!")
+        raise Exception(text + " is found!")
+    else:
+        context.log.info(text + " isn't visible")
+        pass
+
+
+@step('My current URL should contain {URL}')
 def assert_url(context, URL):
     current_url = context.driver.current_url
     result = re.search(URL, current_url)
@@ -193,7 +222,7 @@ def assert_url(context, URL):
         raise
 
 
-@then('{element} should contain {parameter} with {value}')
+@step('{element} should have {parameter} with {value}')
 def parameter_contain_value(context, element, parameter, value):
     page = set_page
     element = getattr(page, element.replace(" ", "_"))
@@ -207,7 +236,7 @@ def parameter_contain_value(context, element, parameter, value):
         raise
 
 
-@then('{element} should contain {value}')
+@step('{element} should contain {value}')
 def parameter_contain_value(context, element, value):
     page = set_page
     element = getattr(page, element.replace(" ", "_"))
