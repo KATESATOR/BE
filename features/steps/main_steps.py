@@ -271,3 +271,8 @@ def parameter_contain_value(context, element, value):
         context.log.warn(element.name + " doesn't contain value " + value)
         context.screenshot.take_screenshot("Text has not been found in " + element.name)
         raise
+
+
+@step('I accept alert menu')
+def click_context_menu(context):
+    context.driver.switch_to_alert().accept()
