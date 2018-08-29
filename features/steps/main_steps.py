@@ -2,6 +2,7 @@ from behave import *
 from features.utility.element import *
 import re
 import time
+import glob
 import os
 
 
@@ -271,3 +272,19 @@ def parameter_contain_value(context, element, value):
         context.log.warn(element.name + " doesn't contain value " + value)
         context.screenshot.take_screenshot("Text has not been found in " + element.name)
         raise
+
+
+@step('Checking file with format {format}')
+def file_is_present(context, format):
+    os.chdir("C:/Users/falchuk/Downloads")
+    # try:
+    file_list = glob.glob("*" + '.' + format)
+
+    if len(file_list) == 0:
+        context.log.warn("File not found")
+        raise Exception
+
+    for file in file_list:
+        context.log.info(os.path.join("C:/Users/falchuk/Downloads", file))
+        print(file + " found")
+        os.remove(file)
