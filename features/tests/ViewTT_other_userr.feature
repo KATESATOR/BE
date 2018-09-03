@@ -27,7 +27,6 @@ Feature: View TT interface by admin
   Scenario: Changing Filter on all active projects
      And i click filter
      And i click filter_cp_selector
-     And i click filter_cp_selector
      And  I wait 2 seconds for animation stops
      And i click filter_cp_selector_2
      And i click filter_close
@@ -37,7 +36,6 @@ Feature: View TT interface by admin
   @smoke
   Scenario: Changing Filter on all selected customers
      And i click filter
-     And i click filter_cp_selector
      And i click filter_cp_selector
      And i click filter_cp_selector_3
      And I perform select in the filter_cp_selector_3_customer
@@ -49,7 +47,6 @@ Feature: View TT interface by admin
   Scenario: All active settings in filter
      And i click filter
      And i click filter_cp_selector
-      And i click filter_cp_selector
      And i click filter_cp_selector_3
      And i click filter_hide_show_customers
      Then i should see a text Mobile Phone Internet Shop on the page
@@ -71,7 +68,6 @@ Feature: View TT interface by admin
   @smoke
   Scenario: Changing Filter on all selected customers all scope
      And i click filter
-     And i click filter_cp_selector
      And i click filter_cp_selector
      And i click filter_cp_selector_3
      And I click filter_select_all
