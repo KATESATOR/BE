@@ -2,27 +2,24 @@ Feature: Enter TT interface by user
 
   Background:
     Given I am logged in as user
+    And enter_tt_page is visible
 
   @smoke
   Scenario: Add Task
-    Given enter_tt_page is visible
-    When I enter Copywriting in the search_task
+    When I enter Page updates in the search_task
     And I click tasks_found_list
     And I wait 2 seconds for animation stops
-    Then I should see a text Copywriting on the page
+    Then I should see a text Page updates on the page
 
   @smoke
   Scenario: Save time-track
-    Given I wait 2 seconds for animation stops
-    When enter_tt_page is visible
-    And I enter 2:00 in the tt_field
+    When I enter 2:00 in the tt_field
     And I click save_button
     And I wait 2 seconds for animation stops
     Then tt_field should have value with 2:00
 
   @smoke
   Scenario: Save leave time
-    Given enter_tt_page is visible
     When I click leave_button
     And I click choose_leave
     And I click ok_leave
@@ -31,7 +28,6 @@ Feature: Enter TT interface by user
 
   @smoke
   Scenario: Save comment
-    Given enter_tt_page is visible
     When I click tt_comment
     And I enter comment in the comment_field
     And I click ok_comment
@@ -39,46 +35,32 @@ Feature: Enter TT interface by user
 
   @smoke
   Scenario: Change week status
-    Given enter_tt_page is visible
     When I click change_own_status
     And I click save_button
     Then I should see a text Your changes were successfully saved. on the page
 
   @smoke
   Scenario: Select another week
-    Given enter_tt_page is visible
     When I click calendar
     And I click next_month
     And I click first_day
     Then I should see a web element add_only
 
   @smoke
-  Scenario: Create Task for the first time
-    Given enter_tt_page is visible
+  Scenario: Create Task
     When I click new_task
-    And I wait 2 seconds for animation stops
-    And I click customer_button
+    And I wait 1 seconds for animation stops
+    And I click select_customer_for_task
     And I click our_company_customer
-    And I click project_button
+    And I click select_project_for_task
     And I click general_project
     And I enter _TestTask in the task_field
     And I click create_task
-    And I wait 2 seconds for animation stops
+    And I wait 1 seconds for animation stops
     Then I should see a text TestTask on the page
 
   @smoke
-  Scenario: Create Task for the second and more times
-    Given enter_tt_page is visible
-    When I click new_task
-    And I wait 2 seconds for animation stops
-    And I enter _TestTask2 in the task_field
-    And I click create_task
-    And I wait 2 seconds for animation stops
-    Then I should see a text TestTask2 on the page
-
-  @smoke
   Scenario: Edit Task
-    Given enter_tt_page is visible
     When I click edit_task
     And I click task_name
     And I enter _Edited name in the task_name_field
@@ -88,7 +70,6 @@ Feature: Enter TT interface by user
 
   @smoke
   Scenario: Delete Task
-    Given enter_tt_page is visible
     When I click edit_task
     And I click task_actions
     And I click delete_task
@@ -98,10 +79,10 @@ Feature: Enter TT interface by user
 
   @smoke
   Scenario: Edit name in My Profile
-    Given general_page is visible
     When I click my_profile
     And I enter Firstname in the first_name_field
     And I enter Lastname in the last_name_field
     And I click save_profile_changes
     And I wait 2 seconds for animation stops
     Then I should see a text Firstname Lastname on the page
+
