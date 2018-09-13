@@ -1,13 +1,30 @@
 from features.utility.element import *
 
-
+#TODO: Придумать новые названия для локаторовк которые подходят к чартам и репортам
 class ReportsPage:
     def __init__(self):
         self.reports_page_button = Button("//a[@href='/cur/reports/reports.do']", "xpath", "reports page")
-        #self.reports_page_button = Button("//a[@href='/actitime-master-422-online/reports/reports.do']", "xpath", "reports page")
         self.reports_dashboard = Link("Reports Dashboard", "link text", "reports page")
         self.create_chart_button = Button("ext-gen38", "id", "create chart button")
         self.new_report_button = Button("ext-gen18", "id", "new report button")
+        self.add_to_dashboard_button = Button("//*[@class='addToDashboard']", "xpath", "add to dashboard button")
+        self.report_name_text_field = TextField("//*[@class='reportNameEdit inputFieldWithPlaceholder']", "xpath",
+                                                "report name text field")
+        self.save_report_name_button = Button("//*[@class='saveNewConfigButton greyButton']", "xpath",
+                                              "save report name text field")
+        self.save_report_changes_button = Button("//*[@class='saveCurrentConfigButton greyButton']", "xpath",
+                                                 "open save menu button")
+        self.save_changes_button = Button("//*[@class='ui-button-text'][contains(text(), 'Save')]", "xpath", "save changes button")
+        self.report_name = Button("div.reportName", "css", "report name")
+
+        # Charts
+        self.show_selector_button = Button("createChartLightbox_chartTypeListSelectorPlaceholder", "id",
+                                           "open 'Show' selector")
+        self.by_selector_button = Button("createChartLightbox_groupingLevelListSelectorPlaceholder", "id",
+                                         "open 'By' selector")
+        self.export_chart_button = Button("createChartLightbox_commitBtn", "id", "export to pdf chart")
+        self.download_chart_button = Button("createChartLightbox_downloadPdfBtn", "id", "download to pdf chart")
+        self.close_chart_button = Button("closeCreateChartLightboxButton", "id", "close chart button")
 
         # Choose Report to Create Window
         self.choose_report_window = Button("createReportLightBox", "id", "choose report to create window")
@@ -31,7 +48,8 @@ class ReportsPage:
         self.invoice_export_button = Button("//*[@class='billingReports']//div[contains(text(), 'Invoice Export')]",
                                             "xpath", "invoice export button")
         self.create_pdf_invoice_button = Button("createPDFInvoiceButton", "id", "create PDF Invoice button")
-        self.invoice_number_text_field = TextField("//textarea[@name='invoiceNumber']", "xpath", "invoice number text field")
+        self.invoice_number_text_field = TextField("//textarea[@name='invoiceNumber']", "xpath",
+                                                   "invoice number text field")
         self.cost_of_work_button = Button("//*[@class='billingReports']//div[contains(text(), 'Cost of Work')]",
                                           "xpath", "cost of work button")
         self.profit_loss_button = Button("//*[@class='billingReports']//div[contains(text(), 'Profit / Loss')]",
@@ -42,11 +60,3 @@ class ReportsPage:
         self.html_preview_button = Button("htmlPreviewTab", "id", "generate html report preview button")
         self.export_to_csv_button = Button("genCSVReportConfiguration", "id", "export to csv file button")
         self.generate_html_button = Button("applyReportConfiguration", "id", "generate html report button")
-
-        # Report
-        self.add_to_dashboard_button = Button("//*[@class='addToDashboard']", "xpath", "add to dashboard button")
-        self.report_name_text_field = TextField("//*[@class='reportNameEdit inputFieldWithPlaceholder']", "xpath",
-                                                "report name text field")
-        self.save_report_name_button = Button("//*[@class='saveNewConfigButton greyButton']", "xpath",
-                                              "save report name text field")
-        self.report_name = Button("div.reportName", "css", "report name")
