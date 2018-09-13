@@ -1,7 +1,8 @@
 from behave import *
+from features.utility.element import *
 import re
 import time
-
+from selenium.webdriver.common.action_chains import ActionChains
 
 #  Шаги для всех тестов
 
@@ -62,6 +63,16 @@ def click_the_button(context, button):
         context.screenshot.take_screenshot("Can not click the  " + button.name)
         context.log.warn("I can't click the button: " + button.name)
         raise
+
+
+@step('I accept alert menu')
+def click_context_menu(context):
+    context.driver.switch_to_alert().accept()
+
+
+@step('I dismiss alert menu')
+def click_context_menu(context):
+    context.driver.switch_to_alert().dismiss()
 
 
 @step('I perform {option} in the {checkbox}')

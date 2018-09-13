@@ -1,8 +1,10 @@
 from behave import *
 import os
 import glob
-from selenium import webdriver
-from features.utility.element import Button
+from features.utility.element import *
+
+
+# TODO: Придумать новые названия для шагов и методов, т.к они уверсальны для чартов и репорторв.
 
 
 @step('I search report {report_name} with the extension {extension} in downloads folder')
@@ -16,21 +18,41 @@ def search_report_in_folder(context, report_name, extension):
             os.path.exists(i)
             os.remove(i)
     except FileNotFoundError:
-        context.log.info("I can't find file in downloads folder: " + report_name)
+        context.log.warn("I can't find file in downloads folder: " + report_name)
         raise
 
-@step('I accept alert menu')
-def click_context_menu(context):
-    context.driver.switch_to_alert().accept()
 
 @step('I remove {report_name} report from dashboard')
 def remove_report_from_dashboard(context, report_name):
     try:
         remove_report = Button(
             "//*[@class='config-name'][contains(text(),'" + report_name +
-            "')]/../../../../..//*[@class='configHeaderRemoveCell']",
+            "')]//ancestor::*/*/*[@class='configHeaderRemoveCell']",
             "xpath", "remove report button")
         remove_report.click()
+        context.log.info("I remove report from dashboard")
     except:
-        context.log.info("I can't find file in downloads folder:")
+        context.log.warn("I can't remove report from dashboard:")
+        raise
+
+
+@step('I select {name} in chart selector')
+def select_chart(context, name):
+    try:
+        chart = Link(name, "link", "remove report button")
+        chart.click()
+        context.log.info("I select" + name + "in chart selector")
+    except:
+        context.log.warn("I can't select" + name + "in chart selector")
+        raise
+
+
+@step('I open report on dashboard with name {name}')
+def open_report(context, name):
+    try:
+        report = Button("//*[@class='config-name'][contains(text(),'" + name + "']", "xpath", "report name")
+        report.click()
+        context.log.info("I open report " + name + "on dashboard")
+    except:
+        context.log.warn("I can't open report " + name + "on dashboard")
         raise
