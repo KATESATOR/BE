@@ -1,28 +1,13 @@
-Feature: View TT interface by admin
+Feature: View TT interface of other user by admin
 
 
   Background:
     Given I am logged in as admin
     Given view_tt_page is visible
     Given i click view_tt
+    Given i click user_selector
+    Given i click user_selector_user
 
-  @smoke
-  Scenario: Checking PTO&Sick days balance
-    When i click user_selector
-    And i click user_selector_user
-    Then I should see a text 2.7d on the page
-    Then I should see a text 2.5d on the page
-
-  @smoke
-  Scenario: Switching period and checking period table
-    When i click calendar_from
-    And i click calendar_day_from
-    And I refresh the page
-    And i click calendar_to
-    And i click calendar_day_to
-    And i click ttdetails_days
-    Then I should see a web element ttdetails_date_check_min
-    Then I should see a web element ttdetails_date_check_max
 
 
   @smoke
@@ -31,6 +16,17 @@ Feature: View TT interface by admin
     And i click user_selector_user
     Then I should see a text Back to me on the page
 
+      @smoke
+  Scenario: Switching period and checking period table
+    When i click back_to_me
+    When i click calendar_from
+    And i click calendar_day_from
+    And I refresh the page
+    And i click calendar_to
+    And i click calendar_day_to
+    And i click ttdetails_days
+    Then I should see a web element ttdetails_date_check_min
+    Then I should see a web element ttdetails_date_check_max
 
   @smoke
   Scenario: Changing Filter on all active projects
@@ -90,7 +86,6 @@ Feature: View TT interface by admin
     And i click filter_clear
     Then I should not see a web element filter_clear
 
-
   @smoke
   Scenario: Changing Filter on all selected customers all scope
     And i click filter
@@ -101,7 +96,7 @@ Feature: View TT interface by admin
     And i click filter_apply
     And i click filter
     Then I should not see a text All projects of all customers  (active and archived) on the page
-    And I should not see a text All active projects оf all active customers on the page
+    Then I should not see a text All active projects оf all active customers on the page
 
   @smoke
   Scenario: Changing Filter TT status to empty
@@ -146,6 +141,12 @@ Feature: View TT interface by admin
 
   @smoke
   Scenario: Edit task
+    And i click filter_clear
+    And i click calendar_from
+    And i click calendar_day_from
+    And I refresh the page
+    And i click calendar_to
+    And i click calendar_day_to
     And i click filter
     And I perform select in the filter_tt_status_approved
     And I perform select in the filter_tt_status_ready_for_approval
@@ -157,6 +158,7 @@ Feature: View TT interface by admin
     And i click ttdetails_edit_task_close
     And i click ttdetails_edit_task
     Then I should see a text test on the page
+
 
   @smoke
   Scenario: Table present View by Days, cpt
@@ -175,3 +177,5 @@ Feature: View TT interface by admin
     And i click export_pdf_download
     And I wait 3 seconds for animation stops
     Then Checking file with format pdf
+
+
