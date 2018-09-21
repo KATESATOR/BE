@@ -24,22 +24,20 @@ class EnterTTPage:
                                 "first day")
         self.add_only = Button("addPreviousWeekReportedTasksButton", "id", "add only")
         self.new_task = Button("addTasksLink", "id", "new task")
-        self.customer_button = Button("//button[@class='x-btn-text' and text()[contains(., '- Select Customer -')]]",
-                                      "xpath",
-                                      "customer button")
+        self.select_customer_for_task = Button(".customerSelector .x-btn-text", "css", "customer selector")
+        self.select_project_for_task = Button(".projectSelector .x-btn-text", "css", "project selector")
         self.our_company_customer = Button("//a[@class='x-menu-item' and text()[contains(., 'Our Company')]]",
                                            "xpath",
-                                           "our company")
-        self.project_button = Button("//button[@class='x-btn-text' and text()[contains(., '- Select Project -')]]",
-                                     "xpath", "project button")
+                                           "customer Our Company")
         self.general_project = Button("//a[@class='x-menu-item' and text()[contains(., 'General')]]",
                                       "xpath",
-                                      "our company")
+                                      "project General")
         self.task_field = TextField("//input[@placeholder ='Enter task name']", "xpath", "task field")
         self.create_task = Button("//div[@class='components_button  withPlusIcon']", "xpath", "create task")
         self.edit_task = Button("//div[@class='task']", "xpath", "edit task")
         self.task_name = Button("//div[@class='nameInfo editable']", "xpath", "task name")
-        self.task_name_field = TextField("//input[@placeholder='Enter Task Name']", "xpath", "task name field")
+        self.task_name_field = TextField("tr:nth-child(1) > .first > .inputFieldWithPlaceholder", "css",
+                                         "task name field")
         self.close_task_panel = Button("//div[@class='hideButton_panelContainer']", "xpath", "close task panel")
         self.task_actions = Button("//div[@class='actionButton']", "xpath", "task actions")
         self.delete_task = Button("//div[@class='deleteButton']", "xpath", "delete task")
@@ -49,3 +47,9 @@ class EnterTTPage:
         self.gibson_maurice_user = Button("//span[@class='userName' and text()[contains(., 'Gibson, Maurice')]]",
                                           "xpath",
                                           "user Gibson Maurice")
+        self.approve_status = Button("//div[@class='changeStatusButton approveButton']", "xpath", "approve week")
+        self.reject_status = Button("//div[@class='changeStatusButton rejectButton']", "xpath", "reject week")
+        self.confirm_rejection = Button("//span[@class='ui-button-text' and text()[contains(., 'Reject')]]", "xpath",
+                                        "confirm rejection")
+        self.revoke_status = Button("//span[@class='revokeLink customLink']", "xpath", "revoke status")
+        self.current_status = Element("//td[@class='currentStatusCell statusText']", "xpath", "current status")

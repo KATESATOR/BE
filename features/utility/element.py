@@ -80,20 +80,6 @@ class Element:
             raise
         return value
 
-
-class Button(Element):
-
-    def __init__(self, locator, locator_type, name=""):
-        super().__init__(locator, locator_type, name)
-
-    @retry(wait_fixed=1000, stop_max_delay=10000)
-    def click(self):
-        try:
-            self.wait_for_element('click')
-            self.web_element().click()
-        except:
-            raise
-
     def is_displayed(self):
         is_displayed = False
         try:
@@ -109,6 +95,20 @@ class Button(Element):
             return is_displayed
         except:
             return False
+
+
+class Button(Element):
+
+    def __init__(self, locator, locator_type, name=""):
+        super().__init__(locator, locator_type, name)
+
+    @retry(wait_fixed=1000, stop_max_delay=10000)
+    def click(self):
+        try:
+            self.wait_for_element('click')
+            self.web_element().click()
+        except:
+            raise
 
     def get_text(self, info=""):
 
@@ -174,22 +174,6 @@ class CheckBox(Element):
             self.log.warn("Cannot find the checkbox with locator: " + self.locator +
                           " locatorType: " + self.locator_type)
 
-    def is_displayed(self):
-        is_displayed = False
-        try:
-            self.wait_for_element('present')
-            web_element = self.web_element()
-            if web_element is not None:
-                is_displayed = web_element.is_displayed()
-                self.log.info("Element is displayed with locator: " + self.locator +
-                              " locatorType: " + self.locator_type)
-            else:
-                self.log.warn("Element is not displayed with locator: " + self.locator +
-                              " locatorType: " + self.locator_type)
-            return is_displayed
-        except:
-            return False
-
 
 class TextField(Element):
 
@@ -212,22 +196,6 @@ class TextField(Element):
             self.web_element().send_keys(text)
         except:
             raise
-
-    def is_displayed(self):
-        is_displayed = False
-        try:
-            self.wait_for_element('present')
-            web_element = self.web_element()
-            if web_element is not None:
-                is_displayed = web_element.is_displayed()
-                self.log.info("Element is displayed with locator: " + self.locator +
-                              " locatorType: " + self.locator_type)
-            else:
-                self.log.warn("Element is not displayed with locator: " + self.locator +
-                              " locatorType: " + self.locator_type)
-            return is_displayed
-        except:
-            return False
 
 
 class Selector(Element):
@@ -260,22 +228,6 @@ class Selector(Element):
         except:
             raise
 
-    def is_displayed(self):
-        is_displayed = False
-        try:
-            self.wait_for_element('select')
-            web_element = self.web_element()
-            if web_element is not None:
-                is_displayed = web_element.is_displayed()
-                self.log.info("Element is displayed with locator: " + self.locator +
-                              " locatorType: " + self.locator_type)
-            else:
-                self.log.warn("Element is not displayed with locator: " + self.locator +
-                              " locatorType: " + self.locator_type)
-            return is_displayed
-        except:
-            return False
-
 
 class Slider(Element):
 
@@ -302,22 +254,6 @@ class Slider(Element):
         except:
             raise
 
-    def is_displayed(self):
-        is_displayed = False
-        try:
-            self.wait_for_element('present')
-            web_element = self.web_element()
-            if web_element is not None:
-                is_displayed = web_element.is_displayed()
-                self.log.info("Element is displayed with locator: " + self.locator +
-                              " locatorType: " + self.locator_type)
-            else:
-                self.log.warn("Element is not displayed with locator: " + self.locator +
-                              " locatorType: " + self.locator_type)
-            return is_displayed
-        except:
-            return False
-
 
 class Link(Element):
 
@@ -331,22 +267,6 @@ class Link(Element):
             self.web_element().click()
         except:
             raise
-
-    def is_displayed(self):
-        is_displayed = False
-        try:
-            self.wait_for_element('click')
-            web_element = self.web_element()
-            if web_element is not None:
-                is_displayed = web_element.is_displayed()
-                self.log.info("Element is displayed with locator: " + self.locator +
-                              " locatorType: " + self.locator_type)
-            else:
-                self.log.warn("Element is not displayed with locator: " + self.locator +
-                              " locatorType: " + self.locator_type)
-            return is_displayed
-        except:
-            return False
 
     def get_text(self, info=""):
 
