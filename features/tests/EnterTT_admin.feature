@@ -6,7 +6,7 @@ Feature: Enter TT interface by admin
 
   @smoke
   Scenario: Add Task
-    When I enter Page updates in the search_task
+    When I enter Page_updates in the search_task
     And I click tasks_found_list
     And I wait 2 seconds for animation stops
     Then I should see a text Page updates on the page
@@ -76,15 +76,6 @@ Feature: Enter TT interface by admin
     And I click confirm_deletion
     And I wait 2 seconds for animation stops
     Then I should not see a text Phone calls on the page
-
-  @smoke
-  Scenario: Edit name in My Profile
-    When I click my_profile
-    And I enter Firstname in the first_name_field
-    And I enter Lastname in the last_name_field
-    And I click save_profile_changes
-    And I wait 2 seconds for animation stops
-    Then I should see a text Firstname Lastname on the page
 
   @smoke
   Scenario: Select another user

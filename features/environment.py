@@ -17,7 +17,10 @@ def before_all(context):
 
 
 def before_scenario(context, scenario):
-    pass
+    try:
+        context.driver.switch_to_alert().accept()
+    except:
+        pass
 
 
 def after_scenario(context, scenario):
