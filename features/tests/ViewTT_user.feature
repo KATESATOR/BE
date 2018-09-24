@@ -11,7 +11,7 @@ Feature: View TT interface by user
     When i click calendar_from
     And i click calendar_day_from
     Then I should see a text 2.3d on the page
-    Then I should see a text 1d on the page
+    And I should see a text 1.2d on the page
 
   @smoke
   Scenario: Changing Filter on all active projects
@@ -42,7 +42,7 @@ Feature: View TT interface by user
     And i click filter_apply
     And i click filter
     Then I should not see a text All projects of all customers  (active and archived) on the page
-    Then I should not see a text All active projects оf all active customers on the page
+    And I should not see a text All active projects оf all active customers on the page
 
   @smoke
   Scenario: Checking hide customers in filter
@@ -111,7 +111,6 @@ Feature: View TT interface by user
     And i click filter_apply
     Then I should see a text Ready for Approval on the page
 
-
   @smoke
   Scenario: Changing Filter TT status to Not Ready and Rejected
     And i click filter
@@ -124,7 +123,6 @@ Feature: View TT interface by user
 
   @smoke
   Scenario: Edit task
-    And i click filter_clear
     And i click calendar_from
     And i click calendar_day_from
     And I refresh the page

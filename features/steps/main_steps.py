@@ -285,8 +285,7 @@ def file_is_present(context, format):
             raise Exception
 
         for file in file_list:
-            context.log.info(os.path.join("C:/Users/falchuk/Downloads", file))
-            print(file + " found")
+            context.log.info(file + " is found in downloads folder")
             os.remove(file)
     except FileNotFoundError:
         context.log.info("I can't find file in downloads folder: " + format)

@@ -6,17 +6,15 @@ Feature: View TT interface of other user by admin
     Given view_tt_page is visible
     Given i click view_tt
     Given i click user_selector
-    Given i click user_selector_user
-
-
+    Given i click user_selector_timmers_brian
 
   @smoke
   Scenario: Switching user
     And i click user_selector
-    And i click user_selector_user
+    And i click user_selector_timmers_brian
     Then I should see a text Back to me on the page
 
-      @smoke
+  @smoke
   Scenario: Switching period and checking period table
     When i click back_to_me
     When i click calendar_from
@@ -26,7 +24,7 @@ Feature: View TT interface of other user by admin
     And i click calendar_day_to
     And i click ttdetails_days
     Then I should see a web element ttdetails_date_check_min
-    Then I should see a web element ttdetails_date_check_max
+    And I should see a web element ttdetails_date_check_max
 
   @smoke
   Scenario: Changing Filter on all active projects
@@ -96,7 +94,7 @@ Feature: View TT interface of other user by admin
     And i click filter_apply
     And i click filter
     Then I should not see a text All projects of all customers  (active and archived) on the page
-    Then I should not see a text All active projects оf all active customers on the page
+    And I should not see a text All active projects оf all active customers on the page
 
   @smoke
   Scenario: Changing Filter TT status to empty
@@ -138,7 +136,6 @@ Feature: View TT interface of other user by admin
     And i click filter_apply
     Then I should see a text Not Ready and Rejected on the page
 
-
   @smoke
   Scenario: Edit task
     And i click filter_clear
@@ -158,7 +155,6 @@ Feature: View TT interface of other user by admin
     And i click ttdetails_edit_task_close
     And i click ttdetails_edit_task
     Then I should see a text test on the page
-
 
   @smoke
   Scenario: Table present View by Days, cpt

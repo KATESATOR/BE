@@ -9,9 +9,9 @@ Feature: View TT interface by admin
   @smoke
   Scenario: Checking PTO&Sick days balance
     When i click user_selector
-    And i click user_selector_user
-    Then I should see a text 2.7d on the page
-    Then I should see a text 2.5d on the page
+    And i click user_selector_timmers_brian
+    Then I should see a text 1d on the page
+    And I should see a text 2d on the page
 
   @smoke
   Scenario: Switching period and checking period table
@@ -22,13 +22,12 @@ Feature: View TT interface by admin
     And i click calendar_day_to
     And i click ttdetails_days
     Then I should see a web element ttdetails_date_check_min
-    Then I should see a web element ttdetails_date_check_max
-
+    And I should see a web element ttdetails_date_check_max
 
   @smoke
   Scenario: Switching user
     And i click user_selector
-    And i click user_selector_user
+    And i click user_selector_timmers_brian
     Then I should see a text Back to me on the page
 
 
@@ -90,7 +89,6 @@ Feature: View TT interface by admin
     And i click filter_clear
     Then I should not see a web element filter_clear
 
-
   @smoke
   Scenario: Changing Filter on all selected customers all scope
     And i click filter
@@ -143,15 +141,8 @@ Feature: View TT interface by admin
     And i click filter_apply
     Then I should see a text Not Ready and Rejected on the page
 
-
   @smoke
   Scenario: Edit task
-    And i click filter
-    And I perform select in the filter_tt_status_approved
-    And I perform select in the filter_tt_status_ready_for_approval
-    And i click filter_apply
-    And I perform deselect in the ttdetails_show_tasks
-    And I perform select in the ttdetails_show_tasks
     And i click ttdetails_edit_task
     And i enter test in the ttdetails_edit_task_description
     And i click ttdetails_edit_task_close
