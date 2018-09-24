@@ -20,7 +20,6 @@ Feature: View TT interface by admin
     And I refresh the page
     And i click calendar_to
     And i click calendar_day_to
-    And i click ttdetails_days
     Then I should see a web element ttdetails_date_check_min
     And I should see a web element ttdetails_date_check_max
 
@@ -29,7 +28,6 @@ Feature: View TT interface by admin
     And i click user_selector
     And i click user_selector_timmers_brian
     Then I should see a text Back to me on the page
-
 
   @smoke
   Scenario: Changing Filter on all active projects
@@ -111,14 +109,14 @@ Feature: View TT interface by admin
     Then I should see a text Clear filter on the page
 
   @smoke
-  Scenario: Changing Filter TT status to Approved
+  Scenario: Changing Filter TT status to Not Ready and Rejected
     And i click filter
     And I perform deselect in the filter_tt_status_approved
     And I perform deselect in the filter_tt_status_ready_for_approval
     And I perform deselect in the filter_tt_status_not_ready_and_rejected
-    And I perform select in the filter_tt_status_approved
+    And I perform select in the filter_tt_status_not_ready_and_rejected
     And i click filter_apply
-    Then I should see a text Approved on the page
+    Then I should see a text Not Ready and Rejected on the page
 
   @smoke
   Scenario: Changing Filter TT status to Ready for Approval
@@ -130,16 +128,15 @@ Feature: View TT interface by admin
     And i click filter_apply
     Then I should see a text Ready for Approval on the page
 
-
   @smoke
-  Scenario: Changing Filter TT status to Not Ready and Rejected
+  Scenario: Changing Filter TT status to Approved
     And i click filter
     And I perform deselect in the filter_tt_status_approved
     And I perform deselect in the filter_tt_status_ready_for_approval
     And I perform deselect in the filter_tt_status_not_ready_and_rejected
-    And I perform select in the filter_tt_status_not_ready_and_rejected
+    And I perform select in the filter_tt_status_approved
     And i click filter_apply
-    Then I should see a text Not Ready and Rejected on the page
+    Then I should see a text Approved on the page
 
   @smoke
   Scenario: Edit task

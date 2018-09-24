@@ -87,10 +87,14 @@ class ViewTTPage:
         self.ttdetails_cpt = Button("//span[contains(text(),'Customers, Projects and Tasks')]", "xpath",
                                     "ttdetails_cpt")
         self.ttdetails_cpt_check = Button("//div[@class='viewByCPContainer']", "xpath", "ttdetails_cpt_check")
-        self.ttdetails_date_check_min = Button("//div[@id='viewTTDetailsTableContainer']//tbody//tr[1]", "xpath",
-                                               "date_check_min")
-        self.ttdetails_date_check_max = Button("//div[@id='viewTTDetailsTableContainer']//tbody//tr[6]", "xpath",
-                                               "date_check_max")
+        self.ttdetails_date_check_min = Button(
+            "//table[@class='dayRows display-for-print']//span[contains(text(),'10')]",
+            "xpath",
+            "date_check_min")
+        self.ttdetails_date_check_max = Button(
+            "//table[@class='dayRows display-for-print']//*[contains(@class, 'dayRow')][6]//*[contains(text(),'15')]",
+            "xpath",
+            "date_check_max")
         self.balance_as = Button("//button[contains(@class,'x-btn-text') and contains( text(),'today')]", "xpath",
                                  "balance_as")
         self.back_to_me = Button("//a[@class='backToMyTtText link']", "xpath", "back_to_me")

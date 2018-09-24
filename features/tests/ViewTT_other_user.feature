@@ -22,7 +22,6 @@ Feature: View TT interface of other user by admin
     And I refresh the page
     And i click calendar_to
     And i click calendar_day_to
-    And i click ttdetails_days
     Then I should see a web element ttdetails_date_check_min
     And I should see a web element ttdetails_date_check_max
 
@@ -106,14 +105,14 @@ Feature: View TT interface of other user by admin
     Then I should see a text Clear filter on the page
 
   @smoke
-  Scenario: Changing Filter TT status to Approved
+  Scenario: Changing Filter TT status to Not Ready and Rejected
     And i click filter
     And I perform deselect in the filter_tt_status_approved
     And I perform deselect in the filter_tt_status_ready_for_approval
     And I perform deselect in the filter_tt_status_not_ready_and_rejected
-    And I perform select in the filter_tt_status_approved
+    And I perform select in the filter_tt_status_not_ready_and_rejected
     And i click filter_apply
-    Then I should see a text Approved on the page
+    Then I should see a text Not Ready and Rejected on the page
 
   @smoke
   Scenario: Changing Filter TT status to Ready for Approval
@@ -125,31 +124,18 @@ Feature: View TT interface of other user by admin
     And i click filter_apply
     Then I should see a text Ready for Approval on the page
 
-
   @smoke
-  Scenario: Changing Filter TT status to Not Ready and Rejected
+  Scenario: Changing Filter TT status to Approved
     And i click filter
     And I perform deselect in the filter_tt_status_approved
     And I perform deselect in the filter_tt_status_ready_for_approval
     And I perform deselect in the filter_tt_status_not_ready_and_rejected
-    And I perform select in the filter_tt_status_not_ready_and_rejected
+    And I perform select in the filter_tt_status_approved
     And i click filter_apply
-    Then I should see a text Not Ready and Rejected on the page
+    Then I should see a text Approved on the page
 
   @smoke
   Scenario: Edit task
-    And i click filter_clear
-    And i click calendar_from
-    And i click calendar_day_from
-    And I refresh the page
-    And i click calendar_to
-    And i click calendar_day_to
-    And i click filter
-    And I perform select in the filter_tt_status_approved
-    And I perform select in the filter_tt_status_ready_for_approval
-    And i click filter_apply
-    And I perform deselect in the ttdetails_show_tasks
-    And I perform select in the ttdetails_show_tasks
     And i click ttdetails_edit_task
     And i enter test in the ttdetails_edit_task_description
     And i click ttdetails_edit_task_close
