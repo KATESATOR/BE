@@ -3,8 +3,8 @@ Feature: View TT interface by user
 
   Background:
     Given I am logged in as user
-    Given view_tt_page is visible
-    Given I click view_tt
+    And view_tt_page is visible
+    And I click view_tt
 
      # Залогиниться и проставить балансы pto = 2.3d; sick = 1d
   @smoke

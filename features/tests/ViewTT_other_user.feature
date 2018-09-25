@@ -3,10 +3,10 @@ Feature: View TT interface of other user by admin
 
   Background:
     Given I am logged in as admin
-    Given view_tt_page is visible
-    Given i click view_tt
-    Given i click user_selector
-    Given i click user_selector_timmers_brian
+    And view_tt_page is visible
+    And i click view_tt
+    And i click user_selector
+    And i click user_selector_timmers_brian
 
   @smoke
   Scenario: Switching user

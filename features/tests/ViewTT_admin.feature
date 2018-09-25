@@ -3,8 +3,8 @@ Feature: View TT interface by admin
 
   Background:
     Given I am logged in as admin
-    Given view_tt_page is visible
-    Given i click view_tt
+    And view_tt_page is visible
+    And i click view_tt
 
     # Залогиниться и проставить балансы pto = 1d; sick = 2d
   @smoke
