@@ -4,6 +4,7 @@ Feature: Support scenarios by admin
     Given I am logged in as admin
     And general page is visible
 
+  # тест не проходит из-за бага AT-2817
   @smoke
   Scenario: Edit name in My Profile
     When I click my profile
@@ -45,7 +46,7 @@ Feature: Support scenarios by admin
      And I click contact support
      And I enter Text for support in the support field
      And I click submit support
-     And I wait 1 seconds for animation stops
+     And I wait 5 seconds for animation stops
      Then I should see a text Your question was successfully submitted on the page
 
    @smoke
@@ -60,5 +61,5 @@ Feature: Support scenarios by admin
    @smoke
    Scenario: Switch product
      When I click switch product
-     And I wait 2 seconds for animation stops
+     And I wait 3 seconds for animation stops
      Then I should see a text My Schedule on the page
