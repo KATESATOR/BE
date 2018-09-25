@@ -6,10 +6,11 @@ Feature: View TT interface by user
     Given view_tt_page is visible
     Given I click view_tt
 
+     # Залогиниться и проставить балансы pto = 2.3d; sick = 1d
   @smoke
   Scenario: Checking PTO&Sick days balance
     And I should see a text 2.3d on the page
-    Then I should see a text 1.2d on the page
+    Then I should see a text 1d on the page
 
   @smoke
   Scenario: Changing Filter on all active projects
@@ -121,6 +122,7 @@ Feature: View TT interface by user
 
   @smoke
   Scenario: Edit task
+    When I perform select in the ttdetails_show_tasks
     And i click ttdetails_edit_task
     And i enter test in the ttdetails_edit_task_description
     And i click ttdetails_edit_task_close
@@ -132,7 +134,6 @@ Feature: View TT interface by user
     And i click ttdetails_days
     And I perform select in the ttdetails_show_tasks
     And i click ttdetails_cpt
-    And i click ttdetails_days
     Then I should see a web element ttdetails_cpt_check
 
   @smoke

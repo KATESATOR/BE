@@ -16,8 +16,9 @@ Feature: View TT interface of other user by admin
 
   @smoke
   Scenario: Switching period and checking period table
-    When i click back_to_me
-    When i click calendar_from
+    When I perform select in the ttdetails_show_tasks
+    And i click back_to_me
+    And i click calendar_from
     And i click calendar_day_from
     And I refresh the page
     And i click calendar_to
@@ -136,7 +137,7 @@ Feature: View TT interface of other user by admin
 
   @smoke
   Scenario: Edit task
-    And i click ttdetails_edit_task
+    When i click ttdetails_edit_task
     And i enter test in the ttdetails_edit_task_description
     And i click ttdetails_edit_task_close
     And i click ttdetails_edit_task

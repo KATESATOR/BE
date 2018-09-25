@@ -6,6 +6,7 @@ Feature: View TT interface by admin
     Given view_tt_page is visible
     Given i click view_tt
 
+    # Залогиниться и проставить балансы pto = 1d; sick = 2d
   @smoke
   Scenario: Checking PTO&Sick days balance
     When i click user_selector
@@ -15,7 +16,8 @@ Feature: View TT interface by admin
 
   @smoke
   Scenario: Switching period and checking period table
-    When i click calendar_from
+    When I perform select in the ttdetails_show_tasks
+    And i click calendar_from
     And i click calendar_day_from
     And I refresh the page
     And i click calendar_to
