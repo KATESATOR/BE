@@ -5,7 +5,6 @@ import time
 import glob
 import os
 
-
 #  Шаги для всех тестов
 
 #  открытие страницы и запуск конфигов
@@ -273,7 +272,6 @@ def parameter_contain_value(context, element, value):
         context.screenshot.take_screenshot("Text has not been found in " + element.name)
         raise
 
-
 @step('Checking file with format {format}')
 def file_is_present(context, format):
     path = os.environ['USERPROFILE'] + '/Downloads/'
@@ -290,4 +288,3 @@ def file_is_present(context, format):
     except FileNotFoundError:
         context.log.info("I can't find file in downloads folder: " + format)
         raise
-
