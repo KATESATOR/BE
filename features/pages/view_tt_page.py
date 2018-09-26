@@ -11,7 +11,6 @@ class ViewTTPage:
                                             "view_charts_customers")
         self.view_charts_projects = Button("//div[@class='type'][contains(text(),'Projects')]", "xpath",
                                            "view_charts_projects")
-        self.view_charts_check = Button("//div[contains(@class,'viewTTChartSection')]", "xpath", "charts_check")
         self.date_range_current_month = Selector(
             "//a[@id='ext-gen151']//div[contains(@class,'rangeItemTitle')][contains(text(),'Current month')]", "xpath",
             "date_range_current_month")
@@ -60,7 +59,7 @@ class ViewTTPage:
         self.filter_hide_show_customers = Button("//span[@class='label']", "xpath", "filter_show_customers")
         self.filter_reset = Button("//span[contains(text(),'reset filter')]", "xpath", "filter_reset")
         self.filter_clear = Button("//div[contains(text(),'Clear filter')]", "xpath", "filter_clear")
-        self.filter_cp_selector_3_customer = CheckBox("// span[ @ title = 'Architects Bureau']", "xpath", "filter3")
+        self.filter_cp_selector_3_customer = CheckBox("// span[ @ title = 'Boston Chocolate']", "xpath", "filter3")
         self.filter_tt_status_approved = CheckBox("//input[@id='viewTTStatusCheckboxId_0']", "xpath",
                                                   "filter_tt_status_approved")
         self.filter_tt_status_ready_for_approval = CheckBox("//input[@id='viewTTStatusCheckboxId_1']", "xpath",
@@ -87,11 +86,11 @@ class ViewTTPage:
         self.ttdetails_cpt = Button("//span[contains(text(),'Customers, Projects and Tasks')]", "xpath",
                                     "ttdetails_cpt")
         self.ttdetails_cpt_check = Button("//div[@class='viewByCPContainer']", "xpath", "ttdetails_cpt_check")
-        self.ttdetails_date_check_min = Button(
+        self.ttdetails_date_check_min = Element(
             "//table[@class='dayRows display-for-print']//span[contains(text(),'10')]",
             "xpath",
             "date_check_min")
-        self.ttdetails_date_check_max = Button(
+        self.ttdetails_date_check_max = Element(
             "//table[@class='dayRows display-for-print']//*[contains(@class, 'dayRow')][6]//*[contains(text(),'15')]",
             "xpath",
             "date_check_max")
