@@ -1,8 +1,7 @@
 from behave import *
-from features.utility.element import *
 import re
 import time
-from selenium.webdriver.common.action_chains import ActionChains
+
 
 #  Шаги для всех тестов
 
@@ -66,12 +65,12 @@ def click_the_button(context, button):
 
 
 @step('I accept alert menu')
-def click_context_menu(context):
+def accept_alert_menu(context):
     context.driver.switch_to_alert().accept()
 
 
 @step('I dismiss alert menu')
-def click_context_menu(context):
+def dismiss_alert_menu(context):
     context.driver.switch_to_alert().dismiss()
 
 

@@ -1,6 +1,7 @@
 from features.utility.element import *
 
-#TODO: Придумать новые названия для локаторовк которые подходят к чартам и репортам
+
+# TODO: Придумать новые названия для локаторовк которые подходят к чартам и репортам
 class ReportsPage:
     def __init__(self):
         self.reports_page_button = Button("//a[@href='/cur/reports/reports.do']", "xpath", "reports page")
@@ -14,8 +15,11 @@ class ReportsPage:
                                               "save report name text field")
         self.save_report_changes_button = Button("//*[@class='saveCurrentConfigButton greyButton']", "xpath",
                                                  "open save menu button")
-        self.save_changes_button = Button("//*[@class='ui-button-text'][contains(text(), 'Save')]", "xpath", "save changes button")
+        self.save_changes_button = Button("//*[@class='ui-button-text'][contains(text(), 'Save')]", "xpath",
+                                          "save changes button")
         self.report_name = Button("div.reportName", "css", "report name")
+        self.edit_configuration_button = Button("//*[contains(text(), 'Edit Configuration')]", "xpath",
+                                                "edit configuration button")
 
         # Charts
         self.show_selector_button = Button("createChartLightbox_chartTypeListSelectorPlaceholder", "id",

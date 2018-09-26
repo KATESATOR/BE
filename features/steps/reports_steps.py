@@ -50,7 +50,7 @@ def select_chart(context, name):
 @step('I open report on dashboard with name {name}')
 def open_report(context, name):
     try:
-        report = Button("//*[@class='config-name'][contains(text(),'" + name + "']", "xpath", "report name")
+        report = Button("//*[@class='config-name'][contains(text(),'" + name + "')]", "xpath", "report name")
         report.click()
         context.log.info("I open report " + name + "on dashboard")
     except:
