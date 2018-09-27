@@ -18,6 +18,7 @@ def search_report_in_folder(context, report_name, extension):
             os.path.exists(i)
             os.remove(i)
     except FileNotFoundError:
+        context.screenshot.take_screenshot("I can't find file in downloads folder: " + report_name)
         context.log.warn("I can't find file in downloads folder: " + report_name)
         raise
 
@@ -32,6 +33,7 @@ def remove_report_from_dashboard(context, report_name):
         remove_report.click()
         context.log.info("I remove report from dashboard")
     except:
+        context.screenshot.take_screenshot("I can't remove report: " + report_name + " from dashboard")
         context.log.warn("I can't remove report from dashboard:")
         raise
 
@@ -43,7 +45,8 @@ def select_chart(context, name):
         chart.click()
         context.log.info("I select" + name + "in chart selector")
     except:
-        context.log.warn("I can't select" + name + "in chart selector")
+        context.screenshot.take_screenshot("I can't select " + name + " in chart selector")
+        context.log.warn("I can't select " + name + " in chart selector")
         raise
 
 
@@ -54,5 +57,6 @@ def open_report(context, name):
         report.click()
         context.log.info("I open report " + name + "on dashboard")
     except:
-        context.log.warn("I can't open report " + name + "on dashboard")
+        context.screenshot.take_screenshot("I can't open report " + name + " on dashboard")
+        context.log.warn("I can't open report " + name + " on dashboard")
         raise

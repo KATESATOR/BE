@@ -7,9 +7,9 @@ class LockTTPage:
         self.user_barber_robert = Button("//*[@title='Barber, Robert']", "xpath", "Barber, Robert user")
 
         self.lock_tt_button = Link("Lock Time-Track", "link text", "lock tt page")
-        self.result_text = TextField("//*[@class='result-number']", "xpath", "result number")
+        self.result_text = Element("//*[@class='result-number']", "xpath", "result number")
         self.date_selector_button = Button("ext-gen32", "id", "date selector")
-        self.user_selector_text = Button("ext-gen44", "id", "user selector text")
+        self.user_selector_text = Element("ext-gen44", "id", "user selector text")
         self.user_selector_button = Button("usersSelector", "id", "user selector")
         self.all_staff_radiobutton = Button("//*[@class='x-form-cb-label'][contains(text(), 'All Staff')]",
                                             "xpath", "all staff radiobutton")
@@ -25,8 +25,8 @@ class LockTTPage:
                                               "xpath", "task Backup controlling")
         self.date_cell = Button("//*[@class='dateCellNonWorking    ']", "xpath", "today")
         self.user_date_cell = Button("//*[contains(@class, 'userDayCell')]", "xpath", "one user day")
-        self.user_date_cell_locked = Button("//*[contains(@class, 'userDayCell')][contains(@class, 'Locked')]", "xpath",
-                                            "locked user day")
+        self.user_date_cell_locked = Button("//*[contains(@class, 'userDayCell')][1][contains(@class, 'Locked')]",
+                                            "xpath", "locked user day")
         self.lock_selected = Link("Lock Selected", "link text", "lock selected")
         self.unlock_selected = Link("Unlock Selected", "link text", "unlock selected")
         self.dates_till = Button("//*[contains(@class, 'runnerCell')]", "xpath", "dates till")
@@ -43,7 +43,7 @@ class LockTTPage:
                                         "xpath", "Non-Billable type")
 
         # userTasksHeaderCell
-        self.sort_text = Button("//*[@class='sortByCaption']", "xpath", "name of sorting")
+        self.sort_text = Element("//*[@class='sortByCaption']", "xpath", "name of sorting")
         self.expand_all_button = Button("//*[@onclick='expandAllUserRows()']", "xpath", "expand all")
         self.collapse_all_button = Button("//*[@onclick='collapseAllUserRows()']", "xpath", "collapse all")
         self.sort_by_user_button = Button("//*[@data-sortby='ORDER_BY_USERNAME']", "xpath", "sort by username")
