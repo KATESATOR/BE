@@ -261,6 +261,7 @@ def parameter_contain_value(context, element, value):
         context.screenshot.take_screenshot("Text has not been found in " + element.name)
         raise
 
+
 @step('Checking file with format {format}')
 def file_is_present(context, format):
     path = os.environ['USERPROFILE'] + '/Downloads/'
