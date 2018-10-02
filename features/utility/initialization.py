@@ -4,6 +4,8 @@ from features.pages.general_page import GeneralPage
 from features.pages.enter_tt_page import EnterTTPage
 from features.pages.lock_tt_page import LockTTPage
 from features.pages.reports_page import ReportsPage
+from features.pages.tasks_page import TasksPage
+from features.pages.view_tt_page import ViewTTPage
 
 
 class Pages:
@@ -13,3 +15,5 @@ class Pages:
     enter_tt_page = EnterTTPage()
     lock_tt_page = LockTTPage()
     reports_page = ReportsPage()
+    tasks_page = TasksPage()
+    view_tt_page = ViewTTPage()
