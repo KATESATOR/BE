@@ -46,7 +46,9 @@ class Element:
         except:
             self.log.warn("Element isn't found with locator: " + self.locator +
                           " and locator_type: " + self.locator_type)
-            print_stack()
+            # print_stack()
+            # Пока это временное решение,
+            # чтобы не выводилась ошибка в консоли при проверке отсутствия отображения элемента на странице
         return element
 
     def wait_for_element(self, condition, timeout=25, pollFrequency=0.5):
@@ -83,7 +85,7 @@ class Element:
     def is_displayed(self):
         is_displayed = False
         try:
-            self.wait_for_element('present')
+            self.wait_for_element('present', 2)
             web_element = self.web_element()
             if web_element is not None:
                 is_displayed = web_element.is_displayed()
