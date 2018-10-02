@@ -3,6 +3,7 @@ from features.pages.aP_login_page import ApLoginPage
 from features.pages.general_page import GeneralPage
 from features.pages.enter_tt_page import EnterTTPage
 from features.pages.tasks_page import TasksPage
+from features.pages.view_tt_page import ViewTTPage
 
 
 class Pages:
@@ -11,3 +12,4 @@ class Pages:
     general_page = GeneralPage()
     enter_tt_page = EnterTTPage()
     tasks_page = TasksPage()
+    view_tt_page = ViewTTPage()

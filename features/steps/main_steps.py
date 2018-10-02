@@ -2,8 +2,8 @@ from behave import *
 from features.utility.element import *
 import re
 import time
+import glob
 import os
-
 
 #  Шаги для всех тестов
 
@@ -270,4 +270,21 @@ def parameter_contain_value(context, element, value):
     except:
         context.log.warn(element.name + " doesn't contain value " + value)
         context.screenshot.take_screenshot("Text has not been found in " + element.name)
+        raise
+
+@step('Checking file with format {format}')
+def file_is_present(context, format):
+    path = os.environ['USERPROFILE'] + '/Downloads/'
+    os.chdir(path)
+    file_list = glob.glob("*" + '.' + format)
+    try:
+        if len(file_list) == 0:
+            context.log.warn("File not found")
+            raise Exception
+
+        for file in file_list:
+            context.log.info(file + " is found in downloads folder")
+            os.remove(file)
+    except FileNotFoundError:
+        context.log.info("I can't find file in downloads folder: " + format)
         raise
