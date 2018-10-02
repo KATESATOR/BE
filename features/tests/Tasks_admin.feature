@@ -89,16 +89,6 @@ Feature: Tasks interface by admin
     Then I should see a text Task 'SeleniumTestTask' has been created on the page
 
   @smoke
-  Scenario: Show Completed Tasks
-    When I click status filter
-    And I click selected statuses
-    And I click completed statuses
-    And I click apply filter
-    And I enter SeleniumTestTask in the search tasks
-    And I wait 2 seconds for animation stops
-    Then I should see a web element tasks not found
-
-  @smoke
   Scenario: Edit Task through panel
     When I enter SeleniumTestTask in the search tasks
     And I wait 1 seconds for animation stops
@@ -108,6 +98,18 @@ Feature: Tasks interface by admin
     And I click complete task
     And I wait 1 seconds for animation stops
     Then I should see a text Status of task 'SeleniumTestTask' has been changed on the page
+
+  @smoke
+  Scenario: Show Completed Tasks
+    When I click status filter
+    And I click selected statuses
+    And I wait 1 seconds for animation stops
+    And I click open statuses
+    And I click completed statuses
+    And I click apply filter
+    And I enter Specifying environment: tools, framework in the search tasks
+    And I wait 2 seconds for animation stops
+    Then I should see a text Specifying environment: tools, framework on the page
 
   @smoke
   Scenario: Edit Task in the list
@@ -168,7 +170,8 @@ Feature: Tasks interface by admin
 
   @smoke
   Scenario: Select all tasks
-    When I perform select in the select all
+    When I click select all
+    And I wait 1 seconds for animation stops
     Then I should see a web element bulk actions panel
 
   @smoke

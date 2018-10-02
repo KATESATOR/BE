@@ -32,6 +32,14 @@ def login_as_admin(context):
            And I enter {'manager'} in the {'password_field'}
            And I click {'login_button'}
        """)
+    time.sleep(1)
+    text = "Welcome to actiTIME!"
+    start_button = Button(".startExploringText", "css", "start exploring button")
+    if text not in context.driver.page_source:
+        pass
+    else:
+        start_button.click()
+        time.sleep(1)
 
 
 @step('I am logged in as user')
@@ -43,6 +51,14 @@ def login_as_user(context):
            And I enter {'user'} in the {'password_field'}
            And I click {'login_button'}
        """)
+    time.sleep(1)
+    text = "Welcome to actiTIME!"
+    start_button = Button(".startExploringText", "css", "start exploring button")
+    if text not in context.driver.page_source:
+        pass
+    else:
+        start_button.click()
+        time.sleep(1)
 
 
 # указание на какой странице находимся, для взаимодеймствия с элементами с этой страницы

@@ -65,8 +65,12 @@ class TasksPage:
         self.all_statuses = Button(".allSection > label", "css", "all statuses")
         self.selected_statuses = Button("//div[@class='taskStatusSelection']//div[text()='Selected statuses:']",
                                         "xpath", "selected statuses")
-        self.completed_statuses = Button("//div[@class='taskStatusSelection']//span[text()='COMPLETED TASKS']",
-                                         "xpath", "completed statuses")
+        self.open_statuses = Button("div.openStatusesContainer > div.workflowStatusTypeNode > label > span.checkmark",
+                                    "css",
+                                    "open statuses checkbox")
+        self.completed_statuses = Button(
+            "div.completedStatuses > div > div.workflowStatusTypeNode > label > span.checkmark", "css",
+            "completed statuses")
         self.apply_filter = Button(".apply", "css", "apply filter")
         self.type_of_work_selector = Button("//*[@class='taskRowsTable']//div[@class='typeOfWorkButton editable']",
                                             "xpath", "type of work selector")
@@ -106,8 +110,8 @@ class TasksPage:
         self.type_of_work_column = Element("//table[@class='headerRowTable']//td[@class='typeOfWork']", "xpath",
                                            "Type of Work column")
         self.tasks_not_found = Element("//div[@class='tasksNotFoundMessage']", "xpath", "There are no tasks")
-        self.select_all = CheckBox("//table[@class='headerRowTable']//td[@class='selection']", "xpath",
-                                   "Select all checkbox")
+        self.select_all = Button("//table[@class='headerRowTable']//td[@class='selection']", "xpath",
+                                 "Select all checkbox")
         self.bulk_actions_panel = Element(".bulkOperationsPanel", "css", "Bulk actions panel")
         self.archived_mark = Element("//span[@class='archived']", "xpath", "archived mark")
         self.cp_selector = Button("customersProjectsPanelFilterCPSelectorContainer", "id", "cp selector")
@@ -124,10 +128,13 @@ class TasksPage:
                                 "sorting by status")
         self.by_type_of_work = Button("//table[@class='headerRowTable']//span[text()='Type of Work']", "xpath",
                                       "sorting by type of work")
-        self.add_task = Button("//div[@class='topRightSubpanel']//*[text()='  Add Task']", "xpath", "add task button")
+        self.add_task = Button("div#taskListBlock div.components_button.addNewTaskButton.withPlusIcon", "css",
+                               "add task button")
         self.task_name_field_in_panel = TextField(".taskNamePlaceholder > .editable input", "css",
                                                   "task name field in panel")
         self.create_task_through_panel = Button(".create_task_sliding_panel .components_button:nth-child(1)", "css",
                                                 "create task through panel")
         self.download_sample = Button("sampleCSVFileLink", "id", "Download sample")
         self.upload_area = TextField("dropzoneClickableArea", "id", "upload area")
+        self.tasks_can_manage = Button("//div[@class='scopeAccessContainer']//div[text()='Tasks I Can Manage']",
+                                       "xpath", "Tasks I Can Manage")
