@@ -10,7 +10,7 @@ class Config:
 
     def get_driver(self):
         if self.driver_type == "chrome":
-            Config.driver = webdriver.Chrome("C:\chromedriver.exe")
+            Config.driver = webdriver.Chrome("./features/resources/chromedriver.exe")
             return Config.driver
 
     @staticmethod

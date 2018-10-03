@@ -1,9 +1,9 @@
 Feature: User List interface by user
 
   Background:
-    Given I am logged in as user
+    Given I am logged in as admin
+    And I am on user_list page
     And user_list_page is visible
-    And I click users_button
 
   @Smoke
   Scenario: User list read-only
@@ -14,9 +14,8 @@ Feature: User List interface by user
   Scenario: Searching users
     When I click search_button
     And I enter Kloss in the search_field
-    And I wait 1 seconds for animation stops
+    And I wait 2 seconds for animation stops
     Then first_search_result should contain Kloss
-    And I click close_search_button
 
   @Smoke
   Scenario: User filter in user list
@@ -35,7 +34,9 @@ Feature: User List interface by user
   @Smoke
   Scenario: Sorting by users
     When I click sorting_by_group
+    And I wait 1 seconds for animation stops
     And I click sorting_by_users
+    And I wait 1 seconds for animation stops
     And I click sorting_by_users
     And I wait 1 seconds for animation stops
     Then first_username_in_list should contain Wooster, Jennifer
@@ -43,6 +44,7 @@ Feature: User List interface by user
   @Smoke
   Scenario: Sorting by groups
     When I click sorting_by_group
+    And I wait 1 seconds for animation stops
     And I click sorting_by_group
     And I wait 1 seconds for animation stops
     Then first_group_in_list should contain Development
@@ -50,6 +52,7 @@ Feature: User List interface by user
   @Smoke
   Scenario: Sorting by time zones
     When I click sorting_by_tzg
+    And I wait 1 seconds for animation stops
     And I click sorting_by_tzg
     And I wait 1 seconds for animation stops
     Then first_tzg_in_list should contain Sydney Office

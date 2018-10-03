@@ -2,8 +2,8 @@ Feature: Approve TT interface by admin
 
   Background:
     Given I am logged in as admin
+    And I am on approve_tt page
     And approve_tt_page is visible
-    And I click approve_tt_tab
 
   @Smoke
   Scenario: Approve TT and Revoke

@@ -4,7 +4,6 @@ from features.utility.element import *
 class ViewTTPage:
 
     def __init__(self):
-        self.view_tt = Button("//a[@href='/cur/user/view_tt.do']", "xpath", "viewtt_button")
         self.view_charts = Button("//span[@class='selectorLink']", "xpath", "view_charts")
         self.view_charts_days = Button("//div[@class='type'][contains(text(),'Days')]", "xpath", "view_charts_days")
         self.view_charts_customers = Button("//div[@class='type'][contains(text(),'Customers')]", "xpath",

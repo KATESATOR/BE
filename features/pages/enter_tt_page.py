@@ -7,7 +7,7 @@ class EnterTTPage:
         self.tt_field = TextField("//input[@class='text inputTT']", "xpath", "tt field")
         self.save_button = Button("SubmitTTButton", "id", "save changes")
         self.search_task = TextField("taskSearchControl_field", "id", "search tasks")
-        self.tasks_found_list = Button("//div[@class='taskList']/div[@class='row task last active']", "xpath",
+        self.tasks_found_list = Button("table#taskSearchControl div.row.task.active", "css",
                                        "tasks found")
         self.week_total = TextField("weekTotal", "id", "week total")
         self.leave_button = Button("leaveButton_0_mainContentTd", "id", "leave button")

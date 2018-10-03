@@ -1,4 +1,5 @@
 from behave import *
+from features.utility.element import *
 import re
 import time
 import glob
@@ -26,7 +27,7 @@ def open_a_page(context, page):
 @step('I am logged in as admin')
 def login_as_admin(context):
     context.execute_steps(f"""
-           Given I open a page {'http://rdbuild-agent:8080/cur/login.do'}
+           Given I open a page {'http://w7tolubaev.actimind:8080/test'}
            When {'at_login_page'} is visible
            And I enter {'admin'} in the {'username_field'}
            And I enter {'manager'} in the {'password_field'}
@@ -39,13 +40,13 @@ def login_as_admin(context):
         pass
     else:
         start_button.click()
-        time.sleep(1)
+        time.sleep(10)
 
 
 @step('I am logged in as user')
 def login_as_user(context):
     context.execute_steps(f"""
-           Given I open a page {'http://rdbuild-agent:8080/cur/login.do'}
+           Given I open a page {'http://w7tolubaev.actimind:8080/test'}
            When {'at_login_page'} is visible
            And I enter {'user'} in the {'username_field'}
            And I enter {'user'} in the {'password_field'}
@@ -58,7 +59,15 @@ def login_as_user(context):
         pass
     else:
         start_button.click()
-        time.sleep(1)
+        time.sleep(3)
+
+
+@step('I am on {page} page')
+def on_page(context, page):
+    context.execute_steps(f"""
+           Given general_page is visible
+           And I click {page}
+       """)
 
 
 # указание на какой странице находимся, для взаимодеймствия с элементами с этой страницы
@@ -189,6 +198,19 @@ def restart_browser(context, page):
         context.driver.get(page)
 
 
+@step('Element with {text} should be displayed')
+def element_with_text_is_displayed(context, text):
+    element = Element("//table[@class='taskRowsTable']/tbody/tr[1]//*[text()=" + "'" + text + "'" + "]", "xpath",
+                      "element")
+    try:
+        assert element.is_displayed()
+        context.log.info(element.name + " is visible ")
+    except:
+        context.log.warn(element.name + " isn't visible!")
+        context.screenshot.take_screenshot(element.name + " is not visible")
+        raise
+
+
 @step('I should see a web element {web_element}')
 def assert_web_element_is_displayed(context, web_element):
     page = set_page
@@ -202,6 +224,8 @@ def assert_web_element_is_displayed(context, web_element):
         raise
 
 
+# метод отрабатывает верно, если элемент был найден, но не виден для пользователя
+# если же элемент вообще не найден, то пишется ошибка в консоль
 @step('I should not see a web element {web_element}')
 def assert_web_element_is_not_displayed(context, web_element):
     page = set_page
