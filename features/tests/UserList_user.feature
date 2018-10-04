@@ -1,7 +1,7 @@
 Feature: User List interface by user
 
   Background:
-    Given I am logged in as admin
+    Given I am logged in as user
     And I am on user_list page
     And user_list_page is visible
 

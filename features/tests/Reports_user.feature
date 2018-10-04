@@ -1,7 +1,7 @@
 Feature: Reports interface by user
 
   Background:
-    Given I am logged in as admin
+    Given I am logged in as user
     And I am on reports page
     And reports_page is visible
 

@@ -2,7 +2,7 @@ Feature: View TT interface by user
 
 
   Background:
-    Given I am logged in as admin
+    Given I am logged in as user
     And I am on view_tt page
     And view_tt_page is visible
 
