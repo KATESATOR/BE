@@ -15,6 +15,7 @@ class GeneralPage:
         self.save_profile_changes = Button("userProfilePopup_commitBtn", "id", "save profile changes button")
         self.time_track = Button("//a[@class='content tt']", "xpath", "Time-Track menu")
         self.view_tt = Link("View Time-Track", "link", "view tt interface")
+        self.my_view_tt = Link("View My Time-Track", "link", "view tt interface")
         self.lock_tt = Link("Lock Time-Track", "link text", "lock tt page")
         self.approve_tt = Link("Approve Time-Track", "link", "approve tt interface")
         self.tasks = Button("//a[@class='content tasks']", "xpath", "Tasks menu")
