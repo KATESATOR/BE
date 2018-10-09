@@ -4,7 +4,7 @@ from features.utility.element import *
 class LockTTPage:
 
     def __init__(self):
-        self.user_barber_robert = Button("//*[@title='Barber, Robert']", "xpath", "Barber, Robert user")
+        self.user_white_jane = Button("//*[@title='White, Jane']", "xpath", " White, Jane user")
 
         self.result_text = Element("//*[@class='result-number']", "xpath", "result number")
         self.date_selector_button = Button("ext-gen32", "id", "date selector")
@@ -20,7 +20,7 @@ class LockTTPage:
                                           "xpath", "Current week")
         self.cur_prev_week_button = Button("//*[@class='rangeItemTitle'][contains(text(), 'Current & previous weeks')]",
                                            "xpath", "Current week")
-        self.task_backup_controlling = Button("//*[@class='lockTableEllipsis'][contains(text(), 'Backup controlling')]",
+        self.task = Button("//*[@class='lockTableEllipsis'][contains(text(), 'CV review')]",
                                               "xpath", "task Backup controlling")
         self.date_cell = Button("//*[@class='dateCellNonWorking    ']", "xpath", "today")
         self.user_date_cell = Button("//*[contains(@class, 'userDayCell')]", "xpath", "one user day")
@@ -36,7 +36,7 @@ class LockTTPage:
         # Types of Work
         self.type_of_work_button = Button("//*[@class='typeOfWorkButton editable']",
                                           "xpath", "Type of work")
-        self.type_programming = Button("//*[@class='typeLabel ellipsis'][contains(text(), 'programming')]",
+        self.type_testing = Button("//*[@class='typeLabel ellipsis'][contains(text(), 'testing')]",
                                        "xpath", "programming type")
         self.type_non_billable = Button("//*[@class='typeLabel ellipsis'][contains(text(), 'Non-Billable')]",
                                         "xpath", "Non-Billable type")
