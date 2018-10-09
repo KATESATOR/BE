@@ -4,7 +4,6 @@ from features.utility.element import *
 class UserListPage:
 
     def __init__(self):
-        self.users_button = Button("//*[@class='content users']", "xpath", "users page button")
         self.new_user_button = Button("//*[@class='components_button  withPlusIcon' and text()='  New User']", "xpath",
                                       "'+new user' button")
         self.first_name_field = TextField("createUserPanel_firstNameField", "id", "first name field")
@@ -128,7 +127,7 @@ class UserListPage:
             "#usersManagementBodyTagId>div:last-of-type .x-table-layout-cell.generic>div>div>div", "css",
             "all users in users selector")
         self.cruz_in_selector = CheckBox("//*[@class='ellipsisLabel' and text()='Cruz, Gordman']", "xpath",
-                                            "Stivers in user selector")
+                                         "Stivers in user selector")
         self.apply_button_user_filter = Button(
             "#usersManagementBodyTagId>:last-of-type .x-btn.greyButton.close-button:not(.cancel-button)", "css",
             "apply button in user filter")
@@ -149,14 +148,13 @@ class UserListPage:
             "css", "first username in work assigments tab")
         self.first_row_in_wa_tab_projects_counter = Button(".userListRow:first-of-type .projects .counterText", "css",
                                                            "projects counter work assignments tab first row")
-        self.sorting_by_users_in_wa = Button(".userListTable.userList_workAssignmentsTable .sortLinks>:first-of-type",
-                                             "css", "sorting by users in wa tab")
         self.edit_assignments_button = Button("//*[text()='Edit Assignments']", "xpath", "edit assignments button")
-        self.last_cust_in_wa_panel = Button(
-            ".userManagement_slidingPanel .loadingContainer:last-of-type:not(.entitiesListLoadingWrapper)", "css",
-            "last customer in wa panel")
-        self.first_project_cust_wa_panel = Button(".entitiesList:nth-of-type(2)>:first-child>:first-of-type label",
-                                                  "css", "first project in customer in wa panel")
+        self.our_company_in_wa_panel = Button(
+            "//div[@class='entitiesList']//div[@class='name' and text()='Our Company']",
+            "xpath", "our company customer in WA panel")
+        self.first_project_in_wa_panel = Button(
+            "//div[@class='entityListItem hierarchyClass_project']//div[@class='checkboxPlaceholder']",
+            "xpath", "first project in customer in wa panel")
         self.close_edit_wa_button = Button(
             ".userManagement_slidingPanel.userManagement_workAssignmentsEditorPanel .hideButton_panelContainer", "css",
             "close edit wa panel button")
@@ -253,3 +251,7 @@ class UserListPage:
                                           "first search result username in user list")
         self.last_username_in_list = Button(".userListRow:last-of-type span.userNameSpan", "css",
                                             "last username in list")
+        self.search_in_wa = Button("th.controlsPlaceholder.userName.secondLayer div.wordsFilter", "css",
+                                   "search in WA button")
+        self.search_wa_field = TextField("div.inputPlaceholder.animShowWordsField.active > input", "css",
+                                         "search WA field")

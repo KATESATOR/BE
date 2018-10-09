@@ -4,7 +4,6 @@ from features.utility.element import *
 class ApproveTTPage:
 
     def __init__(self):
-        self.approve_tt_tab = Button('Approve Time-Track', 'link', 'approve tt tab')
         self.user_checkbox = CheckBox('.data:nth-child(4)>tr:nth-of-type(2) input', 'css',
                                       'user checkbox on approve tt')
         self.approve_tt_button = Button('approveButton', 'id', 'approve tt button')

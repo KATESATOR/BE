@@ -2,8 +2,8 @@ Feature: Lock TT interface
 
   Background:
     Given I am logged in as admin
+    And I am on lock_tt page
     And lock_tt_page is visible
-    And I click lock_tt_button
 
   @smoke
   Scenario: Change sorting by Group

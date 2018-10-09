@@ -3,8 +3,8 @@ Feature: View TT interface of other user by admin
 
   Background:
     Given I am logged in as admin
+    And I am on view_tt page
     And view_tt_page is visible
-    And i click view_tt
     And i click user_selector
     And i click user_selector_timmers_brian
 

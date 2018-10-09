@@ -3,14 +3,8 @@ Feature: View TT interface by user
 
   Background:
     Given I am logged in as user
+    And I am on my_view_tt page
     And view_tt_page is visible
-    And I click view_tt
-
-     # Залогиниться и проставить балансы pto = 2.3; sick = 1d
-  @smoke
-  Scenario: Checking PTO&Sick days balance
-    When I should see a text 2.3d on the page
-    Then I should see a text 1d on the page
 
   @smoke
   Scenario: Switching period and checking period table

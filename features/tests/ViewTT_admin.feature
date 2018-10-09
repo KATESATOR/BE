@@ -3,16 +3,8 @@ Feature: View TT interface by admin
 
   Background:
     Given I am logged in as admin
+    And I am on view_tt page
     And view_tt_page is visible
-    And i click view_tt
-
-    # Залогиниться и проставить балансы pto = 1d; sick = 2d
-  @smoke
-  Scenario: Checking PTO&Sick days balance
-    When i click user_selector
-    And i click user_selector_timmers_brian
-    Then I should see a text 1d on the page
-    And I should see a text 2d on the page
 
   @smoke
   Scenario: Switching period and checking period table

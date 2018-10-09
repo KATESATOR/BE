@@ -4,7 +4,6 @@ from features.utility.element import *
 # TODO: Придумать новые названия для локаторовк которые подходят к чартам и репортам
 class ReportsPage:
     def __init__(self):
-        self.reports_page_button = Button("//a[@href='/cur/reports/reports.do']", "xpath", "reports page")
         self.reports_dashboard = Link("Reports Dashboard", "link text", "reports page")
         self.create_chart_button = Button("ext-gen38", "id", "create chart button")
         self.new_report_button = Button("ext-gen18", "id", "new report button")

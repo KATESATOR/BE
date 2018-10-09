@@ -2,8 +2,8 @@ Feature: Reports interface by user
 
   Background:
     Given I am logged in as user
+    And I am on reports page
     And reports_page is visible
-    And I click reports_page_button
 
   @smoke
   Scenario Outline: Export Reports in .csv files

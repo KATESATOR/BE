@@ -5,10 +5,10 @@ class TasksPage:
 
     def __init__(self):
         self.add_new = Button(".addNewButton", "css", "+ Add New")
-        self.new_customer = Button(".dropdownContainer:nth-child(23) > .createNewCustomer", "css", "New Customer")
-        self.new_project = Button(".dropdownContainer:nth-child(23) > .createNewProject", "css", "New Project")
-        self.new_tasks = Button(".dropdownContainer:nth-child(23) > .createNewTasks", "css", "New Tasks")
-        self.import_tasks = Button(".dropdownContainer:nth-child(23) > .importTasks", "css", "Import Tasks")
+        self.new_customer = Button(".dropdownContainer:nth-child(24) > .createNewCustomer", "css", "New Customer")
+        self.new_project = Button(".dropdownContainer:nth-child(24) > .createNewProject", "css", "New Project")
+        self.new_tasks = Button(".dropdownContainer:nth-child(24) > .createNewTasks", "css", "New Tasks")
+        self.import_tasks = Button(".dropdownContainer:nth-child(24) > .importTasks", "css", "Import Tasks")
         self.cp_name = TextField(".inputNameField", "css", "Customer or Project Name field")
         self.create_cp = Button(".commitButtonPlaceHolder", "css", "Create Customer or Project button")
         self.test_customer = Button(".filteredContainer .customerNode > .title", "css", "test customer")
@@ -22,8 +22,10 @@ class TasksPage:
         self.test_project_settings = Button(".selected > .editButton", "css", "test customer settings")
         self.project_actions = Button(".editProjectPanelHeader .action", "css", "project actions")
         self.delete_project = Button(".taskManagement_projectPanel .deleteButton > .title", "css", "delete project")
-        self.confirm_project_deletion = Button(".scrollableContainer:nth-child(4) .submitTitle", "css",
-                                               "confirm project deletion")
+        self.confirm_project_deletion = Button(
+            "//div[@class='taskManagement_projectPanel']//span[@class='submitTitle buttonTitle']",
+            "xpath",
+            "confirm project deletion")
         self.select_customer_for_project = Button(
             "//button[@class='x-btn-text' and text()[contains(., '-- Please Select Customer to Add Project for  --')]]",
             "xpath",
