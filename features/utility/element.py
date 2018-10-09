@@ -210,7 +210,9 @@ class Selector(Element):
     def select_by_value(self, value):
         try:
             self.wait_for_element('present')
+            self.web_element().click()  # Для имитации раскрытия селектора
             Select(self.web_element()).select_by_value(value)
+            self.web_element().click()  # Для имитации закрытия селектора после выбора значения
         except:
             raise
 

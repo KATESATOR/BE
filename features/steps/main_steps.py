@@ -59,6 +59,25 @@ def login_as_admin(context):
         time.sleep(10)
 
 
+@step('I am logged in actiPLANS as admin')
+def login_as_admin(context):
+    context.execute_steps(f"""
+           Given I open actiPLANS page {'/'}
+           When {'at_login_page'} is visible
+           And I enter {'admin'} in the {'username_field'}
+           And I enter {'manager'} in the {'password_field'}
+           And I click {'login_button'}
+       """)
+    time.sleep(1)
+    text = "Welcome to actiTIME!"
+    start_button = Button(".startExploringText", "css", "start exploring button")
+    if text not in context.driver.page_source:
+        pass
+    else:
+        start_button.click()
+        time.sleep(10)
+
+
 @step('I am logged in as user')
 def login_as_user(context):
     context.execute_steps(f"""

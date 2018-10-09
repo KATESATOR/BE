@@ -24,38 +24,38 @@ Feature: Lock TT interface
     Then sort_text should contain Users / Tasks
 
   @smoke
-  Scenario: Change user filter
-    When I click date_selector_button
-    And I click current_week_button
-    And date_selector_button should contain Current week
-    And I click user_selector_button
-    And I click selected_users_radiobutton
-    And I click user_barber_robert
-    And I click close_user_selector_button
-    And I wait 1 seconds for animation stops
-    And user_selector_text should contain Barber, Robert
-    Then result_text should contain 1
-    And I refresh the page
-    And I click clear_filter_button
-    And I click date_selector_button
-    And I click cur_prev_week_button
-
-  @smoke
   Scenario: Change task
     When I click expand_all_button
-    And I should see a web element task_backup_controlling
-    And I click task_backup_controlling
+    And I should see a web element task
+    And I click task
     And I click type_of_work_button
-    And I click type_programming
+    And I click type_testing
     And I wait 1 seconds for animation stops
-    And type_of_work_button should have title with Billable: programming
+    And type_of_work_button should have title with Billable: testing
     And I click type_of_work_button
     And I click type_non_billable
     And I wait 1 seconds for animation stops
     And type_of_work_button should have title with Non-Billable
     And I click collapse_all_button
     And I wait 1 seconds for animation stops
-    Then I should not see a web element task_backup_controlling
+    Then I should not see a web element task
+
+  @smoke
+  Scenario: Change user filter
+    When I click date_selector_button
+    And I click current_week_button
+    And date_selector_button should contain Current week
+    And I click user_selector_button
+    And I click selected_users_radiobutton
+    And I click user_cruz
+    And I click close_user_selector_button
+    And I wait 1 seconds for animation stops
+    And user_selector_text should contain Cruz, Gordman
+    Then result_text should contain 1
+    And I refresh the page
+    And I click clear_filter_button
+    And I click date_selector_button
+    And I click cur_prev_week_button
 
   @smoke
   Scenario: Lock/Unlock all dates

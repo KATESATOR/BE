@@ -17,11 +17,11 @@ Feature: Work Schedule by admin
     And I click show_3
     Then I should not see a web element last_month_table
 
-  @smoke
-  Scenario: Change work/weekend day
-    When I click current_working_day
-    And I wait 1 seconds for animation stops
-    And I should see a web element current_weekend_day
-    And I click current_weekend_day
-    And I wait 1 seconds for animation stops
-    Then I should not see a web element current_weekend_day
+    @smoke
+    Scenario: Change work/weekend day
+      When I click current_working_day
+      And I wait 1 seconds for animation stops
+      And I should see a web element current_weekend_day
+      And I click current_weekend_day
+      And I wait 1 seconds for animation stops
+      Then I should not see a web element current_weekend_day
