@@ -5,6 +5,7 @@ import time
 import glob
 import os
 
+
 #  Шаги для всех тестов
 
 #  открытие страницы и запуск конфигов
@@ -72,6 +73,16 @@ def click_the_button(context, button):
         context.screenshot.take_screenshot("Can not click the  " + button.name)
         context.log.warn("I can't click the button: " + button.name)
         raise
+
+
+@step('I accept alert menu')
+def accept_alert_menu(context):
+    context.driver.switch_to_alert().accept()
+
+
+@step('I dismiss alert menu')
+def dismiss_alert_menu(context):
+    context.driver.switch_to_alert().dismiss()
 
 
 @step('I perform {option} in the {checkbox}')
@@ -272,6 +283,7 @@ def parameter_contain_value(context, element, value):
         context.screenshot.take_screenshot("Text has not been found in " + element.name)
         raise
 
+
 @step('Checking file with format {format}')
 def file_is_present(context, format):
     path = os.environ['USERPROFILE'] + '/Downloads/'
@@ -288,3 +300,12 @@ def file_is_present(context, format):
     except FileNotFoundError:
         context.log.info("I can't find file in downloads folder: " + format)
         raise
+
+
+@step('I drag {element} by offset {x}, {y}')
+def drag(context, element, x, y):
+    page = set_page
+    element = getattr(page, element.replace(" ", "_"))
+    elem = context.driver.find_element(element.get_by_type(), element.locator)
+    Config.get_actions().drag_and_drop_by_offset(elem, x, y).perform()
+
