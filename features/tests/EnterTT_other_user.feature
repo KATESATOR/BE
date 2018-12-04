@@ -60,7 +60,6 @@ Feature: Enter TT interface of other user
     And I click next week
     Then I should see a web element add only
 
-  #Сейчас тест падает из-за бага AT-2128
   @smoke
   Scenario: Create Task
     When I click new task

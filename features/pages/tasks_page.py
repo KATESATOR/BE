@@ -5,10 +5,11 @@ class TasksPage:
 
     def __init__(self):
         self.add_new = Button(".addNewButton", "css", "+ Add New")
-        self.new_customer = Button(".dropdownContainer:nth-child(24) > .createNewCustomer", "css", "New Customer")
-        self.new_project = Button(".dropdownContainer:nth-child(24) > .createNewProject", "css", "New Project")
-        self.new_tasks = Button(".dropdownContainer:nth-child(24) > .createNewTasks", "css", "New Tasks")
-        self.import_tasks = Button(".dropdownContainer:nth-child(24) > .importTasks", "css", "Import Tasks")
+        self.new_customer = Button("div.dropdownContainer.addNewMenu > div.item.createNewCustomer", "css",
+                                   "New Customer")
+        self.new_project = Button("div.dropdownContainer.addNewMenu > div.item.createNewProject", "css", "New Project")
+        self.new_tasks = Button("div.dropdownContainer.addNewMenu > div.item.createNewTasks", "css", "New Tasks")
+        self.import_tasks = Button("div.dropdownContainer.addNewMenu > div.item.importTasks", "css", "Import Tasks")
         self.cp_name = TextField(".inputNameField", "css", "Customer or Project Name field")
         self.create_cp = Button(".commitButtonPlaceHolder", "css", "Create Customer or Project button")
         self.test_customer = Button(".filteredContainer .customerNode > .title", "css", "test customer")

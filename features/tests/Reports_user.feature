@@ -21,7 +21,7 @@ Feature: Reports interface by user
     And I click <report>
     And I click configure_report_button
     And I wait 2 seconds for animation stops
-    And My current URL should contain http://rdbuild-agent:8080/cur/reports/<prev_report_url>
+    And My current URL should contain /reports/<prev_report_url>
     And I click csv_preview_button
     And I click export_to_csv_button
     And I wait 2 seconds for animation stops
@@ -43,10 +43,10 @@ Feature: Reports interface by user
     And I click <report>
     And I click configure_report_button
     And I wait 2 seconds for animation stops
-    And My current URL should contain http://rdbuild-agent:8080/cur/reports/<prev_report_url>
+    And My current URL should contain /reports/<prev_report_url>
     And I click generate_html_button
     And I wait 2 seconds for animation stops
-    And My current URL should contain http://rdbuild-agent:8080/cur/reports/<report_url>
+    And My current URL should contain /reports/<report_url>
     And I click add_to_dashboard_button
     And I enter <report_name> in the report_name_text_field
     And I click save_report_name_button
@@ -65,7 +65,7 @@ Feature: Reports interface by user
 
     When I open report on dashboard with name <report_name>
     And I wait 2 seconds for animation stops
-    And My current URL should contain http://rdbuild-agent:8080/cur/reports/<report_url>
+    And My current URL should contain /reports/<report_url>
     And I click report_name
     And I enter <report_name_changed> in the report_name_text_field
     And I wait 1 seconds for animation stops

@@ -24,13 +24,13 @@ Feature: Reports interface by admin
     And I click <report>
     And I click configure_report_button
     And I wait 2 seconds for animation stops
-    And My current URL should contain http://rdbuild-agent:8080/cur/reports/<prev_report_url>
+    And My current URL should contain /reports/<prev_report_url>
     And I click csv_preview_button
     And I click export_to_csv_button
     And I wait 2 seconds for animation stops
     Then I search report <report_name> with the extension csv in downloads folder
 
-  @smoke
+  @smoke2
   Scenario: Export Invoice Report to PDF
     When I click new_report_button
     And I wait 2 seconds for animation stops
@@ -38,10 +38,10 @@ Feature: Reports interface by admin
     And I click invoice_export_button
     And I click configure_report_button
     And I wait 2 seconds for animation stops
-    And My current URL should contain http://rdbuild-agent:8080/cur/reports/invoice.do
+    And My current URL should contain /reports/invoice.do
     And I click generate_html_button
     And I wait 2 seconds for animation stops
-    And My current URL should contain http://rdbuild-agent:8080/cur/reports/invoiceresults.do
+    And My current URL should contain /reports/invoiceresults.do
     And I enter №1 in the invoice_number_text_field
     And I click create_pdf_invoice_button
     And I wait 3 seconds for animation stops
@@ -67,10 +67,10 @@ Feature: Reports interface by admin
     And I click <report>
     And I click configure_report_button
     And I wait 2 seconds for animation stops
-    And My current URL should contain http://rdbuild-agent:8080/cur/reports/<prev_report_url>
+    And My current URL should contain /reports/<prev_report_url>
     And I click generate_html_button
     And I wait 2 seconds for animation stops
-    And My current URL should contain http://rdbuild-agent:8080/cur/reports/<report_url>
+    And My current URL should contain /reports/<report_url>
     And I click add_to_dashboard_button
     And I enter <report_name> in the report_name_text_field
     And I click save_report_name_button
@@ -93,7 +93,7 @@ Feature: Reports interface by admin
 
     When I open report on dashboard with name <report_name>
     And I wait 2 seconds for animation stops
-    And My current URL should contain http://rdbuild-agent:8080/cur/reports/<report_url>
+    And My current URL should contain /reports/<report_url>
     And I click report_name
     And I enter <report_name_changed> in the report_name_text_field
     And I wait 1 seconds for animation stops
