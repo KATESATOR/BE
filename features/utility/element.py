@@ -102,6 +102,10 @@ class Element:
 class Button(Element):
 
     def __init__(self, locator, locator_type, name=""):
+        """
+
+        :rtype:
+        """
         super().__init__(locator, locator_type, name)
 
     @retry(wait_fixed=1000, stop_max_delay=10000)
