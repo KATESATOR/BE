@@ -27,7 +27,17 @@ def open_a_page(context, page):
 @step('I am logged in as admin')
 def login_as_admin(context):
     context.execute_steps(f"""
-           Given I open a page {'http://rdbuild-agent:8080/cur'}
+           Given I open a page {'https://onlinetest.actitime.com/build-736-11-2'}
+           When {'at_login_page'} is visible
+           And I enter {'admin'} in the {'username_field'}
+           And I enter {'manager'} in the {'password_field'}
+           And I click {'login_button'}
+       """)
+
+@step('I am logged in aP as admin')
+def login_as_admin(context):
+    context.execute_steps(f"""
+           Given I open a page {'https://onlinetest.actiplans.com/build-736-11-2'}
            When {'at_login_page'} is visible
            And I enter {'admin'} in the {'username_field'}
            And I enter {'manager'} in the {'password_field'}
@@ -38,7 +48,7 @@ def login_as_admin(context):
 @step('I am logged in as user')
 def login_as_user(context):
     context.execute_steps(f"""
-           Given I open a page {'http://rdbuild-agent:8080/cur'}
+           Given I open a page {'https://onlinetest.actitime.com/build-736-11-2'}
            When {'at_login_page'} is visible
            And I enter {'user'} in the {'username_field'}
            And I enter {'user'} in the {'password_field'}

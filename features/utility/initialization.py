@@ -8,6 +8,8 @@ from features.pages.features_page import Features
 from features.pages.general_settings_page import GeneralSettings
 from features.pages.workflow_settings_page import WorkflowSettings
 from features.pages.types_of_work_page import TypesOfWork
+from features.pages.aP_users import Users
+
 
 
 class Pages:
@@ -21,4 +23,5 @@ class Pages:
     general_settings_page = GeneralSettings()
     workflow_settings_page = WorkflowSettings()
     types_of_work_page = TypesOfWork()
+    users_page = Users()
 
