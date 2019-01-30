@@ -42,3 +42,4 @@ class GeneralPage:
         self.phone_number = TextField("phoneInput_support", "id", "Phone number field")
         self.request_a_call = Button("sendPhoneButton_support", "id", "Phone number field")
         self.switch_product = Button("//div[@class='productName']", "xpath", "Product switcher")
+        self.ap_reports = Button
