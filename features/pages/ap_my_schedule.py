@@ -5,8 +5,12 @@ class ApMySchedule:
 
     def __init__(self):
         self.today_cell = Button('#myScheduleTable .dayCell.today', 'css', 'my schedule today cell')
+        self.week_start_day_cell = Button('.firstRow .weekStartDay:not(.pastDay):not(.today)', 'css', 'week start day')
         self.today_cell_no_leave = Button('#myScheduleTable .dayCell.today.noLeave', 'css',
                                           'my schedule today no leave cell')
+        self.last_day_cell = Button('#myScheduleTable .firstRow>td:last-of-type', 'css', 'my schedule last day cell')
+        self.approved_last_day_cell = Button('#myScheduleTable .approved.last', 'css',
+                                             'approved last day cell in my schedule')
         self.today_cell_full_leave = Button('#myScheduleTable .dayCell.today.fullLeave', 'css',
                                             'my schedule today full leave cell')
         self.today_cell_leavetype3_halfday = Button('#myScheduleTable .dayCell.today.leaveType3.fiftyPercentLeave',
@@ -36,6 +40,8 @@ class ApMySchedule:
         self.requests_tab = Button('//*[text()="Requests"]', 'xpath', 'requests tab')
         self.first_row_leave_name = Button('tbody>tr.requestRow:first-of-type .leaveTypeName', 'css',
                                            'leave name in first row of table')
+        self.show_past_leaves_chkbx = Button('filterPastRequestsCheckbox', 'id', 'show pask leaves checkbox')
+        self.past_leave_row = Element('.pastRequest', 'css', 'past leave row')
         self.first_row_edit_period = Button('tbody>tr.requestRow:first-of-type .editButton', 'css',
                                             'edit period in first row of table')
         self.first_row_requested_time = Element('tbody>tr.requestRow:first-of-type .timeRequested', 'css',
@@ -45,6 +51,7 @@ class ApMySchedule:
         self.sorting_leave_type = Button('//*[@class="sortingLink" and text()="Leave Type"]', 'xpath',
                                          'sorting by leave type')
         self.sorting_period = Button('//*[@class="sortingLink" and text()="Period"]', 'xpath', 'sorting by Period')
+        self.period_sorting_asc = Element('.periodCell.sorting_asc', 'css', 'period sorting ascending')
         self.my_profile = Button('.userProfileLink', 'css', 'my profile')
         self.profile_first_name = TextField('userProfilePopup_firstNameField', 'id', 'user first name in profile')
         self.profile_middle_name = TextField('userProfilePopup_middleNameField', 'id', 'user middle name in profile')

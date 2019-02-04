@@ -7,20 +7,23 @@ Feature: aP My Schedule interface by admin
 
   @Smoke
   Scenario: Creating, editing, deleting leave request
-    When I click today_cell
+    When I click week_start_day_cell
     And I click submit_request
-    And I should see a web element today_cell_full_leave
-    And I click today_cell
+    And I wait 1 seconds for animation stops
+    And week_start_day_cell should have class with dayCell weekStartDay leaveType1 approved fullLeave
+    And I click week_start_day_cell
     And I click edit_request
     And I click leave_type_selector
     And I click third_leave_type
     And I enter 4 in the day_duration_field
     And I click save_changes
-    And I should see a web element today_cell_leavetype3_halfday
-    And I click today_cell
+    And I wait 1 seconds for animation stops
+    And week_start_day_cell should have class with dayCell weekStartDay leaveType3 approved fiftyPercentLeave
+    And I click week_start_day_cell
     And I click delete_request
     And I accept alert menu
-    Then I should see a web element today_cell_no_leave
+    And I wait 1 seconds for animation stops
+    Then week_start_day_cell should have class with dayCell weekStartDay noLeave
 
   @Smoke
   Scenario: Switching weeks
@@ -50,35 +53,44 @@ Feature: aP My Schedule interface by admin
 
   @Smoke
   Scenario: Editing and deleting request in table
-    When I click today_cell
+    When I click last_day_cell
     And I click submit_request
-    And I should see a web element today_cell_full_leave
+    And I wait 1 seconds for animation stops
+    And I should see a web element approved_last_day_cell
     And I click requests_tab
+    And I click sorting_period
     And I click first_row_leave_name
     And I click leave_type_selector
     And I click third_leave_type
     And I click save_changes
     And I wait 1 seconds for animation stops
     And first_row_leave_name should contain Vacation
+    And I click first_row_delete
+    And I accept alert menu
+    And I wait 1 seconds for animation stops
+    And I click sorting_period
+    And I should see a web element period_sorting_asc
     And I click first_row_edit_period
     And I enter 4 in the day_duration_field
     And I click save_changes
     And I wait 1 seconds for animation stops
-    And first_row_requested_time should contain 0.5 days (4h)
-    And I click first_row_delete
-    And I accept alert menu
-    And I wait 1 seconds for animation stops
-    Then first_row_leave_name should contain Sick Leave
+    Then first_row_requested_time should contain 0.5 days (4h)
 
   @Smoke
   Scenario: Sorting in table
     When I click requests_tab
+    And I click show_past_leaves_chkbx
+    And I should see a web element past_leave_row
     And I click sorting_leave_type
     And first_row_leave_name should contain Sick Leave
     And I click sorting_leave_type
     And first_row_leave_name should contain Business Trip
     And I click sorting_period
-    Then first_row_leave_name should contain Sick Leave
+    And first_row_leave_name should contain Time Off
+    And I should see a web element period_sorting_asc
+    And I click show_past_leaves_chkbx
+    And I wait 1 seconds for animation stops
+    Then I should not see a web element past_leave_row
     
   @Smoke
   Scenario: Editing My profile
