@@ -10,18 +10,23 @@ class ApLeavesManagement:
         self.next_page_button = Button("a.next", "css", "next page button on requests list")
         self.next_week_button = Button("//*[@class='spanUnderlined' and text()='Next week']", "xpath",
                                        "next week button")
+        self.previous_week_button = Button("//*[@class='spanUnderlined' and text()='Previous week']", "xpath",
+                                           "previous week button")
         self.return_to_cur_week = Button("backToCurrentWeekButton", "id", "return to current week button")
         self.user_filter = Button(".userGroupsFilterPlaceholder.filterBlock span", "css", "user filter button")
         self.selected_users = Button("*//b[text()='Show Selected Users']", "xpath", "selected users in user filter")
         self.qc_in_user_filter = CheckBox("*//label[text()='Quality Control']", "xpath",
+                                          "Quality Control in user filter")
+        self.hr_in_user_filter = CheckBox("*//label[text()='HR & Finance']", "xpath",
                                           "Quality Control in user filter")
         self.apply_filter = Button("*//span[text()='Apply']", "xpath", "apply button in user filter")
         self.first_row_name_chart = Element(".firstRow .userNameCell>div", "css", "name in first row in planning chart")
         self.first_row_balance_chart = Element(".firstRow .timeTotalCell", "css",
                                                "balance in first row in planning chart")
         self.all_users = Button("*//b[text()='Show All Users']", "xpath", "all users in user filter")
-        self.first_day_cell = Button(".firstRow .dayCell.weekStartDay.first", "css",
-                                     "first day in future cell in first row")
+        self.week_start_day_cell = Button(".firstRow .weekStartDay:not(.pastDay):not(.today)", "css",
+                                          "week start day cell in first row")
+        self.today_cell = Button('.firstRow .dayCell.today', 'css', 'today cell in first row')
         self.first_element_in_menu = Button("div:last-of-type>ul.x-menu-list>li:first-of-type", "css",
                                             "first row in pop-up menu list")
         self.second_element_in_menu = Button("div:last-of-type>ul.x-menu-list>li:nth-of-type(2)", "css",
@@ -56,7 +61,7 @@ class ApLeavesManagement:
         self.status_filter = Button(".status a", "css", "status filter in request table")
         self.first_row_status = Button(".actualContent>tr:first-of-type .statusText", "css", "status in first row")
         self.assigned_users_chkbx = CheckBox("displayOnlyAssignedToMeUsersChBox", "id", "assigned to me checkbox")
-        self.all_statuses_in_filter = Button("//*[text()='All statuses']", "xpath", "all statuses in status filter")
+        self.all_statuses_in_filter = Button("//li//*[text()='All statuses']", "xpath", "all statuses in status filter")
         self.first_row_checkbox = CheckBox(".actualContent>tr:first-of-type .applicableLabel input", "css",
                                            "first row checkbox")
         self.approve_bulk = Button(".acctionButton.greyButton.approve.enabled", "css", "bulk approve button")
