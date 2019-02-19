@@ -13,7 +13,7 @@ Feature: Workflow settings interface by admin
     When i click workflow_settings_add_open
     And i enter test_status in the workflow_settings_add_new_name
     And i click workflow_settings_apply
-    And i should see a web element workflow_settings_name_check
+    Then i should see a web element workflow_settings_name_check
 
   @smoke
   Scenario: Workflow statuses for open tasks: move
@@ -25,7 +25,9 @@ Feature: Workflow settings interface by admin
   @smoke
   Scenario: Workflow statuses for open tasks: delete
     When i click workflow_settings_delete_status
+    And I wait 1 seconds for animation stops
     And i click workflow_settings_delete_status_apply
+    And I wait 1 seconds for animation stops
     Then i should not see a web element workflow_settings_name_check
 
   @smoke
@@ -33,13 +35,12 @@ Feature: Workflow settings interface by admin
     When i click workflow_settings_add_close
     And i enter test_status_completed in the workflow_settings_add_new_name
     And i click workflow_settings_apply
-    And i should see a web element workflow_settings_name_check
+    Then i should see a web element workflow_settings_name_check
 
   @smoke
-  Scenario: Workflow statuses for open tasks: move
+  Scenario: Workflow statuses for completed tasks: move
     When I wait 1 seconds for animation stops
     And I drag gs_workflow_settings_workflow_completed_status by offset 0, -100
-    And I wait 1 seconds for animation stops
     Then I drag gs_workflow_settings_workflow_completed_status by offset 0, 100
 
   @smoke

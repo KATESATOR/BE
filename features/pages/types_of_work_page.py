@@ -5,8 +5,9 @@ class TypesOfWork:
 
     def __init__(self):
         self.type_of_work_create = Button("div#ext-gen7 span", "CSS", "Create Type of Work")
-        self.type_of_work_add_new_name = TextField("input#name", "CSS", "Add new type of work name")
         self.type_of_work_add_new_name_check = Button("//a[contains(text(),'test_type')]", "xpath", "name_check")
+        self.type_of_work_add_new_name_check_2 = Button("//a[contains(text(),'test_type2')]", "xpath", "name_check")
+        self.type_of_work_add_new_name = TextField("input#name", "CSS", "Add new type of work name")
         self.type_of_work_create_popup = Button('td#ButtonPane > input[type="submit"]:nth-child(1)', "CSS",
                                                 "Create Type of work popup")
         self.type_of_work_delete = Button("table#billingTypesTable td.listtblcell.lastInRow > a", "CSS",

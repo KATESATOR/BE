@@ -38,6 +38,9 @@ class GeneralSettings:
         self.gs_data_settings_tzg_boston = Button(
             "div#citiesSearchContainerElementId div.row.active > div.divisionName > span:nth-child(1)", "CSS",
             "Boston Time Zone")
+        self.gs_data_settings_tzg_new_york = Button(
+            "div#citiesSearchContainerElementId div.row.active > div.divisionName > span:nth-child(1)", "CSS",
+            "New York Time Zone")
         self.gs_work_schedule_hours_per_day_unlimited = Button("input#hoursPerDayLimited_Unlimited", "CSS", "Unlimited")
         self.gs_work_schedule_hours_per_day_limit = Button("input#hoursPerDayLimited_LimitTo", "CSS", "Limit to")
         self.gs_work_schedule_hours_per_day_unlimited_check = Element(
@@ -50,21 +53,20 @@ class GeneralSettings:
         self.gs_dar_see_all_tt = CheckBox("div#accessToUserInfoSettingsBlock label:nth-child(1) > input", "CSS",
                                           "Allow selected users to see all tt")
         self.gs_dar_see_all_tt_selector = Button("//td[@class='middle-left-cell contents']", "xpath", "Selecting user")
-        self.gs_dar_see_all_tt_selector_timmers = Button("//span[contains(@title,'Timmers, Brian')]", "xpath",
-                                                         "Select Timmers Brian")
+        self.gs_dar_see_all_tt_selector_white_jane = Button("//span[contains(@title,'White, Jane')]", "xpath",
+                                                         "Select White Jane")
         self.gs_dar_see_all_tt_selector_apply = Button("//span[contains(text(),'Apply')]", "xpath",
                                                        "Click on apply button")
-        self.gs_dar_hide_tt_lock_tt = CheckBox("div#accessToUserInfoSettingsBlock label:nth-child(5) > input", "CSS",
+        self.gs_dar_hide_tt_lock_tt = CheckBox("//*[@id='accessToUserInfoSettingsBlock']/div/div[3]/div[1]/div[1]/label/input", "xpath",
                                                "Hide tt details in locktt")
-        self.gs_dar_hide_tt_from_managers = CheckBox(
-            "div#accessToUserInfoSettingsBlock label.components_checkboxContainer.checkboxContainer.checked > input",
-            "CSS",
-            "Hide tt from managers")
-        self.gs_dar_hide_not_assigned_users = CheckBox("div#accessToUserInfoSettingsBlock label:nth-child(11) > input",
-                                                       "CSS",
+        self.gs_dar_hide_tt_from_managers = CheckBox("//*[@id='accessToUserInfoSettingsBlock']/div/div[4]/div[1]/div[1]/label/input",
+            "XPATH", "Hide tt from managers")
+        self.gs_dar_hide_not_assigned_users = CheckBox("//div[@class='darSetting hideAccountSetting']//input[@type='checkbox']",
+                                                       "XPATH",
                                                        "Hide not assigned users in User List")
         self.gs_dar_allow_manager_modify_tt_users = CheckBox(
-            "div#accessToUserInfoSettingsBlock label:nth-child(14) > input",
-            "CSS", "Allow manager to modify tt of users for auto approval")
+            "//div[@class='darSetting ttmCanManageAutoApprovedSetting']//input[@type='checkbox']",
+            "XPATH", "Allow manager to modify tt of users for auto approval")
         self.gs_message_footer = TextField("textarea#mailMessageFooter", "CSS", "Message footer")
         self.gs_send_test_message = Button("input#sendTestMessage_button", "CSS", "Send Test Message")
+        self.gs_page = Button("//form[@id='settingsForm']", "XPATH", "GS page")
