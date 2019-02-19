@@ -50,3 +50,13 @@ Feature: aP Notifications settings
     And message_prefix_textfield should have value with aP Prefix
     And message_footer_textfield should have value with aP Footer
     And admin_mail_address_textfield should have value with anton.provotorov@actimind.com
+    And I wait 2 seconds for animation stops
+    And I click notify_new_ltr_checkbox
+    And I click notify_modified_ltr_checkbox
+    And I click notify_deleted_ltr_checkbox
+    And I click notify_status_changed_ltr_checkbox
+    And I click notify_waiting_ltr_checkbox
+    And I click notify_users_on_ltr_changed_checkbox
+    And I click notify_users_on_ltr_new_or_deleted_checkbox
+    And I click save_button_bottom
+    And I wait 2 seconds for animation stops

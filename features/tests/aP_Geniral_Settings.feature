@@ -75,6 +75,15 @@ Feature: aP General settings
     And pto_rule_reset_balance_textfield should have value with 10
     And pto_rule_accrue_balance_textfield should have value with 3.5
     And pto_rule_cap_balance_textfield should have value with 100
+    And I wait 2 seconds for animation stops
+    And I click pto_show_in_days_radiobutton
+    And I click pto_round_balance_checkbox
+    And I click pto_rule_reset_balance_checkbox
+    And I click pto_rule_accrue_balance_checkbox
+    And I click pto_rule_cap_balance_checkbox
+    And I click pto_default_control_mode_checkbox
+    And I click save_button_top
+
 
     # Перед началом теста в Sick правилах все чекбоксы OFF
   @smoke
@@ -93,7 +102,14 @@ Feature: aP General settings
     And sick_rule_reset_balance_textfield should have value with 10
     And sick_rule_accrue_balance_textfield should have value with 3.5
     And sick_rule_cap_balance_textfield should have value with 100
-
+    And I wait 2 seconds for animation stops
+    And I click sick_show_in_days_radiobutton
+    And I click sick_round_balance_checkbox
+    And I click sick_rule_reset_balance_checkbox
+    And I click sick_rule_accrue_balance_checkbox
+    And I click sick_rule_cap_balance_checkbox
+    And I click sick_default_control_mode_checkbox
+    And I click save_button_top
   @smoke
   Scenario: Change work schedule
     When I enter 9 in the default_workday_duration_textfield
@@ -112,6 +128,11 @@ Feature: aP General settings
     And ltm_show_auto_approved_checkbox should have checked with true
     And ltm_edit_auto_approved_checkbox should have checked with true
     And ltm_show_other_assigned_checkbox should have checked with true
+    And I click ltm_edit_auto_approved_checkbox
+    And I click ltm_show_auto_approved_checkbox
+    And I click ltm_show_other_assigned_checkbox
+    And I click save_button_top
+    And I wait 2 seconds for animation stops
 
     # Перед началом теста все свитчеры должны быть ON
   @smoke
@@ -148,7 +169,7 @@ Feature: aP General settings
     And I enter ; in the digit_grouping_symbol_textfield
     And I click save_button_top
     Then I wait 2 seconds for animation stops
-    And pto_rule_accrue_balance_textfield should have value with 3'5
+    And pto_rule_accrue_balance_textfield should have value with 0'44
     And I choose . in decimal_separator_selector
     And I choose   in digit_grouping_symbol_selector
     And I click save_button_top
