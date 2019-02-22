@@ -20,16 +20,16 @@ Feature: AP Leaves Management by admin
     And first_row_name_table should contain Alvarez, Daniel
     And I click sort_groups
     And I wait 1 seconds for animation stops
-    And first_row_name_table should contain White, Jane
+    And first_row_name_table should contain Meyers, Allison
     And I click sort_leave_type
     And I wait 1 seconds for animation stops
-    And first_row_name_table should contain Alvarez, Daniel
+    And first_row_name_table should contain Ramirez, Maria
     And I click sort_status
     And I wait 1 seconds for animation stops
     And first_row_name_table should contain Alvarez, Daniel
     And I click sort_period
     And I wait 1 seconds for animation stops
-    Then first_row_name_table should contain Alvarez, Daniel
+    Then first_row_name_table should contain Klein, Hannah
 
   @Smoke
   Scenario: User Filter in leave time planning chart
@@ -54,16 +54,16 @@ Feature: AP Leaves Management by admin
     And I click week_start_day_cell
     And I click first_element_in_menu
     And I wait 1 seconds for animation stops
-    And week_start_day_cell should have class with dayCell weekStartDay leaveType1 approved fullLeave
-    And first_row_balance_chart should contain 8
+    And week_start_day_cell should have class with dayCell weekStartDay leaveType2 approved fullLeave
+    And first_row_balance_chart should contain 28
     And I click week_start_day_cell
     And I click first_element_in_menu
     And I wait 1 seconds for animation stops
-    And week_start_day_cell should have class with dayCell weekStartDay leaveType1 fullLeave
+    And week_start_day_cell should have class with dayCell weekStartDay leaveType2 fullLeave
     And I click week_start_day_cell
     And I click first_element_in_menu
     And I wait 1 seconds for animation stops
-    And week_start_day_cell should have class with dayCell weekStartDay leaveType1 approved fullLeave
+    And week_start_day_cell should have class with dayCell weekStartDay leaveType2 approved fullLeave
     And I click week_start_day_cell
     And I click fourth_element_in_menu
     And I click lt_edit_menu
@@ -71,7 +71,7 @@ Feature: AP Leaves Management by admin
     And I enter 2 in the lt_time_field
     And I click save_lt_edit
     And I wait 1 seconds for animation stops
-    And week_start_day_cell should have class with dayCell weekStartDay leaveType2 approved twentyFivePercentLeave
+    And week_start_day_cell should have class with dayCell weekStartDay leaveType3 approved twentyFivePercentLeave
     And I click week_start_day_cell
     And I click second_element_in_menu
     And I click reject_button
@@ -106,7 +106,7 @@ Feature: AP Leaves Management by admin
     And I click week_start_day_cell
     And I click first_element_in_menu
     And I wait 1 seconds for animation stops
-    And week_start_day_cell should have class with dayCell weekStartDay leaveType1 approved fullLeave
+    And week_start_day_cell should have class with dayCell weekStartDay leaveType2 approved fullLeave
     And I click week_start_day_cell
     And I click sixth_element_in_menu
     And I accept alert menu
@@ -133,9 +133,9 @@ Feature: AP Leaves Management by admin
     And I wait 1 seconds for animation stops
     And first_row_leave_type should contain Vacation
     And leave_type_filter should contain Vacation
-    And I refresh the page
     And I click first_row_status
     And I click first_element_in_menu
+    And I refresh the page
     And I click status_filter
     And I click third_element_in_menu
     And I wait 1 seconds for animation stops
@@ -149,13 +149,14 @@ Feature: AP Leaves Management by admin
     And I click first_element_in_menu
     And I wait 1 seconds for animation stops
     And first_row_status should contain Waiting for Approval
+    And I click first_row_leave_type
+    And I click second_element_in_menu
     And I click first_row_status
     And I click first_element_in_menu
-    And I click first_row_leave_type
-    And I click third_element_in_menu
     And I click leave_type_filter
     And I perform select in the vacation_in_filter
     And I click apply_filter
+    And I wait 1 seconds for animation stops
     And I click status_filter
     And I click all_statuses_in_filter
     And I wait 1 seconds for animation stops
@@ -193,7 +194,7 @@ Feature: AP Leaves Management by admin
     And I click delete_bulk
     And I click delete_ok_button
     And I wait 1 seconds for animation stops
-    And first_row_name_table should contain White, Jane
+    And I should not see a web element first_row_name_table
     And I click user_filter_table
     And I click selected_users
     And I perform select in the hr_in_user_filter
