@@ -10,7 +10,7 @@ Feature: aP My Schedule interface by admin
     When I click week_start_day_cell
     And I click submit_request
     And I wait 1 seconds for animation stops
-    And week_start_day_cell should have class with dayCell weekStartDay leaveType1 approved fullLeave
+    And week_start_day_cell should have class with dayCell weekStartDay leaveType2 approved fullLeave
     And I click week_start_day_cell
     And I click edit_request
     And I click leave_type_selector
@@ -18,7 +18,7 @@ Feature: aP My Schedule interface by admin
     And I enter 4 in the day_duration_field
     And I click save_changes
     And I wait 1 seconds for animation stops
-    And week_start_day_cell should have class with dayCell weekStartDay leaveType3 approved fiftyPercentLeave
+    And week_start_day_cell should have class with dayCell weekStartDay leaveType1 approved fiftyPercentLeave
     And I click week_start_day_cell
     And I click delete_request
     And I accept alert menu
@@ -64,17 +64,17 @@ Feature: aP My Schedule interface by admin
     And I click third_leave_type
     And I click save_changes
     And I wait 1 seconds for animation stops
-    And first_row_leave_name should contain Vacation
-    And I click first_row_delete
-    And I accept alert menu
-    And I wait 1 seconds for animation stops
-    And I click sorting_period
-    And I should see a web element period_sorting_asc
+    And first_row_leave_name should contain Sick Leave
     And I click first_row_edit_period
     And I enter 4 in the day_duration_field
     And I click save_changes
     And I wait 1 seconds for animation stops
-    Then first_row_requested_time should contain 0.5 days (4h)
+    Then first_row_requested_time should contain 0 days (0h)
+    And I click first_row_delete
+    And I accept alert menu
+    And I wait 1 seconds for animation stops
+    And I click sorting_period
+    Then I should see a web element period_sorting_asc
 
   @Smoke
   Scenario: Sorting in table
@@ -82,7 +82,7 @@ Feature: aP My Schedule interface by admin
     And I click show_past_leaves_chkbx
     And I should see a web element past_leave_row
     And I click sorting_leave_type
-    And first_row_leave_name should contain Sick Leave
+    And first_row_leave_name should contain Time Off
     And I click sorting_leave_type
     And first_row_leave_name should contain Business Trip
     And I click sorting_period
