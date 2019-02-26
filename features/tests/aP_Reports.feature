@@ -29,7 +29,7 @@ Feature: aP Reports interface by admin
     And first_column_in_chart should contain White, Jane
     And I click chart_sort_by_value
     And I wait 1 seconds for animation stops
-    And first_column_in_chart should contain Alvarez, Daniel
+    And first_column_in_chart should contain Long, Michelle
     And I click chart_sort_a_z
     And I wait 1 seconds for animation stops
     Then first_column_in_chart should contain Alvarez, Daniel
