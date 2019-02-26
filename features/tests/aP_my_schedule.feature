@@ -91,7 +91,7 @@ Feature: aP My Schedule interface by admin
     And I click show_past_leaves_chkbx
     And I wait 1 seconds for animation stops
     Then I should not see a web element past_leave_row
-    
+
   @Smoke
   Scenario: Editing My profile
     When I click my_profile
@@ -111,4 +111,3 @@ Feature: aP My Schedule interface by admin
     And I wait 1 seconds for animation stops
     And I refresh the page
     Then I should see a text Doe on the page
-
