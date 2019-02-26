@@ -52,7 +52,7 @@ Feature: Lock TT interface
     And I click type_of_work_button
     And I click type_non_billable
     And I wait 1 seconds for animation stops
-    And type_of_work_button should have title with Non-Billable
+    And type_of_work_button should have title with non-billable
     And I click collapse_all_button
     And I wait 1 seconds for animation stops
     Then I should not see a web element task
