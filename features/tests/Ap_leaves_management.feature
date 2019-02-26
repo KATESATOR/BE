@@ -29,7 +29,7 @@ Feature: AP Leaves Management by admin
     And first_row_name_table should contain Alvarez, Daniel
     And I click sort_period
     And I wait 1 seconds for animation stops
-    Then first_row_name_table should contain Klein, Hannah
+    Then first_row_name_table should contain Ramirez, Maria
 
   @Smoke
   Scenario: User Filter in leave time planning chart
