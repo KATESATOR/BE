@@ -55,4 +55,5 @@ Feature: Type of Work interface by admin
   Scenario: Types of Work: delete
     When i click type_of_work_delete
     And i accept alert menu
+    And I wait 1 seconds for animation stops
     Then I should not see a web element type_of_work_add_new_name_check_2
