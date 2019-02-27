@@ -13,14 +13,23 @@ Feature: Users interface by admin
     And I wait 3 seconds for animation stops
     And i click new_user_profile
     And I wait 3 seconds for animation stops
-    And i enter Name in the first_name
-    And i enter Last in the last_name
+    And i enter A in the first_name
+    And i enter A1 in the last_name
     And i enter test@test in the email
     And i click save_send_invitation
     And I wait 3 seconds for animation stops
     And I click close_add_user_panel
-    And I wait 3 seconds for animation stops
-    Then I should see a text Last on the page
+    And I wait 2 seconds for animation stops
+    Then I should see a text A1 on the page
+    And I refresh the page
+    And I wait 2 seconds for animation stops
+    And i click edit_user_panel
+    And I wait 2 seconds for animation stops
+    And i click delete_user
+    And I accept alert menu
+    And I wait 1 seconds for animation stops
+    Then I should not see a text Name, Last on the page
+
 
   @smoke
   Scenario: Create several users
@@ -51,6 +60,19 @@ Feature: Users interface by admin
     And i should see a text AA11 on the page
     Then I should see a text A on the page
 
+     @smoke
+  Scenario: Delete user
+    When i click edit_user_panel
+    And I wait 2 seconds for animation stops
+    And i click delete_user
+    And I accept alert menu
+    And I wait 2 seconds for animation stops
+    And  i click edit_user_panel
+    And i click delete_user
+    And I accept alert menu
+    And I should see a text AA11 on the page
+    Then I should see a text AA2 on the page
+
   @smoke
   Scenario: Edit User in table
     When I wait 1 seconds for animation stops
@@ -73,19 +95,6 @@ Feature: Users interface by admin
     Then I should not see a web element requests_check
 
   @smoke
-  Scenario: Delete user
-    When i click edit_user_panel
-    And I wait 2 seconds for animation stops
-    And i click delete_user
-    And I accept alert menu
-    And I wait 2 seconds for animation stops
-    And  i click edit_user_panel
-    And i click delete_user
-    And I accept alert menu
-    And I should see a text AA11 on the page
-    Then I should see a text AA2 on the page
-
-  @smoke
   Scenario: Changing user filter
     When i click filter
     And i click filter_show_selected
@@ -101,10 +110,9 @@ Feature: Users interface by admin
   @smoke
   Scenario: Sorting user data
     When i choose 10 in shown_by
-    And I perform deselect in the show_disabled_accounts
-    And I should not see a text Young, Frank on the page
-    And I wait 2 seconds for animation stops
     And I perform select in the show_disabled_accounts
+    And I should see a text Young, Frank on the page
+    And I wait 2 seconds for animation stops
     And I perform select in the show_managers_only
     And I wait 2 seconds for animation stops
     And I should see a text Top Management on the page
@@ -127,12 +135,12 @@ Feature: Users interface by admin
     And I should not see a text Young, Frank on the page
     And i click sort_by_account
     And I wait 1 seconds for animation stops
-    And I should not see a text White, Jane on the page
+    And I should not see a text Ramirez, Maria on the page
     And i click sort_by_account
     And I wait 1 seconds for animation stops
-    And I should see a text White, Jane on the page
+    And I should see a text Ramirez, Maria on the page
     And I choose 25 in shown_by
-    Then i click sort_by user
+    Then I perform deselect in the show_disabled_accounts
 
   @smoke
   Scenario: Create, delete departments
@@ -142,7 +150,7 @@ Feature: Users interface by admin
     And i click new_department_add
     And I wait 2 seconds for animation stops
     And i click delete_department
-    And I wait 2 seconds for animation stops
+    And I wait 3 seconds for animation stops
     And i click confirm_delete
     And I wait 1 seconds for animation stops
     Then I should not see a text Active_department on the page
@@ -165,9 +173,11 @@ Feature: Users interface by admin
   @smoke
   Scenario: Switching page
     When I wait 2 seconds for animation stops
+    And I choose 10 in shown_by
+    And I wait 2 seconds for animation stops
     And i click pager_next
     And I wait 1 seconds for animation stops
-    And I should see a text Young, Frank on the page
+    And I should see a text White, Jane on the page
     And i click pager_back
     And I wait 1 seconds for animation stops
     Then I should see a text Alvarez, Daniel on the page

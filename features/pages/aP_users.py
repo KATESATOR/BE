@@ -42,12 +42,13 @@ class Users:
                                                   "XPATH", "System perm")
         self.edit_user_permission_requests = Button("//tbody[contains(@class,'actualContent')]//tr[3]//td[21]//div[1]",
                                                     "XPATH")
-        self.leave_balance_check = Button("//td[@class='accountTabCell tableButtonCell accountTab-manageBalance-td activeButton canManage']", "XPATH",  # here, edit user in table
+        self.leave_balance_check = Button("//td[@class='accountTabCell tableButtonCell accountTab-manageBalance-td "
+                                          "activeButton canManage']", "XPATH",
                                           "Balance check")
         self.system_check = Button("//td[contains(@class,'accountTabCell tableButtonCell accountTab-manageAccounts-td "
                                    "activeButton canManage')]", "XPATH", "System check")
         self.requests_check = Button("//td[contains(@class,'accountTabCell tableButtonCell "
-                                     "accountTab-manageRequests-td activeButton canManage')]","XPATH",
+                                     "accountTab-manageRequests-td activeButton canManage')]", "XPATH",
                                      "Requests check")
         self.delete_user = Button("button#userDataLightBox_deleteBtn", "CSS", "Delete user button")
         # Filter
@@ -77,11 +78,8 @@ class Users:
                                                   "Created department field")
         self.delete_department = Button("//*[contains(@title, 'Active_department')]/following::td["
                                         "@class='deleteGroupCell']", "XPATH", "Delete department")
-        # self.confirm_delete = Button("//*[@class='userGroupDiv deleteConfirm']//*/button[@class='confirmDeleteGroupButton']", "XPATH",
-        #                               "Confirm delete dialog")
-
-        self.confirm_delete = Button("//*[@class='userGroupDiv deleteConfirm']//*/button[contains(text(), 'Yes, Delete')]", "XPATH",
-                                      "Confirm delete dialog")
+        self.confirm_delete = Button(".userGroupDiv.deleteConfirm button", "CSS",
+                                     "Confirm delete dialog")
         # TZG
         self.tzg = Button("//a[@class='editTimeZoneGroupsLink']", "XPATH", "TZG button")
         self.tzg_field = Button("//div[contains(@class,'emptySelection')]", "XPATH", "New TZG")
@@ -92,7 +90,7 @@ class Users:
         self.tzg_delete = Button("//*[@title='Atlanta']/following::td[@class='deleteGroupCell']", "XPATH", "Delete tzg")
         self.confirm_delete_tzg = Button("//*[@class='userGroupDiv deleteConfirm']//*/button", "XPATH", "Confirm "
                                                                                                         "delete tzg")
-        self.city_check = TextField ("//div[contains(@title,'Atlanta')]", "XPATH", "Checks Atlanta visible")
+        self.city_check = TextField("//div[contains(@title,'Atlanta')]", "XPATH", "Checks Atlanta visible")
         # Pager
         self.pager_next = Button("//a[contains(@class,'next')]", "XPATH", "Right Arrow")
         self.pager_back = Button("//a[contains(@class,'prev')]", "XPATH", "Left Arrow")
@@ -106,8 +104,6 @@ class Users:
         self.pto_balance_apply = Button("//span[contains(@class,'defaultText')][contains(text(),'Apply')]", "XPATH",
                                         "Apply pto")
         self.pto_accrue_rules = Button("//td[contains(text(),'1.8d monthly')]", "XPATH", "Accrue rules")
-        self.pto_max_limit = TextField("//input[@id='pto_capBalanceField']","XPATH", "Max limit balance")
+        self.pto_max_limit = TextField("//input[@id='pto_capBalanceField']", "XPATH", "Max limit balance")
         self.pto_save_changes = Button("//div[24]//div[3]//div[1]//span[1]", "XPATH", "Save changes")
-        self.pto_limit_check = TextField ("//td[contains(text(),'811d')]", "XPATH", "Limit check")
-
-
+        self.pto_limit_check = TextField("//td[contains(text(),'811d')]", "XPATH", "Limit check")
