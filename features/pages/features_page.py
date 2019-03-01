@@ -4,10 +4,10 @@ from features.utility.element import *
 class Features:
 
     def __init__(self):
-        self.features_future_days = Button("div#FEATURE_TTF > img", "CSS", "Feature_future_days")
+        self.features_future_days = Button("div#FEATURE_TTF > img", "CSS", "Feature future_days")
         self.features_leave_time = Button("div#FEATURE_LVT > img", "CSS", "Leave Time Tracking")
         self.features_pto_balance = Button("div#FEATURE_PTO > img", "CSS", "PTO Balance Calculations")
-        self.features_sick_balance = Button("div#FEATURE_SDB > img", "CSS", "Sick Days Balakce Calculations")
+        self.features_sick_balance = Button("div#FEATURE_SDB > img", "CSS", "Sick Days Balance Calculations")
         self.features_overtime = Button("div#FEATURE_OVR > img", "CSS", "Overtime Registration")
         self.features_tt_approval = Button("div#FEATURE_TTA > img", "CSS", "Time-Track Approval")
         self.features_departments = Button("div#FEATURE_UGR > img", "CSS", "Departments")

@@ -30,7 +30,6 @@ Feature: Users interface by admin
     And I wait 1 seconds for animation stops
     Then I should not see a text Name, Last on the page
 
-
   @smoke
   Scenario: Create several users
     When i click add_users
@@ -60,7 +59,7 @@ Feature: Users interface by admin
     And i should see a text AA11 on the page
     Then I should see a text A on the page
 
-     @smoke
+  @smoke
   Scenario: Delete user
     When i click edit_user_panel
     And I wait 2 seconds for animation stops
@@ -68,7 +67,9 @@ Feature: Users interface by admin
     And I accept alert menu
     And I wait 2 seconds for animation stops
     And  i click edit_user_panel
+    And I wait 2 seconds for animation stops
     And i click delete_user
+    And I wait 1 seconds for animation stops
     And I accept alert menu
     And I should see a text AA11 on the page
     Then I should see a text AA2 on the page
@@ -77,7 +78,9 @@ Feature: Users interface by admin
   Scenario: Edit User in table
     When I wait 1 seconds for animation stops
     And i click edit_user_permission_leave_balance
+    And I wait 1 seconds for animation stops
     And i click edit_user_permission_system
+    And I wait 1 seconds for animation stops
     And i click edit_user_permission_requests
     And I should see a web element leave_balance_check
     And I wait 1 seconds for animation stops
@@ -111,23 +114,21 @@ Feature: Users interface by admin
   Scenario: Sorting user data
     When i choose 10 in shown_by
     And I perform select in the show_disabled_accounts
-    And I should see a text Young, Frank on the page
+    And I should not see a text Young, Frank on the page
     And I wait 2 seconds for animation stops
     And I perform select in the show_managers_only
     And I wait 2 seconds for animation stops
     And I should see a text Top Management on the page
     And I perform deselect in the show_managers_only
+    And I wait 1 seconds for animation stops
     And i click sort_by_user
-    And I wait 2 seconds for animation stops
-    And I should see a text Young, Frank on the page
-    And i click sort_by_user
-    And I wait 2 seconds for animation stops
-    And I should not see a text Young, Frank on the page
+    And I wait 3 seconds for animation stops
+    And I should see a web element womack_ashley_check
     And i click sort_by_group
-    And I should not see a text Young, Frank on the page
+    And I should see a text Young, Frank on the page
     And i click sort_by_group
     And I wait 2 seconds for animation stops
-    And I should see a text Young, Frank on the page
+    And I should not see a web element womack_ashley_check
     And i click sort_by_working_week
     And I should see a text Young, Frank on the page
     And i click sort_by_working_week
@@ -138,8 +139,8 @@ Feature: Users interface by admin
     And I should not see a text Ramirez, Maria on the page
     And i click sort_by_account
     And I wait 1 seconds for animation stops
-    And I should see a text Ramirez, Maria on the page
-    And I choose 25 in shown_by
+    And i click sort_by_user
+    And I wait 1 seconds for animation stops
     Then I perform deselect in the show_disabled_accounts
 
   @smoke
@@ -157,18 +158,20 @@ Feature: Users interface by admin
 
   @smoke
   Scenario: Create, delete TZG
-     When i click tzg
-     And i click tzg_field
-     And i enter Atlanta in the tzg_search_field
-     And i click tzg_first_city_in_selector
-     And I wait 1 seconds for animation stops
-     And i click add_tzg
-     And I should see a text Atlanta on the page
-     And i click tzg_delete
-     And I wait 1 seconds for animation stops
-     And I click confirm_delete_tzg
-     And I wait 1 seconds for animation stops
-     Then I should not see a web element city_check
+    When i click tzg
+    And i click tzg_field
+    And i enter Atlanta in the tzg_search_field
+    And I wait 1 seconds for animation stops
+    And i click tzg_first_city_in_selector
+    And I wait 1 seconds for animation stops
+    And i click add_tzg
+    And I wait 1 seconds for animation stops
+    And I should see a text Atlanta on the page
+    And i click tzg_delete
+    And I wait 1 seconds for animation stops
+    And I click confirm_delete_tzg
+    And I wait 1 seconds for animation stops
+    Then I should not see a web element city_check
 
   @smoke
   Scenario: Switching page
@@ -185,6 +188,7 @@ Feature: Users interface by admin
   @smoke
   Scenario: PTO&Sick days edit
     When i click pto_settings
+    And I wait 1 seconds for animation stops
     And i click pto_change_balance
     And I wait 1 seconds for animation stops
     And I enter 79 in the pto_balance_field

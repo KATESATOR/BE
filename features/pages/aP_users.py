@@ -68,6 +68,8 @@ class Users:
         self.sort_by_account = Button("*//span[text()='Account']", "XPATH", "Sort by Account")
         self.show_disabled_accounts = CheckBox("//input[@id='userList_accountEnabledFilter']", "XPATH", "Show disabled")
         self.show_managers_only = CheckBox("//input[@id='userList_onlyManagersFilter']", "XPATH", "Show managers only")
+        self.womack_ashley_check = Button("//span[contains(text(),'Womack, Ashley')]", "XPATH", "Womack Ashley check")
+
         # Departments
         self.departments = Button("//a[@class='editDepartmentsLink']", "XPATH", "Departments button")
         self.new_department = TextField("//input[@id='groupManagementLightBox_newGroupInput']", "XPATH",
