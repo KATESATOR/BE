@@ -21,6 +21,8 @@ class aPreportsPage:
                                    'current week in date range selector')
         self.current_month = Button('.rangesListMenu:last-of-type li:first-of-type', 'css',
                                     'current month in date range selector')
+        self.last_21_days = Button('.rangesListMenu:last-of-type li:nth-of-type(15)', 'css',
+                                   'last 21 days in date range selector')
         self.edit_configuration = Button('.editConfiguration', 'css', 'edit configuration button')
         self.edit_second_grouping_level = Button('#reportGroupingSelector_treeRow2 button', 'css',
                                                  '2nd grouping level in edit configuration')
@@ -32,6 +34,8 @@ class aPreportsPage:
                                                  'columns type selector in edit configuration')
         self.pto_in_columns_type_selector = Button('.columnsFormatMenu li:last-of-type', 'css',
                                                    'pto balance only in columns type selector')
+        self.leave_time_in_columns_type_selector = Button('.columnsFormatMenu li:nth-of-type(2)', 'css',
+                                                         'leave time only in colums type selector')
         self.lt_and_pto_in_columns_type_selector = Button('.columnsFormatMenu li:first-of-type', 'css',
                                                           'leave time & pto in columns type selector')
         self.apply_configuration = Button('applyReportConfiguration', 'id', 'apply configuration button')

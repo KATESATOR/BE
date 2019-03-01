@@ -24,12 +24,15 @@ Feature: aP Reports interface by admin
   @Smoke
   Scenario: Sorting in Leave Time & Balances chart
     When I click ltb_report_tab
+    And I click date_range_selector
+    And I click last_21_days
+    And I wait 1 seconds for animation stops
     And I click chart_sort_a_z
     And I wait 1 seconds for animation stops
     And first_column_in_chart should contain White, Jane
     And I click chart_sort_by_value
     And I wait 1 seconds for animation stops
-    And first_column_in_chart should contain Long, Michelle
+    And first_column_in_chart should contain Doe, John
     And I click chart_sort_a_z
     And I wait 1 seconds for animation stops
     Then first_column_in_chart should contain Alvarez, Daniel
@@ -43,14 +46,14 @@ Feature: aP Reports interface by admin
     And last_column_in_chart should contain Smith, Brett
     And date_range_selector should contain Current week
     And I click date_range_selector
-    And I click current_month
+    And I click last_21_days
     And I wait 1 seconds for animation stops
     And last_column_in_chart should contain White, Jane
     And I click edit_configuration
     And I click edit_second_grouping_level
     And I click depts_in_second_lvl_selector
     And I click edit_columns_type_selector
-    And I click pto_in_columns_type_selector
+    And I click leave_time_in_columns_type_selector
     And I click apply_configuration
     And I wait 1 seconds for animation stops
     And I should not see a web element leave_time_selector
@@ -166,10 +169,10 @@ Feature: aP Reports interface by admin
     And I click export_button
     And I click export_csv
     And I wait 2 seconds for animation stops
-    And I search report actiPLANS - Leave Time and PTO with the extension csv in downloads folder
+    And I search report actiPLANS - Leave Time and with the extension csv in downloads folder
     And I click export_button
     And I click export_pdf
     And I wait 2 seconds for animation stops
     And I click download_pdf
     And I wait 2 seconds for animation stops
-    And I search report actiPLANS - Leave Time and PTO with the extension pdf in downloads folder
+    And I search report actiPLANS - Leave Time and with the extension pdf in downloads folder
