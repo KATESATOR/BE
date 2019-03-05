@@ -1,7 +1,8 @@
 Feature: Support scenarios by user
 
   Background:
-    Given I am logged in as user
+    Given I import test dump in at-automation context
+    And I am logged in as user
     And general page is visible
 
   # тест не проходит из-за бага AT-2817

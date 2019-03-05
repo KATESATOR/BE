@@ -8,6 +8,7 @@ from features.pages.approve_tt_page import ApproveTTPage
 from features.pages.tasks_page import TasksPage
 from features.pages.reports_page import ReportsPage
 from features.pages.user_list_page import UserListPage
+from features.pages.import_dump_page import ImportDumpPage
 
 
 class Pages:
@@ -21,3 +22,4 @@ class Pages:
     tasks_page = TasksPage()
     reports_page = ReportsPage()
     user_list_page = UserListPage()
+    import_dump_page = ImportDumpPage()

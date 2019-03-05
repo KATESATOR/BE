@@ -1,7 +1,8 @@
 Feature: Approve TT interface by admin
 
   Background:
-    Given I am logged in as admin
+    Given I import test dump in at-automation context
+    And I am logged in as admin
     And I am on approve_tt page
     And approve_tt_page is visible
 

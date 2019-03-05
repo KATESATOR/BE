@@ -2,7 +2,8 @@ Feature: Tasks interface by user
 # Перед запуском тестов нужно добавить сustomer Architects Bureau в WA пользователю Roy O'Dowd
 
   Background:
-    Given I am logged in as user
+    Given I import test dump in at-automation context
+    And I am logged in as user
     And I am on tasks page
     And tasks page is visible
     And I click default view

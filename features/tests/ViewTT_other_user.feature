@@ -2,7 +2,8 @@ Feature: View TT interface of other user by admin
 
 
   Background:
-    Given I am logged in as admin
+    Given I import test dump in at-automation context
+    And I am logged in as admin
     And I am on view_tt page
     And view_tt_page is visible
     And i click user_selector

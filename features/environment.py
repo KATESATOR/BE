@@ -22,7 +22,7 @@ def before_scenario(context, scenario):
 
 def after_scenario(context, scenario):
     context.driver.delete_all_cookies()
-    context.driver.refresh()
+    # context.driver.refresh() из-за этого шага после импорта дампа обновляется страница и дамп заливается повторно
     try:
         context.driver.switch_to_alert().accept()
     except:

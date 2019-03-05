@@ -1,7 +1,8 @@
 Feature: Reports interface by admin
 
   Background:
-    Given I am logged in as admin
+    Given I import test dump in at-automation context
+    And I am logged in as admin
     And I am on reports page
     And reports_page is visible
 

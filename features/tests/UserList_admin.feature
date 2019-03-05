@@ -1,7 +1,8 @@
 Feature: User List interface by admin
 
   Background:
-    Given I am logged in as admin
+    Given I import test dump in at-automation context
+    And I am logged in as admin
     And I am on user_list page
     And user_list_page is visible
 

@@ -2,11 +2,11 @@ Feature: View TT interface by user
 
 
   Background:
-    Given I am logged in as user
+    Given I import test dump in at-automation context
+    And I am logged in as user
     And I am on my_view_tt page
     And view_tt_page is visible
 
-  #тест упал на последнем шаге
   @smoke
   Scenario: Switching period and checking period table
     When I perform select in the ttdetails_show_tasks
