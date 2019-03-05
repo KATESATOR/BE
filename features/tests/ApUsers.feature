@@ -85,7 +85,7 @@ Feature: Users interface by admin
     And I should see a web element leave_balance_check
     And I wait 1 seconds for animation stops
     And I should see a web element system_check
-    And I wait 1 seconds for animation stops
+    And I wait 2 seconds for animation stops
     And I should see a web element requests_check
     And i click edit_user_permission_leave_balance
     And i click edit_user_permission_system
@@ -159,6 +159,7 @@ Feature: Users interface by admin
   @smoke
   Scenario: Create, delete TZG
     When i click tzg
+    And I wait 1 seconds for animation stops
     And i click tzg_field
     And i enter Atlanta in the tzg_search_field
     And I wait 1 seconds for animation stops
