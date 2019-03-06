@@ -1,8 +1,7 @@
 Feature: Support scenarios by admin
 
   Background:
-    Given I import test dump in at-automation context
-    And I am logged in as admin
+    Given I am logged in as admin
     And general page is visible
 
   # тест не проходит из-за бага AT-2817

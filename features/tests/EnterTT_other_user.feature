@@ -1,8 +1,7 @@
 Feature: Enter TT interface of other user
 
   Background:
-    Given I import test dump in at-automation context
-    And I am logged in as admin
+    Given I am logged in as admin
     And enter tt page is visible
     And I select tt of other user
 

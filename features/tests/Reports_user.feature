@@ -1,8 +1,7 @@
 Feature: Reports interface by user
 
   Background:
-    Given I import test dump in at-automation context
-    And I am logged in as user
+    Given I am logged in as user
     And I am on reports page
     And reports_page is visible
 

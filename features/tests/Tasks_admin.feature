@@ -1,8 +1,7 @@
 Feature: Tasks interface by admin
 
   Background:
-    Given I import test dump in at-automation context
-    And I am logged in as admin
+    Given I am logged in as admin
     And I am on tasks page
     And tasks page is visible
     And I click default view

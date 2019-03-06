@@ -1,8 +1,7 @@
 Feature: Lock TT interface
 
   Background:
-    Given I import test dump in at-automation context
-    And I am logged in as admin
+    Given I am logged in as admin
     And I am on lock_tt page
     And lock_tt_page is visible
 

@@ -2,8 +2,7 @@ Feature: Enter TT interface by user
 # Перед запуском тестов нужно добавить сustomer Architects Bureau в WA пользователю Roy O'Dowd
 
   Background:
-    Given I import test dump in at-automation context
-    And I am logged in as user
+    Given I am logged in as user
     And enter tt page is visible
 
   @smoke
