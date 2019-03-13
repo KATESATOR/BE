@@ -13,6 +13,7 @@ from features.pages.work_schedule_page import WorkSchedulePage
 from features.pages.notification_page import NotificationPage
 from features.pages.logo_color_scheme_page import LogoColorSchemePage
 from features.pages.license_page import LicensePage
+from features.pages.import_dump_page import ImportDumpPage
 
 
 class Pages:
@@ -31,3 +32,4 @@ class Pages:
     notification_page = NotificationPage()
     logo_color_scheme_page = LogoColorSchemePage()
     license_page = LicensePage()
+    import_dump_page = ImportDumpPage()

@@ -6,6 +6,7 @@ Feature: View TT interface by admin
     And I am on view_tt page
     And view_tt_page is visible
 
+  #тест упал на предпоследнем шаге
   @smoke
   Scenario: Switching period and checking period table
     When I perform select in the ttdetails_show_tasks
@@ -14,6 +15,7 @@ Feature: View TT interface by admin
     And I refresh the page
     And i click calendar_to
     And i click calendar_day_to
+    And I wait 2 seconds for animation stops
     Then I should see a web element ttdetails_date_check_min
     And I should see a web element ttdetails_date_check_max
 

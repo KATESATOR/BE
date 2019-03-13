@@ -11,7 +11,6 @@ Feature: Tasks interface by user
   Scenario: Check Work Assignments
     Then I should not see a text Administration on the page
     And I should not see a text Consulting on the page
-    And I should not see a text Add New on the page
 
   @smoke
   Scenario: Check Customer
@@ -66,7 +65,11 @@ Feature: Tasks interface by user
 
   @smoke
   Scenario: Edit Task in the list
-    When I enter SeleniumTestTaskforUser in the search tasks
+    When I enter SeleniumTestTask in the search tasks
+    And I click configuration
+    And I click creation date configure
+    And I click type of work configure
+    And I click apply configuration
     And I wait 1 seconds for animation stops
     And I click type of work selector
     And I click programming

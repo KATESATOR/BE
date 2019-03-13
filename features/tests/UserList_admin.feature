@@ -283,7 +283,7 @@ Feature: User List interface by admin
     When I click pto_tab
     And I click sorting_by_current_pto
     And I wait 1 seconds for animation stops
-    Then first_current_pto_cell should contain 0.1d
+    Then first_current_pto_cell should contain 0d
     And I click sorting_by_current_pto
     And I wait 1 seconds for animation stops
     And first_current_pto_cell should contain 4.4d
@@ -339,7 +339,7 @@ Feature: User List interface by admin
     When I click sick_days_tab
     And I click sorting_by_current_sd
     And I wait 1 seconds for animation stops
-    Then first_current_sd_cell should contain 0.4d
+    Then first_current_sd_cell should contain -0.5d
     And I click sorting_by_current_sd
     And I wait 1 seconds for animation stops
     And first_current_sd_cell should contain 2.9d
