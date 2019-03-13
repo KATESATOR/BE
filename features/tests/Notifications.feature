@@ -18,7 +18,7 @@ Feature: Notifications by admin
     Examples: Create <notification> rule
       | rule      | row         | field   | text | text_1 | notification   |
       | addRule_1 | ruleRow_1_1 | ttLimit | 160  | 20     | personal_tt    |
-      | addRule_2 | ruleRow_2_2 | ttLimit | 160  | 20     | unsubmitted_tt |
+      | addRule_2 | ruleRow_2_1 | ttLimit | 160  | 20     | unsubmitted_tt |
 
     When I add notification rule <rule>
     And I enter text <text> in second rule field <field> row <row>
@@ -54,7 +54,7 @@ Feature: Notifications by admin
     Examples: Pause/Resume rule
       | row         |
       | ruleRow_1_1 |
-      | ruleRow_2_2 |
+      | ruleRow_2_1 |
       | ruleRow_3_3 |
       | ruleRow_4_3 |
       | ruleRow_6_2 |

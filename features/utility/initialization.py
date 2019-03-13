@@ -15,6 +15,8 @@ from features.pages.logo_color_scheme_page import LogoColorSchemePage
 from features.pages.license_page import LicensePage
 from features.pages.aP_general_settings_page import ApGeneralSettingsPage
 from features.pages.aP_notification_page import ApNotificationPage
+from features.pages.import_dump_page import ImportDumpPage
+
 
 class Pages:
     at_login_page = AtLoginPage()
@@ -34,3 +36,4 @@ class Pages:
     license_page = LicensePage()
     ap_general_settings_page = ApGeneralSettingsPage()
     ap_notification_page = ApNotificationPage()
+    import_dump_page = ImportDumpPage()

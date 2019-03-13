@@ -51,6 +51,5 @@ class GeneralPage:
         self.work_schedule_button = Link("Work Schedule", "link text", "work schedule button")
         self.notifications_button = Link("Notifications", "link text", "notifications button")
         self.logo_color_scheme_button = Link("Logo & Color Scheme", "link text", "logo & color scheme button")
-
         self.ap_work_schedule_button = Link("Default Work Schedule", "link text", "work schedule button")
         self.ap_notifications_button = Link("Email Notifications", "link text", "notifications button")

@@ -30,7 +30,8 @@ Feature: Leave Types by admin
   Scenario: Move leave type
     When I click order_button
     And I wait 2 seconds for animation stops
-    Then moved_order should contain 4
+    Then moved_order should contain 7
+
 
   @smoke
   Scenario: Delete leave type
@@ -40,5 +41,3 @@ Feature: Leave Types by admin
     And I refresh the page
     And I wait 2 seconds for animation stops
     Then I should not see a text Leave Type Smoke Changed on the page
-
-
