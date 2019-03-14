@@ -1,5 +1,6 @@
 from behave import *
 from features.utility.element import *
+from features.utility.constants import Constants
 import re
 import time
 import glob
@@ -12,14 +13,29 @@ import os
 @step('I open a page {page}')
 def open_a_page(context, page):
     try:
-        context.pages_and_tabs.open_page(page)
+        context.pages_and_tabs.open_page(Constants.aTUrl + page)
         cookies = context.driver.get_cookies()
         if len(cookies) != 0:
             context.driver.delete_all_cookies()
             context.driver.refresh()
-        context.log.info("I have opened a page: " + str(page))
+        context.log.info("I have opened a page: " + str(Constants.aTUrl + page))
     except:
-        context.log.warn("I can't open a page: " + str(page))
+        context.log.warn("I can't open a page: " + str(Constants.aTUrl + page))
+        context.screenshot.take_screenshot("I can't open a page")
+        raise
+
+
+@step('I open actiPLANS page {page}')
+def open_a_page(context, page):
+    try:
+        context.pages_and_tabs.open_page(Constants.aPUrl + page)
+        cookies = context.driver.get_cookies()
+        if len(cookies) != 0:
+            context.driver.delete_all_cookies()
+            context.driver.refresh()
+        context.log.info("I have opened a page: " + str(Constants.aPUrl + page))
+    except:
+        context.log.warn("I can't open a page: " + str(Constants.aPUrl + page))
         context.screenshot.take_screenshot("I can't open a page")
         raise
 
@@ -27,33 +43,39 @@ def open_a_page(context, page):
 @step('I am logged in as admin')
 def login_as_admin(context):
     context.execute_steps(f"""
-           Given I open a page {'https://onlinetest.actitime.com/build-736-11-2'}
+           Given I open a page {'/'}
            When {'at_login_page'} is visible
            And I enter {'admin'} in the {'username_field'}
            And I enter {'manager'} in the {'password_field'}
            And I click {'login_button'}
        """)
-
-@step('I am logged in aP as admin')
-def login_as_admin(context):
-    context.execute_steps(f"""
-           Given I open a page {'https://onlinetest.actiplans.com/build-736-11-2'}
-           When {'at_login_page'} is visible
-           And I enter {'admin'} in the {'username_field'}
-           And I enter {'manager'} in the {'password_field'}
-           And I click {'login_button'}
-       """)
+    time.sleep(1)
+    text = "Welcome to actiTIME!"
+    start_button = Button(".startExploringText", "css", "start exploring button")
+    if text not in context.driver.page_source:
+        pass
+    else:
+        start_button.click()
+        time.sleep(10)
 
 
 @step('I am logged in as user')
 def login_as_user(context):
     context.execute_steps(f"""
-           Given I open a page {'https://onlinetest.actitime.com/build-736-11-2'}
+           Given I open a page {'/'}
            When {'at_login_page'} is visible
            And I enter {'user'} in the {'username_field'}
            And I enter {'user'} in the {'password_field'}
            And I click {'login_button'}
        """)
+    time.sleep(1)
+    text = "Welcome to actiTIME!"
+    start_button = Button(".startExploringText", "css", "start exploring button")
+    if text not in context.driver.page_source:
+        pass
+    else:
+        start_button.click()
+        time.sleep(3)
 
 
 @step('I am on {page} page')
@@ -186,23 +208,20 @@ def refresh_page(context):
 def restart_browser(context, page):
     x = context.driver.get_cookie('ALIUN')
     if x is not None:
-        context.driver.get(page)
+        context.driver.get(Constants.aTUrl + page)
     elif x is None:
         context.driver.delete_all_cookies()
-        context.driver.get(page)
+        context.driver.get(Constants.aTUrl + page)
 
 
-@step('I should see a web element {web_element}')
-def assert_web_element_is_displayed(context, web_element):
-    page = set_page
-    web_element = getattr(page, web_element.replace(" ", "_"))
-    try:
-        assert web_element.is_displayed()
-        context.log.info(web_element.name + " is visible ")
-    except:
-        context.log.warn(web_element.name + " isn't visible!")
-        context.screenshot.take_screenshot(web_element.name + " is not visible")
-        raise
+@step('I restart browser and open actiPLANS page {page}')
+def restart_browser(context, page):
+    x = context.driver.get_cookie('ALIUN')
+    if x is not None:
+        context.driver.get(Constants.aPUrl + page)
+    elif x is None:
+        context.driver.delete_all_cookies()
+        context.driver.get(Constants.aPUrl + page)
 
 
 @step('Element with {text} should be displayed')
@@ -218,6 +237,21 @@ def element_with_text_is_displayed(context, text):
         raise
 
 
+@step('I should see a web element {web_element}')
+def assert_web_element_is_displayed(context, web_element):
+    page = set_page
+    web_element = getattr(page, web_element.replace(" ", "_"))
+    try:
+        assert web_element.is_displayed()
+        context.log.info(web_element.name + " is visible ")
+    except:
+        context.log.warn(web_element.name + " isn't visible!")
+        context.screenshot.take_screenshot(web_element.name + " is not visible")
+        raise
+
+
+# метод отрабатывает верно, если элемент был найден, но не виден для пользователя
+# если же элемент вообще не найден, то пишется ошибка в консоль
 @step('I should not see a web element {web_element}')
 def assert_web_element_is_not_displayed(context, web_element):
     page = set_page
@@ -256,12 +290,12 @@ def assert_text_is_not_displayed(context, text):
 @step('My current URL should contain {URL}')
 def assert_url(context, URL):
     current_url = context.driver.current_url
-    result = re.search(URL, current_url)
+    result = re.search(Constants.aTUrl + URL, current_url)
     try:
         assert result is not None
-        context.log.info(URL + " is opened")
+        context.log.info(Constants.aTUrl + URL + " is opened")
     except:
-        context.log.warn(URL + " isn't opened!")
+        context.log.warn(Constants.aTUrl + URL + " isn't opened!")
         context.screenshot.take_screenshot("URL isn't opened!")
         raise
 
@@ -310,6 +344,7 @@ def file_is_present(context, format):
     except FileNotFoundError:
         context.log.info("I can't find file in downloads folder: " + format)
         raise
+
 
 
 @step('I drag {element} by offset {x}, {y}')

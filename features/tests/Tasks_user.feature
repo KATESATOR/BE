@@ -1,6 +1,5 @@
 Feature: Tasks interface by user
-# перед прохождением тестов нужно настроить права и доступы пользователя:
-# Enter TT, Manage Scope of Work; MA = project Website Creation; WA = project Consulting, customer Our Company
+# Перед запуском тестов нужно добавить сustomer Architects Bureau в WA пользователю Roy O'Dowd
 
   Background:
     Given I am logged in as user
@@ -10,13 +9,12 @@ Feature: Tasks interface by user
 
   @smoke
   Scenario: Check Work Assignments
-    Then I should not see a text Architects Bureau on the page
-    And I should not see a text Updating the current website on the page
-    And I should not see a text Add New on the page
+    Then I should not see a text Administration on the page
+    And I should not see a text Consulting on the page
 
   @smoke
   Scenario: Check Customer
-    When I enter Boston Chocolate in the search customers and projects
+    When I enter Architects Bureau in the search customers and projects
     And I click test customer
     And I wait 1 seconds for animation stops
     And I click test customer settings
@@ -25,7 +23,7 @@ Feature: Tasks interface by user
 
   @smoke
   Scenario: Check Project
-    When I enter Consulting in the search customers and projects
+    When I enter One-page website in the search customers and projects
     And I click test project
     And I wait 1 seconds for animation stops
     And I click test project settings
@@ -44,16 +42,6 @@ Feature: Tasks interface by user
     Then I should see a text SeleniumTestTaskforUser on the page
 
   @smoke
-  Scenario: Show Completed Tasks
-    When I click status filter
-    And I click selected statuses
-    And I click completed statuses
-    And I click apply filter
-    And I enter Specifying environment: tools, framework in the search tasks
-    And I wait 2 seconds for animation stops
-    Then I should see a text Specifying environment: tools, framework on the page
-
-  @smoke
   Scenario: Edit Task through panel
     When I enter SeleniumTestTaskforUser in the search tasks
     And I wait 1 seconds for animation stops
@@ -65,8 +53,23 @@ Feature: Tasks interface by user
     Then I should see a text Status of task 'SeleniumTestTaskforUser' has been changed on the page
 
   @smoke
+  Scenario: Show Completed Tasks
+    When I click status filter
+    And I click selected statuses
+    And I click open statuses
+    And I click completed statuses
+    And I click apply filter
+    And I enter Specifying environment: tools, framework in the search tasks
+    And I wait 2 seconds for animation stops
+    Then I should see a text Specifying environment: tools, framework on the page
+
+  @smoke
   Scenario: Edit Task in the list
-    When I enter SeleniumTestTaskforUser in the search tasks
+    When I enter SeleniumTestTask in the search tasks
+    And I click configuration
+    And I click creation date configure
+    And I click type of work configure
+    And I click apply configuration
     And I wait 1 seconds for animation stops
     And I click type of work selector
     And I click programming
@@ -123,7 +126,9 @@ Feature: Tasks interface by user
 
   @smoke
   Scenario: Select all tasks
-    When I perform select in the select all
+    When I click tasks can manage
+    And I click select all
+    And I wait 1 seconds for animation stops
     Then I should see a web element bulk actions panel
 
   @smoke
@@ -138,10 +143,10 @@ Feature: Tasks interface by user
   Scenario Outline: Sorting
     Examples:
       | asc_sorting     | asc_sorting_element | desc_sorting    | desc_sorting_element |
-      | by customer     | Boston Chocolate    | by customer     | Our Company          |
-      | by project      | Administration      | by project      | Website creation     |
-      | by task         | Accounting          | by task         | Training             |
-      | by type of work | Non-Billable        | by type of work | consulting           |
+      | by customer     | Architects Bureau   | by customer     | Our Company          |
+      | by project      | General             | by project      | Website maintenance  |
+      | by task         | Browser testing     | by task         | Website structure    |
+      | by type of work | Non-Billable        | by type of work | writing              |
     When I click <asc_sorting>
     And I wait 1 seconds for animation stops
     Then Element with <asc_sorting_element> should be displayed

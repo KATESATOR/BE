@@ -22,6 +22,11 @@ def before_scenario(context, scenario):
 
 def after_scenario(context, scenario):
     context.driver.delete_all_cookies()
+    context.driver.refresh()
+    try:
+        context.driver.switch_to_alert().accept()
+    except:
+        pass
 
 
 def after_all(context):
