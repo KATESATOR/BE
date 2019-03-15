@@ -35,7 +35,7 @@ class aPreportsPage:
         self.pto_in_columns_type_selector = Button('.columnsFormatMenu li:last-of-type', 'css',
                                                    'pto balance only in columns type selector')
         self.leave_time_in_columns_type_selector = Button('.columnsFormatMenu li:nth-of-type(2)', 'css',
-                                                         'leave time only in colums type selector')
+                                                          'leave time only in colums type selector')
         self.lt_and_pto_in_columns_type_selector = Button('.columnsFormatMenu li:first-of-type', 'css',
                                                           'leave time & pto in columns type selector')
         self.apply_configuration = Button('applyReportConfiguration', 'id', 'apply configuration button')
@@ -57,10 +57,10 @@ class aPreportsPage:
                                                 'user selector in past leaves')
         self.sort_by_users_in_user_selector = Button('*//div[contains(@class,"userForLeave")]//*[text()="By Users"]',
                                                      'xpath', 'sort by users in user selector')
-        self.long_in_user_selector = Button('*//div[contains(@class,"userForLeave")]//*[text()="Long, Michelle"]',
-                                            'xpath', 'Long Michelle in user selector')
-        self.doe_in_user_selector = Button('*//div[contains(@class,"userForLeave")]//*[text()="Doe, John"]',
-                                           'xpath', 'Doe John in user selector')
+        self.stivers_in_user_selector = Button('*//div[contains(@class,"userForLeave")]//*[text()="Stivers, Melanie"]',
+                                               'xpath', 'Long Michelle in user selector')
+        self.barber_in_user_selector = Button('*//div[contains(@class,"userForLeave")]//*[text()="Barber, Robert"]',
+                                              'xpath', 'Doe John in user selector')
         self.past_leaves_time_table = Element('leaveTimeTable', 'id', 'past leaves leave time table')
         self.calendar = Element('calendarContainer', 'id', 'past leaves report calendar')
         self.date_range_selector_plc = Button('.monthYearSelectorButton>span', 'css', 'date range selector in plc')
@@ -70,8 +70,8 @@ class aPreportsPage:
                                            'apply date range in plc')
         self.leave_types_filter = Button('#leaveTypeFilter span', 'css', 'leave types filter')
         self.selected_in_lt_filter = Button('//*[text()="Selected"]', 'xpath', 'selected in leave types filter')
-        self.vacation_in_lt_filter = Button('//*[contains(@class,"groupingSelectorTree")]//*[text()="Vacation"]',
-                                            'xpath', 'vacation in leave types filter')
+        self.sick_leave_in_lt_filter = Button('//*[contains(@class,"groupingSelectorTree")]//*[text()="Sick Leave"]',
+                                              'xpath', 'vacation in leave types filter')
         self.apply_lt_filter = Button('//*[contains(@class,"selector-panel")]//*[text()="Apply"]', 'xpath',
                                       'apply leave time filter')
         self.first_leave_type_in_list = Element('#calendarLeaveTypesWrap .leaveTypeName', 'css',
@@ -83,4 +83,14 @@ class aPreportsPage:
         self.date_sixteen_calendar = Button('//*[@class="x-date-inner"]//*[text()="16"]', 'xpath',
                                             '16th in balance history calendar')
         self.today_in_calendar = Button('.x-date-at-today-cell button', 'css',
-                                        'today button in balance hostory calendar')
+                                        'today button in balance history calendar')
+        self.balance_history_type_selector = Button('#balanceHistory_typeSelector button', 'css',
+                                                    'balance history type selector')
+        self.sick_days_in_type_selector = Button('#balanceTypeSelectorPlaceholder ul li:last-of-type', 'css',
+                                                 'sick days in balance history type selector')
+        self.pto_in_type_selector = Button('#balanceTypeSelectorPlaceholder ul li:first-of-type', 'css',
+                                           'pto in balance history type selector')
+        self.first_row_in_balance_history_table = Element(
+            '.balanceHistoryTable>tbody tr:first-of-type .descriptionTitle', 'css',
+            'first row description cell in balance history table')
+        self.asc_sort_by_value = Element('.sortButton.value .ascSortIndicator', 'css', 'ascending sort by value')

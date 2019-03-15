@@ -29,13 +29,13 @@ Feature: aP Reports interface by admin
     And I wait 1 seconds for animation stops
     And I click chart_sort_a_z
     And I wait 1 seconds for animation stops
-    And first_column_in_chart should contain White, Jane
+    And first_column_in_chart should contain Venson, Ronald
     And I click chart_sort_by_value
     And I wait 1 seconds for animation stops
-    And first_column_in_chart should contain Doe, John
+    And I should see a web element asc_sort_by_value
     And I click chart_sort_a_z
     And I wait 1 seconds for animation stops
-    Then first_column_in_chart should contain Alvarez, Daniel
+    Then first_column_in_chart should contain Barber, Robert
 
   @Smoke
   Scenario: Modifying Leave time & balances report
@@ -43,12 +43,12 @@ Feature: aP Reports interface by admin
     And I click date_range_selector
     And I click current_week
     And I wait 1 seconds for animation stops
-    And last_column_in_chart should contain Smith, Brett
+    And last_column_in_chart should contain Timmers, Brian
     And date_range_selector should contain Current week
     And I click date_range_selector
     And I click last_21_days
     And I wait 1 seconds for animation stops
-    And last_column_in_chart should contain White, Jane
+    And last_column_in_chart should contain Venson, Ronald
     And I click edit_configuration
     And I click edit_second_grouping_level
     And I click depts_in_second_lvl_selector
@@ -90,12 +90,12 @@ Feature: aP Reports interface by admin
     When I click past_leaves_calendar_tab
     And I click user_selector_past_leaves
     And I click sort_by_users_in_user_selector
-    And I click long_in_user_selector
+    And I click stivers_in_user_selector
     And I wait 1 seconds for animation stops
-    And user_selector_past_leaves should contain Long, Michelle
+    And user_selector_past_leaves should contain Stivers, Melanie
     And I click user_selector_past_leaves
     And I click sort_by_users_in_user_selector
-    And I click doe_in_user_selector
+    And I click barber_in_user_selector
     And I wait 1 seconds for animation stops
     And user_selector_past_leaves should contain Me
     And I click date_range_selector_plc
@@ -110,14 +110,14 @@ Feature: aP Reports interface by admin
     And I should see a web element single_month_calendar
     And I click leave_types_filter
     And I click selected_in_lt_filter
-    And I click vacation_in_lt_filter
+    And I click sick_leave_in_lt_filter
     And I click apply_lt_filter
     And I wait 1 seconds for animation stops
-    And leave_types_filter should contain Vacation
-    And first_leave_type_in_list should contain Vacation
+    And leave_types_filter should contain Sick Leave
+    And first_leave_type_in_list should contain Sick Leave
     And I click leave_types_filter
     And I click selected_in_lt_filter
-    And I click vacation_in_lt_filter
+    And I click sick_leave_in_lt_filter
     And I click apply_lt_filter
     And I wait 1 seconds for animation stops
     Then leave_types_filter should contain All leave types
@@ -127,14 +127,22 @@ Feature: aP Reports interface by admin
     When I click balance_history_tab
     And I click balance_history_user_selector
     And I click sort_by_users_in_user_selector
-    And I click long_in_user_selector
+    And I click stivers_in_user_selector
     And I wait 1 seconds for animation stops
-    And balance_history_user_selector should contain Long, Michelle
+    And balance_history_user_selector should contain Stivers, Melanie
     And I click balance_history_user_selector
     And I click sort_by_users_in_user_selector
-    And I click doe_in_user_selector
+    And I click barber_in_user_selector
     And I wait 1 seconds for animation stops
     And balance_history_user_selector should contain Me
+    And I click balance_history_type_selector
+    And I click sick_days_in_type_selector
+    And I wait 1 seconds for animation stops
+    And I should see a text Sick Leave Completed on the page
+    And I click balance_history_type_selector
+    And I click pto_in_type_selector
+    And I wait 1 seconds for animation stops
+    And balance_history_type_selector should contain PTO
     And I click calendar_balance_history
     And I click date_sixteen_calendar
     And I wait 1 seconds for animation stops
@@ -151,7 +159,7 @@ Feature: aP Reports interface by admin
     And I click export_button
     And I click export_pdf
     And I wait 2 seconds for animation stops
-    Then I search report PTO-History-Doe-John with the extension pdf in downloads folder
+    Then I search report PTO-History-Barber-Robert with the extension pdf in downloads folder
 
   @Smoke
   Scenario: Export Past leaves calendar report
@@ -160,7 +168,7 @@ Feature: aP Reports interface by admin
     And I click export_button
     And I click export_pdf
     And I wait 2 seconds for animation stops
-    Then I search report Past-Leaves-Calendar-Doe-John with the extension pdf in downloads folder
+    Then I search report Past-Leaves-Calendar-Barber-Robert with the extension pdf in downloads folder
 
   @Smoke
   Scenario: Export Leave time & balances report
