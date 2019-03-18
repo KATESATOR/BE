@@ -81,7 +81,7 @@ def login_as_admin(context):
 @step('I am logged in as user')
 def login_as_user(context):
     context.execute_steps(f"""
-           Given I open a page {'/'}
+           #Given I open a page {'/'}
            When {'at_login_page'} is visible
            And I enter {'user'} in the {'username_field'}
            And I enter {'user'} in the {'password_field'}

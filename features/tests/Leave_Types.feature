@@ -33,6 +33,7 @@ Feature: Leave Types by admin
     And I wait 2 seconds for animation stops
     Then moved_order should contain 7
 
+
   @smoke
   Scenario: Delete leave type
     When I remove leave type with name Leave Type Smoke Changed
@@ -41,5 +42,3 @@ Feature: Leave Types by admin
     And I refresh the page
     And I wait 2 seconds for animation stops
     Then I should not see a text Leave Type Smoke Changed on the page
-
-
