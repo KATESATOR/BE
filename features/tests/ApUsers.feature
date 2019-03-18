@@ -2,7 +2,7 @@ Feature: Users interface by admin
 
 
   Background:
-    Given I am logged in aP as admin
+    Given I am logged in actiPLANS as admin
     And users_page is visible
     And i click users
     And I wait 3 seconds for animation stops
@@ -20,7 +20,7 @@ Feature: Users interface by admin
     And I wait 3 seconds for animation stops
     And I click close_add_user_panel
     And I wait 2 seconds for animation stops
-    Then I should see a text A1 on the page
+    And I should see a text A1 on the page
     And I refresh the page
     And I wait 2 seconds for animation stops
     And i click edit_user_panel
@@ -46,6 +46,20 @@ Feature: Users interface by admin
     And i click close_invite_several_users_panel
     And i should see a text AA1 on the page
     Then I should see a text AA2 on the page
+
+  @smoke
+  Scenario: Switching page
+    When I wait 2 seconds for animation stops
+    And I refresh the page
+    And I wait 1 seconds for animation stops
+    And I choose 10 in shown_by
+    And I wait 2 seconds for animation stops
+    And i click pager_next
+    And I wait 1 seconds for animation stops
+    And I should see a text Wooster, Jennifer on the page
+    And i click pager_back
+    And I wait 1 seconds for animation stops
+    Then I should see a text Barber, Robert on the page
 
   @smoke
   Scenario: Edit User
@@ -113,35 +127,38 @@ Feature: Users interface by admin
   @smoke
   Scenario: Sorting user data
     When i choose 10 in shown_by
-    And I perform select in the show_disabled_accounts
-    And I should not see a text Young, Frank on the page
+    And I perform deselect in the show_disabled_accounts
+    And I wait 2 seconds for animation stops
+    And I should not see a text Venson, Ronald on the page
     And I wait 2 seconds for animation stops
     And I perform select in the show_managers_only
     And I wait 2 seconds for animation stops
-    And I should see a text Top Management on the page
+    And I should see a text Administration on the page
     And I perform deselect in the show_managers_only
     And I wait 1 seconds for animation stops
     And i click sort_by_user
     And I wait 3 seconds for animation stops
-    And I should see a web element womack_ashley_check
-    And i click sort_by_group
-    And I should see a text Young, Frank on the page
+    And I should see a web element kloss_barbara_check
     And i click sort_by_group
     And I wait 2 seconds for animation stops
-    And I should not see a web element womack_ashley_check
-    And i click sort_by_working_week
-    And I should see a text Young, Frank on the page
+    And I should not see a text Venson, Ronald on the page
+    And i click sort_by_group
+    And I wait 2 seconds for animation stops
+    And I should see a web element kloss_barbara_check
     And i click sort_by_working_week
     And I wait 1 seconds for animation stops
-    And I should not see a text Young, Frank on the page
+    And I should not see a text Venson, Ronald on the page
+    And i click sort_by_working_week
+    And I wait 1 seconds for animation stops
+    And I should not see a text Venson, Ronald on the page
     And i click sort_by_account
     And I wait 1 seconds for animation stops
-    And I should not see a text Ramirez, Maria on the page
+    And I should see a text Moss, Bruno on the page
     And i click sort_by_account
     And I wait 1 seconds for animation stops
     And i click sort_by_user
     And I wait 1 seconds for animation stops
-    Then I perform deselect in the show_disabled_accounts
+    Then I perform select in the show_disabled_accounts
 
   @smoke
   Scenario: Create, delete departments
@@ -171,25 +188,13 @@ Feature: Users interface by admin
     And i click tzg_delete
     And I wait 1 seconds for animation stops
     And I click confirm_delete_tzg
-    And I wait 1 seconds for animation stops
-    Then I should not see a web element city_check
-
-  @smoke
-  Scenario: Switching page
-    When I wait 2 seconds for animation stops
-    And I choose 10 in shown_by
     And I wait 2 seconds for animation stops
-    And i click pager_next
-    And I wait 1 seconds for animation stops
-    And I should see a text White, Jane on the page
-    And i click pager_back
-    And I wait 1 seconds for animation stops
-    Then I should see a text Alvarez, Daniel on the page
+    Then I should not see a web element city_check
 
   @smoke
   Scenario: PTO&Sick days edit
     When i click pto_settings
-    And I wait 1 seconds for animation stops
+    And I wait 2 seconds for animation stops
     And i click pto_change_balance
     And I wait 1 seconds for animation stops
     And I enter 79 in the pto_balance_field
@@ -197,6 +202,9 @@ Feature: Users interface by admin
     And I click pto_balance_apply
     And I wait 1 seconds for animation stops
     And I should see a text 79 on the page
+    And i click pto_change_balance
+    And I enter -1.3 in the pto_balance_field
+    And I click pto_balance_apply
     And i click pto_accrue_rules
     And I wait 1 seconds for animation stops
     And I enter 811 in the pto_max_limit
@@ -205,7 +213,7 @@ Feature: Users interface by admin
     And I should see a text 811 on the page
     And i click pto_accrue_rules
     And I wait 1 seconds for animation stops
-    And i enter 80 in the pto_max limit
+    And i enter 15 in the pto_max limit
     And i click pto_save_changes
     And I wait 1 seconds for animation stops
     Then I should not see a web element pto_limit_check

@@ -68,7 +68,7 @@ class Users:
         self.sort_by_account = Button("*//span[text()='Account']", "XPATH", "Sort by Account")
         self.show_disabled_accounts = CheckBox("//input[@id='userList_accountEnabledFilter']", "XPATH", "Show disabled")
         self.show_managers_only = CheckBox("//input[@id='userList_onlyManagersFilter']", "XPATH", "Show managers only")
-        self.womack_ashley_check = Button("//span[contains(text(),'Womack, Ashley')]", "XPATH", "Womack Ashley check")
+        self.kloss_barbara_check = Button("//span[contains(text(),'Kloss, Barbara')]", "XPATH", "Womack Ashley check")
 
         # Departments
         self.departments = Button("//a[@class='editDepartmentsLink']", "XPATH", "Departments button")
@@ -105,7 +105,7 @@ class Users:
                                            "XPATH", "PTO balance field")
         self.pto_balance_apply = Button("//span[contains(@class,'defaultText')][contains(text(),'Apply')]", "XPATH",
                                         "Apply pto")
-        self.pto_accrue_rules = Button("//td[contains(text(),'1.8d monthly')]", "XPATH", "Accrue rules")
+        self.pto_accrue_rules = Button("//td[contains(text(),'1.5d monthly')]", "XPATH", "Accrue rules")
         self.pto_max_limit = TextField("//input[@id='pto_capBalanceField']", "XPATH", "Max limit balance")
         self.pto_save_changes = Button("//div[24]//div[3]//div[1]//span[1]", "XPATH", "Save changes")
         self.pto_limit_check = TextField("//td[contains(text(),'811d')]", "XPATH", "Limit check")
