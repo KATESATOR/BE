@@ -174,6 +174,7 @@ def filling_the_text_field(context, text, text_field):
     page = set_page
     text_field = getattr(page, text_field.replace(" ", "_"))
     try:
+        # text_field.clear()
         text_field.send_keys(text)
         context.log.info(text_field.name + " has been filled with " + text)
     except:
@@ -356,7 +357,6 @@ def file_is_present(context, format):
         if len(file_list) == 0:
             context.log.warn("File not found")
             raise Exception
-
         for file in file_list:
             context.log.info(file + " is found in downloads folder")
             os.remove(file)
@@ -387,3 +387,14 @@ def step_impl(context):
     :type context: behave.runner.Context
     """
     raise NotImplementedError(u'STEP: Given I open actiPLANS page')
+
+@step('I upload {file} from {directory} in {element}')
+def upload_file(context, file, directory, element):
+    page = set_page
+    os.chdir(directory)
+    element = getattr(page, element.replace(" ", "_"))
+    try:
+        element.send_keys(os.getcwd() + file)
+    except:
+        context.screenshot.take_screenshot("Can not upload" + file)
+        raise

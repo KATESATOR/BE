@@ -43,3 +43,15 @@ class GeneralPage:
         self.request_a_call = Button("sendPhoneButton_support", "id", "Phone number field")
         self.switch_product = Button("//div[@class='productName']", "xpath", "Product switcher")
         self.leaves_management = Button(".content.corporate_schedule", "css", "leaves management tab")
+
+        # Settings pt.2
+        self.leave_types_button = Link("Leave Types", "link text", "leave types button")
+        self.work_schedule_button = Link("Work Schedule", "link text", "work schedule button")
+        self.notifications_button = Link("Notifications", "link text", "notifications button")
+        self.logo_color_scheme_button = Link("Logo & Color Scheme", "link text", "logo & color scheme button")
+
+        # Settings pt.2
+        self.leave_types_button = Link("Leave Types", "link text", "leave types button")
+        self.work_schedule_button = Link("Work Schedule", "link text", "work schedule button")
+        self.notifications_button = Link("Notifications", "link text", "notifications button")
+        self.logo_color_scheme_button = Link("Logo & Color Scheme", "link text", "logo & color scheme button")

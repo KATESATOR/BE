@@ -8,17 +8,26 @@ class ApLeavesManagement:
         self.lt_requests_tab = Button(".customHeaderTabs a", "css", "leave time requests tab")
         self.request_10th_row = Element(".actualContent>tr:nth-of-type(10)", "css", "10th row in requests list")
         self.next_page_button = Button("a.next", "css", "next page button on requests list")
+        self.previous_page_button = Button("a.prev", "css", "previous page button on requests list")
+        self.selected_page = Element('span.page', 'css', 'selected page on request list')
+        self.page_selector = Button('recordsPerPageSelector', 'id', 'page selector')
+        self.twenty_fifth_row = Element('.actualContent>tr:nth-of-type(25)', 'css', '25th row in request table')
+        self.second_option_page_selector = Button('#recordsPerPageSelector>option:nth-of-type(2)', 'css',
+                                                  '25 in page selector')
+        self.first_option_page_selector = Button('#recordsPerPageSelector>option:first-of-type', 'css',
+                                                 '10 in page selector')
         self.next_week_button = Button("//*[@class='spanUnderlined' and text()='Next week']", "xpath",
                                        "next week button")
         self.previous_week_button = Button("//*[@class='spanUnderlined' and text()='Previous week']", "xpath",
                                            "previous week button")
         self.return_to_cur_week = Button("backToCurrentWeekButton", "id", "return to current week button")
+        self.date_selector = Button('fromDateSelector', 'id', 'dste selector in leave time chart')
+        self.first_week_date_selector = Button('.x-date-inner>tbody>tr:first-of-type>td', 'css',
+                                               'first week date selector')
+        self.current_week_date_selector = Button('.x-date-bottom a', 'css', 'current week in date selector')
         self.user_filter = Button(".userGroupsFilterPlaceholder.filterBlock span", "css", "user filter button")
         self.selected_users = Button("*//b[text()='Show Selected Users']", "xpath", "selected users in user filter")
-        self.qc_in_user_filter = CheckBox("*//label[text()='Quality Control']", "xpath",
-                                          "Quality Control in user filter")
-        self.hr_in_user_filter = CheckBox("*//label[text()='HR & Finance']", "xpath",
-                                          "Quality Control in user filter")
+        self.design_in_user_filter = CheckBox("*//label[text()='Design']", "xpath", "Design department in user filter")
         self.apply_filter = Button("*//span[text()='Apply']", "xpath", "apply button in user filter")
         self.first_row_name_chart = Element(".firstRow .userNameCell>div", "css", "name in first row in planning chart")
         self.first_row_balance_chart = Element(".firstRow .timeTotalCell", "css",
@@ -47,9 +56,10 @@ class ApLeavesManagement:
                                             "first name in requests table")
         self.sort_users = Button("tipLTRSorting", "id", "sorting by users")
         self.sort_groups = Button("sortByUserGroupLink", "id", "sorting by departments")
+        self.sort_by_time_zone = Button('sortByTimeZoneGroupLink', 'id', 'sorting by time zone')
         self.sort_leave_type = Button(".leaveType .sortButton", "css", "sorting by leave type")
-        self.sort_status = Button(".status .sortButton", "css", "sorting by status")
-        self.sort_period = Button(".period .sortButton", "css", "sorting by period")
+        self.sort_status = Button(".status>span", "css", "sorting by status")
+        self.sort_period = Button(".period>span", "css", "sorting by period")
         self.leave_type_filter = Button(".leaveTypeFilter.filterBlock span", "css", "leave type filter")
         self.selected_ltype_in_filter = Button("*//b[text()='Selected']", "xpath", "selected leave type in filter")
         self.vacation_in_filter = CheckBox("*//label[text()='Vacation']/../img", "xpath",
