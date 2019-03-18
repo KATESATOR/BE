@@ -21,7 +21,7 @@ class ApLeavesManagement:
         self.previous_week_button = Button("//*[@class='spanUnderlined' and text()='Previous week']", "xpath",
                                            "previous week button")
         self.return_to_cur_week = Button("backToCurrentWeekButton", "id", "return to current week button")
-        self.date_selector = Button('fromDateSelector', 'id', 'dste selector in leave time chart')
+        self.date_selector = Button('fromDateSelector', 'id', 'date selector in leave time chart')
         self.first_week_date_selector = Button('.x-date-inner>tbody>tr:first-of-type>td', 'css',
                                                'first week date selector')
         self.current_week_date_selector = Button('.x-date-bottom a', 'css', 'current week in date selector')
