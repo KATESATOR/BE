@@ -8,9 +8,10 @@ class ApMySchedule:
         self.week_start_day_cell = Button('.firstRow .weekStartDay:not(.pastDay):not(.today)', 'css', 'week start day')
         self.today_cell_no_leave = Button('#myScheduleTable .dayCell.today.noLeave', 'css',
                                           'my schedule today no leave cell')
+        self.no_leave_cell = Button('.firstRow .noLeave:not(.pastDay)', 'css', 'day cell without leave')
         self.last_day_cell = Button('#myScheduleTable .firstRow>td:last-of-type', 'css', 'my schedule last day cell')
-        self.approved_last_day_cell = Button('#myScheduleTable .approved.last', 'css',
-                                             'approved last day cell in my schedule')
+        self.leave_last_day_cell = Button('#myScheduleTable .fullLeave.last', 'css',
+                                          'leave in last day cell in my schedule')
         self.today_cell_full_leave = Button('#myScheduleTable .dayCell.today.fullLeave', 'css',
                                             'my schedule today full leave cell')
         self.today_cell_leavetype3_halfday = Button('#myScheduleTable .dayCell.today.leaveType3.fiftyPercentLeave',
@@ -24,6 +25,10 @@ class ApMySchedule:
                                           'leave type selector in edit pop-up')
         self.third_leave_type = Button('.leave-type-selector-menu:last-of-type>ul>li:nth-of-type(3)', 'css',
                                        'third leave type in selector')
+        self.sixth_leave_type = Button('.leave-type-selector-menu:last-of-type>ul>li:nth-of-type(6)', 'css',
+                                       'sixth leave type in selector')
+        self.last_leave_type = Button('.leave-type-selector-menu:last-of-type>ul>li:last-of-type', 'css',
+                                      'last leave type in selector')
         self.day_duration_field = TextField('#leaveTimeRequestDialog_firstDayDuration', 'css',
                                             'day duration field in edit pop-up')
         self.save_changes = Button('//*[text()="Save Changes"]', 'xpath', 'save changes button')
@@ -31,27 +36,36 @@ class ApMySchedule:
         self.previous_week = Button('//*[text()="Previous week"]', 'xpath', 'previous week button')
         self.return_to_cur_week = Button('//*[text()="return to current week"]', 'xpath', 'return to current week')
         self.current_week = Element('//*[text()="(current week)"]', 'xpath', 'current week')
+        self.date_selector = Button('fromDateSelector', 'id', 'date selector in leave time chart')
+        self.first_week_date_selector = Button('.x-date-inner>tbody>tr:first-of-type>td', 'css',
+                                               'first week date selector')
+        self.current_week_date_selector = Button('.x-date-bottom a', 'css', 'current week in date selector')
         self.user_selector = Button('#usersSelectorId .ellipsis', 'css', 'user selector')
         self.selected_user = Button('//*[text()="Selected users"]', 'xpath', 'selected users option in selector')
-        self.meyers_in_selector = Button('//*[@class="content"]//*[text()="Meyers, Allison"]', 'xpath',
-                                         'Meyers in user selector')
+        self.stivers_in_selector = Button('//*[@class="content"]//*[text()="Stivers, Melanie"]', 'xpath',
+                                          'Stivers in user selector')
         self.apply_user_selector = Button('//*[text()="Apply"]', 'xpath', 'apply button in user selector')
         self.colleague_first_row = Element('.firstRow .colleagueNameContainer', 'css', 'colleague first row')
         self.requests_tab = Button('//*[text()="Requests"]', 'xpath', 'requests tab')
         self.first_row_leave_name = Button('tbody>tr.requestRow:first-of-type .leaveTypeName', 'css',
                                            'leave name in first row of table')
-        self.show_past_leaves_chkbx = Button('filterPastRequestsCheckbox', 'id', 'show pask leaves checkbox')
+        self.show_past_leaves_chkbx = Button('filterPastRequestsCheckbox', 'id', 'show past leaves checkbox')
         self.past_leave_row = Element('.pastRequest', 'css', 'past leave row')
         self.first_row_edit_period = Button('tbody>tr.requestRow:first-of-type .editButton', 'css',
                                             'edit period in first row of table')
         self.first_row_requested_time = Element('tbody>tr.requestRow:first-of-type .timeRequested', 'css',
                                                 'requested time in first row of table')
+        self.first_row_balance_after = Element('tr.requestRow:first-of-type .after', 'css',
+                                               'balance after request in first row')
         self.first_row_delete = Button('tbody>tr.requestRow:first-of-type .deleteButton', 'css',
                                        'delete button in first row of table')
         self.sorting_leave_type = Button('//*[@class="sortingLink" and text()="Leave Type"]', 'xpath',
                                          'sorting by leave type')
         self.sorting_period = Button('//*[@class="sortingLink" and text()="Period"]', 'xpath', 'sorting by Period')
         self.period_sorting_asc = Element('.periodCell.sorting_asc', 'css', 'period sorting ascending')
+        self.balances_filter = Button('.balanceTypeFilterBlock a', 'css', 'balances filter')
+        self.sick_days_balances_filter = Button('.x-menu-list>li:last-of-type', 'css', 'sick days in balances filter')
+        self.all_balances_filter = Button('.x-menu-list>li:first-of-type', 'css', 'all balances in balances filter')
         self.my_profile = Button('.userProfileLink', 'css', 'my profile')
         self.profile_first_name = TextField('userProfilePopup_firstNameField', 'id', 'user first name in profile')
         self.profile_middle_name = TextField('userProfilePopup_middleNameField', 'id', 'user middle name in profile')
