@@ -54,6 +54,8 @@ class ApLeavesManagement:
                                         "user filter in request table")
         self.first_row_name_table = Element(".actualContent>tr:first-of-type .user.name", "css",
                                             "first name in requests table")
+        self.past_leaves_chkbx = CheckBox('showPastApprovedRejectedRequestsChBox', 'id', 'past leaves checkbox')
+        self.past_request = Element('.request.pastRequest', 'css', 'past request row')
         self.sort_users = Button("tipLTRSorting", "id", "sorting by users")
         self.sort_groups = Button("sortByUserGroupLink", "id", "sorting by departments")
         self.sort_by_time_zone = Button('sortByTimeZoneGroupLink', 'id', 'sorting by time zone')

@@ -26,24 +26,30 @@ Feature: AP Leaves Management by admin
   @Smoke
   Scenario: Sorting in requests table
     When I click lt_requests_tab
+    And I perform select in the past_leaves_chkbx
+    And I wait 1 seconds for animation stops
+    And I should see a web element past_request
     And I click sort_users
     And I wait 1 seconds for animation stops
     And first_row_name_table should contain Gibson, Maurice
     And I click sort_groups
     And I wait 1 seconds for animation stops
-    And first_row_name_table should contain Stivers, Melanie
+    And first_row_name_table should contain Gibson, Maurice
     And I click sort_by_time_zone
     And I wait 1 seconds for animation stops
     And first_row_name_table should contain O'Dowd, Roy
     And I click sort_leave_type
     And I wait 1 seconds for animation stops
-    And first_row_name_table should contain O'Dowd, Roy
+    And first_row_leave_type should contain Sick Leave
     And I click sort_status
     And I wait 1 seconds for animation stops
     And sort_status should have class with ascending
     And I click sort_period
     And I wait 1 seconds for animation stops
-    Then sort_period should have class with ascending
+    And sort_period should have class with ascending
+    And I perform deselect in the past_leaves_chkbx
+    And I wait 1 seconds for animation stops
+    Then I should not see a web element past_request
 
   @Smoke
   Scenario: User Filter in leave time planning chart
