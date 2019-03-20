@@ -58,6 +58,7 @@ class Users:
                                       "XPATH", "Disable user wooster")
         self.enable_wooster = Button("*//span[@class='accountTab-accountStateText-span'][contains(text(),'Disabled')]",
                                      "XPATH", "Enable user wooster")
+
         # Filter
         self.filter = Button("span#ext-gen11", "CSS", "Filter on user list")
         self.filter_show_selected = Button("img#ext-gen190", "CSS", "Show Selected Users")
@@ -89,6 +90,7 @@ class Users:
                                         "@class='deleteGroupCell']", "XPATH", "Delete department")
         self.confirm_delete = Button(".userGroupDiv.deleteConfirm button", "CSS",
                                      "Confirm delete dialog")
+
         # TZG
         self.tzg = Button("//a[@class='editTimeZoneGroupsLink']", "XPATH", "TZG button")
         self.tzg_field = Button("//div[contains(@class,'emptySelection')]", "XPATH", "New TZG")
@@ -100,10 +102,12 @@ class Users:
         self.confirm_delete_tzg = Button("//*[@class='userGroupDiv deleteConfirm']//*/button", "XPATH", "Confirm "
                                                                                                         "delete tzg")
         self.city_check = TextField("//div[contains(@title,'Atlanta')]", "XPATH", "Checks Atlanta visible")
+
         # Pager
         self.pager_next = Button("//a[contains(@class,'next')]", "XPATH", "Right Arrow")
         self.pager_back = Button("//a[contains(@class,'prev')]", "XPATH", "Left Arrow")
         self.pager_records_selector = Selector("//select[@id='recordsPerPageSelector']", "XPATH", "Records selector")
+        
         # PTO&SICK
         self.pto_settings = Button("//span[contains(text(),'PTO Settings')]", "XPATH", "PTO settings button")
         self.pto_change_balance = Button("//tbody[contains(@class,'actualContent')]//tr[2]//td[2]", "XPATH", "Balance "
