@@ -129,7 +129,7 @@ Feature: Users interface by admin
     When i choose 10 in shown_by
     And I perform deselect in the show_disabled_accounts
     And I wait 2 seconds for animation stops
-    And I should not see a text Venson, Ronald on the page
+    And I should not see a text Wooster, Jennifer on the page
     And I wait 2 seconds for animation stops
     And I perform select in the show_managers_only
     And I wait 2 seconds for animation stops
@@ -141,16 +141,16 @@ Feature: Users interface by admin
     And I should see a web element kloss_barbara_check
     And i click sort_by_group
     And I wait 2 seconds for animation stops
-    And I should not see a text Venson, Ronald on the page
+    And I should not see a text Wooster, Jennifer on the page
     And i click sort_by_group
     And I wait 2 seconds for animation stops
     And I should see a web element kloss_barbara_check
     And i click sort_by_working_week
     And I wait 1 seconds for animation stops
-    And I should not see a text Venson, Ronald on the page
+    And I should not see a text Wooster, Jennifer on the page
     And i click sort_by_working_week
     And I wait 1 seconds for animation stops
-    And I should not see a text Venson, Ronald on the page
+    And I should not see a text Wooster, Jennifer on the page
     And i click sort_by_account
     And I wait 1 seconds for animation stops
     And I should see a text Moss, Bruno on the page
