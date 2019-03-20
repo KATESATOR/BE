@@ -51,6 +51,14 @@ class Users:
                                      "accountTab-manageRequests-td activeButton canManage')]", "XPATH",
                                      "Requests check")
         self.delete_user = Button("button#userDataLightBox_deleteBtn", "CSS", "Delete user button")
+        self.disable_wooster = Button("//tr[@class='userRow userIsLTM automaticallyApprovedUser enabledUser "
+                                      "linkedNotNull even userWithDefaultWorkSchedule "
+                                      "approverWithoutAssignedUsers']//td[@class='accountTabCell "
+                                      "accountTab-accountState-td lastCell activeButton']",
+                                      "XPATH", "Disable user wooster")
+        self.enable_wooster = Button("*//span[@class='accountTab-accountStateText-span'][contains(text(),'Disabled')]",
+                                     "XPATH", "Enable user wooster")
+
         # Filter
         self.filter = Button("span#ext-gen11", "CSS", "Filter on user list")
         self.filter_show_selected = Button("img#ext-gen190", "CSS", "Show Selected Users")

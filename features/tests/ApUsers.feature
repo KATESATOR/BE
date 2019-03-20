@@ -129,6 +129,9 @@ Feature: Users interface by admin
     When i choose 10 in shown_by
     And I perform deselect in the show_disabled_accounts
     And I wait 2 seconds for animation stops
+    And I click disable_wooster
+    And I refresh the page
+    And I wait 2 seconds for animation stops
     And I should not see a text Wooster, Jennifer on the page
     And I wait 2 seconds for animation stops
     And I perform select in the show_managers_only
@@ -158,7 +161,11 @@ Feature: Users interface by admin
     And I wait 1 seconds for animation stops
     And i click sort_by_user
     And I wait 1 seconds for animation stops
-    Then I perform select in the show_disabled_accounts
+    And I perform select in the show_disabled_accounts
+    And I wait 1 seconds for animation stops
+    And i click enable_wooster
+    And I wait 1 seconds for animation stops
+    Then I should see a text Wooster, Jennifer on the page
 
   @smoke
   Scenario: Create, delete departments
