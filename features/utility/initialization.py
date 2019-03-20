@@ -13,11 +13,6 @@ from features.pages.work_schedule_page import WorkSchedulePage
 from features.pages.notification_page import NotificationPage
 from features.pages.logo_color_scheme_page import LogoColorSchemePage
 from features.pages.license_page import LicensePage
-from features.pages.leave_types_page import LeaveTypesPage
-from features.pages.work_schedule_page import WorkSchedulePage
-from features.pages.notification_page import NotificationPage
-from features.pages.logo_color_scheme_page import LogoColorSchemePage
-from features.pages.license_page import LicensePage
 from features.pages.aP_reports_page import aPreportsPage
 from features.pages.import_dump_page import ImportDumpPage
 
@@ -39,9 +34,4 @@ class Pages:
     logo_color_scheme_page = LogoColorSchemePage()
     license_page = LicensePage()
     aP_reports_page = aPreportsPage()
-    leave_types_page = LeaveTypesPage()
-    work_schedule_page = WorkSchedulePage()
-    notification_page = NotificationPage()
-    logo_color_scheme_page = LogoColorSchemePage()
-    license_page = LicensePage()
     import_dump_page = ImportDumpPage()

@@ -23,6 +23,8 @@ class aPreportsPage:
                                     'current month in date range selector')
         self.last_21_days = Button('.rangesListMenu:last-of-type li:nth-of-type(15)', 'css',
                                    'last 21 days in date range selector')
+        self.current_year = Button('.rangesListMenu:last-of-type li:nth-of-type(17)', 'css',
+                                   'year month in date range selector')
         self.edit_configuration = Button('.editConfiguration', 'css', 'edit configuration button')
         self.edit_second_grouping_level = Button('#reportGroupingSelector_treeRow2 button', 'css',
                                                  '2nd grouping level in edit configuration')

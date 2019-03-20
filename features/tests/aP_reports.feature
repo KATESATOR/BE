@@ -41,10 +41,10 @@ Feature: aP Reports interface by admin
   Scenario: Modifying Leave time & balances report
     When I click ltb_report_tab
     And I click date_range_selector
-    And I click current_week
+    And I click current_year
     And I wait 1 seconds for animation stops
-    And last_column_in_chart should contain Timmers, Brian
-    And date_range_selector should contain Current week
+    And last_column_in_chart should contain Wooster,
+    And date_range_selector should contain Current year
     And I click date_range_selector
     And I click last_21_days
     And I wait 1 seconds for animation stops
