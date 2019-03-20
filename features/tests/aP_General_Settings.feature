@@ -1,6 +1,5 @@
 Feature: aP General settings
 
-# Перед началом тестов все свитчеры должны быть ON, а чекбоксы OFF
   Background:
     When I am logged in actiPLANS as admin
     And general_page is visible
@@ -48,7 +47,6 @@ Feature: aP General settings
     And I wait 2 seconds for animation stops
     Then tz_group_name_field should have value with New York
 
-    # Настройка в Calendar Layout должна быть отличной от Week starts on Sunday
   @smoke
   Scenario: Select Calendar layout
     When I should see a web element tz_group_week_start_day_selector
@@ -58,7 +56,6 @@ Feature: aP General settings
     And I choose 2 in tz_group_week_start_day_selector
     And I click save_button_top
 
-# Перед началом теста в PTO правилах все чекбоксы OFF
   @smoke
   Scenario: Change Pto Settings
     When I click pto_show_in_hours_radiobutton
@@ -81,8 +78,6 @@ Feature: aP General settings
     And I click pto_default_control_mode_checkbox
     And I click save_button_top
 
-
-    # Перед началом теста в Sick правилах все чекбоксы OFF
   @smoke
   Scenario: Change Sick Settings
     When I click sick_show_in_hours_radiobutton
@@ -104,6 +99,7 @@ Feature: aP General settings
     And I click sick_rule_cap_balance_checkbox
     And I click sick_default_control_mode_checkbox
     And I click save_button_top
+
   @smoke
   Scenario: Change work schedule
     When I enter 9 in the default_workday_duration_textfield
@@ -128,7 +124,6 @@ Feature: aP General settings
     And I click save_button_top
     And I wait 2 seconds for animation stops
 
-    # Перед началом теста все свитчеры должны быть ON
   @smoke
   Scenario: Change General settings
     When I click user_group_switcher

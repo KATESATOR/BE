@@ -7,7 +7,6 @@ Feature: aP Work Schedule settings
     And I click ap_work_schedule_button
     And work_schedule_page is visible
 
-    # Перед началом теста, необходимо чтобы было выбрано для показа три месяца
   @smoke
   Scenario: Change months to view in actiPLANS
     When I click format_selector
@@ -18,7 +17,6 @@ Feature: aP Work Schedule settings
     And I click show_3
     Then I should not see a web element last_month_table
 
-# Тест проходит только в рабочие дни
   @smoke
   Scenario: Change work/weekend day in actiPLANS
     When I click current_working_day

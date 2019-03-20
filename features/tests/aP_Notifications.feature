@@ -13,13 +13,11 @@ Feature: aP Notifications settings
     And I wait 2 seconds for animation stops
     Then I should see a web element resend_message_text
 
-
   @smoke
   Scenario: Send test message
     When I click send_test_message_button
     And I wait 2 seconds for animation stops
     Then I should see a web element test_message_text
-
 
   @smoke
   Scenario: Change Settings
@@ -51,4 +49,4 @@ Feature: aP Notifications settings
     And I click notify_users_on_ltr_changed_checkbox
     And I click notify_users_on_ltr_new_or_deleted_checkbox
     And I click save_button_bottom
-    And I wait 2 seconds for animation stops
+    Then I wait 2 seconds for animation stops
