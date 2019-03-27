@@ -42,7 +42,8 @@ Feature: Lock TT interface
 
   @smoke
   Scenario: Change task
-    When I click expand_all_button
+    Given I create necessary time-track and return to the lock tt
+    And I click expand_all_button
     And I should see a web element task_backup_controlling
     And I click task_backup_controlling
     And I click type_of_work_button

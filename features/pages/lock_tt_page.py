@@ -9,7 +9,7 @@ class LockTTPage:
         self.result_text = Element("//*[@class='result-number']", "xpath", "result number")
         self.date_selector_button = Button("ext-gen32", "id", "date selector")
         self.user_selector_text = Element("ext-gen44", "id", "user selector text")
-        self.user_selector_button = Button("usersSelector", "id", "user selector")
+        self.user_selector_button = Button("usersSelectorLabel", "id", "user selector")
         self.all_staff_radiobutton = Button("//*[@class='x-form-cb-label'][contains(text(), 'All Staff')]",
                                             "xpath", "all staff radiobutton")
         self.selected_users_radiobutton = Button("//*[@class='x-form-cb-label'][contains(text(), 'Selected users')]",
@@ -18,7 +18,7 @@ class LockTTPage:
         self.clear_filter_button = Button("clearButton", "id", "Clear user filter")
         self.current_week_button = Button("//*[@class='rangeItemTitle'][contains(text(), 'Current week')]",
                                           "xpath", "Current week")
-        self.cur_prev_week_button = Button("//*[@class='rangeItemTitle'][contains(text(), 'Current & previous weeks')]",
+        self.cur_prev_week_button = Button("//*[@class='rangeItemTitle'][contains(text(), 'Current & previous week')]",
                                            "xpath", "Current week")
         self.task_backup_controlling = Button("//*[@class='lockTableEllipsis'][contains(text(), 'Backup controlling')]",
                                               "xpath", "task Backup controlling")

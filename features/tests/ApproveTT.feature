@@ -65,6 +65,5 @@ Feature: Approve TT interface by admin
   Scenario: User TT status history
     When I click history_button
     And I click show_more_history_button
-    And I click show_more_history_button
     And I wait 1 seconds for animation stops
-    Then show_more_history_button should contain + Show 10 more records (30 are shown)
+    Then show_more_history_button should contain + Show 10 more records (20 are shown)

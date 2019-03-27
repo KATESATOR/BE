@@ -4,7 +4,6 @@ Feature: Support scenarios by user
     Given I am logged in as user
     And general page is visible
 
-  # тест не проходит из-за бага AT-2817
   @smoke
   Scenario: Edit name in My Profile
     When I click my profile

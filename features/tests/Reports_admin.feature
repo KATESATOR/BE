@@ -142,6 +142,7 @@ Feature: Reports interface by admin
     And I click show_selector_button
     And I wait 2 seconds for animation stops
     And I select <chart_name> in chart selector
+    And I wait 2 seconds for animation stops
     And I click export_chart_button
     And I wait 2 seconds for animation stops
     And I click download_chart_button

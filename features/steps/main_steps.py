@@ -64,8 +64,8 @@ def login_as_user(context):
     context.execute_steps(f"""
            Given I open a page {'/'}
            When {'at_login_page'} is visible
-           And I enter {'user'} in the {'username_field'}
-           And I enter {'user'} in the {'password_field'}
+           And I enter {'trainee'} in the {'username_field'}
+           And I enter {'trainee'} in the {'password_field'}
            And I click {'login_button'}
        """)
     time.sleep(1)
@@ -345,8 +345,10 @@ def file_is_present(context, format):
         raise
 
 
-@step('I upload {file} from {directory} in {element}')
-def upload_file(context, file, directory, element):
+@step('I upload {file} from {folder} in {element}')
+def upload_file(context, file, folder, element):
+    current_directory = os.path.dirname(__file__)
+    directory = os.path.join(current_directory, '..', folder)
     page = set_page
     os.chdir(directory)
     element = getattr(page, element.replace(" ", "_"))

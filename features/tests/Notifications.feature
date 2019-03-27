@@ -1,4 +1,4 @@
-Feature: Notifications by admin
+Feature: Email Notifications interface
 
   Background:
     Given I am logged in as admin
