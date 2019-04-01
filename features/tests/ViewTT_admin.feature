@@ -6,7 +6,6 @@ Feature: View TT interface by admin
     And I am on view_tt page
     And view_tt_page is visible
 
-  #тест упал на предпоследнем шаге
   @smoke
   Scenario: Switching period and checking period table
     When I perform select in the ttdetails_show_tasks
@@ -16,15 +15,16 @@ Feature: View TT interface by admin
     And i click calendar_to
     And i click calendar_day_to
     And I wait 2 seconds for animation stops
-    Then I should see a web element ttdetails_date_check_min
-    And I should see a web element ttdetails_date_check_max
+    And I should see a web element ttdetails_date_check_min
+    And I wait 2 seconds for animation stops
+    Then I should see a web element ttdetails_date_check_max
 
   @smoke
   Scenario: Switching user
     When i click user_selector
     And i click user_selector_timmers_brian
-    Then I should see a text Back to me on the page
-    And i click back_to_me
+    And I should see a text Back to me on the page
+    Then i click back_to_me
 
   @smoke
   Scenario: Changing Filter on all active projects
@@ -72,8 +72,8 @@ Feature: View TT interface by admin
     And i click filter_close
     And i click filter_apply
     And i click filter
-    Then I should not see a text All projects of all customers  (active and archived) on the page
-    And I should not see a text All active projects оf all active customers on the page
+    And I should not see a text All projects of all customers  (active and archived) on the page
+    Then I should not see a text All active projects оf all active customers on the page
 
   @smoke
   Scenario: Changing Filter TT status to empty
@@ -121,12 +121,19 @@ Feature: View TT interface by admin
 
   @smoke
   Scenario: Edit task
+    # Нужно добавить на таймшит(10 марта) задачу "Setting up Time Management system" с треком 1:00
     When I perform select in the ttdetails_show_tasks
+    And I wait 2 seconds for animation stops
     And i click ttdetails_edit_task
+    And I wait 2 seconds for animation stops
     And i enter test in the ttdetails_edit_task_description
     And i click ttdetails_edit_task_close
     And i click ttdetails_edit_task
-    Then I should see a text test on the page
+    And I wait 2 seconds for animation stops
+    And I should see a text test on the page
+    And i click ttdetails_edit_task_description_again
+    And i enter   in the ttdetails_edit_task_description
+    Then i click ttdetails_edit_task_close
 
   @smoke
   Scenario: Table present View by Days, cpt
