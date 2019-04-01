@@ -13,14 +13,17 @@ Feature: View TT interface by user
     And i click calendar_day_from
     And I refresh the page
     And i click calendar_to
+    And I wait 2 seconds for animation stops
     And i click calendar_day_to
-    And I wait 1 seconds for animation stops
+    And I wait 3 seconds for animation stops
     And I should see a web element ttdetails_date_check_min
+    And I wait 2 seconds for animation stops
     Then I should see a web element ttdetails_date_check_max
 
   @smoke
   Scenario: Changing Filter on all active projects
     When i click filter
+    And I wait 1 seconds for animation stops
     And i click filter_cp_selector_user
     And i click filter_cp_selector_2
     And i click filter_close_user
@@ -35,13 +38,13 @@ Feature: View TT interface by user
     And i click filter_cp_selector_3
     And I perform select in the filter_cp_selector_3_customer
     And i click filter_close_user
-    And I wait 1 seconds for animation stops
     And i click filter_apply
     Then I should see a text Clear filter on the page
 
   @smoke
   Scenario: Changing Filter on all selected customers all scope
     When i click filter
+    And I wait 1 seconds for animation stops
     And i click filter_cp_selector_user
     And i click filter_cp_selector_3
     And I click filter_select_all
@@ -54,6 +57,7 @@ Feature: View TT interface by user
   @smoke
   Scenario: Checking hide customers in filter
     When i click filter
+    And I wait 1 seconds for animation stops
     And i click filter_cp_selector
     And i click filter_cp_selector_3
     And i click filter_hide_show_customers
@@ -71,6 +75,7 @@ Feature: View TT interface by user
   @smoke
   Scenario: Changing Filter TT status to empty
     When i click filter
+    And I wait 1 seconds for animation stops
     And I perform deselect in the filter_tt_status_approved
     And I perform deselect in the filter_tt_status_ready_for_approval
     And I perform deselect in the filter_tt_status_not_ready_and_rejected
@@ -80,20 +85,20 @@ Feature: View TT interface by user
   @smoke
   Scenario: Changing Filter TT status to Ready for Approval
     When i click filter
+    And I wait 1 seconds for animation stops
     And I perform deselect in the filter_tt_status_approved
     And I wait 1 seconds for animation stops
     And I perform deselect in the filter_tt_status_ready_for_approval
-    And I wait 1 seconds for animation stops
     And I perform deselect in the filter_tt_status_not_ready_and_rejected
     And I wait 1 seconds for animation stops
     And I perform select in the filter_tt_status_ready_for_approval
-    And I wait 1 seconds for animation stops
     And i click filter_apply
     Then I should see a text Ready for Approval on the page
 
   @smoke
   Scenario: Changing Filter TT status to Approved
     When i click filter
+    And I wait 1 seconds for animation stops
     And I perform deselect in the filter_tt_status_approved
     And I perform deselect in the filter_tt_status_ready_for_approval
     And I perform deselect in the filter_tt_status_not_ready_and_rejected
@@ -104,6 +109,7 @@ Feature: View TT interface by user
   @smoke
   Scenario: Changing Filter TT status to Not Ready and Rejected
     When i click filter
+    And I wait 1 seconds for animation stops
     And I perform deselect in the filter_tt_status_approved
     And I perform deselect in the filter_tt_status_ready_for_approval
     And I perform deselect in the filter_tt_status_not_ready_and_rejected
@@ -114,16 +120,21 @@ Feature: View TT interface by user
   @smoke
   Scenario: Checking clear filter button is not present
     When i click filter_clear
+    And I wait 1 seconds for animation stops
     Then I should not see a web element filter_clear
 
   @smoke
   Scenario: Edit task
+    # Нужно добавить на таймшит(10 марта) задачу "Setting up Time Management system" с треком 1:00
     When I perform select in the ttdetails_show_tasks
-    And i click ttdetails_edit_task
-    And i enter test in the ttdetails_edit_task_description
-    And i click ttdetails_edit_task_close
-    And i click ttdetails_edit_task
-    Then I should see a text test on the page
+    And I wait 2 seconds for animation stops
+    And i click ttdetails_edit_task_other
+    And I wait 1 seconds for animation stops
+    And i click open_status_selector
+    And I wait 2 seconds for animation stops
+    And i click complete_status
+    And I should see a text Released on the page
+    Then i click ttdetails_edit_task_close
 
   @smoke
   Scenario: Table present View by Days, cpt
