@@ -14,8 +14,9 @@ Feature: View TT interface by user
     And I refresh the page
     And i click calendar_to
     And i click calendar_day_to
-    Then I should see a web element ttdetails_date_check_min
-    And I should see a web element ttdetails_date_check_max
+    And I wait 1 seconds for animation stops
+    And I should see a web element ttdetails_date_check_min
+    Then I should see a web element ttdetails_date_check_max
 
   @smoke
   Scenario: Changing Filter on all active projects
@@ -29,10 +30,12 @@ Feature: View TT interface by user
   @smoke
   Scenario: Changing Filter on all selected customers
     When i click filter
+    And I wait 1 seconds for animation stops
     And i click filter_cp_selector_user
     And i click filter_cp_selector_3
     And I perform select in the filter_cp_selector_3_customer
     And i click filter_close_user
+    And I wait 1 seconds for animation stops
     And i click filter_apply
     Then I should see a text Clear filter on the page
 
@@ -78,9 +81,13 @@ Feature: View TT interface by user
   Scenario: Changing Filter TT status to Ready for Approval
     When i click filter
     And I perform deselect in the filter_tt_status_approved
+    And I wait 1 seconds for animation stops
     And I perform deselect in the filter_tt_status_ready_for_approval
+    And I wait 1 seconds for animation stops
     And I perform deselect in the filter_tt_status_not_ready_and_rejected
+    And I wait 1 seconds for animation stops
     And I perform select in the filter_tt_status_ready_for_approval
+    And I wait 1 seconds for animation stops
     And i click filter_apply
     Then I should see a text Ready for Approval on the page
 
