@@ -22,9 +22,10 @@ Feature: View TT interface of other user by admin
     And i click calendar_day_from
     And I refresh the page
     And i click calendar_to
+    And I wait 2 seconds for animation stops
     And i click calendar_day_to
-    Then I should see a web element ttdetails_date_check_min
-    And I should see a web element ttdetails_date_check_max
+    And I should see a web element ttdetails_date_check_min
+    Then I should see a web element ttdetails_date_check_max
 
   @smoke
   Scenario: Changing Filter on all active projects
@@ -73,8 +74,8 @@ Feature: View TT interface of other user by admin
     And i click filter_close
     And i click filter_apply
     And i click filter
-    Then I should not see a text All projects of all customers  (active and archived) on the page
-    And I should not see a text All active projects оf all active customers on the page
+    And I should not see a text All projects of all customers  (active and archived) on the page
+    Then I should not see a text All active projects оf all active customers on the page
 
   @smoke
   Scenario: Changing Filter TT status to empty
@@ -121,13 +122,20 @@ Feature: View TT interface of other user by admin
     Then I should not see a web element filter_clear
 
   @smoke
-  Scenario: Edit task
-    When I perform select in the ttdetails_show_tasks
-    And i click ttdetails_edit_task
-    And i enter test in the ttdetails_edit_task_description
-    And i click ttdetails_edit_task_close
-    And i click ttdetails_edit_task
-    Then I should see a text test on the page
+   Scenario: Edit task
+    # Нужно добавить на таймшит(10 марта) задачу "Setting up Time Management system" с треком 1:00
+     When I perform select in the ttdetails_show_tasks
+     And I wait 2 seconds for animation stops
+     And i click ttdetails_edit_task_other
+     And I wait 2 seconds for animation stops
+     And i enter test in the ttdetails_edit_task_description
+     And i click ttdetails_edit_task_close
+     And i click ttdetails_edit_task_other
+     And I wait 2 seconds for animation stops
+     And I should see a text test on the page
+     And i click ttdetails_edit_task_description_again
+     And i enter   in the ttdetails_edit_task_description
+     Then i click ttdetails_edit_task_close
 
   @smoke
   Scenario: Table present View by Days, cpt
@@ -145,5 +153,3 @@ Feature: View TT interface of other user by admin
     And i click export_pdf_download
     And I wait 3 seconds for animation stops
     Then Checking file with format pdf
-
-
