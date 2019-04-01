@@ -8,6 +8,21 @@ Feature: aP Reports interface by admin
   @Smoke
   Scenario: Leave time & balances report displaying
     When I click ltb_report_tab
+    And I click custom_from_date
+    And I click month_selector
+    And I click feb_in_month_selector
+    And I click calendar_ok_button
+    And I click first_date_calendar
+    And I refresh the page
+    And I click custom_to_date
+    And I click month_selector
+    And I click apr_in_month_selector
+    And I click calendar_ok_button
+    And I click thirtieth_date_calendar
+    And I wait 1 seconds for animation stops
+    And date_range_selector should contain Custom date range
+    And custom_from_date should contain Feb 01, 2019
+    And custom_to_date should contain Mar 30, 2019
     And I wait 1 seconds for animation stops
     And I should see a web element table_ltb_reports
     And I should see a web element ltb_total_section_header
@@ -15,24 +30,24 @@ Feature: aP Reports interface by admin
     And I click pto_in_selector
     And ltb_total_section_header should contain Total PTO Balance (days):
     And I click collapse_chart
+    And I wait 1 seconds for animation stops
     And I should not see a web element ltb_total_section_header
     And I click leave_time_selector
     And I click leave_time_in_selector
+    And I wait 1 seconds for animation stops
     And I should see a web element ltb_total_section_header
     Then ltb_total_section_header should contain Total Leave Time:
 
   @Smoke
   Scenario: Sorting in Leave Time & Balances chart
     When I click ltb_report_tab
-    And I click date_range_selector
-    And I click last_21_days
-    And I wait 1 seconds for animation stops
     And I click chart_sort_a_z
     And I wait 1 seconds for animation stops
     And first_column_in_chart should contain Venson, Ronald
     And I click chart_sort_by_value
     And I wait 1 seconds for animation stops
     And I should see a web element asc_sort_by_value
+    And first_column_in_chart should contain Timmers, Brian
     And I click chart_sort_a_z
     And I wait 1 seconds for animation stops
     Then first_column_in_chart should contain Barber, Robert
@@ -40,15 +55,6 @@ Feature: aP Reports interface by admin
   @Smoke
   Scenario: Modifying Leave time & balances report
     When I click ltb_report_tab
-    And I click date_range_selector
-    And I click current_year
-    And I wait 1 seconds for animation stops
-    And last_column_in_chart should contain Wooster,
-    And date_range_selector should contain Current year
-    And I click date_range_selector
-    And I click last_21_days
-    And I wait 1 seconds for animation stops
-    And last_column_in_chart should contain Venson, Ronald
     And I click edit_configuration
     And I click edit_second_grouping_level
     And I click depts_in_second_lvl_selector
@@ -75,6 +81,10 @@ Feature: aP Reports interface by admin
   @Smoke
   Scenario: Past leaves calendar report displaying
     When I click past_leaves_calendar_tab
+    And I click date_range_selector_plc
+    And I click feb_in_month_selector_plc
+    And I click apply_date_range_plc
+    And I wait 1 seconds for animation stops
     And I should see a web element leave_time_table
     And I should see a web element leave_time_data
     And I should see a web element single_month_calendar
@@ -108,6 +118,10 @@ Feature: aP Reports interface by admin
     And I click apply_date_range_plc
     And I wait 1 seconds for animation stops
     And I should see a web element single_month_calendar
+    And I click date_range_selector_plc
+    And I click feb_in_month_selector_plc
+    And I click apply_date_range_plc
+    And I wait 1 seconds for animation stops
     And I click leave_types_filter
     And I click selected_in_lt_filter
     And I click sick_leave_in_lt_filter

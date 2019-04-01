@@ -20,12 +20,6 @@ def remove_leave_type(context, leave_name):
 @step('I click on leave type text {text}')
 def click_on_leave_type_text(context, text):
     try:
-        rm_leave_type = Button(
-            "//span[@class='leaveTypeNameText'][contains(text(), '" + text +
-            "')]", "xpath", "remove leave type button")
-        rm_leave_type.click()
-        context.log.info("I click on leave type text")
-    except:
         leave_type_text = Button(
             "//span[@class='leaveTypeNameText'][contains(text(), '" + text +
             "')]", "xpath", "leave type text")

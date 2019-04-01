@@ -17,6 +17,15 @@ class aPreportsPage:
         self.last_column_in_chart = Element('.amcharts-category-axis .amcharts-axis-label:last-of-type>tspan', 'css',
                                             'last column in chart')
         self.date_range_selector = Button('.dateRangeDropdownSelector span', 'css', 'date range selector')
+        self.custom_from_date = Button('.calendarButton.fromDate .date-text', 'css', 'custom "from" date')
+        self.month_selector = Button('.x-menu-date-item .x-btn-center button', 'css', 'custom month selector')
+        self.feb_in_month_selector = Button('//a[text()="Feb"]', 'xpath', 'February in month selector')
+        self.apr_in_month_selector = Button('//a[text()="Apr"]', 'xpath', 'April in month selector')
+        self.calendar_ok_button = Button('.x-date-mp-ok', 'css', 'OK button in calendar')
+        self.first_date_calendar = Button('//*[@class="x-date-inner"]//*[text()="1"]', 'xpath', '1st date in calendar')
+        self.thirtieth_date_calendar = Button('//*[@class="x-date-inner"]//*[text()="30"]', 'xpath',
+                                              '30th date in calendar')
+        self.custom_to_date = Button('.calendarButton.toDate .date-text', 'css', 'custom "to" date')
         self.current_week = Button('.rangesListMenu:last-of-type li:nth-of-type(9)', 'css',
                                    'current week in date range selector')
         self.current_month = Button('.rangesListMenu:last-of-type li:first-of-type', 'css',
@@ -66,6 +75,8 @@ class aPreportsPage:
         self.past_leaves_time_table = Element('leaveTimeTable', 'id', 'past leaves leave time table')
         self.calendar = Element('calendarContainer', 'id', 'past leaves report calendar')
         self.date_range_selector_plc = Button('.monthYearSelectorButton>span', 'css', 'date range selector in plc')
+        self.feb_in_month_selector_plc = Button('.yearBlock.last .firstMonthsRow>td:nth-of-type(2)', 'css',
+                                                'February in month selector past leaves calendar')
         self.last_three_month_range = Button('.threeMonthsRange', 'css', '3 month range')
         self.current_month_range = Button('.currentMonthRange>span', 'css', 'current month range')
         self.apply_date_range_plc = Button('[class*="monthYearSelector"] button:nth-of-type(1)', 'css',
