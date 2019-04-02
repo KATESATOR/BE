@@ -48,6 +48,7 @@ Feature: AP Leaves Management by admin
     And I wait 1 seconds for animation stops
     And sort_period should have class with ascending
     And I perform deselect in the past_leaves_chkbx
+    And I click sort_period
     And I wait 1 seconds for animation stops
     Then I should not see a web element past_request
 
@@ -154,7 +155,6 @@ Feature: AP Leaves Management by admin
   @Smoke
   Scenario: Filtering by leave type and status, and edit request in table
     When I click lt_requests_tab
-    And I click sort_period
     And I click status_filter
     And I click all_statuses_in_filter
     And I click first_row_request_date
@@ -199,14 +199,14 @@ Feature: AP Leaves Management by admin
   @Smoke
   Scenario: Bulk actions in table
     When I click lt_requests_tab
-    And I click sort_users
+    And I click sort_period
     And I click user_filter_table
     And I click selected_users
     And I perform select in the design_in_user_filter
     And I click apply_filter
     And I wait 2 seconds for animation stops
     And user_filter_table should contain 1 department
-    And first_row_name_table should contain Gibson, Maurice
+    And first_row_name_table should contain Timmers, Brian
     And first_row_status should contain Waiting for Approval
     And I perform select in the first_row_checkbox
     And I click approve_bulk
@@ -224,4 +224,3 @@ Feature: AP Leaves Management by admin
     And I click delete_ok_button
     And I wait 1 seconds for animation stops
     Then I should not see a web element first_row_name_table
-    
