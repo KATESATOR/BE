@@ -29,4 +29,11 @@ Feature: Licenses interface
     And I click integration_actiplans_button
     And I wait 2 seconds for animation stops
     Then I should see a web element integration_popup
-      
+
+  @smoke
+  Scenario: Open integration actiPLANS popup
+    When I wait 2 seconds for animation stops
+    And I click addons_button
+    And I click integration_actiplans_button
+    And I wait 2 seconds for animation stops
+    Then I should see a web element integration_popup

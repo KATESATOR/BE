@@ -18,10 +18,12 @@ def before_all(context):
 
 
 def before_feature(context, scenario):
-    context.execute_steps(f"""
-    Given I open import page with 13435
+    current_directory = os.path.dirname(__file__)
+    dump_directory = os.path.join(current_directory, "resources")
+    context.execute_steps(f"""    
+    Given I open import page with 13314
     And {'import dump page'} is visible
-    When I upload /qa_automation.sql from resources in import field
+    When I upload /qa_automation.sql from {dump_directory} in import field
     And I click {'upload button'}
     Then I should see a text {'Import was successful'} on the page
     """)
