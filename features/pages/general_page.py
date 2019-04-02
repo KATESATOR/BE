@@ -25,6 +25,10 @@ class GeneralPage:
         self.tasks = Button("//a[@class='content tasks']", "xpath", "Tasks menu")
         self.reports = Button("//a[@class='content reports']", "xpath", "Reports menu")
         self.user_list = Button("//a[@class='content users']", "xpath", "Users menu")
+        self.features = Button("li#popup_menu_item_1 div.item_descr", "CSS", "Features")
+        self.general_settings = Button("li#popup_menu_item_6 div.item_title", "CSS", "General Settings")
+        self.workflow_settings = Button("li#popup_menu_item_9 > a", "CSS", "Workflow Settings")
+        self.types_of_work = Button("li#popup_menu_item_2 > a", "CSS", "Type of Work")
         self.help_button = Button("//div[@class='popup_menu_button popup_menu_button_support']", "xpath", "help button")
         self.create_account_for_colleague = Button("popup_menu_support_createAccountColleague", "id",
                                                    "create account for colleague")
