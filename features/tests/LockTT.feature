@@ -30,10 +30,10 @@ Feature: Lock TT interface
     And date_selector_button should contain Current week
     And I click user_selector_button
     And I click selected_users_radiobutton
-    And I click user_barber_robert
+    And I click user_cruz
     And I click close_user_selector_button
     And I wait 1 seconds for animation stops
-    And user_selector_text should contain Barber, Robert
+    And user_selector_text should contain Cruz, Gordman
     Then result_text should contain 1
     And I refresh the page
     And I click clear_filter_button
@@ -42,7 +42,8 @@ Feature: Lock TT interface
 
   @smoke
   Scenario: Change task
-    When I click expand_all_button
+    Given I create necessary time-track and return to the lock tt
+    And I click expand_all_button
     And I should see a web element task_backup_controlling
     And I click task_backup_controlling
     And I click type_of_work_button

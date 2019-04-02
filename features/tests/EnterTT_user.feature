@@ -1,5 +1,4 @@
 Feature: Enter TT interface by user
-# Перед запуском тестов нужно добавить сustomer Architects Bureau в WA пользователю Roy O'Dowd
 
   Background:
     Given I am logged in as user
