@@ -21,10 +21,15 @@ class ReportsPage:
                                                 "edit configuration button")
 
         # Charts
+        self.month_selector = Button("ext-gen60", "id", "month selector")
+        self.previous_month = Button("//*[@class='rangeItemTitle'][contains(text(), 'Previous month')]", "xpath",
+                                     "previous month")
         self.show_selector_button = Button("createChartLightbox_chartTypeListSelectorPlaceholder", "id",
                                            "open 'Show' selector")
         self.by_selector_button = Button("createChartLightbox_groupingLevelListSelectorPlaceholder", "id",
                                          "open 'By' selector")
+        self.include_other_users_data = Button("input.checkbox.checkboxInput", "css",
+                                               "include data of not assigned users checkbox")
         self.export_chart_button = Button("createChartLightbox_commitBtn", "id", "export to pdf chart")
         self.download_chart_button = Button("createChartLightbox_downloadPdfBtn", "id", "download to pdf chart")
         self.close_chart_button = Button("closeCreateChartLightboxButton", "id", "close chart button")
