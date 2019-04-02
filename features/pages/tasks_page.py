@@ -28,15 +28,15 @@ class TasksPage:
             "xpath",
             "confirm project deletion")
         self.select_customer_for_project = Button(
-            "//button[@class='x-btn-text' and text()[contains(., '-- Please Select Customer to Add Project for  --')]]",
+            "//div[@class='emptySelection' and text()[contains(., '-- Please Select Customer to Add Project for  --')]]",
             "xpath",
             "customer selector")
-        self.our_company_customer = Button("//a[@class='x-menu-item' and text()[contains(., 'Our Company')]]",
+        self.our_company_customer = Button("//div[@class='itemRow cpItemRow ' and text()[contains(., 'Our Company')]]",
                                            "xpath",
                                            "customer Our Company")
-        self.select_customer_for_task = Button(".customerSelector .x-btn-text", "css", "customer selector")
-        self.select_project_for_task = Button(".projectSelector .x-btn-text", "css", "project selector")
-        self.general_project = Button("//a[@class='x-menu-item' and text()[contains(., 'General')]]",
+        self.select_customer_for_task = Button(".customerSelector .comboboxButton", "css", "customer selector")
+        self.select_project_for_task = Button(".projectSelector .comboboxButton", "css", "project selector")
+        self.general_project = Button("//div[@class='itemRow cpItemRow ' and text()[contains(., 'General')]]",
                                       "xpath",
                                       "project General")
         self.task_name_field = TextField("tr:nth-child(1) > .first > .inputFieldWithPlaceholder", "css", "task field")
@@ -141,3 +141,4 @@ class TasksPage:
         self.upload_area = TextField("dropzoneClickableArea", "id", "upload area")
         self.tasks_can_manage = Button("//div[@class='scopeAccessContainer']//div[text()='Tasks I Can Manage']",
                                        "xpath", "Tasks I Can Manage")
+        self.all_customers = Button("//div[contains(@class, 'allCustomersNode')]", "xpath", "all customers")

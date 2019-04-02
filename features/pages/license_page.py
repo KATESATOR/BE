@@ -12,6 +12,8 @@ class LicensePage:
                                     "add-ons button")
         self.integration_actiplans_button = Button("//div[contains(text(), 'Integration with actiPLANS')]", "xpath",
                                                    "integration with actiPLANS")
+        self.integration_actitime_button = Button("//div[contains(text(), 'Integration with actiTIME')]", "xpath",
+                                                   "integration with actiTIME")
         self.integration_popup = Element("integrationPopup_content", "id", "integration pop-up")
         self.active_license = Element("table.licensePaneBorder.active", "css", "active license")
 

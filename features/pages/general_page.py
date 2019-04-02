@@ -8,12 +8,16 @@ class GeneralPage:
         self.logout_button = Button("//a[@id='logoutLink']", "xpath", "logout button")
         self.settings_button = Button("//div[@class='popup_menu_button popup_menu_button_settings']", "xpath",
                                       "settings button")
-        self.licenses_button = Button("popup_menu_item_8", "id", "licenses button")
+        self.general_settings_button = Button(
+            "//*[@id='popup_menu_settings']//div[contains(text(), 'General Settings')]", "xpath",
+            "general settings button")
+        self.licenses_button = Link("Licenses", "link text", "licenses button")
         self.my_profile = Button("//a[@class='userProfileLink username']", "xpath", "my profile")
         self.profile_first_name = TextField("userProfilePopup_firstNameField", "id", "my profile first name field")
         self.profile_last_name = TextField("userProfilePopup_lastNameField", "id", "my profile last name field")
         self.save_profile_changes = Button("userProfilePopup_commitBtn", "id", "save profile changes button")
         self.time_track = Button("//a[@class='content tt']", "xpath", "Time-Track menu")
+        self.enter_tt = Link("Enter Time-Track", "link", "enter tt interface")
         self.view_tt = Link("View Time-Track", "link", "view tt interface")
         self.my_view_tt = Link("View My Time-Track", "link", "view tt interface")
         self.lock_tt = Link("Lock Time-Track", "link text", "lock tt page")
@@ -21,6 +25,10 @@ class GeneralPage:
         self.tasks = Button("//a[@class='content tasks']", "xpath", "Tasks menu")
         self.reports = Button("//a[@class='content reports']", "xpath", "Reports menu")
         self.user_list = Button("//a[@class='content users']", "xpath", "Users menu")
+        self.features = Button("li#popup_menu_item_1 div.item_descr", "CSS", "Features")
+        self.general_settings = Button("li#popup_menu_item_6 div.item_title", "CSS", "General Settings")
+        self.workflow_settings = Button("li#popup_menu_item_9 > a", "CSS", "Workflow Settings")
+        self.types_of_work = Button("li#popup_menu_item_2 > a", "CSS", "Type of Work")
         self.help_button = Button("//div[@class='popup_menu_button popup_menu_button_support']", "xpath", "help button")
         self.create_account_for_colleague = Button("popup_menu_support_createAccountColleague", "id",
                                                    "create account for colleague")
@@ -34,9 +42,9 @@ class GeneralPage:
         self.introduction_video = Button("//a[@class='item_link' and text()[contains(., 'Introduction Video')]]",
                                          "xpath", "Introduction video")
         self.about_actitime = Button("//a[@class='item_link' and text()[contains(., 'About your actiTIME')]]",
-                                         "xpath", "About your actiTIME")
+                                     "xpath", "About your actiTIME")
         self.contact_support = Button("//a[@class='item_link' and text()[contains(., 'Contact actiTIME Support')]]",
-                                     "xpath", "Contact actiTIME Support")
+                                      "xpath", "Contact actiTIME Support")
         self.support_field = TextField("contactSupportPopup_description", "id", "Support field")
         self.submit_support = Button("contactSupportPopup_submitButton", "id", "Send to support button")
         self.phone_number = TextField("phoneInput_support", "id", "Phone number field")
@@ -49,9 +57,5 @@ class GeneralPage:
         self.work_schedule_button = Link("Work Schedule", "link text", "work schedule button")
         self.notifications_button = Link("Notifications", "link text", "notifications button")
         self.logo_color_scheme_button = Link("Logo & Color Scheme", "link text", "logo & color scheme button")
-
-        # Settings pt.2
-        self.leave_types_button = Link("Leave Types", "link text", "leave types button")
-        self.work_schedule_button = Link("Work Schedule", "link text", "work schedule button")
-        self.notifications_button = Link("Notifications", "link text", "notifications button")
-        self.logo_color_scheme_button = Link("Logo & Color Scheme", "link text", "logo & color scheme button")
+        self.ap_work_schedule_button = Link("Default Work Schedule", "link text", "work schedule button")
+        self.ap_notifications_button = Link("Email Notifications", "link text", "notifications button")

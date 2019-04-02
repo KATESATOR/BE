@@ -1,5 +1,4 @@
 Feature: Tasks interface by user
-# Перед запуском тестов нужно добавить сustomer Architects Bureau в WA пользователю Roy O'Dowd
 
   Background:
     Given I am logged in as user
@@ -126,7 +125,8 @@ Feature: Tasks interface by user
 
   @smoke
   Scenario: Select all tasks
-    When I click tasks can manage
+    When I click all customers
+    And I click tasks can manage
     And I click select all
     And I wait 1 seconds for animation stops
     Then I should see a web element bulk actions panel
