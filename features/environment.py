@@ -20,7 +20,7 @@ def before_all(context):
 def before_feature(context, scenario):
     current_directory = os.path.dirname(__file__)
     dump_directory = os.path.join(current_directory, "resources")
-    context.execute_steps(f"""    
+    context.execute_steps(f"""
     Given I open import page with 13314
     And {'import dump page'} is visible
     When I upload /qa_automation.sql from {dump_directory} in import field

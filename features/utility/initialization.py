@@ -20,6 +20,7 @@ from features.pages.work_schedule_page import WorkSchedulePage
 from features.pages.notification_page import NotificationPage
 from features.pages.logo_color_scheme_page import LogoColorSchemePage
 from features.pages.license_page import LicensePage
+from features.pages.aP_leaves_management_page import ApLeavesManagement
 from features.pages.aP_reports_page import aPreportsPage
 from features.pages.aP_general_settings_page import ApGeneralSettingsPage
 from features.pages.aP_notification_page import ApNotificationPage
@@ -49,6 +50,7 @@ class Pages:
     notification_page = NotificationPage()
     logo_color_scheme_page = LogoColorSchemePage()
     license_page = LicensePage()
+    ap_leaves_management = ApLeavesManagement()
     aP_reports_page = aPreportsPage()
     ap_general_settings_page = ApGeneralSettingsPage()
     ap_notification_page = ApNotificationPage()

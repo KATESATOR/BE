@@ -174,6 +174,7 @@ def filling_the_text_field(context, text, text_field):
     page = set_page
     text_field = getattr(page, text_field.replace(" ", "_"))
     try:
+        # text_field.clear()
         text_field.send_keys(text)
         context.log.info(text_field.name + " has been filled with " + text)
     except:
