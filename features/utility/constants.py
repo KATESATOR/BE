@@ -1,5 +1,4 @@
-
-
 class Constants:
-    aTUrl = "http://rdbuild-agent:8080/cur"
-    aPUrl = "http://192.168.101.103:8080/cur"
+    aTUrl = "https://onlinetest.actitime.com/at-automation"
+    aPUrl = "https://onlinetest.actiplans.com/at-automation"
+    importpage = "/FHSU75TD_SKC9FHER_CBFYEPA7_MNVF0HAS_WEB/import_dump.php?inst_id="

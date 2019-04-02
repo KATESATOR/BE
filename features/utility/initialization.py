@@ -9,6 +9,12 @@ from features.pages.tasks_page import TasksPage
 from features.pages.reports_page import ReportsPage
 from features.pages.user_list_page import UserListPage
 from features.pages.ap_my_schedule import ApMySchedule
+from features.pages.leave_types_page import LeaveTypesPage
+from features.pages.work_schedule_page import WorkSchedulePage
+from features.pages.notification_page import NotificationPage
+from features.pages.logo_color_scheme_page import LogoColorSchemePage
+from features.pages.license_page import LicensePage
+from features.pages.import_dump_page import ImportDumpPage
 
 
 class Pages:
@@ -23,3 +29,9 @@ class Pages:
     reports_page = ReportsPage()
     user_list_page = UserListPage()
     ap_my_schedule = ApMySchedule()
+    leave_types_page = LeaveTypesPage()
+    work_schedule_page = WorkSchedulePage()
+    notification_page = NotificationPage()
+    logo_color_scheme_page = LogoColorSchemePage()
+    license_page = LicensePage()
+    import_dump_page = ImportDumpPage()
