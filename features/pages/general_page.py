@@ -17,6 +17,7 @@ class GeneralPage:
         self.profile_last_name = TextField("userProfilePopup_lastNameField", "id", "my profile last name field")
         self.save_profile_changes = Button("userProfilePopup_commitBtn", "id", "save profile changes button")
         self.time_track = Button("//a[@class='content tt']", "xpath", "Time-Track menu")
+        self.enter_tt = Link("Enter Time-Track", "link", "enter tt interface")
         self.view_tt = Link("View Time-Track", "link", "view tt interface")
         self.my_view_tt = Link("View My Time-Track", "link", "view tt interface")
         self.lock_tt = Link("Lock Time-Track", "link text", "lock tt page")

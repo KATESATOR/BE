@@ -1,4 +1,4 @@
-Feature: Leave Types by admin
+Feature: Leave Types interface
 
   Background:
     Given I am logged in as admin

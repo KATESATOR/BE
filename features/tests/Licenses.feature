@@ -1,4 +1,4 @@
-Feature: Licenses by admin
+Feature: Licenses interface
 
   Background:
     Given I am logged in as admin

@@ -24,23 +24,6 @@ Feature: Lock TT interface
     Then sort_text should contain Users / Tasks
 
   @smoke
-  Scenario: Change task
-    When I click expand_all_button
-    And I should see a web element task
-    And I click task
-    And I click type_of_work_button
-    And I click type_testing
-    And I wait 1 seconds for animation stops
-    And type_of_work_button should have title with Billable: testing
-    And I click type_of_work_button
-    And I click type_non_billable
-    And I wait 1 seconds for animation stops
-    And type_of_work_button should have title with Non-Billable
-    And I click collapse_all_button
-    And I wait 1 seconds for animation stops
-    Then I should not see a web element task
-
-  @smoke
   Scenario: Change user filter
     When I click date_selector_button
     And I click current_week_button
@@ -56,6 +39,24 @@ Feature: Lock TT interface
     And I click clear_filter_button
     And I click date_selector_button
     And I click cur_prev_week_button
+
+  @smoke
+  Scenario: Change task
+    Given I create necessary time-track and return to the lock tt
+    And I click expand_all_button
+    And I should see a web element task_backup_controlling
+    And I click task_backup_controlling
+    And I click type_of_work_button
+    And I click type_programming
+    And I wait 1 seconds for animation stops
+    And type_of_work_button should have title with Billable: programming
+    And I click type_of_work_button
+    And I click type_non_billable
+    And I wait 1 seconds for animation stops
+    And type_of_work_button should have title with Non-Billable
+    And I click collapse_all_button
+    And I wait 1 seconds for animation stops
+    Then I should not see a web element task_backup_controlling
 
   @smoke
   Scenario: Lock/Unlock all dates

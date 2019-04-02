@@ -28,12 +28,12 @@ class EnterTTPage:
                                      "user's first day")
         self.add_only = Button("addPreviousWeekReportedTasksButton", "id", "add only")
         self.new_task = Button("addTasksLink", "id", "new task")
-        self.select_customer_for_task = Button(".customerSelector .x-btn-text", "css", "customer selector")
-        self.select_project_for_task = Button(".projectSelector .x-btn-text", "css", "project selector")
-        self.our_company_customer = Button("//a[@class='x-menu-item' and text()[contains(., 'Our Company')]]",
+        self.select_customer_for_task = Button(".customerSelector .comboboxButton", "css", "customer selector")
+        self.select_project_for_task = Button(".projectSelector .comboboxButton", "css", "project selector")
+        self.our_company_customer = Button("//div[@class='itemRow cpItemRow ' and text()[contains(., 'Our Company')]]",
                                            "xpath",
                                            "customer Our Company")
-        self.general_project = Button("//a[@class='x-menu-item' and text()[contains(., 'General')]]",
+        self.general_project = Button("//div[@class='itemRow cpItemRow ' and text()[contains(., 'General')]]",
                                       "xpath",
                                       "project General")
         self.task_field = TextField("div#createTasksPopup_content tr:nth-child(1) > td.nameCell.first > input", "css",

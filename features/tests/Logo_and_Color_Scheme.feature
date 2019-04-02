@@ -1,4 +1,4 @@
-Feature: Logo & Color Scheme by admin
+Feature: Logo & Color Scheme interface
 
   Background:
     Given I am logged in as admin
@@ -18,11 +18,10 @@ Feature: Logo & Color Scheme by admin
     And I wait 2 seconds for animation stops
     Then I should not see a web element selected_purple_color
 
-  # Для прохождения теста, нужно положить файл 'gif.gif' в директорию 'C:'
   @smoke
   Scenario: Change logo
     When I click custom_logo_radiobutton
-    And I enter C:\gif.gif in the choose_logo_file
+    And I upload /gif.gif from resources in choose_logo_file
     And I click save_settings_button
     And I wait 2 seconds for animation stops
     And I should see a web element keep_logo_radiobutton
