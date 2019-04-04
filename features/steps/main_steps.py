@@ -64,8 +64,8 @@ def login_as_user(context):
     context.execute_steps(f"""
            Given I open a page {'/'}
            When {'at_login_page'} is visible
-           And I enter {'user'} in the {'username_field'}
-           And I enter {'user'} in the {'password_field'}
+           And I enter {'designer'} in the {'username_field'}
+           And I enter {'designer'} in the {'password_field'}
            And I click {'login_button'}
        """)
     time.sleep(1)
