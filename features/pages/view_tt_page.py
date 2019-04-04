@@ -17,7 +17,13 @@ class ViewTTPage:
                                   "calendar_to")
         self.calendar_user = Button("//tr[@id='ext-gen27']", "xpath", "calendar_user")
         self.calendar_from = Button("tr td.x-table-layout-cell:nth-child(2)", "CSS", "calendar_from")
-        self.calendar_day_from = Button("//a[contains(@class,'x-date-date')]//span[contains(text(),'10')]", "xpath",
+        self.calendar_month = Button(".x-date-middle", "CSS", "Choose month")
+        self.calendar_month_march = Button("tr:nth-child(3) td.x-date-mp-month:nth-child(1) > a:nth-child(1)", "CSS",
+                                           "Choose march in calendar")
+        self.calendar_month_ok = Button(".x-date-mp-ok", "CSS", "Ok calendar button")
+        self.calendar_day_from = Button("div.x-date-picker.x-unselectable.atap-base-date-picker.atap-date-picker "
+                                        "table.x-date-inner tr:nth-child(1) td.x-date-active:nth-child(5) "
+                                        "a.x-date-date em:nth-child(1) > span:nth-child(1)", "css",
                                         "calendar_day_from")
         self.calendar_day_to = Button("//a[contains(@class,'x-date-date')]//span[contains(text(),'15')]", "xpath",
                                       "calendar_day_to")
@@ -30,6 +36,7 @@ class ViewTTPage:
                                                   "user_selector_timmers_brian")
         self.user_selector_user_pto = Button("//span[contains(text(),'User for, pto test')]", "xpath",
                                              "user_selector_user_pto")
+        #Filter
         self.filter = Button("//div[contains(text(),'Filters')]", "xpath", "filter")
         self.filter_cp_selector = Button("//td[@class='middle-left-cell contents']", "xpath", "filter_cp_selector")
         self.filter_cp_selector_user = Button("//span[@id='ext-gen44']", "xpath", "filter_cp_selector")
@@ -65,22 +72,32 @@ class ViewTTPage:
                                                             "filter_tt_status_ready_for_approval")
         self.filter_tt_status_not_ready_and_rejected = CheckBox("//input[@id='viewTTStatusCheckboxId_2']", "xpath",
                                                                 "filter_tt_status_not_ready_and_rejected")
+        self.filter_tt_status_not_ready_checked = Element(".notReadyLabel", "css", "Not ready checked")
+        self.filter_tt_status_approved_checked = Element(".approvedLabel", "css", "Approved checked")
+        self.filter_find_customer_checked = Button("//span[@title='Architects Bureau']", "xpath", "Customer check")
+        #Export
         self.export_pdf = Button("//td[contains(@class,'generatePDF headerFooterCell activeButton cellWithBorder')]",
                                  "xpath", "export_pdf ")
         self.export_pdf_download = Button("//div[@id='viewTTPdfPreviewLightbox_downloadPdfBtn']//div[contains(@class,"
                                           "'buttonIcon')]", "xpath", "export_pdf_download")
         self.export_pdf_checked = Element("//div[@id='pdfPage_1']//canvas[contains(@height,'589')]", "xpath",
                                           "export_pdf__hecked")
+        #Edit Task
         self.ttdetails_show_tasks = CheckBox("//div[contains(@class,'showTasksContainer')]//input[contains"
                                              "(@type,'checkbox')]", "xpath", "ttdetails_show_tasks")
-        self.ttdetails_edit_task = Button("//tr[@class='taskRow nonLast task56 available nonWorking']//div["
-                                          "@class='subContainer'][contains(text(),'1:00')]",
-                                          "xpath",
+        self.ttdetails_edit_task = Button("tr.taskRow.nonLast.task60.available:nth-child(3) div.subContainer "
+                                          "div.iconNameContainer > div.name ",
+                                          "css",
                                           "ttdetails_edit_task")
         self.ttdetails_edit_task_other = Button(
-            "//tr[@class='taskRow task56 available nonWorking']//div[@class='subContainer'][contains(text(),'1:00')]",
-            "xpath",
+            "tr.taskRow.nonLast.task27.available:nth-child(2) td.nameColumn div.subContainer div.iconNameContainer > "
+            "div.name",
+            "css",
             "ttdetails_edit_task")
+        self.ttdetails_edit_task_other_roy = Button("table.dayRows.display-for-print "
+                                                    "tr.taskRow.task29.available:nth-child(3) td.nameColumn "
+                                                    "div.subContainer div.iconNameContainer > div.name","css",
+                                                    "ttdetails_edit_task")
         self.ttdetails_edit_task_enterhours = TextField("//div[contains(@class,'estimatedTimeWrapper')]//div", "xpath",
                                                         "ttdetails_edit_task_enterhours")
         self.ttdetails_edit_task_description_again = Button("//div[@class='scrollableContainer "
@@ -89,6 +106,7 @@ class ViewTTPage:
         self.ttdetails_edit_task_description = TextField("//textarea[@placeholder='Enter task description...']",
                                                          "xpath", "edit_description")
         self.ttdetails_edit_task_close = Button("//div[@class='hideButton_panelContainer']", "xpath", "close_task")
+        self.empty_space = Button("//table[@class='viewTTHeader noprint']", "xpath", "Empty")
         self.open_status_selector = Button("//div[@class='detailsRow withTypeOfWork']//div[@class='taskStatusButton "
                                            "editable']", "xpath", "Open status selector")
         self.complete_status = Button("//div[contains(@class,'grouped')]//div[contains(@class,'workflowStatus "
@@ -102,10 +120,10 @@ class ViewTTPage:
                                     "ttdetails_cpt")
         self.ttdetails_cpt_check = Button("//div[@class='viewByCPContainer']", "xpath", "ttdetails_cpt_check")
         self.ttdetails_date_check_min = Element(
-            "*//div[contains(@class,'subContainer')]//span[contains(text(),'10,')]",
+            "*//td[@class='date-text-td']//span[contains(text(),'Mar 01, 2019')]",
             "xpath", "date_check_min")
         self.ttdetails_date_check_max = Element(
-            "*//div[contains(@class,'subContainer')]//span[contains(text(),'15,')]",
+            "*//td[@class='date-text-td']//span[contains(text(),'Mar 15, 2019')]",
             "xpath",
             "date_check_max")
         self.balance_as = Button("//button[contains(@class,'x-btn-text') and contains( text(),'today')]", "xpath",

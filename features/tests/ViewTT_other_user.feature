@@ -12,109 +12,142 @@ Feature: View TT interface of other user by admin
   Scenario: Switching user
     When i click user_selector
     And i click user_selector_timmers_brian
-    Then I should see a text Back to me on the page
+    And I wait 2 seconds for animation stops
+    Then I should see a text Timmers, Brian on the page
 
   @smoke
   Scenario: Switching period and checking period table
     When I perform select in the ttdetails_show_tasks
-    And i click back_to_me
-    And i click calendar_from
-    And i click calendar_day_from
-    And I refresh the page
-    And i click calendar_to
+    And I wait 1 seconds for animation stops
+    And i click empty_space
+    And I wait 1 seconds for animation stops
+    And I click calendar_from
+    And I wait 1 seconds for animation stops
+    And I click calendar_month
     And I wait 2 seconds for animation stops
-    And i click calendar_day_to
+    And I click calendar_month_march
+    And I wait 1 seconds for animation stops
+    And I click calendar_month_ok
+    And I wait 2 seconds for animation stops
+    And I click calendar_day_from
+    And I refresh the page
+    And I click calendar_to
+    And I wait 3 seconds for animation stops
+    And I click calendar_month
+    And I wait 2 seconds for animation stops
+    And I click calendar_month_march
+    And I wait 1 seconds for animation stops
+    And I click calendar_month_ok
+    And I wait 2 seconds for animation stops
+    And I click calendar_day_to
+    And I wait 2 seconds for animation stops
     And I should see a web element ttdetails_date_check_min
+    And I wait 2 seconds for animation stops
     Then I should see a web element ttdetails_date_check_max
 
   @smoke
-  Scenario: Changing Filter on all active projects
-    When i click filter
-    And i click filter_cp_selector
-    And  I wait 2 seconds for animation stops
-    And i click filter_cp_selector_2
-    And i click filter_close
-    And i click filter_apply
-    Then I should see a text Clear filter on the page
+  Scenario: Changing Filter on all active customers
+    When I click filter
+    And I wait 1 seconds for animation stops
+    And I click filter_cp_selector
+    And I wait 2 seconds for animation stops
+    And I click filter_cp_selector_2
+    And I click filter_close
+    And I click filter_apply
+    Then I should see a text Our Company on the page
 
-  @smoke
+   @smoke
   Scenario: Changing Filter on all selected customers
-    When i click filter
-    And i click filter_cp_selector
-    And i click filter_cp_selector_3
+    When I click filter
+    And I wait 1 seconds for animation stops
+    And I click filter_cp_selector
+    And I click filter_cp_selector_3
     And I perform select in the filter_cp_selector_3_customer
-    And i click filter_close
-    And i click filter_apply
-    Then I should see a text Clear filter on the page
+    And I click filter_close
+    And I click filter_apply
+    And I should see a text Boston Chocolate on the page
 
   @smoke
   Scenario: Checking hide customers in filter
-    When i click filter
-    And i click filter_cp_selector
-    And i click filter_cp_selector_3
-    And i click filter_hide_show_customers
-    Then i should see a text Mobile Phone Internet Shop on the page
+    When I click filter
+    And I wait 1 seconds for animation stops
+    And I click filter_cp_selector
+    And I click filter_cp_selector_3
+    And I click filter_hide_show_customers
+    Then I should see a text Mobile Phone Internet Shop on the page
 
   @smoke
-  Scenario: Checking clear filter button is not present
-    And i click filter
-    And i click filter_cp_selector
-    And i click filter_cp_selector_2
-    And i click filter_close
-    And i click filter_apply
-    And i click filter_clear
-    Then I should not see a web element filter_clear
+  Scenario: Checking search in filter
+    When I click filter
+    And I wait 1 seconds for animation stops
+    And I click filter_cp_selector
+    And I click filter_cp_selector_3
+    And I click filter_find
+    And I enter Architects in the filter_field
+    And I wait 1 seconds for animation stops
+    Then I should see a web element filter_find_customer_checked
 
   @smoke
   Scenario: Changing Filter on all selected customers all scope
-    When i click filter
-    And i click filter_cp_selector
+    When I click filter
+    And I wait 1 seconds for animation stops
+    And I click filter_cp_selector
     And i click filter_cp_selector_3
     And I click filter_select_all
-    And i click filter_close
-    And i click filter_apply
-    And i click filter
+    And I click filter_close
+    And I click filter_apply
+    And I click filter
     And I should not see a text All projects of all customers  (active and archived) on the page
     Then I should not see a text All active projects оf all active customers on the page
 
   @smoke
   Scenario: Changing Filter TT status to empty
-    When i click filter
+    When I click filter
+    And I wait 1 seconds for animation stops
     And I perform deselect in the filter_tt_status_approved
     And I perform deselect in the filter_tt_status_ready_for_approval
+    And I wait 1 seconds for animation stops
     And I perform deselect in the filter_tt_status_not_ready_and_rejected
-    And i click filter_apply
-    Then I should see a text Clear filter on the page
+    And I click filter_apply
+    And I should see a text Clear filter on the page
+    Then I should see a text There are no time-track with the selected statuses in this period on the page
 
   @smoke
   Scenario: Changing Filter TT status to Not Ready and Rejected
-    When i click filter
+    When I click filter
+    And I wait 1 seconds for animation stops
     And I perform deselect in the filter_tt_status_approved
     And I perform deselect in the filter_tt_status_ready_for_approval
     And I perform deselect in the filter_tt_status_not_ready_and_rejected
     And I perform select in the filter_tt_status_not_ready_and_rejected
-    And i click filter_apply
-    Then I should see a text Not Ready and Rejected on the page
+    And I click filter_apply
+    And I wait 1 seconds for animation stops
+    And I should not see a web element filter_tt_status_approved
+    Then I should see a web element filter_tt_status_not_ready_checked
 
   @smoke
   Scenario: Changing Filter TT status to Ready for Approval
-    When i click filter
+    When I click filter
+    And I wait 1 seconds for animation stops
     And I perform deselect in the filter_tt_status_approved
     And I perform deselect in the filter_tt_status_ready_for_approval
     And I perform deselect in the filter_tt_status_not_ready_and_rejected
     And I perform select in the filter_tt_status_ready_for_approval
     And i click filter_apply
-    Then I should see a text Ready for Approval on the page
+    And I wait 1 seconds for animation stops
+    Then I should not see a web element filter_tt_status_approved
 
   @smoke
   Scenario: Changing Filter TT status to Approved
-    When i click filter
+    When I click filter
+    And I wait 1 seconds for animation stops
     And I perform deselect in the filter_tt_status_approved
     And I perform deselect in the filter_tt_status_ready_for_approval
     And I perform deselect in the filter_tt_status_not_ready_and_rejected
     And I perform select in the filter_tt_status_approved
-    And i click filter_apply
-    Then I should see a text Approved on the page
+    And I click filter_apply
+    And I wait 1 seconds for animation stops
+    Then I should see a text There are no time-track with the selected statuses in this period on the page
 
   @smoke
   Scenario: Checking clear filter button is not present
@@ -123,7 +156,6 @@ Feature: View TT interface of other user by admin
 
   @smoke
    Scenario: Edit task
-    # Нужно добавить на таймшит(10 марта) задачу "Setting up Time Management system" с треком 1:00
      When I perform select in the ttdetails_show_tasks
      And I wait 2 seconds for animation stops
      And i click ttdetails_edit_task_other
@@ -153,3 +185,5 @@ Feature: View TT interface of other user by admin
     And i click export_pdf_download
     And I wait 3 seconds for animation stops
     Then Checking file with format pdf
+
+
