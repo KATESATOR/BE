@@ -115,7 +115,7 @@ Feature: View TT interface of other user by admin
     And I perform deselect in the filter_tt_status_not_ready_and_rejected
     And I click filter_apply
     And I wait 1 seconds for animation stops
-    Then I should not see a web element no_tt_in_period_checked
+    Then I should see a web element no_tt_in_period_checked
 
   @smoke
   Scenario: Changing Filter TT status to Not Ready and Rejected
