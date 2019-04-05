@@ -46,6 +46,7 @@ Feature: View TT interface by user
     And I click filter_cp_selector_2
     And I click filter_close
     And I click filter_apply
+    And I wait 2 seconds for animation stops
     Then I should see a web element ourcompany_checked
 
   @smoke
@@ -57,6 +58,7 @@ Feature: View TT interface by user
     And I perform select in the filter_cp_selector_3_customer
     And I click filter_close
     And I click filter_apply
+    And I wait 1 seconds for animation stops
     Then I should not see a web element archived_checked
 
   @smoke
@@ -66,6 +68,7 @@ Feature: View TT interface by user
     And I click filter_cp_selector
     And I click filter_cp_selector_3
     And I click filter_hide_show_customers
+    And I wait 1 seconds for animation stops
     Then I should see a web element filter_archived_checked
 
   @smoke
@@ -76,6 +79,7 @@ Feature: View TT interface by user
     And I click filter_cp_selector_3
     And I click filter_find
     And I enter Architects in the filter_field
+    And I wait 1 seconds for animation stops
     And I wait 1 seconds for animation stops
     Then I should see a web element filter_find_customer_checked
 
@@ -89,7 +93,9 @@ Feature: View TT interface by user
     And I click filter_close
     And I click filter_apply
     And I click filter
+    And I wait 1 seconds for animation stops
     And I should not see a web element archived_checked
+    And I wait 1 seconds for animation stops
     Then I should see a web element ourcompany_checked
 
   @smoke
@@ -101,7 +107,8 @@ Feature: View TT interface by user
     And I wait 1 seconds for animation stops
     And I perform deselect in the filter_tt_status_not_ready_and_rejected
     And I click filter_apply
-    Then I should not see a web element no_tt_in_period_checked
+    And I wait 1 seconds for animation stops
+    Then I should see a web element no_tt_in_period_checked
 
   @smoke
   Scenario: Changing Filter TT status to Not Ready and Rejected
@@ -114,6 +121,7 @@ Feature: View TT interface by user
     And I click filter_apply
     And I wait 1 seconds for animation stops
     And I should not see a web element filter_tt_status_approved
+    And I wait 1 seconds for animation stops
     Then I should see a web element filter_tt_status_not_ready_checked
 
   @smoke
@@ -143,6 +151,7 @@ Feature: View TT interface by user
   @smoke
   Scenario: Checking clear filter button is not present
     When I click filter_clear
+    And I wait 1 seconds for animation stops
     Then I should not see a web element filter_clear
 
   @smoke
@@ -154,7 +163,9 @@ Feature: View TT interface by user
     And i click open_status_selector
     And I wait 2 seconds for animation stops
     And i click complete_status
+    And I wait 1 seconds for animation stops
     And I should not see a web element complete_status_checked
+    And I wait 1 seconds for animation stops
     Then i click ttdetails_edit_task_close
 
   @smoke

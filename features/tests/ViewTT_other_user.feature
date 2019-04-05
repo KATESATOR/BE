@@ -19,6 +19,8 @@ Feature: View TT interface of other user by admin
   Scenario: Switching period and checking period table
     When I perform select in the ttdetails_show_tasks
     And I wait 1 seconds for animation stops
+    And i click empty_space
+    And I wait 2 seconds for animation stops
     And I click calendar_from
     And I wait 1 seconds for animation stops
     And I click calendar_month
@@ -53,6 +55,7 @@ Feature: View TT interface of other user by admin
     And I click filter_cp_selector_2
     And I click filter_close
     And I click filter_apply
+    And I wait 2 seconds for animation stops
     Then I should see a web element ourcompany_checked
 
   @smoke
@@ -64,6 +67,7 @@ Feature: View TT interface of other user by admin
     And I perform select in the filter_cp_selector_3_customer
     And I click filter_close
     And I click filter_apply
+    And I wait 1 seconds for animation stops
     Then I should not see a web element archived_checked
 
   @smoke
@@ -96,7 +100,9 @@ Feature: View TT interface of other user by admin
     And I click filter_close
     And I click filter_apply
     And I click filter
+    And I wait 1 seconds for animation stops
     And I should not see a web element archived_checked
+    And I wait 1 seconds for animation stops
     Then I should see a web element ourcompany_checked
 
   @smoke
@@ -108,6 +114,7 @@ Feature: View TT interface of other user by admin
     And I wait 1 seconds for animation stops
     And I perform deselect in the filter_tt_status_not_ready_and_rejected
     And I click filter_apply
+    And I wait 1 seconds for animation stops
     Then I should not see a web element no_tt_in_period_checked
 
   @smoke
@@ -121,6 +128,7 @@ Feature: View TT interface of other user by admin
     And I click filter_apply
     And I wait 1 seconds for animation stops
     And I should not see a web element filter_tt_status_approved
+    And I wait 1 seconds for animation stops
     Then I should see a web element filter_tt_status_not_ready_checked
 
   @smoke
@@ -133,7 +141,7 @@ Feature: View TT interface of other user by admin
     And I perform select in the filter_tt_status_ready_for_approval
     And i click filter_apply
     And I wait 1 seconds for animation stops
-    Then I should see a web element no_tt_in_period_checked
+    Then I should see a web element filter_tt_status_ready_checked
 
   @smoke
   Scenario: Changing Filter TT status to Approved
@@ -142,15 +150,16 @@ Feature: View TT interface of other user by admin
     And I perform deselect in the filter_tt_status_approved
     And I perform deselect in the filter_tt_status_ready_for_approval
     And I perform deselect in the filter_tt_status_not_ready_and_rejected
+    And I wait 1 seconds for animation stops
     And I perform select in the filter_tt_status_approved
     And I click filter_apply
     And I wait 1 seconds for animation stops
-    And I should not see a web element filter_tt_status_not_ready_checked
-    Then I should see a web element filter_tt_status_approved_checked
+    Then I should see a web element no_tt_in_period_checked
 
   @smoke
   Scenario: Checking clear filter button is not present
     When I click filter_clear
+    And I wait 1 seconds for animation stops
     Then I should not see a web element filter_clear
 
   @smoke
@@ -162,9 +171,10 @@ Feature: View TT interface of other user by admin
      And I enter testtest in the ttdetails_edit_task_description
      And I click ttdetails_edit_task_close
      And I click ttdetails_edit_task_other
-     And I wait 2 seconds for animation stops
+     And I wait 3 seconds for animation stops
      And I should see a web element description_text_checked
      And I click ttdetails_edit_task_description_again
+     And I wait 1 seconds for animation stops
      And I enter   in the ttdetails_edit_task_description
      Then I click ttdetails_edit_task_close
 
@@ -172,6 +182,7 @@ Feature: View TT interface of other user by admin
   Scenario: Table present View by Days, cpt
     When I click ttdetails_cpt
     And I perform select in the ttdetails_show_tasks
+    And I wait 1 seconds for animation stops
     And I click ttdetails_days
     Then I should see a web element ttdetails_cpt_check
 

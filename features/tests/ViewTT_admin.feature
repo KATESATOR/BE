@@ -52,6 +52,7 @@ Feature: View TT interface by admin
     And I click filter_cp_selector_2
     And I click filter_close
     And I click filter_apply
+    And I wait 2 seconds for animation stops
     Then I should see a web element ourcompany_checked
 
   @smoke
@@ -63,6 +64,7 @@ Feature: View TT interface by admin
     And I perform select in the filter_cp_selector_3_customer
     And I click filter_close
     And I click filter_apply
+    And I wait 1 seconds for animation stops
     Then I should not see a web element archived_checked
 
   @smoke
@@ -72,6 +74,7 @@ Feature: View TT interface by admin
     And I click filter_cp_selector
     And I click filter_cp_selector_3
     And I click filter_hide_show_customers
+    And I wait 1 seconds for animation stops
     Then I should see a web element filter_archived_checked
 
   @smoke
@@ -82,6 +85,7 @@ Feature: View TT interface by admin
     And I click filter_cp_selector_3
     And I click filter_find
     And I enter Architects in the filter_field
+    And I wait 1 seconds for animation stops
     And I wait 1 seconds for animation stops
     Then I should see a web element filter_find_customer_checked
 
@@ -95,7 +99,9 @@ Feature: View TT interface by admin
     And I click filter_close
     And I click filter_apply
     And I click filter
+    And I wait 1 seconds for animation stops
     And I should not see a web element archived_checked
+    And I wait 1 seconds for animation stops
     Then I should see a web element ourcompany_checked
 
   @smoke
@@ -107,6 +113,7 @@ Feature: View TT interface by admin
     And I wait 1 seconds for animation stops
     And I perform deselect in the filter_tt_status_not_ready_and_rejected
     And I click filter_apply
+    And I wait 1 seconds for animation stops
     Then I should not see a web element no_tt_in_period_checked
 
   @smoke
@@ -116,10 +123,12 @@ Feature: View TT interface by admin
     And I perform deselect in the filter_tt_status_approved
     And I perform deselect in the filter_tt_status_ready_for_approval
     And I perform deselect in the filter_tt_status_not_ready_and_rejected
+    And I wait 1 seconds for animation stops
     And I perform select in the filter_tt_status_not_ready_and_rejected
     And I click filter_apply
     And I wait 1 seconds for animation stops
     And I should not see a web element filter_tt_status_approved
+    And I wait 1 seconds for animation stops
     Then I should see a web element filter_tt_status_not_ready_checked
 
   @smoke
@@ -129,6 +138,7 @@ Feature: View TT interface by admin
     And I perform deselect in the filter_tt_status_approved
     And I perform deselect in the filter_tt_status_ready_for_approval
     And I perform deselect in the filter_tt_status_not_ready_and_rejected
+    And I wait 1 seconds for animation stops
     And I perform select in the filter_tt_status_ready_for_approval
     And i click filter_apply
     And I wait 1 seconds for animation stops
@@ -141,10 +151,12 @@ Feature: View TT interface by admin
     And I perform deselect in the filter_tt_status_approved
     And I perform deselect in the filter_tt_status_ready_for_approval
     And I perform deselect in the filter_tt_status_not_ready_and_rejected
+    And I wait 1 seconds for animation stops
     And I perform select in the filter_tt_status_approved
     And I click filter_apply
     And I wait 1 seconds for animation stops
     And I should not see a web element filter_tt_status_not_ready_checked
+    And I wait 1 seconds for animation stops
     Then I should see a web element filter_tt_status_approved_checked
 
   @smoke
@@ -167,6 +179,7 @@ Feature: View TT interface by admin
     And I wait 2 seconds for animation stops
     And I should see a web element description_text_checked
     And I click ttdetails_edit_task_description_again
+    And I wait 1 seconds for animation stops
     And I enter   in the ttdetails_edit_task_description
     Then I click ttdetails_edit_task_close
 
@@ -176,6 +189,7 @@ Feature: View TT interface by admin
     And I wait 1 seconds for animation stops
     And I perform select in the ttdetails_show_tasks
     And I click ttdetails_days
+    And I wait 1 seconds for animation stops
     Then I should see a web element ttdetails_cpt_check
 
   @smoke
