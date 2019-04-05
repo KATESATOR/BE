@@ -36,7 +36,7 @@ class ViewTTPage:
                                                   "user_selector_timmers_brian")
         self.user_selector_user_pto = Button("//span[contains(text(),'User for, pto test')]", "xpath",
                                              "user_selector_user_pto")
-        #Filter
+        # Filter
         self.filter = Button("//div[contains(text(),'Filters')]", "xpath", "filter")
         self.filter_cp_selector = Button("//td[@class='middle-left-cell contents']", "xpath", "filter_cp_selector")
         self.filter_cp_selector_user = Button("//span[@id='ext-gen44']", "xpath", "filter_cp_selector")
@@ -74,15 +74,22 @@ class ViewTTPage:
                                                                 "filter_tt_status_not_ready_and_rejected")
         self.filter_tt_status_not_ready_checked = Element(".notReadyLabel", "css", "Not ready checked")
         self.filter_tt_status_approved_checked = Element(".approvedLabel", "css", "Approved checked")
+        self.filter_tt_status_ready_checked = Element(".readyLabel", "css", "Approved checked")
         self.filter_find_customer_checked = Button("//span[@title='Architects Bureau']", "xpath", "Customer check")
-        #Export
+        self.ourcompany_checked = Element("*//div[contains(text(), 'Our Company')]", "xpath", "Customer check")
+        self.archived_checked = Element("*//div[contains(text(), 'Mobile Phone Internet Shop')]", "xpath", "Customer "
+                                                                                                           "check")
+        self.filter_archived_checked = Element("//span[@title='Mobile Phone Internet Shop']", "xpath", "Customer "
+                                                                                                       "check")
+        self.no_tt_in_period_checked = Element("//div[@class='noDayRowsLabel']", "xpath", "No time-track check")
+        # Export
         self.export_pdf = Button("//td[contains(@class,'generatePDF headerFooterCell activeButton cellWithBorder')]",
                                  "xpath", "export_pdf ")
         self.export_pdf_download = Button("//div[@id='viewTTPdfPreviewLightbox_downloadPdfBtn']//div[contains(@class,"
                                           "'buttonIcon')]", "xpath", "export_pdf_download")
         self.export_pdf_checked = Element("//div[@id='pdfPage_1']//canvas[contains(@height,'589')]", "xpath",
                                           "export_pdf__hecked")
-        #Edit Task
+        # Edit Task
         self.ttdetails_show_tasks = CheckBox("//div[contains(@class,'showTasksContainer')]//input[contains"
                                              "(@type,'checkbox')]", "xpath", "ttdetails_show_tasks")
         self.ttdetails_edit_task = Button("tr.taskRow.nonLast.task60.available:nth-child(3) div.subContainer "
@@ -96,7 +103,7 @@ class ViewTTPage:
             "ttdetails_edit_task")
         self.ttdetails_edit_task_other_roy = Button("table.dayRows.display-for-print "
                                                     "tr.taskRow.task29.available:nth-child(3) td.nameColumn "
-                                                    "div.subContainer div.iconNameContainer > div.name","css",
+                                                    "div.subContainer div.iconNameContainer > div.name", "css",
                                                     "ttdetails_edit_task")
         self.ttdetails_edit_task_enterhours = TextField("//div[contains(@class,'estimatedTimeWrapper')]//div", "xpath",
                                                         "ttdetails_edit_task_enterhours")
@@ -105,6 +112,8 @@ class ViewTTPage:
                                                             "edit_description_again")
         self.ttdetails_edit_task_description = TextField("//textarea[@placeholder='Enter task description...']",
                                                          "xpath", "edit_description")
+        self.description_text_checked = Element("//div[@class='components_linkifiedText' and contains(text(), "
+                                                "'testtest')]", "xpath", "Description test check")
         self.ttdetails_edit_task_close = Button("//div[@class='hideButton_panelContainer']", "xpath", "close_task")
         self.empty_space = Button("//table[@class='viewTTHeader noprint']", "xpath", "Empty")
         self.open_status_selector = Button("//div[@class='detailsRow withTypeOfWork']//div[@class='taskStatusButton "
@@ -112,6 +121,9 @@ class ViewTTPage:
         self.complete_status = Button("//div[contains(@class,'grouped')]//div[contains(@class,'workflowStatus "
                                       "statusType_completed statusColor_yellow statusTypeIcon_yellow')]", "xpath",
                                       "Open status selector")
+        self.complete_status_checked = Element("//div[@class='workflowStatus statusType_completed statusColor_yellow "
+                                               "statusTypeIcon_yellow withPrefix showArrow']//div[@class='name']["
+                                               "contains(text(),'Released')]" "xpath", "Complete status check")
         self.open_status = Button("//div[contains(@class,'grouped')]//div[contains(@class,'workflowStatus "
                                   "statusType_open statusColor_violet statusTypeIcon_violet')]//div[contains(text(),"
                                   "'In Progress')]", "xpath" "Status In Progress")

@@ -19,6 +19,7 @@ Feature: View TT interface by admin
     And I click calendar_month_ok
     And I wait 2 seconds for animation stops
     And I click calendar_day_from
+    And I wait 1 seconds for animation stops
     And I refresh the page
     And I click calendar_to
     And I wait 3 seconds for animation stops
@@ -39,7 +40,7 @@ Feature: View TT interface by admin
     When I click user_selector
     And I wait 1 seconds for animation stops
     And I click user_selector_timmers_brian
-    And I should see a text Timmers, Brian on the page
+    And user_selector should contain Timmers, Brian
     Then I click back_to_me
 
   @smoke
@@ -51,7 +52,7 @@ Feature: View TT interface by admin
     And I click filter_cp_selector_2
     And I click filter_close
     And I click filter_apply
-    Then I should see a text Our Company on the page
+    Then I should see a web element ourcompany_checked
 
   @smoke
   Scenario: Changing Filter on all selected customers
@@ -62,7 +63,7 @@ Feature: View TT interface by admin
     And I perform select in the filter_cp_selector_3_customer
     And I click filter_close
     And I click filter_apply
-    And I should see a text Boston Chocolate on the page
+    Then I should not see a web element archived_checked
 
   @smoke
   Scenario: Checking hide customers in filter
@@ -71,7 +72,7 @@ Feature: View TT interface by admin
     And I click filter_cp_selector
     And I click filter_cp_selector_3
     And I click filter_hide_show_customers
-    Then I should see a text Mobile Phone Internet Shop on the page
+    Then I should see a web element filter_archived_checked
 
   @smoke
   Scenario: Checking search in filter
@@ -94,8 +95,8 @@ Feature: View TT interface by admin
     And I click filter_close
     And I click filter_apply
     And I click filter
-    And I should not see a text All projects of all customers  (active and archived) on the page
-    Then I should not see a text All active projects оf all active customers on the page
+    And I should not see a web element archived_checked
+    Then I should see a web element ourcompany_checked
 
   @smoke
   Scenario: Changing Filter TT status to empty
@@ -106,8 +107,7 @@ Feature: View TT interface by admin
     And I wait 1 seconds for animation stops
     And I perform deselect in the filter_tt_status_not_ready_and_rejected
     And I click filter_apply
-    And I should see a text Clear filter on the page
-    Then I should see a text There are no time-track with the selected statuses in this period on the page
+    Then I should not see a web element no_tt_in_period_checked
 
   @smoke
   Scenario: Changing Filter TT status to Not Ready and Rejected
@@ -132,7 +132,7 @@ Feature: View TT interface by admin
     And I perform select in the filter_tt_status_ready_for_approval
     And i click filter_apply
     And I wait 1 seconds for animation stops
-    Then I should see a text There are no time-track with the selected statuses in this period on the page
+    Then I should see a web element no_tt_in_period_checked
 
   @smoke
   Scenario: Changing Filter TT status to Approved
@@ -158,11 +158,14 @@ Feature: View TT interface by admin
     And I wait 2 seconds for animation stops
     And I click ttdetails_edit_task
     And I wait 2 seconds for animation stops
-    And I enter test in the ttdetails_edit_task_description
+    And I enter testtest in the ttdetails_edit_task_description
     And I click ttdetails_edit_task_close
+    And I wait 1 seconds for animation stops
+    And I refresh the page
+    And I wait 2 seconds for animation stops
     And I click ttdetails_edit_task
     And I wait 2 seconds for animation stops
-    And I should see a text test on the page
+    And I should see a web element description_text_checked
     And I click ttdetails_edit_task_description_again
     And I enter   in the ttdetails_edit_task_description
     Then I click ttdetails_edit_task_close
@@ -180,7 +183,6 @@ Feature: View TT interface by admin
     When I click export_pdf
     And I wait 4 seconds for animation stops
     And I should see a web element export_pdf
-    And I should see a text Download PDF on the page
     And I click export_pdf_download
     And I wait 3 seconds for animation stops
     Then Checking file with format pdf
