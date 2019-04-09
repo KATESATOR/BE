@@ -6,12 +6,69 @@ Feature: AP Leaves Management by admin
     And ap_leaves_management is visible
 
   @Smoke
+  Scenario: Creating and deleting leave requests in chart
+    When I click sort_users_chart
+    And I wait 1 seconds for animation stops
+    And first_row_name_chart should contain Gibson, Maurice
+    And I click week_start_day_cell_no_leave
+    And I click first_element_in_menu
+    And I wait 1 seconds for animation stops
+    And week_start_day_cell_leave should have class with dayCell weekStartDay leaveType1 approved fullLeave
+    And I click week_start_day_cell_leave
+    And I click sixth_element_in_menu
+    And I accept alert menu
+    And I wait 1 seconds for animation stops
+    And week_start_day_cell should have class with dayCell weekStartDay noLeave
+    And I refresh the page
+    And I click week_start_day_cell_no_leave
+    And I click third_element_in_menu
+    And I wait 1 seconds for animation stops
+    And I click week_start_day_cell_no_leave
+    And I click fourth_element_in_menu
+    And I click week_start_day_cell_no_leave
+    And I click fifth_element_in_menu
+    And I click week_start_day_cell_no_leave
+    And I click sixth_element_in_menu
+    And I click week_start_day_cell_no_leave
+    And I click seventh_element_in_menu
+    And I click sort_users_chart
+    And I wait 1 seconds for animation stops
+    And first_row_name_chart should contain Venson, Ronald
+    And I click week_start_day_cell_no_leave
+    And I click ninth_element_in_menu
+    And I wait 1 seconds for animation stops
+    And I click lt_edit_menu
+    And I click third_element_in_menu
+    And I enter 4 in the lt_time_field
+    And I enter Test comment in the lt_comment_field
+    And I click submit_request_button
+    And I wait 1 seconds for animation stops
+    And week_start_day_cell_leave should have class with dayCell weekStartDay leaveType3 approved fiftyPercentLeave
+    And I click week_start_day_cell_no_leave
+    And I click second_element_in_menu
+    And I click week_start_day_cell_no_leave
+    And I click third_element_in_menu
+    And I click week_start_day_cell_no_leave
+    And I click fourth_element_in_menu
+    And I click week_start_day_cell_no_leave
+    And I click fifth_element_in_menu
+    And I click week_start_day_cell_no_leave
+    And I click sixth_element_in_menu
+    And I click week_start_day_cell_no_leave
+    And I click first_element_in_menu
+    And I wait 1 seconds for animation stops
+    And I click sort_users_chart
+    And I wait 1 seconds for animation stops
+    And first_row_name_chart should contain Gibson, Maurice
+    Then first_row_planned_lt should contain 40
+
+  @Smoke
   Scenario: Pager on requests list
     When I click lt_requests_tab
     And I click page_selector
     And I click second_option_page_selector
     And I wait 1 seconds for animation stops
-    And I should see a web element twenty_fifth_row
+    And I should see a web element twelfth_row
     And I click page_selector
     And I click first_option_page_selector
     And I wait 1 seconds for animation stops
@@ -24,20 +81,49 @@ Feature: AP Leaves Management by admin
     Then selected_page should contain 1
 
   @Smoke
-  Scenario: Sorting in requests table
+  Scenario: Sorting and filtering in requests table
     When I click lt_requests_tab
-    And I perform select in the past_leaves_chkbx
+    And I click sort_period
     And I wait 1 seconds for animation stops
-    And I should see a web element past_request
+    And sort_period should have class with descending
+    And first_row_name_table should contain Venson, Ronald
+    And I click user_filter_table
+    And I click selected_users
+    And I perform select in the design_in_user_filter
+    And I click apply_filter
+    And I wait 1 seconds for animation stops
+    And user_filter_table should contain 1 department
+    And first_row_name_table should contain Gibson, Maurice
+    And I click user_filter_table
+    And I click selected_users
+    And I perform select in the design_in_user_filter
+    And I perform select in the administration_in_user_filter
+    And I click apply_filter
+    And I wait 1 seconds for animation stops
+    And no_leave_time_row should contain There are no leave time requests to process
+    And I click user_filter_table
+    And I click all_users
+    And I click apply_filter
+    And I wait 1 seconds for animation stops
+    And user_filter_table should contain All Users
     And I click sort_users
     And I wait 1 seconds for animation stops
     And first_row_name_table should contain Gibson, Maurice
     And I click sort_groups
     And I wait 1 seconds for animation stops
     And first_row_name_table should contain Gibson, Maurice
+    And first_group_in_table should have title with Design
     And I click sort_by_time_zone
     And I wait 1 seconds for animation stops
-    And first_row_name_table should contain O'Dowd, Roy
+    And I click sort_by_time_zone
+    And I wait 1 seconds for animation stops
+    And sort_by_time_zone should have class with descending
+    And first_row_name_table should contain Venson, Ronald
+    And first_group_in_table should have title with Sydney Office
+    And I click request_comment_button
+    And I should see a web element request_comment
+    And request_comment should contain Test comment
+    And I refresh the page
     And I click sort_leave_type
     And I wait 1 seconds for animation stops
     And first_row_leave_type should contain Sick Leave
@@ -46,11 +132,7 @@ Feature: AP Leaves Management by admin
     And sort_status should have class with ascending
     And I click sort_period
     And I wait 1 seconds for animation stops
-    And sort_period should have class with ascending
-    And I perform deselect in the past_leaves_chkbx
-    And I click sort_period
-    And I wait 1 seconds for animation stops
-    Then I should not see a web element past_request
+    Then sort_period should have class with ascending
 
   @Smoke
   Scenario: User Filter in leave time planning chart
@@ -70,21 +152,15 @@ Feature: AP Leaves Management by admin
     Then user_filter should contain All Users
 
   @Smoke
-  Scenario: Modifying leave request in chart and user filter in table
-    When I click previous_week_button
+  Scenario: Modifying leave request in chart
+    When I click week_start_day_cell
+    And I click first_element_in_menu
+    And I wait 1 seconds for animation stops
+    And week_start_day_cell should have class with dayCell weekStartDay leaveType3 fullLeave
     And I click week_start_day_cell
     And I click first_element_in_menu
     And I wait 1 seconds for animation stops
-    And week_start_day_cell should have class with dayCell weekStartDay leaveType1 approved fullLeave
-    And first_row_balance_chart should contain 104
-    And I click week_start_day_cell
-    And I click first_element_in_menu
-    And I wait 1 seconds for animation stops
-    And week_start_day_cell should have class with dayCell weekStartDay leaveType1 fullLeave
-    And I click week_start_day_cell
-    And I click first_element_in_menu
-    And I wait 1 seconds for animation stops
-    And week_start_day_cell should have class with dayCell weekStartDay leaveType1 approved fullLeave
+    And week_start_day_cell should have class with dayCell weekStartDay leaveType3 approved fullLeave
     And I click week_start_day_cell
     And I click fourth_element_in_menu
     And I click lt_edit_menu
@@ -97,29 +173,7 @@ Feature: AP Leaves Management by admin
     And I click second_element_in_menu
     And I click reject_button
     And I wait 1 seconds for animation stops
-    And week_start_day_cell should have class with dayCell weekStartDay noLeave
-    And I click lt_requests_tab
-    And I click user_filter_table
-    And I click selected_users
-    And I perform select in the design_in_user_filter
-    And I click apply_filter
-    And I wait 2 seconds for animation stops
-    And user_filter_table should contain 1 department
-    And I click sort_users
-    And I wait 1 seconds for animation stops
-    And first_row_name_table should contain Gibson, Maurice
-    And I perform select in the first_row_checkbox
-    And I click delete_bulk
-    And I click delete_ok_button
-    And I wait 1 seconds for animation stops
-    And I click sort_period
-    And I click user_filter_table
-    And I click selected_users
-    And I perform deselect in the design_in_user_filter
-    And I click all_users
-    And I click apply_filter
-    And I wait 2 seconds for animation stops
-    Then user_filter_table should contain All Users
+    Then week_start_day_cell should have class with dayCell weekStartDay noLeave
 
   @Smoke
   Scenario: Changing weeks in chart
@@ -141,27 +195,17 @@ Feature: AP Leaves Management by admin
     Then I should not see a web element return_to_cur_week
 
   @Smoke
-  Scenario: Deleting leave request
-    When I click week_start_day_cell
-    And I click first_element_in_menu
-    And I wait 1 seconds for animation stops
-    And week_start_day_cell should have class with dayCell weekStartDay leaveType1 approved fullLeave
-    And I click week_start_day_cell
-    And I click sixth_element_in_menu
-    And I accept alert menu
-    And I wait 1 seconds for animation stops
-    Then week_start_day_cell should have class with dayCell weekStartDay noLeave
-
-  @Smoke
   Scenario: Filtering by leave type and status, and edit request in table
     When I click lt_requests_tab
-    And I click status_filter
-    And I click all_statuses_in_filter
+    And I click first_row_status
+    And I click first_element_in_menu
+    And I wait 1 seconds for animation stops
+    And first_row_status should contain Waiting for Approval
     And I click first_row_request_date
     And I enter 2 in the request_duration_field
     And I click save_changes
     And I wait 1 seconds for animation stops
-    And first_row_period should contain 0.3d (2h)
+    And first_row_period should contain 0.3d (2.03h)
     And I click leave_type_filter
     And I click selected_ltype_in_filter
     And I perform select in the vacation_in_filter
@@ -194,33 +238,46 @@ Feature: AP Leaves Management by admin
     And I click status_filter
     And I click all_statuses_in_filter
     And I wait 1 seconds for animation stops
-    Then status_filter should contain All statuses
+    And status_filter should contain All statuses
+    And I click balances_filter
+    And I click second_element_in_menu
+    And I wait 1 seconds for animation stops
+    And balances_filter should contain PTO Balance
+    And first_row_leave_type should contain Time Off
+    And I click balances_filter
+    And I click third_element_in_menu
+    And I wait 1 seconds for animation stops
+    And balances_filter should contain Sick Days Balance
+    And first_row_leave_type should contain Medical Treatment
+    And I click balances_filter
+    And I click first_element_in_menu
+    And I wait 1 seconds for animation stops
+    Then balances_filter should contain All balances
 
   @Smoke
   Scenario: Bulk actions in table
     When I click lt_requests_tab
-    And I click sort_period
-    And I click user_filter_table
-    And I click selected_users
-    And I perform select in the design_in_user_filter
-    And I click apply_filter
-    And I wait 2 seconds for animation stops
-    And user_filter_table should contain 1 department
-    And first_row_name_table should contain Timmers, Brian
-    And first_row_status should contain Waiting for Approval
-    And I perform select in the first_row_checkbox
-    And I click approve_bulk
-    And I wait 1 seconds for animation stops
-    And first_row_status should contain Approved
     And I perform select in the first_row_checkbox
     And I click reject_bulk
     And I click reject_ok_button
     And I wait 1 seconds for animation stops
     And first_row_status should contain Rejected
-    And I click status_filter
-    And I click rejected_status_filter
     And I perform select in the first_row_checkbox
     And I click delete_bulk
     And I click delete_ok_button
     And I wait 1 seconds for animation stops
-    Then I should not see a web element first_row_name_table
+    And first_row_status should contain Waiting for Approval
+    And I perform select in the first_row_checkbox
+    And I click approve_bulk
+    And I wait 1 seconds for animation stops
+    And first_row_status should contain Approved
+    And I perform select in the common_chkbx
+    And I click delete_bulk
+    And I click delete_ok_button
+    And I wait 1 seconds for animation stops
+    And I perform select in the common_chkbx
+    And I click delete_bulk
+    And I click delete_ok_button
+    And I wait 1 seconds for animation stops
+    And no_leave_time_row should contain There are no leave time requests to process
+    Then I should not see a web element first_row_status
