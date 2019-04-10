@@ -39,7 +39,7 @@ Feature: aP My Schedule interface by admin
     And I click delete_request
     And I accept alert menu
     And I wait 1 seconds for animation stops
-    Then week_start_day_cell should have class with dayCell weekStartDay noLeave
+    And week_start_day_cell should have class with dayCell weekStartDay noLeave
     And I click week_start_day_no_leave
     And I click leave_type_selector
     And I click third_leave_type
