@@ -14,7 +14,7 @@ from features.pages.approve_tt_page import ApproveTTPage
 from features.pages.tasks_page import TasksPage
 from features.pages.reports_page import ReportsPage
 from features.pages.user_list_page import UserListPage
-from features.pages.ap_my_schedule import ApMySchedule
+from features.pages.aP_my_schedule import ApMySchedule
 from features.pages.leave_types_page import LeaveTypesPage
 from features.pages.work_schedule_page import WorkSchedulePage
 from features.pages.notification_page import NotificationPage
