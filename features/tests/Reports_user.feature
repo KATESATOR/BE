@@ -94,17 +94,25 @@ Feature: Reports interface by user
   @smoke
   Scenario Outline: Export charts in .pdf files
     Examples: <chart_name>
-      | chart_name          |
-      | Total working hours |
-      | Leave hours         |
-      | PTO Balance         |
-      | Sick Days Balance   |
-
+      | chart_name             |
+      | Total working hours    |
+      | Approved working hours |
+      | Leave hours            |
     When I click create_chart_button
     And I wait 2 seconds for animation stops
     And I click show_selector_button
     And I wait 2 seconds for animation stops
     And I select <chart_name> in chart selector
+    And I wait 2 seconds for animation stops
+    And I click start_date_range
+    And I wait 2 seconds for animation stops
+    And I click select_year_month
+    And I wait 2 seconds for animation stops
+    And I click select_2017
+    And I wait 2 seconds for animation stops
+    And I click ok_button
+    And I wait 2 seconds for animation stops
+    And I click start_date_range
     And I wait 2 seconds for animation stops
     And I click export_chart_button
     And I wait 2 seconds for animation stops
@@ -113,20 +121,16 @@ Feature: Reports interface by user
     Then I search report <chart_name> with the extension pdf in downloads folder
 
   @smoke
-  Scenario Outline: Export charts in .pdf files
+  Scenario Outline: Export PTO & Sick chart in .pdf files
     Examples: <chart_name>
-      | chart_name             |
-      | Approved working hours |
-
+      | chart_name        |
+      | PTO Balance       |
+      | Sick Days Balance |
     When I click create_chart_button
     And I wait 2 seconds for animation stops
     And I click show_selector_button
     And I wait 2 seconds for animation stops
     And I select <chart_name> in chart selector
-    And I wait 2 seconds for animation stops
-    And I click month_selector
-    And I wait 2 seconds for animation stops
-    And I click previous_month
     And I wait 2 seconds for animation stops
     And I click export_chart_button
     And I wait 2 seconds for animation stops

@@ -24,6 +24,11 @@ class ReportsPage:
         self.month_selector = Button("ext-gen60", "id", "month selector")
         self.previous_month = Button("//*[@class='rangeItemTitle'][contains(text(), 'Previous month')]", "xpath",
                                      "previous month")
+        self.start_date_range = Button("ext-gen47", "id", "start date range")
+        self.select_year_month = Button("//*[@class='x-date-middle']//button", "xpath", "select year and month")
+        self.select_2017 = Button("//*[contains(text(),'2017')]", "xpath", "select 2017 year")
+        self.ok_button = Button("tr.x-date-mp-btns button:nth-child(1)", "css", "ok button")
+        self.ok_second_button = Button("ext-gen236", "id", "ok second button")
         self.show_selector_button = Button("createChartLightbox_chartTypeListSelectorPlaceholder", "id",
                                            "open 'Show' selector")
         self.by_selector_button = Button("createChartLightbox_groupingLevelListSelectorPlaceholder", "id",
@@ -58,6 +63,10 @@ class ReportsPage:
         self.create_pdf_invoice_button = Button("createPDFInvoiceButton", "id", "create PDF Invoice button")
         self.invoice_number_text_field = TextField("//textarea[@name='invoiceNumber']", "xpath",
                                                    "invoice number text field")
+        self.invoice_description = TextField("itemDescriptions", "name", "Invoice Description")
+        self.invoice_item = TextField("itemNames", "name", "invoice item")
+        self.invoice_qty = TextField("itemQuantities", "name", "QTY")
+        self.invoice_rate = TextField("itemRates", "name", "invoice rate")
         self.cost_of_work_button = Button("//*[@class='billingReports']//div[contains(text(), 'Cost of Work')]",
                                           "xpath", "cost of work button")
         self.profit_loss_button = Button("//*[@class='billingReports']//div[contains(text(), 'Profit / Loss')]",

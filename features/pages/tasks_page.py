@@ -121,11 +121,11 @@ class TasksPage:
         self.all_active = Button("//label[text()='All active projects of all active customers']", "xpath",
                                  "all active projects")
         self.close_cp_selector = Button("//span[text()='Close']", "xpath", "close cp selector")
-        self.by_customer = Button("//table[@class='headerRowTable']//span[text()='Customer']", "xpath",
+        self.by_customer = Button("//table//span[@class='titleLabel'][text()='Customer']/..", "xpath",
                                   "sorting by customer")
-        self.by_project = Button("//table[@class='headerRowTable']//span[text()='Project']", "xpath",
+        self.by_project = Button("//table//span[@class='titleLabel'][text()='Project']/..", "xpath",
                                  "sorting by project")
-        self.by_task = Button("//table[@class='headerRowTable']//span[text()='Task']", "xpath",
+        self.by_task = Button("//table//span[@class='titleLabel'][text()='Task']/..", "xpath",
                               "sorting by task")
         self.by_status = Button("//table[@class='headerRowTable']//span[text()='Status']", "xpath",
                                 "sorting by status")

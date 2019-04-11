@@ -101,15 +101,16 @@ Feature: Tasks interface by admin
 
   @smoke
   Scenario: Show Completed Tasks
-    When I click status filter
+    When I click all_customers
+    And I click status filter
     And I click selected statuses
     And I wait 1 seconds for animation stops
     And I click open statuses
     And I click completed statuses
     And I click apply filter
-    And I enter Specifying environment: tools, framework in the search tasks
+    And I enter Equipment ordering in the search tasks
     And I wait 2 seconds for animation stops
-    Then I should see a text Specifying environment: tools, framework on the page
+    Then I should see a text Equipment ordering on the page
 
   @smoke
   Scenario: Edit Task in the list
@@ -139,6 +140,27 @@ Feature: Tasks interface by admin
     And I click confirm task deletion
     And I wait 1 seconds for animation stops
     Then I should see a text Task 'SeleniumTestTask' has been deleted on the page
+
+  @smoke
+  Scenario: Select all tasks
+    When I click select all
+    And I wait 1 seconds for animation stops
+    Then I should see a web element bulk actions panel
+
+  @smoke
+  Scenario: Show only active projects
+    When I click cp selector
+    And I click all active
+    And I click close cp selector
+    And I wait 1 seconds for animation stops
+    Then I should not see a web element archived mark
+
+  @smoke
+  Scenario: Import Tasks
+    When I click add new
+    And I click import tasks
+    And I wait 1 seconds for animation stops
+    Then I should see a web element upload area
 
   @smoke
   Scenario Outline: Remove Columns
@@ -173,20 +195,6 @@ Feature: Tasks interface by admin
     Then I should see a web element <column_name>
 
   @smoke
-  Scenario: Select all tasks
-    When I click select all
-    And I wait 1 seconds for animation stops
-    Then I should see a web element bulk actions panel
-
-  @smoke
-  Scenario: Show only active projects
-    When I click cp selector
-    And I click all active
-    And I click close cp selector
-    And I wait 1 seconds for animation stops
-    Then I should not see a web element archived mark
-
-  @smoke
   Scenario Outline: Sorting
     Examples:
       | asc_sorting     | asc_sorting_element | desc_sorting    | desc_sorting_element |
@@ -194,16 +202,11 @@ Feature: Tasks interface by admin
       | by project      | Administration      | by project      | Website maintenance  |
       | by task         | Accounting          | by task         | Website structure    |
       | by type of work | Non-Billable        | by type of work | consulting           |
-    When I click <asc_sorting>
-    And I wait 1 seconds for animation stops
+    When I click all_customers
+    And I wait 2 seconds for animation stops
+    And I click <asc_sorting>
+    And I wait 2 seconds for animation stops
     Then Element with <asc_sorting_element> should be displayed
     And I click <desc_sorting>
-    And I wait 1 seconds for animation stops
+    And I wait 2 seconds for animation stops
     Then Element with <desc_sorting_element> should be displayed
-
-  @smoke
-  Scenario: Import Tasks
-    When I click add new
-    And I click import tasks
-    And I wait 1 seconds for animation stops
-    Then I should see a web element upload area

@@ -47,6 +47,7 @@ class GeneralPage:
                                       "xpath", "Contact actiTIME Support")
         self.support_field = TextField("contactSupportPopup_description", "id", "Support field")
         self.submit_support = Button("contactSupportPopup_submitButton", "id", "Send to support button")
+        self.close_support = Button("supportPopupCloseButton", "id", "Close support pop-up")
         self.phone_number = TextField("phoneInput_support", "id", "Phone number field")
         self.request_a_call = Button("sendPhoneButton_support", "id", "Phone number field")
         self.switch_product = Button("//div[@class='productName']", "xpath", "Product switcher")

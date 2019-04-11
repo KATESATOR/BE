@@ -20,8 +20,8 @@ class LockTTPage:
                                           "xpath", "Current week")
         self.cur_prev_week_button = Button("//*[@class='rangeItemTitle'][contains(text(), 'Current & previous week')]",
                                            "xpath", "Current week")
-        self.task = Button("//*[@class='lockTableEllipsis'][contains(text(), 'Phone calls')]",
-                                              "xpath", "task Phone calls")
+        self.task_backup_controlling = Button("//*[@class='lockTableEllipsis'][contains(text(), 'Backup controlling')]",
+                                              "xpath", "task Backup controlling")
         self.date_cell = Button("//*[@class='dateCellNonWorking    ']", "xpath", "today")
         self.user_date_cell = Button("//*[contains(@class, 'userDayCell')]", "xpath", "one user day")
         self.user_date_cell_locked = Button("//*[contains(@class, 'userDayCell')][1][contains(@class, 'Locked')]",
@@ -36,7 +36,7 @@ class LockTTPage:
         # Types of Work
         self.type_of_work_button = Button("//*[@class='typeOfWorkButton editable']",
                                           "xpath", "Type of work")
-        self.type_testing = Button("//*[@class='typeLabel ellipsis'][contains(text(), 'testing')]",
+        self.type_programming = Button("//*[@class='typeLabel ellipsis'][contains(text(), 'programming')]",
                                        "xpath", "programming type")
         self.type_non_billable = Button("//*[@class='typeLabel ellipsis'][contains(text(), 'Non-Billable')]",
                                         "xpath", "Non-Billable type")

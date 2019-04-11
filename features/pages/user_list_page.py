@@ -18,8 +18,9 @@ class UserListPage:
             "departments in selector")
         self.bulk_invitations_button = Button("//*[@class='components_button addSeveralUsersButton']", "xpath",
                                               "bulk invitation button")
-        self.work_assignments_tab = Button("//*[@class='components_tabButton' and text()='Work Assignments']", "xpath",
-                                           "work assignments tab")
+        self.work_assignments_tab = Button(
+            "//*[contains(@class,'components_tabButton ') and text()='Work Assignments']", "xpath",
+            "work assignments tab")
         self.pto_tab = Button("//*[text()='PTO Settings']", "xpath", "pto settings tab")
         self.next_page = Button("#pager .next", "css", "next page button")
         self.previous_page = Button("#pager .prev", "css", "previous page button")
@@ -30,6 +31,8 @@ class UserListPage:
                                     "test user")
         self.user_cruz_gordman = Button("//*[@class='userNameSpan' and text()='Cruz, Gordman']", "xpath",
                                         "user Cruz Gordman")
+        self.edited_cruz_gordman = Button("//*[@class='userNameSpan' and text()='Cruz123, Gordman123']", "xpath",
+                                          "edited user Cruz Gordman")
         self.stivers_melanie = Button("//*[@class='userNameSpan' and contains(text(), 'Stivers, Melanie')]", "xpath",
                                       "Stivers Melanie")
         self.sorting_by_users = Button(".userList_mainTableContainer .sortLinks>div:first-of-type", "css",
@@ -105,13 +108,15 @@ class UserListPage:
         # Access to Scope of Work
         self.revoke_access_to_scope = Button("div.managementAssignmentsPanel div.revokeButton", "css",
                                              "revoke all access to scope")
-        self.no_access_to_scope = Button("//*[text()='No Access to Scope of Work']", "css",
-                                         "no access to scope of work")
-        self.custom_access_to_scope = Button("//*[text()='Has Access to Selected:']", "css",
-                                             "custom access to scope of work")
+        self.no_access_to_scope = Button(
+            "//*[contains(@class,'editManagementAssignmentsPanel')]//input[@class='noAccess']", "xpath",
+            "no access to scope of work")
+        self.custom_access_to_scope = Button(
+            "//*[contains(@class,'editManagementAssignmentsPanel')]//input[@class='customSelect']", "xpath",
+            "custom access to scope of work")
         self.access_to_scope_back_button = Button(
-            "#usersManagementBodyTagId div.managementAssignmentsPanel div:contains('Back to Permissions')",
-            "css",
+            "//*[contains(@class,'editManagementAssignmentsPanel')]//*[@class='backButton']",
+            "xpath",
             "access to scope back button")
         self.tasks_counter_scope = Button("#editUserPanel .components_cptCounter.hierarchyClass_task>div", "css",
                                           "tasks counter in access to scope of work")
@@ -184,7 +189,7 @@ class UserListPage:
             "css", "first username in work assigments tab")
         self.first_row_in_wa_tab_projects_counter = Button(".userListRow:first-of-type .projects .counterText", "css",
                                                            "projects counter work assignments tab first row")
-        self.edit_assignments_button = Button("//*[text()='Edit Assignments']", "xpath", "edit assignments button")
+        self.edit_assignments_button = Button(".editButton", "css", "edit assignments button")
         self.our_company_in_wa_panel = Button(
             "//div[@class='entitiesList']//div[@class='name' and text()='Our Company']",
             "xpath", "our company customer in WA panel")
@@ -196,8 +201,9 @@ class UserListPage:
             "close edit wa panel button")
         self.close_wa_button = Button(".workAssignment_panel .hideButton_panelContainer", "css",
                                       "close wa panel button")
-        self.administration_proj_del = Button("//*[@class='title' and text()='Administration']//../div[3]", "xpath",
-                                              "administration project delete button")
+        self.administration_proj_del = Button(
+            "//*[@class='title' and text()='Administration']/../..//div[@class='revokeButton']", "xpath",
+            "administration project delete button")
         self.search_in_wa = Button("th.controlsPlaceholder.userName.secondLayer div.wordsFilter", "css",
                                    "search in WA button")
         self.search_wa_field = TextField("div.inputPlaceholder.animShowWordsField.active > input", "css",

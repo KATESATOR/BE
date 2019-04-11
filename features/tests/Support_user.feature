@@ -11,6 +11,8 @@ Feature: Support scenarios by user
     And I enter Lastname in the profile last name
     And I click save profile changes
     And I wait 2 seconds for animation stops
+    And I refresh the page
+    And I wait 2 seconds for animation stops
     Then I should see a text Firstname Lastname on the page
 
   @smoke
@@ -36,6 +38,7 @@ Feature: Support scenarios by user
     And I click submit support
     And I wait 5 seconds for animation stops
     Then I should see a text Your question was successfully submitted on the page
+    And I click close_support
 
   @smoke
   Scenario: Switch product

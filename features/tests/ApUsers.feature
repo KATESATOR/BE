@@ -44,6 +44,8 @@ Feature: Users interface by admin
     And i enter Name@name in the email_several_2
     And i click save_send_invitation_several
     And i click close_invite_several_users_panel
+    And I refresh the page
+    And I wait 2 seconds for animation stops
     And i should see a text AA1 on the page
     Then I should see a text AA2 on the page
 
@@ -126,7 +128,6 @@ Feature: Users interface by admin
 
   @smoke
   Scenario: Sorting user data
-    When i choose 10 in shown_by
     And I perform deselect in the show_disabled_accounts
     And I wait 2 seconds for animation stops
     And I click disable_wooster

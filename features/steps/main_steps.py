@@ -83,8 +83,8 @@ def login_as_user(context):
     context.execute_steps(f"""
            Given I open a page {'/'}
            When {'at_login_page'} is visible
-           And I enter {'trainee'} in the {'username_field'}
-           And I enter {'trainee'} in the {'password_field'}
+           And I enter {'user'} in the {'username_field'}
+           And I enter {'user'} in the {'password_field'}
            And I click {'login_button'}
        """)
     time.sleep(1)
@@ -169,12 +169,25 @@ def wait(context, seconds):
     time.sleep(int(seconds))
 
 
+@step('I fill {text} in the {text_field}')
+def filling_the_text_field(context, text, text_field):
+    page = set_page
+    text_field = getattr(page, text_field.replace(" ", "_"))
+    try:
+        text_field.send_keys(text)
+        context.log.info(text_field.name + " has been filled with " + text)
+    except:
+        context.log.warn(text_field.name + " doesn't filled with " + text)
+        context.screenshot.take_screenshot("Can not enter the text in the " + text_field.name)
+        raise
+
+
 @step('I enter {text} in the {text_field}')
 def filling_the_text_field(context, text, text_field):
     page = set_page
     text_field = getattr(page, text_field.replace(" ", "_"))
     try:
-        # text_field.clear()
+        text_field.clear_field()
         text_field.send_keys(text)
         context.log.info(text_field.name + " has been filled with " + text)
     except:
@@ -376,4 +389,15 @@ def upload_file(context, file, folder, element):
         element.send_keys(os.getcwd() + file)
     except:
         context.screenshot.take_screenshot("Can not upload" + file)
+        raise
+
+
+@step('I drag {element} by offset {x}, {y}')
+def drag_element(context, element, x, y):
+    page = set_page
+    element = getattr(page, element.replace(" ", "_"))
+    try:
+        Config.get_actions().drag_and_drop_by_offset(element, x, y)
+    except:
+        context.screenshot.take_screenshot("Can not drag" + element)
         raise

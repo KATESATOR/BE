@@ -25,17 +25,35 @@ Feature: User List interface by admin
     Then I should not see a web element new_test_user
 
   @Smoke
+  Scenario: User filter in user list
+    When I click sorting_by_group
+    And I wait 1 seconds for animation stops
+    And I click sorting_by_users
+    And I wait 1 seconds for animation stops
+    And I click user_filter_button
+    And I wait 1 seconds for animation stops
+    And I click selected_users_in_selector
+    And I wait 1 seconds for animation stops
+    And I perform select in the cruz_in_selector
+    And I click apply_button_user_filter
+    And I wait 1 seconds for animation stops
+    Then first_username_in_list should contain Cruz, Gordman
+    And I click user_filter_button
+    And I click all_users_in_selector
+    And I click apply_button_user_filter
+    And I wait 1 seconds for animation stops
+    And first_username_in_list should contain Barber, Robert
+
+  @Smoke
   Scenario: Edit user
     When I click user_cruz_gordman
-    And I enter Gordman123 in the edit_first_name_field
-    And I enter Cruz123 in the edit_last_name_field
+    And I fill 123 in the edit_first_name_field
+    And I wait 1 seconds for animation stops
+    And I fill 123 in the edit_last_name_field
+    And I wait 1 seconds for animation stops
     And I click close_panel_button
+    And I wait 2 seconds for animation stops
     Then I should see a web element edited_cruz_gordman
-    And I click edited_cruz_gordman
-    And I enter Gordman in the edit_first_name_field
-    And I enter Cruz in the edit_last_name_field
-    And I click close_panel_button
-    And I should see a web element user_cruz_gordman
 
   @Smoke
   Scenario: Creating and deleting new time zone group
@@ -143,7 +161,9 @@ Feature: User List interface by admin
     And I wait 1 seconds for animation stops
     And I click permissions_tab
     And I click access_to_scope
+    And I wait 1 seconds for animation stops
     And I click no_access_to_scope
+    And I wait 1 seconds for animation stops
     And I click access_to_scope_back_button
     And I wait 1 seconds for animation stops
     Then access_to_scope_label should contain No Access
@@ -156,24 +176,6 @@ Feature: User List interface by admin
     And I enter Kloss in the search_field
     And I wait 1 seconds for animation stops
     Then first_search_result should contain Kloss
-
-  @Smoke
-  Scenario: User filter in user list
-    When I click sorting_by_group
-    And I wait 1 seconds for animation stops
-    And I click sorting_by_users
-    And I click user_filter_button
-    And I click selected_users_in_selector
-    And I wait 1 seconds for animation stops
-    And I perform select in the cruz_in_selector
-    And I click apply_button_user_filter
-    And I wait 1 seconds for animation stops
-    Then first_username_in_list should contain Cruz, Gordman
-    And I click user_filter_button
-    And I click all_users_in_selector
-    And I click apply_button_user_filter
-    And I wait 1 seconds for animation stops
-    And first_username_in_list should contain Barber, Robert
 
   @Smoke
   Scenario: Sorting by users
@@ -202,6 +204,7 @@ Feature: User List interface by admin
   @Smoke
   Scenario: Switching page
     When I click sorting_by_users
+    And I wait 2 seconds for animation stops
     And I click next_page
     And I wait 1 seconds for animation stops
     Then last_username_in_list should contain Wooster, Jennifer
@@ -250,6 +253,7 @@ Feature: User List interface by admin
   Scenario: PTO balance editing
     When I click pto_tab
     And I click kloss_pto_balance_cell
+    And I wait 2 seconds for animation stops
     And I enter 10.1 in the balance_field
     And I click balance_edit_apply_button
     And I wait 1 seconds for animation stops
@@ -286,7 +290,7 @@ Feature: User List interface by admin
     Then first_current_pto_cell should contain 0d
     And I click sorting_by_current_pto
     And I wait 1 seconds for animation stops
-    And first_current_pto_cell should contain 4.4d
+    And first_current_pto_cell should contain 5.7d
 
   @Smoke
   Scenario: Sorting by reported PTO
@@ -296,7 +300,7 @@ Feature: User List interface by admin
     Then first_reported_pto_cell should contain 0d
     And I click sorting_by_reported_pto
     And I wait 1 seconds for animation stops
-    And first_reported_pto_cell should contain 8.4d
+    And first_reported_pto_cell should contain 6.3d
 
   @Smoke
   Scenario: Sick days settings ON/OFF
@@ -339,10 +343,10 @@ Feature: User List interface by admin
     When I click sick_days_tab
     And I click sorting_by_current_sd
     And I wait 1 seconds for animation stops
-    Then first_current_sd_cell should contain -0.5d
+    Then first_current_sd_cell should contain -1d
     And I click sorting_by_current_sd
     And I wait 1 seconds for animation stops
-    And first_current_sd_cell should contain 2.9d
+    And first_current_sd_cell should contain 3d
 
   @Smoke
   Scenario: Sorting by reported sick days
@@ -352,4 +356,4 @@ Feature: User List interface by admin
     Then first_reported_sd_cell should contain 0d
     And I click sorting_by_reported_sd
     And I wait 1 seconds for animation stops
-    And first_reported_sd_cell should contain 4d
+    And first_reported_sd_cell should contain 0d

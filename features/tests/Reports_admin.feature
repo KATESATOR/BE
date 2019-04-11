@@ -30,7 +30,7 @@ Feature: Reports interface by admin
     And I wait 2 seconds for animation stops
     Then I search report <report_name> with the extension csv in downloads folder
 
-  @smoke2
+  @smoke
   Scenario: Export Invoice Report to PDF
     When I click new_report_button
     And I wait 2 seconds for animation stops
@@ -43,6 +43,10 @@ Feature: Reports interface by admin
     And I wait 2 seconds for animation stops
     And My current URL should contain /reports/invoiceresults.do
     And I enter №1 in the invoice_number_text_field
+    And I enter 1 in the invoice_description
+    And I enter 1 in the invoice_item
+    And I enter 1 in the invoice_qty
+    And I enter 1 in the invoice_rate
     And I click create_pdf_invoice_button
     And I wait 3 seconds for animation stops
     Then I search report Invoice with the extension pdf in downloads folder
@@ -131,12 +135,36 @@ Feature: Reports interface by admin
       | Total working hours    |
       | Approved working hours |
       | Leave hours            |
-      | PTO Balance            |
-      | Sick Days Balance      |
       | Overtime hours         |
       | Cost of work           |
       | Billable amounts       |
+    When I click create_chart_button
+    And I wait 2 seconds for animation stops
+    And I click show_selector_button
+    And I wait 2 seconds for animation stops
+    And I select <chart_name> in chart selector
+    And I click start_date_range
+    And I wait 2 seconds for animation stops
+    And I click select_year_month
+    And I wait 2 seconds for animation stops
+    And I click select_2017
+    And I wait 2 seconds for animation stops
+    And I click ok_button
+    And I wait 2 seconds for animation stops
+    And I click start_date_range
+    And I wait 2 seconds for animation stops
+    And I click export_chart_button
+    And I wait 2 seconds for animation stops
+    And I click download_chart_button
+    And I wait 2 seconds for animation stops
+    Then I search report <chart_name> with the extension pdf in downloads folder
 
+  @smoke
+  Scenario Outline: Export PTO & Sick chart in .pdf files
+    Examples: <chart_name>
+      | chart_name        |
+      | PTO Balance       |
+      | Sick Days Balance |
     When I click create_chart_button
     And I wait 2 seconds for animation stops
     And I click show_selector_button

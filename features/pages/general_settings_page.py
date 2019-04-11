@@ -53,7 +53,7 @@ class GeneralSettings:
         self.gs_dar_see_all_tt = CheckBox("div#accessToUserInfoSettingsBlock label:nth-child(1) > input", "CSS",
                                           "Allow selected users to see all tt")
         self.gs_dar_see_all_tt_selector = Button("//td[@class='middle-left-cell contents']", "xpath", "Selecting user")
-        self.gs_dar_see_all_tt_selector_white_jane = Button("//span[contains(@title,'White, Jane')]", "xpath",
+        self.gs_dar_see_all_tt_selector_gibson = Button("//span[contains(@title,'Gibson, Maurice')]", "xpath",
                                                          "Select White Jane")
         self.gs_dar_see_all_tt_selector_apply = Button("//span[contains(text(),'Apply')]", "xpath",
                                                        "Click on apply button")

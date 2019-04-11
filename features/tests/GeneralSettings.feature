@@ -114,7 +114,8 @@ Feature: General settings interface by admin
   Scenario: General settings: data access restrictions
     When I perform select in the gs_dar_see_all_tt
     And i click gs_dar_see_all_tt_selector
-    And i click gs_dar_see_all_tt_selector_white_jane
+    And I wait 2 seconds for animation stops
+    And i click gs_dar_see_all_tt_selector_gibson
     And i click gs_dar_see_all_tt_selector_apply
     And i click gs_save
     And I perform select in the gs_dar_hide_tt_lock_tt
@@ -123,7 +124,7 @@ Feature: General settings interface by admin
     And I perform select in the gs_dar_allow_manager_modify_tt_users
     And I perform select in the gs_dar_see_all_tt
     And i click gs_dar_see_all_tt_selector
-    And i click gs_dar_see_all_tt_selector_white_jane
+    And i click gs_dar_see_all_tt_selector_gibson
     And i click gs_dar_see_all_tt_selector_apply
     And i perform deselect in the gs_dar_see_all_tt
     And I perform deselect in the gs_dar_hide_tt_lock_tt
@@ -137,4 +138,4 @@ Feature: General settings interface by admin
     When I enter test in the gs_message_footer
     And i click gs_send_test_message
     And I wait 2 seconds for animation stops
-    Then I should see a text Test message was successfully sent to devnull@actimind.com on the page
+    Then I should see a text Test message was successfully sent to demodata@actitime.com on the page
