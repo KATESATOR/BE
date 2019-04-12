@@ -37,12 +37,12 @@ Feature: User List interface by admin
     And I perform select in the cruz_in_selector
     And I click apply_button_user_filter
     And I wait 1 seconds for animation stops
-    Then first_username_in_list should contain Cruz, Gordman
+    And first_username_in_list should contain Cruz, Gordman
     And I click user_filter_button
     And I click all_users_in_selector
     And I click apply_button_user_filter
     And I wait 1 seconds for animation stops
-    And first_username_in_list should contain Barber, Robert
+    Then first_username_in_list should contain Barber, Robert
 
   @Smoke
   Scenario: Edit user
@@ -89,11 +89,11 @@ Feature: User List interface by admin
     And I click move_to_button
     And I click default_tzg_in_selector
     And I wait 2 seconds for animation stops
-    Then I should see a text There are no users in the "Sydney Office" time zone group on the page
+    And I should see a text There are no users in the "Sydney Office" time zone group on the page
     And I click first_tzg_in_group_list
     And I click select_all_button_tzg
     And I click move_to_button
-    And I click sydney_tzg_in_selector
+    Then I click sydney_tzg_in_selector
 
   @Smoke
   Scenario: Creating and deleting new department
@@ -118,11 +118,11 @@ Feature: User List interface by admin
     And I click move_to_button
     And I click first_in_depts_move_to_selector
     And I wait 2 seconds for animation stops
-    Then I should see a text "Administration" department contains only users with disabled access on the page
+    And I should see a text "Administration" department contains only users with disabled access on the page
     And I click users_wo_dept
     And I click select_all_button_depts
     And I click move_to_button
-    And I click first_in_depts_move_to_selector
+    Then I click first_in_depts_move_to_selector
 
   @Smoke
   Scenario: Bulk invitations
@@ -135,12 +135,12 @@ Feature: User List interface by admin
     And I enter 2@2 in the bulk_email_field2
     And I click send_invitations_button
     And I wait 2 seconds for animation stops
-    Then I should see a text Invitations have been sent to the following users: on the page
+    And I should see a text Invitations have been sent to the following users: on the page
     And I should see a text user1 user1 (1@1) on the page
     And I should see a text user2 user2 (2@2) on the page
     And I click close_bulk_button
     And I should see a web element user1
-    And I should see a web element user2
+    Then I should see a web element user2
 
   @Smoke
   Scenario: Editing access to users
@@ -151,9 +151,9 @@ Feature: User List interface by admin
     And I click access_to_all_users
     And I click access_to_users_back_button
     And I wait 1 seconds for animation stops
-    Then access_to_users should contain All users
+    And access_to_users should contain All users
     And I click access_to_users
-    And I click custom_access_to_users
+    Then I click custom_access_to_users
 
   @Smoke
   Scenario: Editing access to scope of work
@@ -166,9 +166,9 @@ Feature: User List interface by admin
     And I wait 1 seconds for animation stops
     And I click access_to_scope_back_button
     And I wait 1 seconds for animation stops
-    Then access_to_scope_label should contain No Access
+    And access_to_scope_label should contain No Access
     And I click access_to_scope_label
-    And I click custom_access_to_scope
+    Then I click custom_access_to_scope
 
   @Smoke
   Scenario: Searching users
@@ -207,10 +207,10 @@ Feature: User List interface by admin
     And I wait 2 seconds for animation stops
     And I click next_page
     And I wait 1 seconds for animation stops
-    Then last_username_in_list should contain Wooster, Jennifer
+    And last_username_in_list should contain Wooster, Jennifer
     And I click previous_page
     And I wait 1 seconds for animation stops
-    And first_username_in_list should contain Barber, Robert
+    Then first_username_in_list should contain Barber, Robert
 
   @Smoke
   Scenario: Management filter
@@ -237,17 +237,17 @@ Feature: User List interface by admin
     And I click first_project_in_wa_panel
     And I click close_edit_wa_button
     And I wait 1 seconds for animation stops
-    Then first_row_in_wa_tab_projects_counter should contain 4
+    And first_row_in_wa_tab_projects_counter should contain 4
     And I click first_row_in_wa_tab_projects_counter
-    And I click administration_proj_del
+    Then I click administration_proj_del
 
   @Smoke
   Scenario: PTO settings ON/OFF
     When I click pto_tab
     And I click kloss_pto_control_switcher
     And I wait 1 seconds for animation stops
-    Then kloss_pto_balance_cell should contain OFF
-    And I click kloss_pto_control_switcher
+    And kloss_pto_balance_cell should contain OFF
+    Then I click kloss_pto_control_switcher
 
   @Smoke
   Scenario: PTO balance editing
@@ -257,10 +257,10 @@ Feature: User List interface by admin
     And I enter 10.1 in the balance_field
     And I click balance_edit_apply_button
     And I wait 1 seconds for animation stops
-    Then kloss_pto_balance_cell should contain 10.1d
+    And kloss_pto_balance_cell should contain 10.1d
     And I click kloss_pto_balance_cell
     And I enter 4.1 in the balance_field
-    And I click balance_edit_apply_button
+    Then I click balance_edit_apply_button
 
   @Smoke
   Scenario: PTO rules editing
@@ -273,34 +273,34 @@ Feature: User List interface by admin
     And I enter 66 in the limit_pto_field
     And I click save_pto_rules_button
     And I wait 1 seconds for animation stops
-    Then kloss_pto_rules_reset should contain 1d  on Jan 01
+    And kloss_pto_rules_reset should contain 1d  on Jan 01
     And kloss_pto_rules_accrue should contain 5d monthly
     And kloss_pto_rules_limit should contain 66d
     And I click kloss_pto_rules_cell
     And I click default_pto_switcher
     And I click save_pto_rules_button
     And I wait 1 seconds for animation stops
-    And I should see a web element kloss_default_pto_rules
+    Then I should see a web element kloss_default_pto_rules
 
   @Smoke
   Scenario: Sorting by current PTO
     When I click pto_tab
     And I click sorting_by_current_pto
     And I wait 1 seconds for animation stops
-    Then first_current_pto_cell should contain 0d
+    And first_current_pto_cell should contain 0d
     And I click sorting_by_current_pto
     And I wait 1 seconds for animation stops
-    And first_current_pto_cell should contain 5.7d
+    Then first_current_pto_cell should contain 5.7d
 
   @Smoke
   Scenario: Sorting by reported PTO
     When I click pto_tab
     And I click sorting_by_reported_pto
     And I wait 1 seconds for animation stops
-    Then first_reported_pto_cell should contain 0d
+    And first_reported_pto_cell should contain 0d
     And I click sorting_by_reported_pto
     And I wait 1 seconds for animation stops
-    And first_reported_pto_cell should contain 6.3d
+    Then first_reported_pto_cell should contain 6.3d
 
   @Smoke
   Scenario: Sick days settings ON/OFF
@@ -308,8 +308,8 @@ Feature: User List interface by admin
     And I click sorting_by_users
     And I click kloss_sd_control_switcher
     And I wait 1 seconds for animation stops
-    Then kloss_sd_balance_cell should contain OFF
-    And I click kloss_sd_control_switcher
+    And kloss_sd_balance_cell should contain OFF
+    Then I click kloss_sd_control_switcher
 
   @Smoke
   Scenario: Sick days balance editing
@@ -318,10 +318,10 @@ Feature: User List interface by admin
     And I enter 10.1 in the balance_field
     And I click balance_edit_apply_button
     And I wait 1 seconds for animation stops
-    Then kloss_sd_balance_cell should contain 10.1d
+    And kloss_sd_balance_cell should contain 10.1d
     And I click kloss_sd_balance_cell
     And I enter 2.5 in the balance_field
-    And I click balance_edit_apply_button
+    Then I click balance_edit_apply_button
 
   @Smoke
   Scenario: Sick days rules editing
@@ -331,29 +331,29 @@ Feature: User List interface by admin
     And I enter 5 in the accrue_sd_field
     And I click save_sd_rules_button
     And I wait 1 seconds for animation stops
-    Then kloss_sd_rules_accrue should contain 5d monthly
+    And kloss_sd_rules_accrue should contain 5d monthly
     And I click kloss_sd_rules_cell
     And I click default_sd_switcher
     And I click save_sd_rules_button
     And I wait 1 seconds for animation stops
-    And I should see a web element kloss_default_sd_rules
+    Then I should see a web element kloss_default_sd_rules
 
   @Smoke
   Scenario: Sorting by current sick days
     When I click sick_days_tab
     And I click sorting_by_current_sd
     And I wait 1 seconds for animation stops
-    Then first_current_sd_cell should contain -1d
+    And first_current_sd_cell should contain -1d
     And I click sorting_by_current_sd
     And I wait 1 seconds for animation stops
-    And first_current_sd_cell should contain 3d
+    Then first_current_sd_cell should contain 3d
 
   @Smoke
   Scenario: Sorting by reported sick days
     When I click sick_days_tab
     And I click sorting_by_reported_sd
     And I wait 1 seconds for animation stops
-    Then first_reported_sd_cell should contain 0d
+    And first_reported_sd_cell should contain 0d
     And I click sorting_by_reported_sd
     And I wait 1 seconds for animation stops
-    And first_reported_sd_cell should contain 0d
+    Then first_reported_sd_cell should contain 0d

@@ -128,7 +128,7 @@ Feature: Users interface by admin
 
   @smoke
   Scenario: Sorting user data
-    And I perform deselect in the show_disabled_accounts
+    When I perform deselect in the show_disabled_accounts
     And I wait 2 seconds for animation stops
     And I click disable_wooster
     And I refresh the page

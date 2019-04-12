@@ -49,8 +49,8 @@ Feature: Support scenarios by admin
     And I enter Text for support in the support field
     And I click submit support
     And I wait 5 seconds for animation stops
-    Then I should see a text Your question was successfully submitted on the page
-    And I click close_support
+    And I should see a text Your question was successfully submitted on the page
+    Then I click close_support
 
     #TODO: в дампе отсутствует состояние "демо-данные", нужно либо изменить дамп, либо удалить сценарий
 #  @smoke

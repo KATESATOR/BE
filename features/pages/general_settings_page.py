@@ -54,16 +54,19 @@ class GeneralSettings:
                                           "Allow selected users to see all tt")
         self.gs_dar_see_all_tt_selector = Button("//td[@class='middle-left-cell contents']", "xpath", "Selecting user")
         self.gs_dar_see_all_tt_selector_gibson = Button("//span[contains(@title,'Gibson, Maurice')]", "xpath",
-                                                         "Select White Jane")
+                                                        "Select White Jane")
         self.gs_dar_see_all_tt_selector_apply = Button("//span[contains(text(),'Apply')]", "xpath",
                                                        "Click on apply button")
-        self.gs_dar_hide_tt_lock_tt = CheckBox("//*[@id='accessToUserInfoSettingsBlock']/div/div[3]/div[1]/div[1]/label/input", "xpath",
-                                               "Hide tt details in locktt")
-        self.gs_dar_hide_tt_from_managers = CheckBox("//*[@id='accessToUserInfoSettingsBlock']/div/div[4]/div[1]/div[1]/label/input",
+        self.gs_dar_hide_tt_lock_tt = CheckBox(
+            "//*[@id='accessToUserInfoSettingsBlock']/div/div[3]/div[1]/div[1]/label/input", "xpath",
+            "Hide tt details in locktt")
+        self.gs_dar_hide_tt_from_managers = CheckBox(
+            "//*[@id='accessToUserInfoSettingsBlock']/div/div[4]/div[1]/div[1]/label/input",
             "XPATH", "Hide tt from managers")
-        self.gs_dar_hide_not_assigned_users = CheckBox("//div[@class='darSetting hideAccountSetting']//input[@type='checkbox']",
-                                                       "XPATH",
-                                                       "Hide not assigned users in User List")
+        self.gs_dar_hide_not_assigned_users = CheckBox(
+            "//div[@class='darSetting hideAccountSetting']//input[@type='checkbox']",
+            "XPATH",
+            "Hide not assigned users in User List")
         self.gs_dar_allow_manager_modify_tt_users = CheckBox(
             "//div[@class='darSetting ttmCanManageAutoApprovedSetting']//input[@type='checkbox']",
             "XPATH", "Allow manager to modify tt of users for auto approval")

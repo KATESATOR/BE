@@ -5,7 +5,6 @@ class LockTTPage:
 
     def __init__(self):
         self.user_cruz = Button("//*[@title='Cruz, Gordman']", "xpath", " Cruz, Gordman user")
-
         self.result_text = Element("//*[@class='result-number']", "xpath", "result number")
         self.date_selector_button = Button("ext-gen32", "id", "date selector")
         self.user_selector_text = Element("ext-gen44", "id", "user selector text")

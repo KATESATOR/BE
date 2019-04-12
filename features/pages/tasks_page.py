@@ -28,7 +28,8 @@ class TasksPage:
             "xpath",
             "confirm project deletion")
         self.select_customer_for_project = Button(
-            "//div[@class='emptySelection' and text()[contains(., '-- Please Select Customer to Add Project for  --')]]",
+            "//div[@class='emptySelection' and text()"
+            "[contains(., '-- Please Select Customer to Add Project for  --')]]",
             "xpath",
             "customer selector")
         self.our_company_customer = Button("//div[@class='itemRow cpItemRow ' and text()[contains(., 'Our Company')]]",
