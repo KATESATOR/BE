@@ -52,6 +52,8 @@ class ApproveTTPage:
         self.deselect_all_button = Button('deselectAllButton', 'id', 'deselect_all_button')
         self.first_row_tt_status = TextField('tbody:nth-of-type(2) tr:nth-of-type(2) td.statusCell span', 'css',
                                              'time track status in first row')
+        self.first_row_date_link = Button('tbody:nth-of-type(2) tr:nth-of-type(2) .submitTTLinkCell a', 'css',
+                                          'first row date link')
         self.last_row_tt_status = TextField('tbody:nth-of-type(2) tr:last-of-type td.statusCell span', 'css',
                                             'time track status in last row')
         self.first_row_username = Element('tbody:nth-of-type(2) .userNameInfo', 'css', 'first row username')

@@ -202,3 +202,10 @@ Feature: Approve TT interface by admin
     And last_row_history_date should contain Feb 17, 00:00
     And last_row_history_comment should contain Your undertime is more than 3 hours.
     Then show_more_history_button should contain + Show 10 more records (20 are shown)
+
+  @Smoke
+  Scenario: Jump to EnterTT
+    When I click first_row_date_link
+    And I wait 1 seconds for animation stops
+    And enter_tt_page is visible
+    Then calendar should contain Feb 25 - Mar 03, 2019
