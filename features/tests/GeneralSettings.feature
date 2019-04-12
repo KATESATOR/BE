@@ -34,7 +34,7 @@ Feature: General settings interface by admin
     When i click gs_naming_task
     And i click gs_naming_task_name_subtask
     And i click gs_save
-    Then I should see a text Subtask on the page
+    And I should see a text Subtask on the page
     And i click gs_naming_task
     And i click gs_naming_task_default_name
     Then i click gs_save
@@ -82,7 +82,7 @@ Feature: General settings interface by admin
   Scenario: General settings: work schedule
     When I enter 8:30 in the gs_work_schedule
     And i click gs_save
-    Then i should see a text 8:30 on the page
+    And i should see a text 8:30 on the page
     And i enter 8:00 in the gs_work_schedule
     Then i click gs_save
 
