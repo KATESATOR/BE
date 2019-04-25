@@ -21,6 +21,8 @@ Feature: User List interface by user
   Scenario: User filter in user list
     When I click user_filter_button
     And I click selected_users_in_selector
+     And I click filter_user_selector
+    And I enter Gordman in the search_user_selector
     And I perform select in the cruz_in_selector
     And I click apply_button_user_filter
     And I wait 1 seconds for animation stops

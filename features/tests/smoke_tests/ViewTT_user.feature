@@ -10,7 +10,7 @@ Feature: View TT interface by user
   Scenario: Switching period and checking period table
     When I perform select in the ttdetails_show_tasks
     And I wait 1 seconds for animation stops
-    And i click empty_space
+    And I click empty_space
     And I wait 2 seconds for animation stops
     And I click calendar_from
     And I wait 2 seconds for animation stops
@@ -88,7 +88,7 @@ Feature: View TT interface by user
     When I click filter
     And I wait 1 seconds for animation stops
     And I click filter_cp_selector
-    And i click filter_cp_selector_3
+    And I click filter_cp_selector_3
     And I click filter_select_all
     And I click filter_close
     And I click filter_apply
@@ -132,7 +132,7 @@ Feature: View TT interface by user
     And I perform deselect in the filter_tt_status_ready_for_approval
     And I perform deselect in the filter_tt_status_not_ready_and_rejected
     And I perform select in the filter_tt_status_ready_for_approval
-    And i click filter_apply
+    And I click filter_apply
     And I wait 1 seconds for animation stops
     Then I should see a web element filter_tt_status_ready_checked
 
@@ -158,28 +158,29 @@ Feature: View TT interface by user
   Scenario: Edit task
     When I perform select in the ttdetails_show_tasks
     And I wait 2 seconds for animation stops
-    And i click ttdetails_edit_task_other_roy
+    And I click ttdetails_edit_task_other_roy
     And I wait 1 seconds for animation stops
-    And i click open_status_selector
+    And I click open_status_selector
     And I wait 2 seconds for animation stops
-    And i click complete_status
+    And I click complete_status
     And I wait 1 seconds for animation stops
     And I should not see a web element complete_status_checked
     And I wait 1 seconds for animation stops
-    Then i click ttdetails_edit_task_close
+    Then I click ttdetails_edit_task_close
 
   @smoke
   Scenario: Table present View by Days, cpt
-    When i click ttdetails_cpt
+    When I click ttdetails_cpt
     And I perform select in the ttdetails_show_tasks
-    And i click ttdetails_days
+    And I click ttdetails_days
+    And I wait 1 seconds for animation stops
     Then I should see a web element ttdetails_cpt_check
 
   @smoke
   Scenario: Export PDF
-    When i click export_pdf
+    When I click export_pdf
     And I wait 4 seconds for animation stops
     And I should see a web element export_pdf
-    And i click export_pdf_download
-    And I wait 3 seconds for animation stops
+    And I click export_pdf_download
+    And I wait 2 seconds for animation stops
     Then Checking file with format pdf

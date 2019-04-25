@@ -66,10 +66,13 @@ class aPreportsPage:
         self.three_month_calendar = Element('.threeCalendar', 'css', 'three month calendar')
         self.user_selector_past_leaves = Button('#leaveHistorySelector_userSelector span', 'css',
                                                 'user selector in past leaves')
+        self.filter_in_user_selector = Button('.filterButton', 'css', 'filter button in user selector')
+        self.search_in_user_selector = TextField('.filterFieldInput', 'css', 'search field in user selector')
         self.sort_by_users_in_user_selector = Button('*//div[contains(@class,"userForLeave")]//*[text()="By Users"]',
                                                      'xpath', 'sort by users in user selector')
-        self.stivers_in_user_selector = Button('*//div[contains(@class,"userForLeave")]//*[text()="Stivers, Melanie"]',
-                                               'xpath', 'Long Michelle in user selector')
+        self.stivers_in_user_selector = Button(
+            '*//div[contains(@class,"userForLeave")]//*[contains(text(), "Melanie")]',
+            'xpath', 'Long Michelle in user selector')
         self.barber_in_user_selector = Button('*//div[contains(@class,"userForLeave")]//*[text()="Barber, Robert"]',
                                               'xpath', 'Doe John in user selector')
         self.past_leaves_time_table = Element('leaveTimeTable', 'id', 'past leaves leave time table')

@@ -51,7 +51,6 @@ Feature: Approve TT interface by admin
     When I click sort_by_weeks
     And I wait 1 seconds for animation stops
     And I should see a web element first_row_week
-    And first_row_week should contain Apr 08 - Apr 14, 2019
     And I click sort_by_weeks
     And I wait 1 seconds for animation stops
     And I should see a web element first_row_week

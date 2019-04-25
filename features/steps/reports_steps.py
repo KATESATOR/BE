@@ -14,9 +14,9 @@ def search_report_in_folder(context, report_name, extension):
     try:
         if len(glob.glob("*" + report_name + "*." + extension)) == 0:
             raise FileNotFoundError
-        for i in glob.glob("*" + report_name + "*." + extension):
-            os.path.exists(i)
-            os.remove(i)
+        for I in glob.glob("*" + report_name + "*." + extension):
+            os.path.exists(I)
+            os.remove(I)
     except FileNotFoundError:
         context.screenshot.take_screenshot("I can't find file in downloads folder: " + report_name)
         context.log.warn("I can't find file in downloads folder: " + report_name)

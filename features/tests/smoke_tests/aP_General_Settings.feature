@@ -3,7 +3,7 @@ Feature: aP General settings
   Background:
     When I am logged in actiPLANS as admin
     And general_page is visible
-    And i click settings_button
+    And I click settings_button
     And I click general_settings_button
     And ap_general_settings_page is visible
 
