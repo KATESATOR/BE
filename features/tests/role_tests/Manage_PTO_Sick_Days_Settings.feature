@@ -47,7 +47,7 @@ Feature: Manage PTO & Sick Days Settings Role
     And first_current_pto_cell should contain 0d
     And I click sorting_by_current_pto
     And I wait 1 seconds for animation stops
-    And first_current_pto_cell should contain 5.7d
+    Then first_current_pto_cell should contain 5.7d
 
   @Smoke
   Scenario: Sorting by reported PTO
@@ -58,7 +58,7 @@ Feature: Manage PTO & Sick Days Settings Role
     And first_reported_pto_cell should contain 0d
     And I click sorting_by_reported_pto
     And I wait 1 seconds for animation stops
-    And first_reported_pto_cell should contain 3.6d
+    Then first_reported_pto_cell should contain 3d
 
   @Smoke
   Scenario: Sick days balance editing
@@ -316,7 +316,6 @@ Feature: Manage PTO & Sick Days Settings Role
     And I click features_sick_balance
     And I am logged in as managebalancesat
     And general_page is visible
-    And I click save_profile_changes
     And I should not see a web element time_track
     And I should not see a web element tasks
     And I should not see a web element reports
