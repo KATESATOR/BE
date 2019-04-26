@@ -308,12 +308,6 @@ Feature: Manage PTO & Sick Days Settings Role
     And I perform select in the gs_dar_hide_not_assigned_users
     And I wait 1 seconds for animation stops
     And I click gs_save
-    And general_page is visible
-    And I click settings_button
-    And I click features
-    And features_page is visible
-    And I click features_pto_balance
-    And I click features_sick_balance
     And I am logged in as managebalancesat
     And general_page is visible
     And I should not see a web element time_track
