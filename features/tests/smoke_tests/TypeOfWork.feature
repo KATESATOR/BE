@@ -46,6 +46,8 @@ Feature: Type of Work interface by admin
   @smoke
   Scenario: Filter status: archived and billable
     When I click type_of_work_filter_archived_only
+    And I click type_of_work_show_types_of_work
+    And I wait 1 seconds for animation stops
     And I should not see a text consulting on the page
     And I click type_of_work_filter_billable_only
     And I click type_of_work_show_types_of_work

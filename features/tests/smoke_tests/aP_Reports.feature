@@ -10,9 +10,11 @@ Feature: aP Reports interface by admin
     When I click ltb_report_tab
     And I click custom_from_date
     And I click month_selector
+    And I wait 1 seconds for animation stops
     And I click feb_in_month_selector
     And I click calendar_ok_button
     And I click first_date_calendar
+    And I wait 1 seconds for animation stops
     And I refresh the page
     And I click custom_to_date
     And I click month_selector

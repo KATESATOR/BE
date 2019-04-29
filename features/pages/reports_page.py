@@ -21,7 +21,13 @@ class ReportsPage:
                                                 "edit configuration button")
 
         # Charts
-        self.month_selector = Button("ext-gen60", "id", "month selector")
+        self.month_selector_from = Button("ext-gen60", "id", "month selector date from")
+        self.month_selector_from_calendar = Button('.fromDate .date-text', 'css', 'month selector date from calendar')
+        self.month_selector_calendar = Button('.x-date-middle .x-btn-text', 'css', 'month selector in calendar')
+        self.Jan_in_calendar = Button('.x-date-mp tr:first-of-type .x-date-mp-month:first-of-type', 'css',
+                                      'Jan in calendar')
+        self.calendar_month_ok = Button('.x-date-mp-ok', 'css', 'ok button in month calendar')
+        self.calendar_ok_button = Button('.x-date-at-ok-cancel-cell em:first-child', 'css', 'calendar ok button')
         self.previous_month = Button("//*[@class='rangeItemTitle'][contains(text(), 'Previous month')]", "xpath",
                                      "previous month")
         self.show_selector_button = Button("createChartLightbox_chartTypeListSelectorPlaceholder", "id",
@@ -58,6 +64,11 @@ class ReportsPage:
         self.create_pdf_invoice_button = Button("createPDFInvoiceButton", "id", "create PDF Invoice button")
         self.invoice_number_text_field = TextField("//textarea[@name='invoiceNumber']", "xpath",
                                                    "invoice number text field")
+        self.invoice_description_field = TextField('#itemsTableBody .leftMost textarea', 'css',
+                                                   'invoice description field')
+        self.invoice_item_field = TextField('#itemsTableBody td:nth-of-type(2) textarea', 'css', 'invoice item field')
+        self.invoice_qty_field = TextField('#itemsTableBody td:nth-of-type(3) input', 'css', 'invoice qty field')
+        self.invoice_rate_field = TextField('#itemsTableBody td:nth-of-type(4) input', 'css', 'invoice rate field')
         self.cost_of_work_button = Button("//*[@class='billingReports']//div[contains(text(), 'Cost of Work')]",
                                           "xpath", "cost of work button")
         self.profit_loss_button = Button("//*[@class='billingReports']//div[contains(text(), 'Profit / Loss')]",

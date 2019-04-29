@@ -184,6 +184,7 @@ Feature: Approve TT interface by admin
     And reject_tt_button should have class with actionButton reject disabled
     And I click select_all_button
     And I click approve_tt_button
+    And I wait 1 seconds for animation stops
     And I accept alert menu
     And I wait 1 seconds for animation stops
     And first_row_tt_status should contain Approved

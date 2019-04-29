@@ -236,7 +236,7 @@ Feature: User List interface by admin
     When I click pto_tab
     And I click sorting_by_current_pto
     And I wait 1 seconds for animation stops
-    And first_current_pto_cell should contain 0d
+    And first_current_pto_cell should contain -0.6d
     And I click sorting_by_current_pto
     And I wait 1 seconds for animation stops
     And first_current_pto_cell should contain 5.7d

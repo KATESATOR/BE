@@ -94,39 +94,27 @@ Feature: Reports interface by user
   @smoke
   Scenario Outline: Export charts in .pdf files
     Examples: <chart_name>
-      | chart_name          |
-      | Total working hours |
-      | Leave hours         |
-      | PTO Balance         |
-      | Sick Days Balance   |
-
-    When I click create_chart_button
-    And I wait 2 seconds for animation stops
-    And I click show_selector_button
-    And I wait 2 seconds for animation stops
-    And I select <chart_name> in chart selector
-    And I wait 2 seconds for animation stops
-    And I click export_chart_button
-    And I wait 2 seconds for animation stops
-    And I click download_chart_button
-    And I wait 2 seconds for animation stops
-    Then I search report <chart_name> with the extension pdf in downloads folder
-
-  @smoke
-  Scenario Outline: Export charts in .pdf files
-    Examples: <chart_name>
       | chart_name             |
+      | Total working hours    |
+      | Leave hours            |
+      | PTO Balance            |
+      | Sick Days Balance      |
       | Approved working hours |
 
     When I click create_chart_button
     And I wait 2 seconds for animation stops
+    And I click month_selector_from_calendar
+    And I wait 1 seconds for animation stops
+    And I click month_selector_calendar
+    And I wait 1 seconds for animation stops
+    And I click Jan_in_calendar
+    And I click calendar_month_ok
+    And I wait 1 seconds for animation stops
+    And I click calendar_ok_button
+    And I wait 1 seconds for animation stops
     And I click show_selector_button
-    And I wait 2 seconds for animation stops
+    And I wait 1 seconds for animation stops
     And I select <chart_name> in chart selector
-    And I wait 2 seconds for animation stops
-    And I click month_selector
-    And I wait 2 seconds for animation stops
-    And I click previous_month
     And I wait 2 seconds for animation stops
     And I click export_chart_button
     And I wait 2 seconds for animation stops

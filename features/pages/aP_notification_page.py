@@ -38,6 +38,9 @@ class ApNotificationPage:
         self.send_test_message_button = Button("sendTestMessage_button", "id", "Send Test Message button")
         self.test_message_text = Element("//*[@id='sendTestMessage_note'][@class='successmsg']", "xpath",
                                          "Send test message text success")
+        self.my_profile = Button('.userProfileLink', 'css', 'my profile')
+        self.profile_email = TextField('userProfilePopup_emailField', 'id', 'user email in profile')
+        self.profile_save = Button('userProfilePopup_commitBtn', 'id', 'save changes button in profile')
 
         # Error Processing
         self.admin_mail_address_textfield = TextField("adminMailAddressId", "id", "Admin mail address textfield")

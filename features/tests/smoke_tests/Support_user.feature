@@ -10,7 +10,8 @@ Feature: Support scenarios by user
     And I enter Firstname in the profile first name
     And I enter Lastname in the profile last name
     And I click save profile changes
-    And I wait 2 seconds for animation stops
+    And I wait 1 seconds for animation stops
+    And I refresh the page
     Then I should see a text Firstname Lastname on the page
 
   @smoke
