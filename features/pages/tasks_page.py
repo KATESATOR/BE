@@ -52,11 +52,9 @@ class TasksPage:
         self.confirm_task_deletion = Button(".taskPanelContent .submitTitle", "css",
                                             "confirm task deletion")
         self.customer_status = Button(".tab > .details > .detailsColumn > .statusButton", "css", "customer status")
-        self.archive_customer = Button("//div[@style='display: block; top: 124px; left: 45px;']/div[2]", "xpath",
-                                       "archive customer")
+        self.archive_customer = Button(".dropdownContainer:last-of-type .archived", "css", "archive customer")
         self.project_status = Button(".active > .active > .downIcon", "css", "project status")
-        self.archive_project = Button("//div[@style='display: block; top: 124px; left: 55px;']/div[2]", "xpath",
-                                      "archive project")
+        self.archive_project = Button(".dropdownContainer:last-of-type .archived", "css", "archive project")
         self.task_status = Button("//div[@class='detailsRow withTypeOfWork']//div[@class='taskStatusButton editable']",
                                   "xpath",
                                   "task status")
