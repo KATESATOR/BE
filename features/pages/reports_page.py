@@ -6,7 +6,9 @@ class ReportsPage:
     def __init__(self):
         self.reports_dashboard = Link("Reports Dashboard", "link text", "reports page")
         self.create_chart_button = Button("ext-gen38", "id", "create chart button")
+        self.create_chart = Button("#createChartButton", "css", "create chart")
         self.new_report_button = Button("ext-gen18", "id", "new report button")
+        self.new_report = Button("ext-gen9", "id", "new report button")
         self.add_to_dashboard_button = Button("//*[@class='addToDashboard']", "xpath", "add to dashboard button")
         self.report_name_text_field = TextField("//*[@class='reportNameEdit inputFieldWithPlaceholder']", "xpath",
                                                 "report name text field")
@@ -32,6 +34,7 @@ class ReportsPage:
                                                "include data of not assigned users checkbox")
         self.export_chart_button = Button("createChartLightbox_commitBtn", "id", "export to pdf chart")
         self.download_chart_button = Button("createChartLightbox_downloadPdfBtn", "id", "download to pdf chart")
+        self.download_chart = Button("#createChartLightbox_downloadPdfBtn", "css", "download to pdf chart")
         self.close_chart_button = Button("closeCreateChartLightboxButton", "id", "close chart button")
 
         # Choose Report to Create Window

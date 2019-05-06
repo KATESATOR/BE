@@ -6,6 +6,7 @@ class Users:
     def __init__(self):
         # Create/edit user
         self.users = Button("//a[@class='content employees']", "XPATH", "Users Tab")
+        self.user_list_title = Element("//div[@id='title']", "XPATH", "User List Title")
         self.add_users = Button("div#tabsPanel span.buttonIcon", "CSS", "Add Users")
         self.new_user_profile = Button("//div[contains(text(),'Configure new user profile')]", "XPATH",
                                        "Configure new user profile")
@@ -108,7 +109,7 @@ class Users:
         self.pager_back = Button("//a[contains(@class,'prev')]", "XPATH", "Left Arrow")
         self.pager_records_selector = Selector("//select[@id='recordsPerPageSelector']", "XPATH", "Records selector")
         
-        # PTO&SICK
+        # PTO Settings
         self.pto_settings = Button("//span[contains(text(),'PTO Settings')]", "XPATH", "PTO settings button")
         self.pto_change_balance = Button("//tbody[contains(@class,'actualContent')]//tr[2]//td[2]", "XPATH", "Balance "
                                                                                                              "button")
@@ -120,3 +121,15 @@ class Users:
         self.pto_max_limit = TextField("//input[@id='pto_capBalanceField']", "XPATH", "Max limit balance")
         self.pto_save_changes = Button("//div[24]//div[3]//div[1]//span[1]", "XPATH", "Save changes")
         self.pto_limit_check = TextField("//td[contains(text(),'811d')]", "XPATH", "Limit check")
+
+        # Sick Settings
+        self.sick_settings = Button("//span[@class='textTab'][contains(text(),'Sick Days Settings')]", "XPATH",
+                                    "Sick settings button")
+        self.sick_change_balance = Button("//span[contains(text(),'0.5d')]", "XPATH", "Sick balance button")
+        self.sick_balance_field = TextField("//span[@class='inHardValueMode']//input[@type='text']", "XPATH",
+                                            "Sick balance field")
+        self.sick_balance_apply = Button("//button[@class='applyButton']", "XPATH", "Apply sick")
+        self.sick_accrue_rules = Button("//td[contains(text(),'1.1d monthly')]", "XPATH", "Accrue rules")
+        self.sick_max_limit = TextField("//input[@id='sick_capBalanceField']", "XPATH", "Max limit balance")
+        self.sick_save_changes = Button("//div[25]//div[3]//div[1]//span[1]", "XPATH", "Save changes")
+        self.sick_limit_check = TextField("//td[contains(text(),'812d')]", "XPATH", "Limit check")
