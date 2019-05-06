@@ -8,9 +8,13 @@ class ApMySchedule:
         self.month_in_calendar = Button('.x-date-middle button', 'css', 'month in calendar')
         self.March_in_calendar = Button('.x-date-mp tbody>tr:nth-of-type(3)>td:first-of-type a', 'css',
                                         'March in calendar')
+        self.april_in_calendar = Button('.x-date-mp tbody>tr:nth-of-type(4)>td:first-of-type a', 'css',
+                                        'April in calendar')
         self.calendar_ok_button = Button('.x-date-mp-ok', 'css', 'calendar ok button')
         self.first_date_calendar = Button('*//td[@class="x-date-active"]/*//span[text()="1"]', 'xpath',
                                           'first day in calendar')
+        self.date_calendar = Button('*//td[@class="x-date-active"]/*//span[text()="30"]', 'xpath',
+                                    '30 day in calendar')
         self.calendar_today = Button('.x-date-at-today-cell', 'css', 'calendar today button')
         self.pto_value = Element('.ptoValue', 'css', 'PTO balance value')
         self.sick_value = Element('.sickValue', 'css', 'SD balance value')
@@ -60,8 +64,13 @@ class ApMySchedule:
                                           'Stivers in user selector')
         self.design_in_selector = Button('//*[@class="content"]//*[text()="Design"]', 'xpath',
                                          'Design in user selector')
+        self.entertt_in_selector = Button("//span[@title='Enter TT, Role']", 'xpath', 'Enter TT Role in user selector')
+        self.users_wo_department_in_selector = Button('//*[@class="content"]//*[text()="Users Without Department"]',
+                                                      'xpath', 'Users Without Department in user selector')
         self.apply_user_selector = Button('//*[text()="Apply"]', 'xpath', 'apply button in user selector')
         self.colleague_first_row = Element('.firstRow .colleagueNameContainer', 'css', 'colleague first row')
+        self.colleague_last_row = Element("//div[contains(text(),'Modify & Approve TT, Role')]", 'xpath', 'colleague '
+                                                                                                          'last row')
         self.search_result_first_row = Element('.firstRow .colleagueNameContainer span', 'css',
                                                'colleague search result first row')
         self.clear_search = Button('.searchFieldWrap .filterIcon', 'css', 'clear search field button')

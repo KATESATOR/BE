@@ -126,6 +126,7 @@ class Users:
         self.sick_settings = Button("//span[@class='textTab'][contains(text(),'Sick Days Settings')]", "XPATH",
                                     "Sick settings button")
         self.sick_change_balance = Button("//span[contains(text(),'0.5d')]", "XPATH", "Sick balance button")
+        self.sick_robert_change_balance = Button("//span[contains(text(),'1.6d')]", "XPATH", "Sick balance button")
         self.sick_balance_field = TextField("//span[@class='inHardValueMode']//input[@type='text']", "XPATH",
                                             "Sick balance field")
         self.sick_balance_apply = Button("//button[@class='applyButton']", "XPATH", "Apply sick")
