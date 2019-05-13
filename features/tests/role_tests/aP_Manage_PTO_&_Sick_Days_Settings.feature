@@ -233,6 +233,7 @@ Feature: aP Manage PTO & Sick Days Settings Role
     And I click pto_change_balance
     And I enter -1.3 in the pto_balance_field
     And I click pto_balance_apply
+    And I wait 1 seconds for animation stops
     And I should see a text -1.3 on the page
     And I click pto_accrue_rules
     And I wait 1 seconds for animation stops
