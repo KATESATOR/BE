@@ -183,7 +183,7 @@ Feature: aP My Schedule interface by admin
     And I click save_changes
     And I wait 1 seconds for animation stops
     And first_row_requested_time should contain 0.5 days (4h)
-    And first_row_balance_after should contain 5.1d
+    And first_row_balance_after should contain 6.6d
     And I click first_row_leave_name
     And I click leave_type_selector
     And I click last_leave_type
@@ -191,7 +191,7 @@ Feature: aP My Schedule interface by admin
     And I click save_changes
     And I wait 1 seconds for animation stops
     And first_row_leave_name should contain Medical Treatment
-    And first_row_balance_after should contain 0d
+    And first_row_balance_after should contain 1.1d
     And I should see a web element first_row_sd_balance
     And I should see a web element leave_comment
     And I click first_row_delete

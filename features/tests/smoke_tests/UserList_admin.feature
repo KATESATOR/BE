@@ -193,21 +193,21 @@ Feature: User List interface by admin
     Then first_row_in_wa_tab_projects_counter should contain 3
 
   @Smoke
+  Scenario: PTO balance editing
+    When I click pto_tab
+    And I click kloss_pto_balance_cell
+    And I enter 4.1 in the balance_field
+    And I click balance_edit_apply_button
+    And I wait 1 seconds for animation stops
+    Then kloss_pto_balance_cell should contain 4.1d
+
+  @Smoke
   Scenario: PTO settings ON/OFF
     When I click pto_tab
     And I click kloss_pto_control_switcher
     And I wait 1 seconds for animation stops
     And kloss_pto_balance_cell should contain OFF
     And I click kloss_pto_control_switcher
-    And I wait 1 seconds for animation stops
-    Then kloss_pto_balance_cell should contain 5.1d
-
-  @Smoke
-  Scenario: PTO balance editing
-    When I click pto_tab
-    And I click kloss_pto_balance_cell
-    And I enter 4.1 in the balance_field
-    And I click balance_edit_apply_button
     And I wait 1 seconds for animation stops
     Then kloss_pto_balance_cell should contain 4.1d
 
@@ -236,22 +236,32 @@ Feature: User List interface by admin
     When I click pto_tab
     And I click sorting_by_current_pto
     And I wait 1 seconds for animation stops
-    And first_current_pto_cell should contain -0.6d
+    And first_current_pto_cell should contain 0d
     And I click sorting_by_current_pto
     And I wait 1 seconds for animation stops
-    And first_current_pto_cell should contain 5.7d
+    And first_username_in_list should contain Barber, Robert
     And I click sorting_by_reported_pto
     And I wait 1 seconds for animation stops
     And first_reported_pto_cell should contain 0d
     And I click sorting_by_reported_pto
     And I wait 1 seconds for animation stops
-    And first_reported_pto_cell should contain 3d
+    And first_reported_pto_cell should contain 1.2d
     And I click sorting_by_control_pto
     And I wait 1 seconds for animation stops
     And first_current_pto_cell should contain OFF
+    And first_row_pto_control should have class with components_switcher small off
     And I click sorting_by_control_pto
     And I wait 1 seconds for animation stops
-    Then first_current_pto_cell should contain 5.7d
+    Then first_row_pto_control should have class with components_switcher small on
+
+  @Smoke
+  Scenario: Sick days balance editing
+    When I click sick_days_tab
+    And I click kloss_sd_balance_cell
+    And I enter 2.5 in the balance_field
+    And I click balance_edit_apply_button
+    And I wait 1 seconds for animation stops
+    Then kloss_sd_balance_cell should contain 2.5d
 
   @Smoke
   Scenario: Sick days settings ON/OFF
@@ -260,15 +270,6 @@ Feature: User List interface by admin
     And I wait 1 seconds for animation stops
     And kloss_sd_balance_cell should contain OFF
     And I click kloss_sd_control_switcher
-    And I wait 1 seconds for animation stops
-    Then kloss_sd_balance_cell should contain 3d
-
-  @Smoke
-  Scenario: Sick days balance editing
-    When I click sick_days_tab
-    And I click kloss_sd_balance_cell
-    And I enter 2.5 in the balance_field
-    And I click balance_edit_apply_button
     And I wait 1 seconds for animation stops
     Then kloss_sd_balance_cell should contain 2.5d
 
@@ -292,10 +293,10 @@ Feature: User List interface by admin
     When I click sick_days_tab
     And I click sorting_by_current_sd
     And I wait 1 seconds for animation stops
-    And first_current_sd_cell should contain -1d
+    And first_current_sd_cell should contain 0d
     And I click sorting_by_current_sd
     And I wait 1 seconds for animation stops
-    And first_current_sd_cell should contain 3d
+    And first_username_in_list should contain Moss, Bruno
     And I click sorting_by_reported_sd
     And I wait 1 seconds for animation stops
     And first_reported_sd_cell should contain 0d
@@ -305,9 +306,10 @@ Feature: User List interface by admin
     And I click sorting_by_control_sd
     And I wait 1 seconds for animation stops
     And first_current_sd_cell should contain OFF
+    And first_row_sd_control should have class with components_switcher small off
     And I click sorting_by_control_sd
     And I wait 1 seconds for animation stops
-    Then first_current_sd_cell should contain 0.5d
+    Then first_row_sd_control should have class with components_switcher small on
 
   @Smoke
   Scenario: Creating and deleting new time zone group

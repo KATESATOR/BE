@@ -211,7 +211,8 @@ class UserListPage:
         self.kloss_pto_control_switcher = Button(
             "//*[text()='Kloss, Barbara']/following::div[contains(@class,'components_switcher')][1]", "xpath",
             "Barbara Kloss pto control switcher")
-
+        self.first_row_pto_control = Element('.userListRow:first-of-type .ptoControlCell>div', 'css',
+                                             'pto control switcher in first row')
         self.kloss_pto_balance_cell = Button(
             "//*[text()='Kloss, Barbara']/following::td[contains(@class,'currentBalance')][1]", "xpath",
             "Barbara Kloss PTO balance cell")
@@ -255,6 +256,8 @@ class UserListPage:
         self.kloss_sd_control_switcher = Button(
             "//*[text()='Kloss, Barbara']/following::div[contains(@class,'components_switcher')][2]", "xpath",
             "Barbara Kloss sick days control switcher")
+        self.first_row_sd_control = Element('.userListRow:first-of-type .sickDaysControlCell>div', 'css',
+                                            'sd control switcher in first row')
         self.kloss_sd_balance_cell = Button(
             "//*[text()='Kloss, Barbara']/following::td[contains(@class,'currentBalance')][2]", "xpath",
             "Barbara Kloss sick days balance cell")

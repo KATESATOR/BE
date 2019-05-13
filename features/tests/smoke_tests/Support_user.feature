@@ -5,6 +5,12 @@ Feature: Support scenarios by user
     And general page is visible
 
   @smoke
+  Scenario: Switch product
+    When I click switch product
+    And I wait 3 seconds for animation stops
+    Then I should see a text My Schedule on the page
+
+  @smoke
   Scenario: Edit name in My Profile
     When I click my profile
     And I enter Firstname in the profile first name
@@ -37,9 +43,3 @@ Feature: Support scenarios by user
     And I click submit support
     And I wait 5 seconds for animation stops
     Then I should see a text Your question was successfully submitted on the page
-
-  @smoke
-  Scenario: Switch product
-    When I click switch product
-    And I wait 3 seconds for animation stops
-    Then I should see a text My Schedule on the page
