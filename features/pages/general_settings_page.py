@@ -54,19 +54,24 @@ class GeneralSettings:
                                           "Allow selected users to see all tt")
         self.gs_dar_see_all_tt_selector = Button("//td[@class='middle-left-cell contents']", "xpath", "Selecting user")
         self.gs_dar_see_all_tt_selector_white_jane = Button("//span[contains(@title,'White, Jane')]", "xpath",
-                                                         "Select White Jane")
+                                                            "Select White Jane")
+        self.gs_dar_see_all_tt_selector_entertt_role = Button("//span[contains(@title,'Enter TT, Role')]", "xpath",
+                                                              "Select White Jane")
         self.gs_dar_see_all_tt_selector_apply = Button("//span[contains(text(),'Apply')]", "xpath",
                                                        "Click on apply button")
-        self.gs_dar_hide_tt_lock_tt = CheckBox("//*[@id='accessToUserInfoSettingsBlock']/div/div[3]/div[1]/div[1]/label/input", "xpath",
+        self.gs_dar_hide_tt_lock_tt = CheckBox("//*[@id='accessToUserInfoSettingsBlock']/div/div[3]/div[1]/div["
+                                               "1]/label/input", "xpath",
                                                "Hide tt details in locktt")
-        self.gs_dar_hide_tt_from_managers = CheckBox("//*[@id='accessToUserInfoSettingsBlock']/div/div[4]/div[1]/div[1]/label/input",
-            "XPATH", "Hide tt from managers")
-        self.gs_dar_hide_not_assigned_users = CheckBox("//div[@class='darSetting hideAccountSetting']//input[@type='checkbox']",
-                                                       "XPATH",
-                                                       "Hide not assigned users in User List")
-        self.gs_dar_allow_manager_modify_tt_users = CheckBox(
-            "//div[@class='darSetting ttmCanManageAutoApprovedSetting']//input[@type='checkbox']",
-            "XPATH", "Allow manager to modify tt of users for auto approval")
+        self.gs_dar_hide_tt_from_managers = CheckBox("//*[@id='accessToUserInfoSettingsBlock']/div/div[4]/div[1]/div["
+                                                     "1]/label/input", "XPATH", "Hide tt from managers")
+        self.gs_dar_hide_not_assigned_users = CheckBox("//div[@class='darSetting hideAccountSetting']//input["
+                                                       "@type='checkbox']", "XPATH", "Hide not assigned users in User "
+                                                                                     "List")
+        self.gs_dar_allow_manager_modify_tt_users = CheckBox("//div[@class='darSetting "
+                                                             "ttmCanManageAutoApprovedSetting']//input["
+                                                             "@type='checkbox']", "XPATH", "Allow manager to modify "
+                                                                                           "tt of users for auto "
+                                                                                           "approval")
         self.gs_message_footer = TextField("textarea#mailMessageFooter", "CSS", "Message footer")
         self.gs_send_test_message = Button("input#sendTestMessage_button", "CSS", "Send Test Message")
         self.gs_page = Button("//form[@id='settingsForm']", "XPATH", "GS page")

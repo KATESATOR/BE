@@ -364,3 +364,14 @@ def upload_file(context, file, folder, element):
     except:
         context.screenshot.take_screenshot("Can not upload" + file)
         raise
+
+
+@step('I drag {element} by offset {x}, {y}')
+def drag_element(context, element, x, y):
+    page = set_page
+    element = getattr(page, element.replace(" ", "_"))
+    try:
+        Config.get_actions().drag_and_drop_by_offset(element, x, y)
+    except:
+        context.screenshot.take_screenshot("Can not drag" + element)
+        raise

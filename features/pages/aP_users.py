@@ -126,7 +126,6 @@ class Users:
         self.sick_settings = Button("//span[@class='textTab'][contains(text(),'Sick Days Settings')]", "XPATH",
                                     "Sick settings button")
         self.sick_change_balance = Button("//span[contains(text(),'0.5d')]", "XPATH", "Sick balance button")
-        self.sick_robert_change_balance = Button("//span[contains(text(),'1.6d')]", "XPATH", "Sick balance button")
         self.sick_balance_field = TextField("//span[@class='inHardValueMode']//input[@type='text']", "XPATH",
                                             "Sick balance field")
         self.sick_balance_apply = Button("//button[@class='applyButton']", "XPATH", "Apply sick")
@@ -134,3 +133,4 @@ class Users:
         self.sick_max_limit = TextField("//input[@id='sick_capBalanceField']", "XPATH", "Max limit balance")
         self.sick_save_changes = Button("//div[25]//div[3]//div[1]//span[1]", "XPATH", "Save changes")
         self.sick_limit_check = TextField("//td[contains(text(),'812d')]", "XPATH", "Limit check")
+        self.sick_robert_change_balance = Button("//span[contains(text(),'1.6d')]", "XPATH", "Sick balance button")
