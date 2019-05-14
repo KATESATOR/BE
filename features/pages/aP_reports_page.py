@@ -4,6 +4,7 @@ from features.utility.element import *
 class aPreportsPage:
 
     def __init__(self):
+        self.reports = Button("//div[contains(text(),'REPORTS')]", "XPATH", "Reports tab")
         self.ltb_report_tab = Button('leaveTimeReportTab', 'id', 'leave time & balances report tab')
         self.ltb_total_section_header = Button('#leaveTimeAndBalancesChartSectionContainer .headerLabel', 'css',
                                                'total section header in ltb report')
@@ -75,6 +76,13 @@ class aPreportsPage:
             'xpath', 'Long Michelle in user selector')
         self.barber_in_user_selector = Button('*//div[contains(@class,"userForLeave")]//*[text()="Barber, Robert"]',
                                               'xpath', 'Doe John in user selector')
+        self.entertt_in_user_selector = Button('*//div[contains(@class,"userForLeave")]//*[text()="Enter TT, Role"]',
+                                               'xpath', 'Enter TT Role in user selector')
+        self.manageptorole_in_user_selector = Button('*//div[contains(@class,"userForLeave")]//*[text()="Manage PTO & '
+                                                     'Sick Days Settings, Role"]', 'xpath', 'Manage PTO&Sick in user '
+                                                                                            'selector')
+        self.leavebalanceap_in_user_selector = Button('*//div[contains(@class,"userForLeave")]//*[text()="Manage '
+                                                      'Leave Balance aP, Role"]', 'xpath', 'Manage PTOSD in ''selector')
         self.past_leaves_time_table = Element('leaveTimeTable', 'id', 'past leaves leave time table')
         self.calendar = Element('calendarContainer', 'id', 'past leaves report calendar')
         self.date_range_selector_plc = Button('.monthYearSelectorButton>span', 'css', 'date range selector in plc')
