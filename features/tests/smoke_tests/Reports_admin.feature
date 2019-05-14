@@ -43,6 +43,10 @@ Feature: Reports interface by admin
     And I wait 2 seconds for animation stops
     And My current URL should contain /reports/invoiceresults.do
     And I enter №1 in the invoice_number_text_field
+    And I enter test in the invoice_description_field
+    And I enter 123 in the invoice_item_field
+    And I enter 1 in the invoice_qty_field
+    And I enter 2 in the invoice_rate_field
     And I click create_pdf_invoice_button
     And I wait 3 seconds for animation stops
     Then I search report Invoice with the extension pdf in downloads folder
@@ -139,6 +143,15 @@ Feature: Reports interface by admin
 
     When I click create_chart_button
     And I wait 2 seconds for animation stops
+    And I click month_selector_from_calendar
+    And I wait 1 seconds for animation stops
+    And I click month_selector_calendar
+    And I wait 1 seconds for animation stops
+    And I click Jan_in_calendar
+    And I click calendar_month_ok
+    And I wait 1 seconds for animation stops
+    And I click calendar_ok_button
+    And I wait 1 seconds for animation stops
     And I click show_selector_button
     And I wait 2 seconds for animation stops
     And I select <chart_name> in chart selector

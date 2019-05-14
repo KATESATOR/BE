@@ -10,9 +10,11 @@ Feature: aP Reports interface by admin
     When I click ltb_report_tab
     And I click custom_from_date
     And I click month_selector
+    And I wait 1 seconds for animation stops
     And I click feb_in_month_selector
     And I click calendar_ok_button
     And I click first_date_calendar
+    And I wait 1 seconds for animation stops
     And I refresh the page
     And I click custom_to_date
     And I click month_selector
@@ -100,6 +102,8 @@ Feature: aP Reports interface by admin
     When I click past_leaves_calendar_tab
     And I click user_selector_past_leaves
     And I click sort_by_users_in_user_selector
+    And I click filter_in_user_selector
+    And I enter Stivers in the search_in_user_selector
     And I click stivers_in_user_selector
     And I wait 1 seconds for animation stops
     And user_selector_past_leaves should contain Stivers, Melanie
@@ -141,6 +145,8 @@ Feature: aP Reports interface by admin
     When I click balance_history_tab
     And I click balance_history_user_selector
     And I click sort_by_users_in_user_selector
+    And I click filter_in_user_selector
+    And I enter Stivers in the search_in_user_selector
     And I click stivers_in_user_selector
     And I wait 1 seconds for animation stops
     And balance_history_user_selector should contain Stivers, Melanie
@@ -197,4 +203,4 @@ Feature: aP Reports interface by admin
     And I wait 2 seconds for animation stops
     And I click download_pdf
     And I wait 2 seconds for animation stops
-    And I search report actiPLANS - Leave Time and with the extension pdf in downloads folder
+    Then I search report actiPLANS - Leave Time and with the extension pdf in downloads folder

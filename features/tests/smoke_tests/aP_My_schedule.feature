@@ -22,6 +22,23 @@ Feature: aP My Schedule interface by admin
     Then calendar should contain today
 
   @Smoke
+  Scenario: Pager on requests list
+    When I click page_selector
+    And I click second_option_page_selector
+    And I wait 1 seconds for animation stops
+    And I should see a web element twenty_first_user_in_list
+    And I click page_selector
+    And I click first_option_page_selector
+    And I wait 1 seconds for animation stops
+    And I should not see a web element twenty_first_user_in_list
+    And I click next_page_button
+    And I wait 1 seconds for animation stops
+    And selected_page should contain 2
+    And I click previous_page_button
+    And I wait 1 seconds for animation stops
+    Then selected_page should contain 1
+
+  @Smoke
   Scenario: Creating, editing, deleting leave request
     When I click week_start_day_cell
     And I click submit_request
@@ -89,6 +106,8 @@ Feature: aP My Schedule interface by admin
   Scenario: Filtering and searching users
     When I click user_selector
     And I click selected_users
+    And I click filter_in_user_selector
+    And I enter Stivers in the search_in_user_selector
     And I click stivers_in_selector
     And I click apply_user_selector
     And I wait 1 seconds for animation stops
@@ -96,6 +115,7 @@ Feature: aP My Schedule interface by admin
     And colleague_first_row should contain Stivers, Melanie
     And I click user_selector
     And I click selected_users
+    And I click collapse_all_in_user_selector
     And I click design_in_selector
     And I click apply_user_selector
     And I wait 1 seconds for animation stops
@@ -163,7 +183,7 @@ Feature: aP My Schedule interface by admin
     And I click save_changes
     And I wait 1 seconds for animation stops
     And first_row_requested_time should contain 0.5 days (4h)
-    And first_row_balance_after should contain 5.1d
+    And first_row_balance_after should contain 6.6d
     And I click first_row_leave_name
     And I click leave_type_selector
     And I click last_leave_type
@@ -171,7 +191,7 @@ Feature: aP My Schedule interface by admin
     And I click save_changes
     And I wait 1 seconds for animation stops
     And first_row_leave_name should contain Medical Treatment
-    And first_row_balance_after should contain 0d
+    And first_row_balance_after should contain 1.1d
     And I should see a web element first_row_sd_balance
     And I should see a web element leave_comment
     And I click first_row_delete

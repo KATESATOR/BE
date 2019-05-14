@@ -4,6 +4,16 @@ from features.utility.element import *
 class ApMySchedule:
 
     def __init__(self):
+        self.page_selector = Button('recordsPerPageSelector', 'id', 'page selector')
+        self.next_page_button = Button("a.next", "css", "next page button")
+        self.previous_page_button = Button("a.prev", "css", "previous page")
+        self.selected_page = Element('span.page', 'css', 'selected page')
+        self.second_option_page_selector = Button('#recordsPerPageSelector>option:nth-of-type(2)', 'css',
+                                                  '25 in page selector')
+        self.first_option_page_selector = Button('#recordsPerPageSelector>option:first-of-type', 'css',
+                                                 '10 in page selector')
+        self.twenty_first_user_in_list = Element('.colleaguesScheduleTable tr:nth-of-type(24)', 'css',
+                                                 '21st user in list')
         self.calendar = Button('.calendarPlaceholder em>button', 'css', 'balances calendar')
         self.month_in_calendar = Button('.x-date-middle button', 'css', 'month in calendar')
         self.March_in_calendar = Button('.x-date-mp tbody>tr:nth-of-type(3)>td:first-of-type a', 'css',
@@ -60,10 +70,13 @@ class ApMySchedule:
         self.users_search_field = TextField('colleaguesSearchField', 'id', 'search users field')
         self.selected_users = Button('//*[text()="Selected users"]', 'xpath', 'selected users option in selector')
         self.all_users = Button('//*[text()="All users"]', 'xpath', 'all users option in selector')
-        self.stivers_in_selector = Button('//*[@class="content"]//*[text()="Stivers, Melanie"]', 'xpath',
+        self.stivers_in_selector = Button('//*[@class="content"]//*[contains(text(), "Melanie")]', 'xpath',
                                           'Stivers in user selector')
+        self.filter_in_user_selector = Button('.filterButton', 'css', 'filter button in user selector')
+        self.search_in_user_selector = TextField('.filterFieldInput', 'css', 'search field in user selector')
         self.design_in_selector = Button('//*[@class="content"]//*[text()="Design"]', 'xpath',
                                          'Design in user selector')
+        self.collapse_all_in_user_selector = Button('.collapseAllButton', 'css', 'collapse all button in user selector')
         self.entertt_in_selector = Button("//span[@title='Enter TT, Role']", 'xpath', 'Enter TT Role in user selector')
         self.users_wo_department_in_selector = Button('//*[@class="content"]//*[text()="Users Without Department"]',
                                                       'xpath', 'Users Without Department in user selector')

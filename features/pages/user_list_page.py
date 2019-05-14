@@ -18,9 +18,9 @@ class UserListPage:
             "departments in selector")
         self.bulk_invitations_button = Button("//*[@class='components_button addSeveralUsersButton']", "xpath",
                                               "bulk invitation button")
-        self.work_assignments_tab = Button("//*[@class='components_tabButton' and text()='Work Assignments']", "xpath",
-                                           "work assignments tab")
+        self.work_assignments_tab = Button(".workAssignmentTabTips", "css", "work assignments tab")
         self.pto_tab = Button("//*[text()='PTO Settings']", "xpath", "pto settings tab")
+        self.page_selector = Selector('recordsPerPageSelector', 'id', 'page selector')
         self.next_page = Button("#pager .next", "css", "next page button")
         self.previous_page = Button("#pager .prev", "css", "previous page button")
         self.sick_days_tab = Button("//*[text()='Sick Days Settings']", "xpath", "aick days settings tab")
@@ -30,6 +30,8 @@ class UserListPage:
                                     "test user")
         self.user_cruz_gordman = Button("//*[@class='userNameSpan' and text()='Cruz, Gordman']", "xpath",
                                         "user Cruz Gordman")
+        self.edited_cruz_gordman = Element("//*[@class='userNameSpan' and text()='Cruz123, Gordman123']", "xpath",
+                                           'edited Cruz Gordman')
         self.stivers_melanie = Button("//*[@class='userNameSpan' and contains(text(), 'Stivers, Melanie')]", "xpath",
                                       "Stivers Melanie")
         self.sorting_by_users = Button(".userList_mainTableContainer .sortLinks>div:first-of-type", "css",
@@ -42,6 +44,8 @@ class UserListPage:
         self.users_wo_permissions_filter = Button("//*[text()=('Users without permissions')]", "xpath",
                                                   "users without permissions in filter")
         self.all_staff_filter = Button("//*[text()=('All staff')]", "xpath", "all staff in filter")
+        self.all_permissions_filter = Button("//*[text()=('Managers with all permissions')]", "xpath",
+                                             'Managers with all permissions filter')
         self.first_username_in_list = Button(".userListRow:first-of-type span.userNameSpan", "css",
                                              "first username in user list")
         self.first_group_in_list = Button("tbody>tr:first-of-type .userNameCell.first .groupName", "css",
@@ -49,14 +53,17 @@ class UserListPage:
         self.first_tzg_in_list = Button("tbody>tr:first-of-type .userNameCell.first .timeZoneGroupName", "css",
                                         "first time zone group in list")
         self.user_filter_button = Button("td.userList_mainTableContainer .ellipsis", "css", "user filter button")
+        self.filter_user_selector = Button('.ul_components_usersFilter_menu .filterButton', 'css',
+                                           'filter in user selector')
+        self.search_user_selector = TextField('.filterFieldInput', 'css', 'search in user selector')
         self.selected_users_in_selector = Button(
-            "#usersManagementBodyTagId>div:last-of-type .x-table-layout-cell.custom div.x-form-radio-wrap-inner", "css",
-            "selected users in user selector")
+            ".ul_components_usersFilter_menu:last-of-type  tr:nth-of-type(2) .x-form-cb-label",
+            "css", "selected users in user selector")
         self.all_users_in_selector = Button(
-            "#usersManagementBodyTagId>div:last-of-type .x-table-layout-cell.generic>div>div>div", "css",
+            ".ul_components_usersFilter_menu:last-of-type  tr:first-of-type .x-form-cb-label", "css",
             "all users in users selector")
-        self.cruz_in_selector = CheckBox("//*[@class='ellipsisLabel' and text()='Cruz, Gordman']", "xpath",
-                                         "Stivers in user selector")
+        self.cruz_in_selector = CheckBox("//*[@title='Cruz, Gordman']", "xpath", "Cruz Gordman in user selector")
+        self.kloss_in_selector = Button("//*[@title='Kloss, Barbara']", "xpath", "Kloss Barbara in user selector")
         self.apply_button_user_filter = Button(
             "#usersManagementBodyTagId>:last-of-type .x-btn.greyButton.close-button:not(.cancel-button)", "css",
             "apply button in user filter")
@@ -105,14 +112,12 @@ class UserListPage:
         # Access to Scope of Work
         self.revoke_access_to_scope = Button("div.managementAssignmentsPanel div.revokeButton", "css",
                                              "revoke all access to scope")
-        self.no_access_to_scope = Button("//*[text()='No Access to Scope of Work']", "css",
+        self.no_access_to_scope = Button(".editManagementAssignmentsPanel .noAccessSection", "css",
                                          "no access to scope of work")
-        self.custom_access_to_scope = Button("//*[text()='Has Access to Selected:']", "css",
+        self.custom_access_to_scope = Button(".editManagementAssignmentsPanel .customSection", "css",
                                              "custom access to scope of work")
-        self.access_to_scope_back_button = Button(
-            "#usersManagementBodyTagId div.managementAssignmentsPanel div:contains('Back to Permissions')",
-            "css",
-            "access to scope back button")
+        self.access_to_scope_back_button = Button(".editManagementAssignmentsPanel .backButton", "css",
+                                                  "access to scope back button")
         self.tasks_counter_scope = Button("#editUserPanel .components_cptCounter.hierarchyClass_task>div", "css",
                                           "tasks counter in access to scope of work")
 
@@ -122,8 +127,8 @@ class UserListPage:
         self.add_time_zone_button = Button("timeZoneGroupManagementLightBox_addGroupButton", "id",
                                            "add time zone button")
         self.first_city_in_selector = Button("span.highlighted", "css", "first city in city selector")
-        self.Washington_time_zone_group = TextField("//*[@title='Washington']", "xpath", "Washington time zone")
-        self.delete_Washington_button = Button("//*[@title='Washington']/following::td[@class='deleteGroupCell']",
+        self.Washington_time_zone_group = TextField("//*[@title='Washington D.C.']", "xpath", "Washington time zone")
+        self.delete_Washington_button = Button("//*[@title='Washington D.C.']/following::td[@class='deleteGroupCell']",
                                                "xpath", "delete Washington time zone button")
         self.London_time_zone_group = Button("//*[@id='timeZoneGroupManagementLightBox_userGroupNameCell_2']/div/div",
                                              "xpath", "London time zone group")
@@ -184,20 +189,19 @@ class UserListPage:
             "css", "first username in work assigments tab")
         self.first_row_in_wa_tab_projects_counter = Button(".userListRow:first-of-type .projects .counterText", "css",
                                                            "projects counter work assignments tab first row")
-        self.edit_assignments_button = Button("//*[text()='Edit Assignments']", "xpath", "edit assignments button")
+        self.edit_assignments_button = Button(".editButton", "css", "edit assignments button")
         self.our_company_in_wa_panel = Button(
             "//div[@class='entitiesList']//div[@class='name' and text()='Our Company']",
             "xpath", "our company customer in WA panel")
         self.first_project_in_wa_panel = Button(
             "//div[@class='entityListItem hierarchyClass_project']//div[@class='checkboxPlaceholder']",
             "xpath", "first project in customer in wa panel")
-        self.close_edit_wa_button = Button(
-            ".userManagement_slidingPanel.userManagement_workAssignmentsEditorPanel .hideButton_panelContainer", "css",
-            "close edit wa panel button")
+        self.close_edit_wa_button = Button(".userManagement_workAssignmentsEditorPanel .hideButton_panelContainer",
+                                           "css", "close edit wa panel button")
         self.close_wa_button = Button(".workAssignment_panel .hideButton_panelContainer", "css",
                                       "close wa panel button")
-        self.administration_proj_del = Button("//*[@class='title' and text()='Administration']//../div[3]", "xpath",
-                                              "administration project delete button")
+        self.administration_proj_del = Button("//*[@class='title' and text()='Administration']/../../div[2]/div[2]",
+                                              "xpath", "administration project delete button")
         self.search_in_wa = Button("th.controlsPlaceholder.userName.secondLayer div.wordsFilter", "css",
                                    "search in WA button")
         self.search_wa_field = TextField("div.inputPlaceholder.animShowWordsField.active > input", "css",
@@ -207,7 +211,8 @@ class UserListPage:
         self.kloss_pto_control_switcher = Button(
             "//*[text()='Kloss, Barbara']/following::div[contains(@class,'components_switcher')][1]", "xpath",
             "Barbara Kloss pto control switcher")
-
+        self.first_row_pto_control = Element('.userListRow:first-of-type .ptoControlCell>div', 'css',
+                                             'pto control switcher in first row')
         self.kloss_pto_balance_cell = Button(
             "//*[text()='Kloss, Barbara']/following::td[contains(@class,'currentBalance')][1]", "xpath",
             "Barbara Kloss PTO balance cell")
@@ -239,11 +244,20 @@ class UserListPage:
         self.reset_pto_field = TextField("pto_resetBalanceField", "id", "reset pto field")
         self.accrue_pto_field = TextField("pto_accrueBalanceField", "id", "accrue pto field")
         self.limit_pto_field = TextField("pto_capBalanceField", "id", "limit pto field")
+        self.sorting_by_control_pto = Button('#sortByPTOControl .sortLink', 'css', 'sorting by pto control')
+        self.sorting_by_current_pto = Button("#sortByPTOLink .sortLink", "css", "sorting by current pto")
+        self.sorting_by_reported_pto = Button("#sortByApprovedPTO .sortLink", "css", "sorting by reported pto")
+        self.first_current_pto_cell = Button("tbody>tr:first-of-type .currentBalanceCell.ptoCell", "css",
+                                             "first current pto cell in list")
+        self.first_reported_pto_cell = Button("tbody>tr:first-of-type .ptoCell.plannedLeaveCell", "css",
+                                              "first reported pto cell in list")
 
         # Sick Days Settings
         self.kloss_sd_control_switcher = Button(
             "//*[text()='Kloss, Barbara']/following::div[contains(@class,'components_switcher')][2]", "xpath",
             "Barbara Kloss sick days control switcher")
+        self.first_row_sd_control = Element('.userListRow:first-of-type .sickDaysControlCell>div', 'css',
+                                            'sd control switcher in first row')
         self.kloss_sd_balance_cell = Button(
             "//*[text()='Kloss, Barbara']/following::td[contains(@class,'currentBalance')][2]", "xpath",
             "Barbara Kloss sick days balance cell")
@@ -273,15 +287,10 @@ class UserListPage:
         self.kloss_default_sd_rules = Button(
             "//*[text()='Kloss, Barbara']/following::td[text()='Default Sick Days Rules'][1]", "xpath",
             "Barbara Kloss default sick days rules cell")
-        self.sorting_by_current_pto = Button("#sortByPTOLink .sortLink", "css", "sorting by current pto")
-        self.sorting_by_reported_pto = Button("#sortByApprovedPTO .sortLink", "css", "sorting by reported pto")
-        self.first_current_pto_cell = Button("tbody>tr:first-of-type .currentBalanceCell.ptoCell", "css",
-                                             "first current pto cell in list")
-        self.first_reported_pto_cell = Button("tbody>tr:first-of-type .ptoCell.plannedLeaveCell", "css",
-                                              "first reported pto cell in list")
         self.sorting_by_current_sd = Button("#sortBySickLink .sortLink", "css", "sorting by current sick days")
         self.sorting_by_reported_sd = Button("#sortByApprovedSick .sortLink", "css", "sorting by reported sick days")
         self.first_current_sd_cell = Button("tbody>tr:first-of-type .currentBalanceCell.sickDaysCell", "css",
                                             "first current sick days cell in list")
         self.first_reported_sd_cell = Button("tbody>tr:first-of-type .sickDaysCell.plannedLeaveCell", "css",
                                              "first reported sick days cell in list")
+        self.sorting_by_control_sd = Button('#sortBySickControl .sortLink', 'css', 'sorting by sick days control')
