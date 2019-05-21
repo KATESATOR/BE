@@ -25,7 +25,7 @@ Feature: aP Notifications settings
 
   @smoke
   Scenario: Change Settings
-    And I enter 3 in the reminder_days_textfield
+    When I enter 3 in the reminder_days_textfield
     And I enter 12:00 PM in the reminder_at_textfield
     And I enter aP Prefix in the message_prefix_textfield
     And I enter aP Footer in the message_footer_textfield
