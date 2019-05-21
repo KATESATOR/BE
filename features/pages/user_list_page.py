@@ -101,6 +101,11 @@ class UserListPage:
         self.access_to_scope = Button("#editUserPanel .manageScopeCellContainer", "css", "access to scope of work box")
         self.access_to_scope_label = Button("#editUserPanel .manageScopeCellContainer .label", "css",
                                             "access to scope of work label")
+        self.settingsat_user = Button("//span[contains(text(),'Manage System Settings aT, Role')]", "xpath",
+                                      "setttingsat user panel")
+        self.ma_permission = Button("//div[@class='blockContent']//div[@class='userPanel_permissionRow "
+                                    "inactive']//div[@class='name'][contains(text(),'Manage Accounts & "
+                                    "Permissions')]", "xpath", "MA permission")
 
         # Access to Users
         self.access_to_all_users = Button("//*[text()='Has Access to All Users']", "xpath", "has access to all users")
