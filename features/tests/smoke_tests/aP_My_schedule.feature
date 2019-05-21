@@ -214,7 +214,7 @@ Feature: aP My Schedule interface by admin
     And I click first_row_delete
     And I accept alert menu
     And I wait 1 seconds for animation stops
-    Then empty_data_row should contain You have no leave time requests
+    Then empty_data_row should contain No matching records found
 
   @Smoke
   Scenario: Editing My profile

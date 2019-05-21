@@ -18,7 +18,7 @@ Feature: aP Notifications settings
     When I click my_profile
     And I enter rd_dev@actimind.com in the profile_email
     And I click profile_save
-    And I wait 1 seconds for animation stops
+    And I wait 3 seconds for animation stops
     When I click send_test_message_button
     And I wait 2 seconds for animation stops
     Then I should see a web element test_message_text

@@ -56,6 +56,7 @@ Feature: Manage Users and Settings aP Role
   Scenario: Manage users on User List
     When users_page is visible
     And I click users
+#    Из-за бага ATBO-357 есть проблемы
 #    And I should not see a web element pto_settings
 #    And I should not see a web element sick_settings
     And I click add_users
