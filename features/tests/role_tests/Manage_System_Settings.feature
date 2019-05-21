@@ -376,15 +376,10 @@ Feature: Manage System Settings Role
     Then I should see a web element holiday_check_2
 
   @role
-  Scenario: Rename and delete holidays
+  Scenario: Delete holidays
     When I click corp_work_schedule_button
     And work_schedule_page is visible
-    And I click edit_day
-    And I wait 1 seconds for animation stops
-    And I enter First_January in the holiday_name
     And I click holiday_list
-    And I wait 1 seconds for animation stops
-    And I should see a web element holiday_check_3
     And I click name_field
     And I click delete_holiday
     And I click cancel_delete
@@ -392,7 +387,7 @@ Feature: Manage System Settings Role
     And I click delete_holiday
     And I click remove_holiday
     And I refresh the page
-    Then I should not see a text First_January on the page
+    Then I should not see a web element corp_day_check
 
    @role
   Scenario: Change year
@@ -402,7 +397,6 @@ Feature: Manage System Settings Role
     And I click year_selector_2016
     And I wait 1 seconds for animation stops
     Then I should see a web element day_29_check
-
 
   @role
   Scenario: Change color scheme
