@@ -30,6 +30,9 @@ Feature: Lock TT interface
     And date_selector_button should contain Current week
     And I click user_selector_button
     And I click selected_users_radiobutton
+    And I click user_selector_filter
+    And I enter Cruz in the user_selector_search
+    And I wait 1 seconds for animation stops
     And I click user_cruz
     And I click close_user_selector_button
     And I wait 1 seconds for animation stops
@@ -44,8 +47,8 @@ Feature: Lock TT interface
   Scenario: Change task
     Given I create necessary time-track and return to the lock tt
     And I click expand_all_button
-    And I should see a web element task_backup_controlling
-    And I click task_backup_controlling
+    And first_row_details should contain Backup controlling
+    And I click first_row_details
     And I click type_of_work_button
     And I click type_programming
     And I wait 1 seconds for animation stops
@@ -56,7 +59,7 @@ Feature: Lock TT interface
     And type_of_work_button should have title with Non-Billable
     And I click collapse_all_button
     And I wait 1 seconds for animation stops
-    Then I should not see a web element task_backup_controlling
+    Then I should not see a web element first_row_details
 
   @smoke
   Scenario: Lock/Unlock all dates

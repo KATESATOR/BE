@@ -5,7 +5,10 @@ class LockTTPage:
 
     def __init__(self):
         self.user_cruz = Button("//*[@title='Cruz, Gordman']", "xpath", " Cruz, Gordman user")
-
+        self.user_selector_filter = Button('.filterButton', 'css', 'filter button in user selector')
+        self.user_selector_search = TextField('.filterFieldInput', 'css', 'user selector search field')
+        self.first_row_details = Button('#lockTablePlaceholder tr:nth-of-type(5) .lockTableEllipsis', 'css',
+                                        'details first row')
         self.result_text = Element("//*[@class='result-number']", "xpath", "result number")
         self.date_selector_button = Button("ext-gen32", "id", "date selector")
         self.user_selector_text = Element("ext-gen44", "id", "user selector text")
@@ -21,7 +24,7 @@ class LockTTPage:
         self.cur_prev_week_button = Button("//*[@class='rangeItemTitle'][contains(text(), 'Current & previous week')]",
                                            "xpath", "Current week")
         self.task = Button("//*[@class='lockTableEllipsis'][contains(text(), 'Phone calls')]",
-                                              "xpath", "task Phone calls")
+                           "xpath", "task Phone calls")
         self.date_cell = Button("//*[@class='dateCellNonWorking    ']", "xpath", "today")
         self.user_date_cell = Button("//*[contains(@class, 'userDayCell')]", "xpath", "one user day")
         self.user_date_cell_locked = Button("//*[contains(@class, 'userDayCell')][1][contains(@class, 'Locked')]",
@@ -36,8 +39,8 @@ class LockTTPage:
         # Types of Work
         self.type_of_work_button = Button("//*[@class='typeOfWorkButton editable']",
                                           "xpath", "Type of work")
-        self.type_testing = Button("//*[@class='typeLabel ellipsis'][contains(text(), 'testing')]",
-                                       "xpath", "programming type")
+        self.type_programming = Button("//*[@class='typeLabel ellipsis'][contains(text(), 'programming')]",
+                                   "xpath", "programming type")
         self.type_non_billable = Button("//*[@class='typeLabel ellipsis'][contains(text(), 'Non-Billable')]",
                                         "xpath", "Non-Billable type")
 

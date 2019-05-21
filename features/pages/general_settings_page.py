@@ -50,6 +50,8 @@ class GeneralSettings:
         self.gs_pto_accrue = TextField("input#pto_accrueBalanceField", "CSS", "Pto accrue field")
         self.gs_sick_accrue = TextField("input#sick_accrueBalanceField", "CSS", "Sick accrue field")
         self.gs_overtime = Button("tr#ext-gen28 em", "CSS", "Ovetime selector")
+        self.dar_selector_filter = Button('.filterButton', 'css', 'filter in dar user selector')
+        self.dar_search_in_selector = TextField('.filterFieldInput', 'css', 'search field in dar user selector')
         self.gs_dar_see_all_tt = CheckBox("div#accessToUserInfoSettingsBlock label:nth-child(1) > input", "CSS",
                                           "Allow selected users to see all tt")
         self.gs_dar_see_all_tt_selector = Button("//td[@class='middle-left-cell contents']", "xpath", "Selecting user")
@@ -72,6 +74,8 @@ class GeneralSettings:
                                                              "@type='checkbox']", "XPATH", "Allow manager to modify "
                                                                                            "tt of users for auto "
                                                                                            "approval")
+        self.gs_dar_see_all_tt_selector_stivers = Button("//span[@title='Stivers, Melanie']", "xpath",
+                                                         "Select Stivers Melanie")
         self.gs_message_footer = TextField("textarea#mailMessageFooter", "CSS", "Message footer")
         self.gs_send_test_message = Button("input#sendTestMessage_button", "CSS", "Send Test Message")
         self.gs_page = Button("//form[@id='settingsForm']", "XPATH", "GS page")

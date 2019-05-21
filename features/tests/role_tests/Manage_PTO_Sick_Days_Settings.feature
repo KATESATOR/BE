@@ -1,24 +1,126 @@
-Feature: Reports interface by admin
 
-  Background:
-    Given I am logged in as admin
-    And I am on reports page
-    And reports_page is visible
+Feature: Manage PTO & Sick Days Settings Role
 
-  @smoke
+ Background:
+    Given I am logged in as managebalancesat
+
+  @Smoke
+  Scenario: PTO balance editing
+    When user_list_page is visible
+    And I click pto_tab
+    And I click kloss_pto_balance_cell
+    And I enter 10.1 in the balance_field
+    And I click balance_edit_apply_button
+    And I wait 1 seconds for animation stops
+    And kloss_pto_balance_cell should contain 10.1d
+    And I click kloss_pto_balance_cell
+    And I enter 4.1 in the balance_field
+    Then I click balance_edit_apply_button
+
+  @Smoke
+  Scenario: PTO rules editing
+    When user_list_page is visible
+    And I click pto_tab
+    And I click kloss_pto_rules_cell
+    And I click custom_pto_switcher
+    And I click reset_pto_checkbox
+    And I enter 1 in the reset_pto_field
+    And I enter 5 in the accrue_pto_field
+    And I enter 66 in the limit_pto_field
+    And I click save_pto_rules_button
+    And I wait 1 seconds for animation stops
+    And kloss_pto_rules_reset should contain 1d  on Jan 01
+    And kloss_pto_rules_accrue should contain 5d monthly
+    And kloss_pto_rules_limit should contain 66d
+    And I click kloss_pto_rules_cell
+    And I click default_pto_switcher
+    And I click save_pto_rules_button
+    And I wait 1 seconds for animation stops
+    Then I should see a web element kloss_default_pto_rules
+
+  @Smoke
+  Scenario: Sorting by current PTO
+    When user_list_page is visible
+    And I click pto_tab
+    And I click sorting_by_current_pto
+    And I wait 1 seconds for animation stops
+    And first_current_pto_cell should contain 0d
+    And I click sorting_by_current_pto
+    And I wait 1 seconds for animation stops
+    Then first_current_pto_cell should contain 5.7d
+
+  @Smoke
+  Scenario: Sorting by reported PTO
+    When user_list_page is visible
+    And I click pto_tab
+    And I click sorting_by_reported_pto
+    And I wait 1 seconds for animation stops
+    And first_reported_pto_cell should contain 0d
+    And I click sorting_by_reported_pto
+    And I wait 1 seconds for animation stops
+    Then first_reported_pto_cell should contain 3d
+
+  @Smoke
+  Scenario: Sick days balance editing
+    When user_list_page is visible
+    And I click sick_days_tab
+    And I click kloss_sd_balance_cell
+    And I enter 10.1 in the balance_field
+    And I click balance_edit_apply_button
+    And I wait 1 seconds for animation stops
+    And kloss_sd_balance_cell should contain 10.1d
+    And I click kloss_sd_balance_cell
+    And I enter 2.5 in the balance_field
+    Then I click balance_edit_apply_button
+
+  @Smoke
+  Scenario: Sick days rules editing
+    When user_list_page is visible
+    And I click sick_days_tab
+    And I click kloss_sd_rules_cell
+    And I click custom_sd_switcher
+    And I enter 5 in the accrue_sd_field
+    And I click save_sd_rules_button
+    And I wait 1 seconds for animation stops
+    And kloss_sd_rules_accrue should contain 5d monthly
+    And I click kloss_sd_rules_cell
+    And I click default_sd_switcher
+    And I click save_sd_rules_button
+    And I wait 1 seconds for animation stops
+    Then I should see a web element kloss_default_sd_rules
+
+  @Smoke
+  Scenario: Sorting by current sick days
+    When user_list_page is visible
+    And I click sick_days_tab
+    And I click sorting_by_current_sd
+    And I wait 1 seconds for animation stops
+    And first_current_sd_cell should contain -1d
+    And I click sorting_by_current_sd
+    And I wait 1 seconds for animation stops
+    Then first_current_sd_cell should contain 3d
+
+  @Smoke
+  Scenario: Sorting by reported sick days
+    When user_list_page is visible
+    And I click sick_days_tab
+    And I click sorting_by_reported_sd
+    And I wait 1 seconds for animation stops
+    And first_reported_sd_cell should contain 0d
+    And I click sorting_by_reported_sd
+    And I wait 1 seconds for animation stops
+    Then first_reported_sd_cell should contain 0d
+
+  @Smoke
   Scenario Outline: Export Reports in .csv files
+   When I am on reports page
+   And reports_page is visible
     Examples: <report_name>
       | report                    | report_name               | prev_report_url      |
-      | staff_performance_button  | Staff Performance         | staffperformance.do  |
       | time_balance_button       | Time Balance and Overtime | overtime.do          |
       | leave_time_balance_button | Leave Time and Balances   | leaves.do            |
-      | time_track_detail_button  | Time Track In Detail      | commentsreport.do    |
-      | estimated_button          | Estimated vs. Actual Time | estimatedvsactual.do |
-      | billing_summary_button    | Billing Summary           | billingsummary.do    |
-      | cost_of_work_button       | Cost of Work              | cost.do              |
-      | profit_loss_button        | Profit Loss               | profitloss.do        |
 
-    When I click new_report_button
+    And I click new_report
     And I wait 2 seconds for animation stops
     And I should see a web element choose_report_window
     And I click <report>
@@ -30,42 +132,16 @@ Feature: Reports interface by admin
     And I wait 2 seconds for animation stops
     Then I search report <report_name> with the extension csv in downloads folder
 
-  @smoke2
-  Scenario: Export Invoice Report to PDF
-    When I click new_report_button
-    And I wait 2 seconds for animation stops
-    And I should see a web element choose_report_window
-    And I click invoice_export_button
-    And I click configure_report_button
-    And I wait 2 seconds for animation stops
-    And My current URL should contain /reports/invoice.do
-    And I click generate_html_button
-    And I wait 2 seconds for animation stops
-    And My current URL should contain /reports/invoiceresults.do
-    And I enter №1 in the invoice_number_text_field
-    And I enter test in the invoice_description_field
-    And I enter 123 in the invoice_item_field
-    And I enter 1 in the invoice_qty_field
-    And I enter 2 in the invoice_rate_field
-    And I click create_pdf_invoice_button
-    And I wait 3 seconds for animation stops
-    Then I search report Invoice with the extension pdf in downloads folder
-
-  @smoke
+  @Smoke
   Scenario Outline: Create and Save Reports on dashboard
+   When I am on reports page
+   And reports_page is visible
     Examples: <report_name>
       | report                    | report_name                     | prev_report_url      | report_url                  |
-      | staff_performance_button  | Staff Performance Smoke         | staffperformance.do  | staffperformanceresults.do  |
       | time_balance_button       | Time Balance and Overtime Smoke | overtime.do          | overtimeresults.do          |
       | leave_time_balance_button | Leave Time and Balances Smoke   | leaves.do            | leavesresults.do            |
-      | time_track_detail_button  | Time Track In Detail Smoke      | commentsreport.do    | commentsreportresults.do    |
-      | estimated_button          | Estimated vs. Actual Time Smoke | estimatedvsactual.do | estimatedvsactualresults.do |
-      | billing_summary_button    | Billing Summary Smoke           | billingsummary.do    | billingsummaryresults.do    |
-      | invoice_export_button     | Invoice Smoke                   | invoice.do           | invoiceresults.do           |
-      | cost_of_work_button       | Cost of Work Smoke              | cost.do              | costresults.do              |
-      | profit_loss_button        | Profit Loss Smoke               | profitloss.do        | profitlossresults.do        |
 
-    When I click new_report_button
+    When I click new_report
     And I wait 2 seconds for animation stops
     And I should see a web element choose_report_window
     And I click <report>
@@ -81,19 +157,14 @@ Feature: Reports interface by admin
     And I wait 2 seconds for animation stops
     Then report_name should contain <report_name>
 
-  @smoke
+  @Smoke
   Scenario Outline: Change report
+   When I am on reports page
+   And reports_page is visible
     Examples: <report_name>
       | report_name                     | report_name_changed                     | report_url                  |
-      | Staff Performance Smoke         | Staff Performance Smoke Changed         | staffperformanceresults.do  |
       | Time Balance and Overtime Smoke | Time Balance and Overtime Smoke Changed | overtimeresults.do          |
       | Leave Time and Balances Smoke   | Leave Time and Balances Smoke Changed   | leavesresults.do            |
-      | Time Track In Detail Smoke      | Time Track In Detail Smoke Changed      | commentsreportresults.do    |
-      | Estimated vs. Actual Time Smoke | Estimated vs. Actual Time Smoke Changed | estimatedvsactualresults.do |
-      | Billing Summary Smoke           | Billing Summary Smoke Changed           | billingsummaryresults.do    |
-      | Invoice Smoke                   | Invoice Smoke Changed                   | invoiceresults.do           |
-      | Cost of Work Smoke              | Cost of Work Smoke Changed              | costresults.do              |
-      | Profit Loss Smoke               | Profit Loss Smoke Changed               | profitlossresults.do        |
 
     When I open report on dashboard with name <report_name>
     And I wait 2 seconds for animation stops
@@ -104,78 +175,60 @@ Feature: Reports interface by admin
     And I click save_report_changes_button
     And I wait 1 seconds for animation stops
     And I click save_changes_button
-    And I click reports_dashboard
     And I wait 1 seconds for animation stops
+    And I click reports_dashboard
+    And I wait 2 seconds for animation stops
     Then I should see a text <report_name_changed> on the page
 
 
-  @smoke
+  @Smoke
   Scenario Outline: Remove report from dashboard
+   When I am on reports page
+   And reports_page is visible
     Examples: <report_name>
       | report_name                             |
-      | Staff Performance Smoke Changed         |
       | Time Balance and Overtime Smoke Changed |
       | Leave Time and Balances Smoke Changed   |
-      | Time Track In Detail Smoke Changed      |
-      | Estimated vs. Actual Time Smoke Changed |
-      | Billing Summary Smoke Changed           |
-      | Invoice Smoke Changed                   |
-      | Cost of Work Smoke Changed              |
-      | Profit Loss Smoke Changed               |
 
     When I remove <report_name> report from dashboard
     And I accept alert menu
     And I wait 3 seconds for animation stops
     Then I should not see a text <report_name> on the page
 
-  @smoke
+  @Smoke
   Scenario Outline: Export charts in .pdf files
+   When I am on reports page
+   And reports_page is visible
     Examples: <chart_name>
       | chart_name             |
-      | Total working hours    |
-      | Approved working hours |
       | Leave hours            |
       | PTO Balance            |
       | Sick Days Balance      |
-      | Overtime hours         |
-      | Cost of work           |
-      | Billable amounts       |
 
-    When I click create_chart_button
+    When I click create_chart
     And I wait 2 seconds for animation stops
-    And I click month_selector_from_calendar
-    And I wait 1 seconds for animation stops
-    And I click month_selector_calendar
-    And I wait 1 seconds for animation stops
-    And I click Jan_in_calendar
-    And I click calendar_month_ok
-    And I wait 1 seconds for animation stops
-    And I click calendar_ok_button
-    And I wait 1 seconds for animation stops
     And I click show_selector_button
     And I wait 2 seconds for animation stops
     And I select <chart_name> in chart selector
     And I wait 2 seconds for animation stops
     And I click export_chart_button
     And I wait 2 seconds for animation stops
-    And I click download_chart_button
+    And I click download_chart
     And I wait 2 seconds for animation stops
     Then I search report <chart_name> with the extension pdf in downloads folder
 
-  @smoke
+  @Smoke
   Scenario Outline: Create and Save Charts on dashboard
+   When I am on reports page
+   And reports_page is visible
     Examples: <chart_name>
       | chart                  | chart_name                   |
-      | Total working hours    | Total working hours Smoke    |
-      | Approved working hours | Approved working hours Smoke |
       | Leave hours            | Leave hours Smoke            |
       | PTO Balance            | PTO Balance Smoke            |
       | Sick Days Balance      | Sick Days Balance Smoke      |
       | Overtime hours         | Overtime hours Smoke         |
-      | Cost of work           | Cost of work Smoke           |
-      | Billable amounts       | Billable amounts Smoke       |
 
-    When I click create_chart_button
+    When I click create_chart
     And I wait 2 seconds for animation stops
     And I click show_selector_button
     And I wait 2 seconds for animation stops
@@ -189,18 +242,16 @@ Feature: Reports interface by admin
     And I wait 2 seconds for animation stops
     Then I should see a text <chart_name> on the page
 
-  @smoke
+  @Smoke
   Scenario Outline: Change charts
+   When I am on reports page
+   And reports_page is visible
     Examples: <chart_name>
       | chart_name                   | chart_name_changed                   |
-      | Total working hours Smoke    | Total working hours Smoke Changed    |
-      | Approved working hours Smoke | Approved working hours Smoke Changed |
       | Leave hours Smoke            | Leave hours Smoke Changed            |
       | PTO Balance Smoke            | PTO Balance Smoke Changed            |
       | Sick Days Balance Smoke      | Sick Days Balance Smoke Changed      |
       | Overtime hours Smoke         | Overtime hours Smoke Changed         |
-      | Cost of work Smoke           | Cost of work Smoke Changed           |
-      | Billable amounts Smoke       | Billable amounts Smoke Changed       |
 
     When I open report on dashboard with name <chart_name>
     And I wait 2 seconds for animation stops
@@ -214,20 +265,52 @@ Feature: Reports interface by admin
     And I wait 2 seconds for animation stops
     Then I should see a text <chart_name_changed> on the page
 
-  @smoke
+  @Smoke
   Scenario Outline: Remove chart from dashboard
+   When I am on reports page
+   And reports_page is visible
     Examples: <report_name>
       | chart_name                           |
-      | Total working hours Smoke Changed    |
-      | Approved working hours Smoke Changed |
       | Leave hours Smoke Changed            |
       | PTO Balance Smoke Changed            |
       | Sick Days Balance Smoke Changed      |
       | Overtime hours Smoke Changed         |
-      | Cost of work Smoke Changed           |
-      | Billable amounts Smoke Changed       |
+
 
     When I remove <chart_name> report from dashboard
     And I accept alert menu
     And I wait 3 seconds for animation stops
     Then I should not see a text <chart_name> on the page
+
+  @Smoke
+  Scenario: Only User List
+    When I am logged in as admin
+    And general_page is visible
+    And I click settings_button
+    And I click features
+    And features_page is visible
+    And I click features_pto_balance
+    And I click features_sick_balance
+    And I am logged in as managebalancesat
+    And general_page is visible
+    And I should not see a web element time_track
+    And I should not see a web element tasks
+    And I should not see a web element reports
+    Then I should see a web element user_list
+
+  @Smoke
+  Scenario: No User List
+    When I am logged in as admin
+    And general_page is visible
+    And I click settings_button
+    And I click general_settings_button
+    And general_settings_page is visible
+    And I perform select in the gs_dar_hide_not_assigned_users
+    And I wait 1 seconds for animation stops
+    And I click gs_save
+    And I am logged in as managebalancesat
+    And general_page is visible
+    And I should not see a web element time_track
+    And I should not see a web element tasks
+    And I should not see a web element reports
+    Then I should not see a web element user_list

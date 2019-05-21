@@ -5,12 +5,20 @@ Feature: Support scenarios by admin
     And general page is visible
 
   @smoke
+  Scenario: Switch product
+    When I click switch product
+    And I wait 3 seconds for animation stops
+    Then I should see a text My Schedule on the page
+
+  @smoke
   Scenario: Edit name in My Profile
     When I click my profile
+    And I wait 1 seconds for animation stops
     And I enter Firstname in the profile first name
     And I enter Lastname in the profile last name
     And I click save profile changes
     And I wait 2 seconds for animation stops
+    And I refresh the page
     Then I should see a text Firstname Lastname on the page
 
     #TODO: в дампе отсутствует состояние "демо-данные", нужно либо изменить дамп, либо удалить сценарий
@@ -58,9 +66,3 @@ Feature: Support scenarios by admin
 #    And I click request a call
 #    And I wait 1 seconds for animation stops
 #    Then I should see a text Thanks, we received your request! on the page
-
-  @smoke
-  Scenario: Switch product
-    When I click switch product
-    And I wait 3 seconds for animation stops
-    Then I should see a text My Schedule on the page

@@ -6,6 +6,25 @@ Feature: AP Leaves Management by admin
     And ap_leaves_management is visible
 
   @Smoke
+  Scenario: Changing weeks in chart
+    When I click previous_week_button
+    And I click return_to_cur_week
+    And I wait 1 seconds for animation stops
+    And I should not see a web element return_to_cur_week
+    And I click next_week_button
+    And I click return_to_cur_week
+    And I wait 1 seconds for animation stops
+    And I should not see a web element return_to_cur_week
+    And I click date_selector
+    And I click first_week_date_selector
+    And I wait 1 seconds for animation stops
+    And I should see a web element return_to_cur_week
+    And I click date_selector
+    And I click current_week_date_selector
+    And I wait 1 seconds for animation stops
+    Then I should not see a web element return_to_cur_week
+
+  @Smoke
   Scenario: Creating and deleting leave requests in chart
     When I click sort_users_chart
     And I wait 1 seconds for animation stops
@@ -174,25 +193,6 @@ Feature: AP Leaves Management by admin
     And I click reject_button
     And I wait 1 seconds for animation stops
     Then week_start_day_cell should have class with dayCell weekStartDay noLeave
-
-  @Smoke
-  Scenario: Changing weeks in chart
-    When I click previous_week_button
-    And I click return_to_cur_week
-    And I wait 1 seconds for animation stops
-    And I should not see a web element return_to_cur_week
-    And I click next_week_button
-    And I click return_to_cur_week
-    And I wait 1 seconds for animation stops
-    And I should not see a web element return_to_cur_week
-    And I click date_selector
-    And I click first_week_date_selector
-    And I wait 1 seconds for animation stops
-    And I should see a web element return_to_cur_week
-    And I click date_selector
-    And I click current_week_date_selector
-    And I wait 1 seconds for animation stops
-    Then I should not see a web element return_to_cur_week
 
   @Smoke
   Scenario: Filtering by leave type and status, and edit request in table

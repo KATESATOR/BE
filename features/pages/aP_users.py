@@ -52,13 +52,13 @@ class Users:
                                      "accountTab-manageRequests-td activeButton canManage')]", "XPATH",
                                      "Requests check")
         self.delete_user = Button("button#userDataLightBox_deleteBtn", "CSS", "Delete user button")
-        self.disable_wooster = Button("//tr[@class='userRow userIsLTM automaticallyApprovedUser enabledUser "
-                                      "linkedNotNull even userWithDefaultWorkSchedule "
-                                      "approverWithoutAssignedUsers']//td[@class='accountTabCell "
-                                      "accountTab-accountState-td lastCell activeButton']",
-                                      "XPATH", "Disable user wooster")
+        self.disable_last_user = Button(".userRow:last-child .lastCell.activeButton", "css", "disable last user")
+        self.enable_last_user = Button(".userRow:last-child .lastCell.activeButton", "css", "enable last user")
         self.enable_wooster = Button("*//span[@class='accountTab-accountStateText-span'][contains(text(),'Disabled')]",
                                      "XPATH", "Enable user wooster")
+        self.first_row_username = Element('.userRow:first-child .accountTab-userNameText-span', 'css',
+                                          'User name in first row')
+        self.disabled_user = Element('.disabledUser', 'css', 'disabled user')
 
         # Filter
         self.filter = Button("span#ext-gen11", "CSS", "Filter on user list")
@@ -73,6 +73,7 @@ class Users:
         self.sort_by_user = Button("//span[contains(@class,'sortButton')][contains(text(),'User')]", "XPATH",
                                    "Sort by User")
         self.sort_by_group = Button("//span[contains(text(),'Group')]", "XPATH", "Sort by Group")
+        self.sort_by_time_zone = Button('.sortByTimeZoneGroupButton', 'css', 'sort by time zone')
         self.sort_by_working_week = Button("//span[contains(text(),'Working Week')]", "XPATH", "Sort by Working Week")
         self.sort_by_account = Button("*//span[text()='Account']", "XPATH", "Sort by Account")
         self.show_disabled_accounts = CheckBox("//input[@id='userList_accountEnabledFilter']", "XPATH", "Show disabled")
@@ -108,7 +109,7 @@ class Users:
         self.pager_next = Button("//a[contains(@class,'next')]", "XPATH", "Right Arrow")
         self.pager_back = Button("//a[contains(@class,'prev')]", "XPATH", "Left Arrow")
         self.pager_records_selector = Selector("//select[@id='recordsPerPageSelector']", "XPATH", "Records selector")
-        
+
         # PTO Settings
         self.pto_settings = Button("//span[contains(text(),'PTO Settings')]", "XPATH", "PTO settings button")
         self.pto_change_balance = Button("//tbody[contains(@class,'actualContent')]//tr[2]//td[2]", "XPATH", "Balance "
@@ -121,11 +122,15 @@ class Users:
         self.pto_max_limit = TextField("//input[@id='pto_capBalanceField']", "XPATH", "Max limit balance")
         self.pto_save_changes = Button("//div[24]//div[3]//div[1]//span[1]", "XPATH", "Save changes")
         self.pto_limit_check = TextField("//td[contains(text(),'811d')]", "XPATH", "Limit check")
+        self.disabled_leave_balance = Element(
+            '//*[@class="accountTabCell tableButtonCell accountTab-manageBalance-td activeButton"]', 'xpath',
+            'disabled leave balance button')
 
         # Sick Settings
         self.sick_settings = Button("//span[@class='textTab'][contains(text(),'Sick Days Settings')]", "XPATH",
                                     "Sick settings button")
         self.sick_change_balance = Button("//span[contains(text(),'0.5d')]", "XPATH", "Sick balance button")
+        self.sick_robert_change_balance = Button("//span[contains(text(),'1.6d')]", "XPATH", "Sick balance button")
         self.sick_balance_field = TextField("//span[@class='inHardValueMode']//input[@type='text']", "XPATH",
                                             "Sick balance field")
         self.sick_balance_apply = Button("//button[@class='applyButton']", "XPATH", "Apply sick")
@@ -133,4 +138,3 @@ class Users:
         self.sick_max_limit = TextField("//input[@id='sick_capBalanceField']", "XPATH", "Max limit balance")
         self.sick_save_changes = Button("//div[25]//div[3]//div[1]//span[1]", "XPATH", "Save changes")
         self.sick_limit_check = TextField("//td[contains(text(),'812d')]", "XPATH", "Limit check")
-        self.sick_robert_change_balance = Button("//span[contains(text(),'1.6d')]", "XPATH", "Sick balance button")

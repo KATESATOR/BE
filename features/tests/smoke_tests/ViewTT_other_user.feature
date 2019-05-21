@@ -5,8 +5,8 @@ Feature: View TT interface of other user by admin
     Given I am logged in as admin
     And I am on view_tt page
     And view_tt_page is visible
-    And i click user_selector
-    And i click user_selector_timmers_brian
+    And I click user_selector
+    And I click user_selector_timmers_brian
 
   @smoke
   Scenario: Switching user
@@ -19,7 +19,7 @@ Feature: View TT interface of other user by admin
   Scenario: Switching period and checking period table
     When I perform select in the ttdetails_show_tasks
     And I wait 1 seconds for animation stops
-    And i click empty_space
+    And I click empty_space
     And I wait 2 seconds for animation stops
     And I click calendar_from
     And I wait 1 seconds for animation stops
@@ -95,7 +95,7 @@ Feature: View TT interface of other user by admin
     When I click filter
     And I wait 1 seconds for animation stops
     And I click filter_cp_selector
-    And i click filter_cp_selector_3
+    And I click filter_cp_selector_3
     And I click filter_select_all
     And I click filter_close
     And I click filter_apply
@@ -139,7 +139,7 @@ Feature: View TT interface of other user by admin
     And I perform deselect in the filter_tt_status_ready_for_approval
     And I perform deselect in the filter_tt_status_not_ready_and_rejected
     And I perform select in the filter_tt_status_ready_for_approval
-    And i click filter_apply
+    And I click filter_apply
     And I wait 1 seconds for animation stops
     Then I should see a web element filter_tt_status_ready_checked
 
