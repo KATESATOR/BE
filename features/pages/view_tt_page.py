@@ -90,8 +90,10 @@ class ViewTTPage:
         self.export_pdf_checked = Element("//div[@id='pdfPage_1']//canvas[contains(@height,'589')]", "xpath",
                                           "export_pdf__hecked")
         # Edit Task
-        self.ttdetails_show_tasks = CheckBox("//div[contains(@class,'showTasksContainer')]//input[contains"
-                                             "(@type,'checkbox')]", "xpath", "ttdetails_show_tasks")
+        self.ttdetails_show_tasks = Button(".showTasks", "css", "ttdetails_show_tasks")
+        self.ttdetails_edit_task_in_day = Button(
+            "//*[contains(@class, 'dayRows')]//*[@class='name'][contains(text(),'Page updates')]", "xpath",
+            "edit task Page updates")
         self.ttdetails_edit_task = Button("tr.taskRow.nonLast.task60.available:nth-child(3) div.subContainer "
                                           "div.iconNameContainer > div.name ",
                                           "css",
@@ -142,3 +144,7 @@ class ViewTTPage:
                                  "balance_as")
         self.back_to_me = Button("//a[@class='backToMyTtText link']", "xpath", "back_to_me")
         self.calendar_range = Button("//td[@id='dateRangeSelectorCell']", "xpath", "calendar_range")
+        self.task_status = Button("div.statusCell div.taskStatusButton.editable", "css", "task status")
+        self.task_status_clarification = Button(
+            "//*[@class='statusCell']//*[@class='name'][contains(text(),'Need Clarification')]", "xpath",
+            "need clarification status status")
