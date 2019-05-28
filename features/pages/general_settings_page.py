@@ -54,7 +54,7 @@ class GeneralSettings:
         self.dar_search_in_selector = TextField('.filterFieldInput', 'css', 'search field in dar user selector')
         self.gs_dar_see_all_tt = CheckBox("div#accessToUserInfoSettingsBlock label:nth-child(1) > input", "CSS",
                                           "Allow selected users to see all tt")
-        self.gs_dar_see_all_tt_selector = Button("//td[@class='middle-left-cell contents']", "xpath", "Selecting user")
+        self.gs_dar_see_all_tt_selector = Button("//td[@class='middle-left-cell contents']/span", "xpath", "Selecting user")
         self.gs_dar_see_all_tt_selector_white_jane = Button("//span[contains(@title,'White, Jane')]", "xpath",
                                                             "Select White Jane")
         self.gs_dar_see_all_tt_selector_entertt_role = Button("//span[contains(@title,'Enter TT, Role')]", "xpath",
@@ -76,6 +76,8 @@ class GeneralSettings:
                                                                                            "approval")
         self.gs_dar_see_all_tt_selector_stivers = Button("//span[@title='Stivers, Melanie']", "xpath",
                                                          "Select Stivers Melanie")
+        self.gs_dar_see_all_tt_selector_entertt = Button("//span[@title='Enter TT, Role']", "xpath",
+                                                         "Select Enter TT role")
         self.gs_message_footer = TextField("textarea#mailMessageFooter", "CSS", "Message footer")
         self.gs_send_test_message = Button("input#sendTestMessage_button", "CSS", "Send Test Message")
         self.gs_page = Button("//form[@id='settingsForm']", "XPATH", "GS page")

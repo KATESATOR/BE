@@ -5,10 +5,8 @@ from features.utility.element import *
 class ReportsPage:
     def __init__(self):
         self.reports_dashboard = Link("Reports Dashboard", "link text", "reports page")
-        self.create_chart_button = Button("ext-gen38", "id", "create chart button")
-        self.create_chart = Button("#createChartButton", "css", "create chart")
-        self.new_report_button = Button("ext-gen18", "id", "new report button")
-        self.new_report = Button("ext-gen9", "id", "new report button")
+        self.create_chart_button = Button("createChartButton", "id", "create chart button")
+        self.new_report_button = Button("createReportButton", "id", "new report button")
         self.add_to_dashboard_button = Button("//*[@class='addToDashboard']", "xpath", "add to dashboard button")
         self.report_name_text_field = TextField("//*[@class='reportNameEdit inputFieldWithPlaceholder']", "xpath",
                                                 "report name text field")
