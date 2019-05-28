@@ -409,7 +409,7 @@ Feature: Manage Users and Settings aP Role
     And I enter 12:00 PM in the reminder_at_textfield
     And I enter aP Prefix in the message_prefix_textfield
     And I enter aP Footer in the message_footer_textfield
-    And I enter rd_dev@actimind.com in the admin_mail_address_textfield
+    And I enter rd_qa@actimind.com in the admin_mail_address_textfield
     And I click save_button_bottom
     And I wait 2 seconds for animation stops
     And notify_new_ltr_checkbox should have checked with true
@@ -423,7 +423,7 @@ Feature: Manage Users and Settings aP Role
     And notify_users_on_ltr_new_or_deleted_checkbox should have checked with true
     And message_prefix_textfield should have value with aP Prefix
     And message_footer_textfield should have value with aP Footer
-    And admin_mail_address_textfield should have value with rd_dev@actimind.com
+    And admin_mail_address_textfield should have value with rd_qa@actimind.com
     And I wait 2 seconds for animation stops
     And I click notify_new_ltr_checkbox
     And I click notify_modified_ltr_checkbox

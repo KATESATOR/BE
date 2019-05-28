@@ -28,7 +28,7 @@ Feature: AP Leaves Management by admin
   Scenario: Creating and deleting leave requests in chart
     When I click sort_users_chart
     And I wait 1 seconds for animation stops
-    And first_row_name_chart should contain Gibson, Maurice
+    And first_row_name_chart should contain Enter TT, Role
     And I click week_start_day_cell_no_leave
     And I click first_element_in_menu
     And I wait 1 seconds for animation stops
@@ -78,7 +78,7 @@ Feature: AP Leaves Management by admin
     And I wait 1 seconds for animation stops
     And I click sort_users_chart
     And I wait 1 seconds for animation stops
-    And first_row_name_chart should contain Gibson, Maurice
+    And first_row_name_chart should contain Enter TT, Role
     Then first_row_planned_lt should contain 40
 
   @Smoke
@@ -100,6 +100,31 @@ Feature: AP Leaves Management by admin
     Then selected_page should contain 1
 
   @Smoke
+  Scenario: Searching user in Chart
+    When I enter 123 in the search_field_chart
+    And I wait 1 seconds for animation stops
+    And first_row_name_chart should contain There are no users to review
+    And I click clear_search
+    And I wait 1 seconds for animation stops
+    And first_row_name_chart should contain Enter TT, Role
+    And I enter Moss in the search_field_chart
+    And I wait 1 seconds for animation stops
+    Then search_result_chart should contain Moss
+
+  @Smoke
+  Scenario: Searching user in Table
+    When I click lt_requests_tab
+    And I enter 123 in the search_field_table
+    And I wait 1 seconds for animation stops
+    And no_leave_time_row should contain There are no leave time requests to process
+    And I click clear_search
+    And I wait 1 seconds for animation stops
+    And first_row_name_table should contain Enter TT, Role
+    And I enter Venson in the search_field_table
+    And I wait 3 seconds for animation stops
+    Then search_result_table should contain Venso
+
+  @Smoke
   Scenario: Sorting and filtering in requests table
     When I click lt_requests_tab
     And I click sort_period
@@ -108,14 +133,14 @@ Feature: AP Leaves Management by admin
     And first_row_name_table should contain Venson, Ronald
     And I click user_filter_table
     And I click selected_users
-    And I perform select in the design_in_user_filter
+    And I perform select in the wo_dept_in_user_filter
     And I click apply_filter
     And I wait 1 seconds for animation stops
-    And user_filter_table should contain 1 department
-    And first_row_name_table should contain Gibson, Maurice
+    And user_filter_table should contain w/o department
+    And first_row_name_table should contain Enter TT, Role
     And I click user_filter_table
     And I click selected_users
-    And I perform select in the design_in_user_filter
+    And I perform select in the wo_dept_in_user_filter
     And I perform select in the administration_in_user_filter
     And I click apply_filter
     And I wait 1 seconds for animation stops
@@ -127,11 +152,11 @@ Feature: AP Leaves Management by admin
     And user_filter_table should contain All Users
     And I click sort_users
     And I wait 1 seconds for animation stops
-    And first_row_name_table should contain Gibson, Maurice
+    And first_row_name_table should contain Enter TT, Role
     And I click sort_groups
     And I wait 1 seconds for animation stops
-    And first_row_name_table should contain Gibson, Maurice
-    And first_group_in_table should have title with Design
+    And first_row_name_table should contain Enter TT, Role
+    And first_group_in_table should have title with Users Without Department
     And I click sort_by_time_zone
     And I wait 1 seconds for animation stops
     And I click sort_by_time_zone
@@ -157,14 +182,14 @@ Feature: AP Leaves Management by admin
   Scenario: User Filter in leave time planning chart
     When I click user_filter
     And I click selected_users
-    And I perform select in the design_in_user_filter
+    And I perform select in the wo_dept_in_user_filter
     And I click apply_filter
     And I wait 2 seconds for animation stops
-    And user_filter should contain 1 department
-    And first_row_name_chart should contain Gibson, Maurice
+    And user_filter should contain w/o department
+    And first_row_name_chart should contain Enter TT, Role
     And I click user_filter
     And I click selected_users
-    And I perform select in the design_in_user_filter
+    And I perform select in the wo_dept_in_user_filter
     And I click all_users
     And I click apply_filter
     And I wait 2 seconds for animation stops

@@ -161,7 +161,20 @@ def filling_the_text_field(context, text, text_field):
     page = set_page
     text_field = getattr(page, text_field.replace(" ", "_"))
     try:
-        # text_field.clear()
+        text_field.clear_field()
+        text_field.send_keys(text)
+        context.log.info(text_field.name + " has been filled with " + text)
+    except:
+        context.log.warn(text_field.name + " doesn't filled with " + text)
+        context.screenshot.take_screenshot("Can not enter the text in the " + text_field.name)
+        raise
+
+
+@step('I send {text} without clear in the {text_field}')
+def filling_without_clear_the_text_field(context, text, text_field):
+    page = set_page
+    text_field = getattr(page, text_field.replace(" ", "_"))
+    try:
         text_field.send_keys(text)
         context.log.info(text_field.name + " has been filled with " + text)
     except:

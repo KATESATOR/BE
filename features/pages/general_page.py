@@ -55,12 +55,12 @@ class GeneralPage:
 
         # Settings pt.2
         self.leave_types_button = Link("Leave Types", "link text", "leave types button")
-        self.work_schedule_button = Link("Work Schedule", "link text", "work schedule button")
+        self.work_schedule_button = Link("Corporate Work Schedule", "link text", "work schedule button")
         self.corp_work_schedule_button = Link("Corporate Work Schedule", "link text", "corporate work schedule button")
         self.notifications_button = Link("Notifications", "link text", "notifications button")
         self.logo_color_scheme_button = Link("Logo & Color Scheme", "link text", "logo & color scheme button")
 
         self.ap_reports = Button
 
-        self.ap_work_schedule_button = Link("Default Work Schedule", "link text", "work schedule button")
+        self.ap_work_schedule_button = Link("Corporate Work Schedule", "link text", "work schedule button")
         self.ap_notifications_button = Link("Email Notifications", "link text", "notifications button")

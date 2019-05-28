@@ -25,10 +25,150 @@ Feature: User List interface by admin
     Then I should not see a web element new_test_user
 
   @Smoke
-  Scenario: Edit user
+  Scenario: Edit user permissions
     When I click user_cruz_gordman
-    And I enter Gordman123 in the edit_first_name_field
-    And I enter 123 in the edit_last_name_field
+    And I click permissions_tab
+    And I click manage_accounts_edit_user
+    And I wait 2 seconds for animation stops
+    And manage_users_icon_selected should have class with icon manageUsers
+    And team_scope_edit_user should have class with userPanelScopeCell all disabled highlighted
+    And manage_scope_edit_user should have class with userPanelScopeCell all disabled highlighted
+    And team_scope_selected should contain All users
+    And manage_scope_selected should contain Entire scope
+    And I click manage_accounts_edit_user
+    And I wait 2 seconds for animation stops
+    And manage_users_icon_selected should have class with icon manageUsers inactive
+    And manage_accounts_edit_user should have class with userPanel_permissionRow inactive
+    And team_scope_edit_user should have class with userPanelScopeCell selected highlighted
+    And manage_scope_edit_user should have class with userPanelScopeCell selected highlighted
+    And team_scope_selected should contain 3 users
+    And manage_scope_selected should contain Part of scope
+    And I click modify_tt_edit_user
+    And I wait 2 seconds for animation stops
+    And modify_tt_icon_selected should have class with icon modifyTT inactive
+    And modify_tt_edit_user should have class with userPanel_permissionRow inactive
+    And I click manage_scope_perm_edit_user
+    And I wait 2 seconds for animation stops
+    And manage_scope_icon_selected should have class with icon manageScope inactive
+    And manage_scope_perm_edit_user should have class with userPanel_permissionRow inactive
+    And I click manage_cost_edit_user
+    And I wait 2 seconds for animation stops
+    And manage_cost_icon_selected should have class with icon costReports inactive
+    And manage_cost_edit_user should have class with userPanel_permissionRow inactive
+    And team_scope_edit_user should have class with userPanelScopeCell notAllowed disabled highlighted
+    And manage_scope_edit_user should have class with userPanelScopeCell notAllowed disabled highlighted
+    And team_scope_selected should contain –
+    And manage_scope_selected should contain –
+    And I click enter_tt_edit_user
+    And I wait 1 seconds for animation stops
+    And enter_tt_edit_user should have class with userPanel_permissionRow inactive
+    And I click lock_tt_edit_user
+    And I wait 1 seconds for animation stops
+    And lock_tt_edit_user should have class with userPanel_permissionRow inactive
+    And I click manage_balances_edit_user
+    And I wait 1 seconds for animation stops
+    And manage_balances_edit_user should have class with userPanel_permissionRow active
+    And I click manage_settings_edit_user
+    And I wait 1 seconds for animation stops
+    And manage_settings_edit_user should have class with userPanel_permissionRow active
+    And I click permission_info
+    And I wait 1 seconds for animation stops
+    And I should see a web element permission_info_popup
+    And I click permission_info_popup_close
+    And I wait 1 seconds for animation stops
+    Then I should not see a web element permission_info_popup
+
+  @Smoke
+  Scenario: Edit user account settings
+    When I click user_cruz_gordman
+    And I wait 1 seconds for animation stops
+    And I send 123 without clear in the username_field_edit_user
+    And I send 123 without clear in the email_field_edit_user
+    And I click reset_password
+    And I click confirm_reset_password
+    And I wait 1 seconds for animation stops
+    And I should see a text The password for Gordman Cruz has been reset. on the page
+    And I click close_reset_password
+    And I click access_at_switcher
+    And I wait 1 seconds for animation stops
+    And access_at_switcher should have class with components_switcher small animated off
+    And I should see a web element gordman_inactive
+    And I click access_at_switcher
+    And I wait 1 seconds for animation stops
+    And access_at_switcher should have class with components_switcher small animated on
+    And I should not see a web element gordman_inactive
+    And I click access_ap_switcher
+    And I wait 1 seconds for animation stops
+    And access_ap_switcher should have class with components_switcher small animated off
+    And I should not see a web element gordman_ap_access_icon
+    And I click access_ap_switcher
+    And I wait 1 seconds for animation stops
+    And access_ap_switcher should have class with components_switcher small animated on
+    And I should see a web element gordman_ap_access_icon
+    And I click dept_selector_edit_user
+    And I click new_dept_in_selector
+    And I enter Dept New in the new_dept_field_edit_user
+    And I click create_dept_edit_user
+    And I wait 1 seconds for animation stops
+    And dept_selector_edit_user should contain Dept New
+    And I click tzg_selector_edit_user
+    And I click new_tzg_in_selector
+    And I enter Moskva in the tzg_search_field_edit_user
+    And I wait 1 seconds for animation stops
+    And I click moskva_in_city_selector
+    And I wait 1 seconds for animation stops
+    And I click create_tzg_edit_user
+    And I wait 1 seconds for animation stops
+    And tzg_selector_edit_user should contain Moskva
+    And gordman_time_zone should contain Moskva
+    And I click hire_date_edit_user
+    And I click hire_date_28_calendar
+    And I wait 1 seconds for animation stops
+    And I click confirm_hire_date
+    And I wait 1 seconds for animation stops
+    And hire_date_edit_user should contain Feb 28, 2019
+    And I click release_date_edit_user
+    And I click today_calendar
+    And I wait 1 seconds for animation stops
+    And I click delete_release_date_edit_user
+    And I wait 1 seconds for animation stops
+    And release_date_edit_user should contain Select date
+    And I click tt_approval_switcher
+    And I wait 1 seconds for animation stops
+    And I click tt_approval_managers
+    And I should see a web element approvers_pop_up
+    And tt_approval_switcher should have class with components_switcher small animated on
+    And I click tt_approval_switcher
+    And I wait 1 seconds for animation stops
+    And I should not see a web element tt_approval_managers
+    And tt_approval_switcher should have class with components_switcher small animated off
+    And I enter 1 in the work_schedule_first_cell
+    And I wait 1 seconds for animation stops
+    And total_cell_schedule_edit_user should contain 34:00
+    And I click default_schedule_chkbx
+    And I wait 1 seconds for animation stops
+    And work_schedule_first_cell should have class with disabled
+    And I click new_schedule
+    And I wait 1 seconds for animation stops
+    And I should see a web element current_schedule_edit_user
+    And I click delete_schedule_edit_user
+    And I click confirm_delete
+    And I wait 1 seconds for animation stops
+    And I should not see a web element current_schedule_edit_user
+    And I click overtime_selector_edit_user
+    And I click auto_hidden_overtime_selector
+    And I wait 1 seconds for animation stops
+    And overtime_selector_edit_user should contain automatically
+#    Нужен шаг для скролла панели, чтобы элементы были видимы
+#    And I click add_rate_edit_user
+#    And I wait 1 seconds for animation stops
+#    And I should see a web element second_rate_regular
+#    And I click delete_second_row_rate
+#    And I wait 1 seconds for animation stops
+#    And I should not see a web element second_rate_regular
+    And I send 123 without clear in the edit_first_name_field
+    And I wait 1 seconds for animation stops
+    And I send 123 without clear in the edit_last_name_field
     And I click close_panel_button
     And I wait 1 seconds for animation stops
     Then I should see a web element edited_cruz_gordman
@@ -162,7 +302,7 @@ Feature: User List interface by admin
     When I click management_filter
     And I click users_wo_permissions_filter
     And I wait 1 seconds for animation stops
-    And first_username_in_list should contain Enter TT, Role
+    And first_username_in_list should contain Cruz123, Gordman123
     And I click management_filter
     And I click all_permissions_filter
     And I wait 1 seconds for animation stops
@@ -293,7 +433,7 @@ Feature: User List interface by admin
     When I click sick_days_tab
     And I click sorting_by_current_sd
     And I wait 1 seconds for animation stops
-    And first_current_sd_cell should contain 0d
+    And first_current_sd_cell should contain -0.9d
     And I click sorting_by_current_sd
     And I wait 1 seconds for animation stops
     And first_username_in_list should contain Moss, Bruno

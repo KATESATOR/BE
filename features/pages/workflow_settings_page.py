@@ -5,8 +5,7 @@ class WorkflowSettings:
 
     def __init__(self):
         self.gs_workflow_settings_workflow_open_status = Element("//*[@class='name'][contains(text(), 'test_status')]",
-                                                                 "xpath",
-                                                                 "Element")
+                                                                 "xpath", "Element")
         self.gs_workflow_settings_workflow_completed_status = Element(
             "//*[@class='name'][contains(text(), 'test_status_completed')]", "xpath", "Element")
         self.workflow_settings_add_new = Button("div#container div:nth-child(1) > div.addBtn > div", "CSS",

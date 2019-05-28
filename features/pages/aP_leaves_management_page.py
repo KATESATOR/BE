@@ -30,6 +30,8 @@ class ApLeavesManagement:
         self.user_filter = Button(".userGroupsFilterPlaceholder.filterBlock span", "css", "user filter button")
         self.selected_users = Button("*//b[text()='Show Selected Users']", "xpath", "selected users in user filter")
         self.design_in_user_filter = CheckBox("*//label[text()='Design']", "xpath", "Design department in user filter")
+        self.wo_dept_in_user_filter = CheckBox("*//label[text()='Users Without Department']", "xpath",
+                                               "Users Without Department in user filter")
         self.administration_in_user_filter = CheckBox("*//label[text()='Administration']", "xpath",
                                                       "Administration department in user filter")
         self.apply_filter = Button("*//span[text()='Apply']", "xpath", "apply button in user filter")
@@ -68,6 +70,9 @@ class ApLeavesManagement:
         self.lt_comment_field = TextField('leaveTimeRequestDialog_userComment', 'id', 'lt dialog comment field')
         self.save_lt_edit = Button(".greyButton.saveButton.noIcon", "css", "save button in leave time edit pop-up")
         self.reject_button = Button(".greyButton.rejectButton>span", "css", "reject button")
+        self.search_field_chart = TextField('employeesSearchField', 'id', 'search field in chart')
+        self.clear_search = Button('.filterIcon', 'css', 'clear search field')
+        self.search_result_chart = Element('.firstRow .userNameCell>div .highlightToken', 'css', 'first search result')
         # Leave Time Requests tab
         self.no_leave_time_row = Element('.actualContent .emptyRequest td', 'css', 'empty row in table')
         self.first_group_in_table = Element('.request.firstInGroup .user.group', 'css', 'first group in table')
@@ -113,3 +118,6 @@ class ApLeavesManagement:
         self.first_row_period = Element(".actualContent>tr:first-of-type .timeRequested", "css", "period in first row")
         self.balances_filter = Button('.balanceTypeFilterBlock a', 'css', 'balances filter in table')
         self.common_chkbx = CheckBox('.select .spacer+label input', 'css', 'select all checkbox in table')
+        self.search_field_table = TextField('requestsTableContainer_userNameFilter', 'id', 'search field in table')
+        self.search_result_table = Element('.actualContent>tr:first-of-type .user.name .highlightToken', 'css',
+                                           'first search result in table')
