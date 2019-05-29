@@ -60,10 +60,12 @@ class ApMySchedule:
         self.users_search_field = TextField('colleaguesSearchField', 'id', 'search users field')
         self.selected_users = Button('//*[text()="Selected users"]', 'xpath', 'selected users option in selector')
         self.all_users = Button('//*[text()="All users"]', 'xpath', 'all users option in selector')
-        self.stivers_in_selector = Button('//*[@class="content"]//*[text()="Stivers, Melanie"]', 'xpath',
+        self.stivers_in_selector = CheckBox("//div[contains(@class,'node simpleCheckboxNode matchesFilterCriteria "
+                                            "hasSiblings autoApproved')]//span[contains(@class,'checkbox')]", 'xpath',
                                           'Stivers in user selector')
         self.design_in_selector = Button('//*[@class="content"]//*[text()="Design"]', 'xpath',
                                          'Design in user selector')
+        self.collapse_all_in_user_selector = Button('.collapseAllButton', 'css', 'collapse all button in user selector')
         self.entertt_in_selector = Button("//span[@title='Enter TT, Role']", 'xpath', 'Enter TT Role in user selector')
         self.users_wo_department_in_selector = Button('//*[@class="content"]//*[text()="Users Without Department"]',
                                                       'xpath', 'Users Without Department in user selector')
@@ -109,3 +111,7 @@ class ApMySchedule:
         self.profile_email = TextField('userProfilePopup_emailField', 'id', 'user email in profile')
         self.profile_username = TextField('userProfilePopup_usernameField', 'id', 'username in profile')
         self.profile_save = Button('userProfilePopup_commitBtn', 'id', 'save changes button in profile')
+        self.filter_in_user_selector = Button('#ext-gen121', "css", "filter in user selector")
+        self.search_in_user_selector = TextField("//input[contains(@class,'filterFieldInput')]", "xpath", "search in "
+                                                                                                          "user "
+                                                                                                          "selector")

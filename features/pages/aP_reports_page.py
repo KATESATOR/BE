@@ -80,6 +80,14 @@ class aPreportsPage:
                                                                                             'selector')
         self.leavebalanceap_in_user_selector = Button('*//div[contains(@class,"userForLeave")]//*[text()="Manage '
                                                       'Leave Balance aP, Role"]', 'xpath', 'Manage PTOSD in ''selector')
+        self.managerequestsap_in_user_selector = Button('*//div[contains(@class,"userForLeave")]//*[text()="Manage '
+                                                        'Requests aP, Role"]', 'xpath', 'Manage requests in ''selector')
+        self.locktt_in_user_selector = Button('*//div[contains(@class,"userForLeave")]//*[text()="Lock TT, Role"]',
+                                              "xpath", "Lock TT, Role in selector")
+        self.barbara_in_user_selector = Button('*//div[contains(@class,"userForLeave")]//*[text()="Kloss, Barbara"]',
+                                               "xpath", "Barbara in selector")
+        self.barbara_in_ltb = Element("//td[contains(text(),'Kloss, Barbara')]", "xpath", "Barbara in LTB report")
+        self.locktt_in_ltb = Element("//td[contains(text(),'Kloss, Barbara')]", "xpath", "Barbara in LTB report")
         self.past_leaves_time_table = Element('leaveTimeTable', 'id', 'past leaves leave time table')
         self.calendar = Element('calendarContainer', 'id', 'past leaves report calendar')
         self.date_range_selector_plc = Button('.monthYearSelectorButton>span', 'css', 'date range selector in plc')

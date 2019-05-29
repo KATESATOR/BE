@@ -30,8 +30,8 @@ class ApLeavesManagement:
         self.user_filter = Button(".userGroupsFilterPlaceholder.filterBlock span", "css", "user filter button")
         self.selected_users = Button("*//b[text()='Show Selected Users']", "xpath", "selected users in user filter")
         self.design_in_user_filter = CheckBox("*//label[text()='Design']", "xpath", "Design department in user filter")
-        self.administration_in_user_filter = CheckBox("*//label[text()='Administration']", "xpath",
-                                                      "Administration department in user filter")
+        self.admin_in_user_filter = CheckBox("*//label[text()='Administration']", "xpath",
+                                             "Administration department in user filter")
         self.apply_filter = Button("*//span[text()='Apply']", "xpath", "apply button in user filter")
         self.first_row_name_chart = Element(".firstRow .userNameCell>div", "css", "name in first row in planning chart")
         self.first_row_planned_lt = Element(".firstRow .timeTotalCell", "css",

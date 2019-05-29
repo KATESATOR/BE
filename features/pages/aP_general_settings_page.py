@@ -88,15 +88,15 @@ class ApGeneralSettingsPage:
 
         # Access option for leave time management
         self.ltm_access_settings_block = Element("ltmAccessBlock", "id", "Access option block")
-        self.ltm_show_auto_approved_checkbox = Button("showAutoApprovedId", "id",
-                                                      "View leave requests from users who are configured "
-                                                      "for automatic approval and run related reports")
-        self.ltm_edit_auto_approved_checkbox = Button("ltmCanManageAutoApprovedId", "id",
-                                                      "Edit and manage leave requests of users configured "
-                                                      "for automatic approval and run related reports")
-        self.ltm_show_other_assigned_checkbox = Button("showUsersAssignedToAnotherLTMId", "id",
-                                                       "View leave requests from users assigned "
-                                                       "to another Leave Request Manager and run related reports")
+        self.ltm_show_auto_approved_checkbox = CheckBox("showAutoApprovedId", "id",
+                                                        "View leave requests from users who are configured "
+                                                        "for automatic approval and run related reports")
+        self.ltm_edit_auto_approved_checkbox = CheckBox("ltmCanManageAutoApprovedId", "id",
+                                                        "Edit and manage leave requests of users configured "
+                                                        "for automatic approval and run related reports")
+        self.ltm_show_other_assigned_checkbox = CheckBox("showUsersAssignedToAnotherLTMId", "id",
+                                                         "View leave requests from users assigned "
+                                                         "to another Leave Request Manager and run related reports")
         self.ltm_auto_approve_requests_radiobutton = Button("autoApprovePastLeaves", "id",
                                                             "Automatically approve unapproved requests "
                                                             "upon their starting date")
@@ -111,5 +111,6 @@ class ApGeneralSettingsPage:
                                                      "Decimal separatator textfield")
         self.digit_grouping_symbol_selector = Selector("digitGroupingSymbolFieldPredefined", "id",
                                                        "Digit grouping symbol")
-        self.digit_grouping_symbol_textfield = TextField("digitGroupingSymbolFieldCustom", "id", "Digit grouping textfield")
+        self.digit_grouping_symbol_textfield = TextField("digitGroupingSymbolFieldCustom", "id",
+                                                         "Digit grouping textfield")
         self.format_preview_text = Element("numbersFormatPreviewField", "id", "Number Formats Preview")
