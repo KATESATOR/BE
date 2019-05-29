@@ -2,7 +2,7 @@ Feature: AP Leaves Management by admin
 
   Background:
     Given I am logged in actiPLANS as admin
-    And I am on leaves_management page
+    And I am on ap_leaves_management page
     And ap_leaves_management is visible
 
   @Smoke
