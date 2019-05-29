@@ -223,7 +223,7 @@ Feature: User List interface by admin
     And I wait 1 seconds for animation stops
     And I click no_access_to_scope
     And I click access_to_scope_back_button
-    And I wait 1 seconds for animation stops
+    And I wait 2 seconds for animation stops
     And access_to_scope_label should contain No Access
     And I click access_to_scope_label
     And I wait 1 seconds for animation stops
@@ -402,7 +402,7 @@ Feature: User List interface by admin
     And first_reported_pto_cell should contain 0d
     And I click sorting_by_reported_pto
     And I wait 1 seconds for animation stops
-    And first_reported_pto_cell should contain 1.2d
+    And first_reported_pto_cell should contain 0d
     And I click sorting_by_control_pto
     And I wait 1 seconds for animation stops
     And first_current_pto_cell should contain OFF
