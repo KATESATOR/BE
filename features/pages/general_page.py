@@ -6,8 +6,7 @@ class GeneralPage:
     def __init__(self):
         self.start_exploring_button = Button(".startExploringText", "css", "start exploring button")
         self.logout_button = Button("//a[@id='logoutLink']", "xpath", "logout button")
-        self.settings_button = Button("//div[@class='popup_menu_button popup_menu_button_settings']", "xpath",
-                                      "settings button")
+        self.settings_button = Button(".popup_menu_button_settings", "css", "settings button")
         self.general_settings_button = Button(
             "//*[@id='popup_menu_settings']//div[contains(text(), 'General Settings')]", "xpath",
             "general settings button")
@@ -51,7 +50,11 @@ class GeneralPage:
         self.request_a_call = Button("sendPhoneButton_support", "id", "Phone number field")
         self.switch_product = Button("//div[@class='productName']", "xpath", "Product switcher")
 
-        self.leaves_management = Button(".content.corporate_schedule", "css", "leaves management tab")
+        # actiPlans
+        self.ap_leaves_management = Button("container_corporate_schedule", "id", "leaves management tab")
+        self.ap_reports = Button("container_reports", "id", "Reports tab")
+        self.ap_users = Button("container_employees", "id", "Users Tab")
+        self.my_schedule = Button('container_my_schedule', 'id', 'my schedule tab')
 
         # Settings pt.2
         self.leave_types_button = Link("Leave Types", "link text", "leave types button")
@@ -59,8 +62,5 @@ class GeneralPage:
         self.corp_work_schedule_button = Link("Corporate Work Schedule", "link text", "corporate work schedule button")
         self.notifications_button = Link("Notifications", "link text", "notifications button")
         self.logo_color_scheme_button = Link("Logo & Color Scheme", "link text", "logo & color scheme button")
-
-        self.ap_reports = Button
-
         self.ap_work_schedule_button = Link("Corporate Work Schedule", "link text", "work schedule button")
         self.ap_notifications_button = Link("Email Notifications", "link text", "notifications button")

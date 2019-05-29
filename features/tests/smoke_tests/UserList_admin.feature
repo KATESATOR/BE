@@ -196,12 +196,19 @@ Feature: User List interface by admin
     When I click stivers_melanie
     And I wait 1 seconds for animation stops
     And I click permissions_tab
+    And I wait 1 seconds for animation stops
     And I click access_to_users
     And I click access_to_all_users
     And I click access_to_users_back_button
     And I wait 1 seconds for animation stops
     And access_to_users should contain All users
     And I click access_to_users
+    And I click no_access_to_users
+    And I click access_to_users_back_button
+    And I wait 1 seconds for animation stops
+    And access_to_users should contain No Access
+    And I click access_to_users
+    And I wait 1 seconds for animation stops
     And I click custom_access_to_users
     And I click access_to_users_back_button
     And I wait 1 seconds for animation stops
@@ -217,9 +224,19 @@ Feature: User List interface by admin
     And I click no_access_to_scope
     And I click access_to_scope_back_button
     And I wait 1 seconds for animation stops
-    Then access_to_scope_label should contain No Access
+    And access_to_scope_label should contain No Access
     And I click access_to_scope_label
+    And I wait 1 seconds for animation stops
+    And I click entire_access_to_scope
+    And I click access_to_scope_back_button
+    And I wait 1 seconds for animation stops
+    And access_to_scope_label should contain Entire scope
+    And I click access_to_scope_label
+    And I wait 1 seconds for animation stops
     And I click custom_access_to_scope
+    And I click access_to_scope_back_button
+    And I wait 1 seconds for animation stops
+    Then I should see a web element tasks_counter_scope
 
   @Smoke
   Scenario: Searching users

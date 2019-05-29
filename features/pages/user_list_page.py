@@ -236,6 +236,7 @@ class UserListPage:
                                              "custom access to users")
         self.access_to_users_back_button = Button(".content .teamAssignmentsPanel .backButton", "css",
                                                   "access to users back button")
+        self.no_access_to_users = Button('.editTeamAssignmentsPanel .noAccessSection', 'css', 'no access to users')
 
         # Access to Scope of Work
         self.revoke_access_to_scope = Button("div.managementAssignmentsPanel div.revokeButton", "css",
@@ -248,6 +249,8 @@ class UserListPage:
                                                   "access to scope back button")
         self.tasks_counter_scope = Button("#editUserPanel .components_cptCounter.hierarchyClass_task>div", "css",
                                           "tasks counter in access to scope of work")
+        self.entire_access_to_scope = Button(".editManagementAssignmentsPanel .allSection", "css",
+                                             "has access to entire scope of work")
 
         # TimeZoneGroups pop-up
         self.time_zone_search_field = TextField("//*[@class='bottomRow']//*[@class='timeZonesSearchField']", "xpath",
