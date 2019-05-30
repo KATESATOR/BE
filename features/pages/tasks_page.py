@@ -140,3 +140,8 @@ class TasksPage:
         self.tasks_can_manage = Button("//div[@class='scopeAccessContainer']//div[text()='Tasks I Can Manage']",
                                        "xpath", "Tasks I Can Manage")
         self.all_customers = Button("//div[contains(@class, 'allCustomersNode')]", "xpath", "all customers")
+        self.table_mode = Button(".modeButton.table", "css", "Table view")
+        self.kanban_mode = Button(".modeButton.kanban", "css", "Kanban view")
+        self.task_page_design_on_kanban = Button(
+            "//*[@class='name gradientEllipsis']/text()[contains(.,'Page design')]/../../../../..", "xpath",
+            "Page design task on kanban")

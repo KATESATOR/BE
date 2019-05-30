@@ -43,6 +43,13 @@ class EnterTTPage:
         self.task_name = Button("//div[@class='nameInfo editable']", "xpath", "task name")
         self.task_name_field = TextField("div.nameInput > input[type='text']", "css",
                                          "task name field")
+        self.task_status = Button("div.statusCell div.taskStatusButton.editable", "css", "task status")
+        self.task_status_review = Button(
+            "//*[@class='statusCell']//*[@class='name'][contains(text(),'Ready for Review')]", "xpath",
+            "ready fo review status")
+        # self.task_status_clarification = Button(
+        #     "//*[@class='statusCell']//*[@class='name'][contains(text(),'Need Clarification)]", "xpath",
+        #     "need clarification status status")
         self.close_task_panel = Button("//div[@class='hideButton_panelContainer']", "xpath", "close task panel")
         self.task_actions = Button("//div[@class='actionButton']", "xpath", "task actions")
         self.delete_task = Button("//div[@class='deleteButton']", "xpath", "delete task")

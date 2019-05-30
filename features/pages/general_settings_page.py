@@ -77,6 +77,8 @@ class GeneralSettings:
                                                                                            "approval")
         self.gs_dar_see_all_tt_selector_stivers = Button("//span[@title='Stivers, Melanie']", "xpath",
                                                          "Select Stivers Melanie")
+        self.gs_dar_see_all_tt_selector_entertt = Button("//span[@title='Enter TT, Role']", "xpath",
+                                                         "Select Enter TT role")
         self.gs_message_footer = TextField("textarea#mailMessageFooter", "CSS", "Message footer")
         self.gs_send_test_message = Button("input#sendTestMessage_button", "CSS", "Send Test Message")
         self.gs_page = Button("//form[@id='settingsForm']", "XPATH", "GS page")
