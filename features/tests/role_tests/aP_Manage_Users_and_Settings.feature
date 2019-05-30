@@ -6,11 +6,21 @@ Feature: Manage Users and Settings aP Role
     And ap_my_schedule is visible
 
   @Role
+  Scenario: Login in aP
+    When general_page is visible
+    And I should see a web element settings_button
+    And I should see a web element my_schedule
+    And I should see a web element ap_reports
+    And I should see a web element ap_users
+#    Из-за ATBO-357 есть проблемы
+#    Then I should not see a web element ap_leaves_management
+
+  @Role
   Scenario: Manage requests on My Schedule
     When I click week_start_day_cell
     And I click submit_request
     And I wait 1 seconds for animation stops
-    And week_start_day_cell should have class with dayCell weekStartDay leaveType1 approved fullLeave
+    And week_start_day_cell should have class with dayCell weekStartDay leaveType1 fullLeave
     And I click week_start_day_cell
     And I click edit_request
     And I click leave_type_selector
@@ -18,7 +28,7 @@ Feature: Manage Users and Settings aP Role
     And I enter 4 in the day_duration_field
     And I click save_changes
     And I wait 1 seconds for animation stops
-    And week_start_day_cell should have class with dayCell weekStartDay leaveType3 approved fiftyPercentLeave
+    And week_start_day_cell should have class with dayCell weekStartDay leaveType3 fiftyPercentLeave
     And I click week_start_day_cell
     And I click delete_request
     And I accept alert menu
@@ -27,14 +37,13 @@ Feature: Manage Users and Settings aP Role
     And I click week_start_day_no_leave
     And I click submit_request
     And I wait 1 seconds for animation stops
-    And week_start_day_cell should have class with dayCell weekStartDay leaveType1 approved fullLeave
+    And week_start_day_cell should have class with dayCell weekStartDay leaveType1 fullLeave
     And I click requests_tab
     And I click first_row_edit_period
     And I enter 4 in the day_duration_field
     And I click save_changes
     And I wait 1 seconds for animation stops
     And first_row_requested_time should contain 0.5 days (4h)
-    And first_row_balance_after should contain 0.5d
     And I click first_row_leave_name
     And I click leave_type_selector
     And I click last_leave_type
@@ -409,7 +418,7 @@ Feature: Manage Users and Settings aP Role
     And I enter 12:00 PM in the reminder_at_textfield
     And I enter aP Prefix in the message_prefix_textfield
     And I enter aP Footer in the message_footer_textfield
-    And I enter rd_dev@actimind.com in the admin_mail_address_textfield
+    And I enter rd_qa@actimind.com in the admin_mail_address_textfield
     And I click save_button_bottom
     And I wait 2 seconds for animation stops
     And notify_new_ltr_checkbox should have checked with true
@@ -423,7 +432,7 @@ Feature: Manage Users and Settings aP Role
     And notify_users_on_ltr_new_or_deleted_checkbox should have checked with true
     And message_prefix_textfield should have value with aP Prefix
     And message_footer_textfield should have value with aP Footer
-    And admin_mail_address_textfield should have value with rd_dev@actimind.com
+    And admin_mail_address_textfield should have value with rd_qa@actimind.com
     And I wait 2 seconds for animation stops
     And I click notify_new_ltr_checkbox
     And I click notify_modified_ltr_checkbox

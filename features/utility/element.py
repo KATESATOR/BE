@@ -194,7 +194,7 @@ class TextField(Element):
     def send_keys(self, text):
         try:
             self.wait_for_element('present')
-            self.web_element().clear()
+            # self.web_element().clear()
             self.web_element().send_keys(text)
         except:
             raise

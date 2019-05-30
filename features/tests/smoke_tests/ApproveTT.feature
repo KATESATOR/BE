@@ -51,14 +51,13 @@ Feature: Approve TT interface by admin
     When I click sort_by_weeks
     And I wait 1 seconds for animation stops
     And I should see a web element first_row_week
-    And I click sort_by_weeks
     And I wait 1 seconds for animation stops
     And I should see a web element first_row_week
     And first_row_week should contain Feb 25 - Mar 03, 2019
     And I click sort_by_users
     And I wait 1 seconds for animation stops
     And I should see a web element first_row_username
-    And first_row_username should contain Gibson, Maurice
+    And first_row_username should contain Enter TT, Role
     And I click sort_by_users
     And I wait 1 seconds for animation stops
     And I should see a web element first_row_username
@@ -208,4 +207,4 @@ Feature: Approve TT interface by admin
     When I click first_row_date_link
     And I wait 1 seconds for animation stops
     And enter_tt_page is visible
-    Then calendar should contain Feb 25 - Mar 03, 2019
+    Then calendar should contain May 20 - May 26, 2019

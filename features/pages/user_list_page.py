@@ -23,7 +23,7 @@ class UserListPage:
         self.page_selector = Selector('recordsPerPageSelector', 'id', 'page selector')
         self.next_page = Button("#pager .next", "css", "next page button")
         self.previous_page = Button("#pager .prev", "css", "previous page button")
-        self.sick_days_tab = Button("//*[text()='Sick Days Settings']", "xpath", "aick days settings tab")
+        self.sick_days_tab = Button("//*[text()='Sick Days Settings']", "xpath", "sick days settings tab")
 
         # Accounts & Permissions
         self.new_test_user = Button("//*[@class='userNameSpan' and text()='TestLastName, TestName']", "xpath",
@@ -76,6 +76,27 @@ class UserListPage:
                                             "last username in list")
         self.inactive_user = Element("//*[@class='userListRow disabled linkedNotNull']", "xpath",
                                      "first user is inactive")
+        self.gordman_inactive = Element(
+            "//*[@class='userNameSpan' and text()='Cruz, Gordman']/following-sibling::span[2]", 'xpath',
+            'inactive Cruz Gordman')
+        self.gordman_time_zone = Element(
+            "//*[@class='userNameSpan' and text()='Cruz, Gordman']/../following-sibling::div/div[2]", "xpath",
+            "Gordman's time zone in list")
+        self.gordman_ap_access_icon = Element(
+            "//*[@class='userNameSpan' and text()='Cruz, Gordman']/preceding-sibling::span", "xpath",
+            "Gordman's aP access icon")
+        self.manage_users_icon_selected = Element('.userListRow.selected .icons>div:nth-of-type(1)', 'css',
+                                                  'manage users icon of selected user')
+        self.modify_tt_icon_selected = Element('.userListRow.selected .icons>div:nth-of-type(2)', 'css',
+                                               'modify tt icon of selected user')
+        self.manage_scope_icon_selected = Element('.userListRow.selected .icons>div:nth-of-type(3)', 'css',
+                                                  'manage scope icon of selected user')
+        self.manage_cost_icon_selected = Element('.userListRow.selected .icons>div:nth-of-type(4)', 'css',
+                                                 'manage cost icon of selected user')
+        self.team_scope_selected = Element('.userListRow.selected .teamScopeCell span', 'css',
+                                           'team scope for selected user')
+        self.manage_scope_selected = Element('.userListRow.selected .manageScopeCell span', 'css',
+                                             'scope of work of selected user')
 
         # Create User
         self.first_name_field = TextField("createUserPanel_firstNameField", "id", "first name field")
@@ -106,6 +127,108 @@ class UserListPage:
         self.ma_permission = Button("//div[@class='blockContent']//div[@class='userPanel_permissionRow "
                                     "inactive']//div[@class='name'][contains(text(),'Manage Accounts & "
                                     "Permissions')]", "xpath", "MA permission")
+        self.reset_password = Button('editUserPanel_resetPasswordLink', 'id', 'reset password')
+        self.confirm_reset_password = Button('.invitationDialog+div button:first-of-type', 'css',
+                                             'confirm reset password')
+        self.close_reset_password = Button("//*[@class='ui-button-text' and text()='Close']", "xpath",
+                                           "close reset password pop-up")
+        self.access_at_switcher = Button('#editUserPanel_accessSelectorPlaceholder>div', 'css', 'access to aT switcher')
+        self.access_ap_switcher = Button('#editUserPanel_accessToOtherProductSelectorPlaceholder>div', 'css',
+                                         'access to aP switcher')
+        self.dept_selector_edit_user = Button('.userGroupRow_userPanel .title', 'css',
+                                              'department selector on edit user panel')
+        self.new_dept_in_selector = Button("//*[text()='-- new department --']", "xpath", "new department in selector")
+        self.new_dept_field_edit_user = TextField('.edit_user_sliding_panel .newGroupInput', 'css',
+                                                  'new department name field')
+        self.create_dept_edit_user = Button('.edit_user_sliding_panel .userGroupRow_userPanel .saveButton', 'css',
+                                            'create department on edit user panel')
+        self.tzg_selector_edit_user = Button('.timeZoneSelector .title span', 'css',
+                                             'time zone selector on edit user panel')
+        self.new_tzg_in_selector = Button("//*[text()='-- New Time Zone Group --']", "xpath",
+                                          "new time zone in selector")
+        self.tzg_search_field_edit_user = TextField('.edit_user_sliding_panel .timeZonesSearchField', 'css',
+                                                    'time zone search field on edit user panel')
+        self.moskva_in_city_selector = Button("//*[text()='Moskva']", "xpath", "Moskva in city selector")
+        self.create_tzg_edit_user = Button('.edit_user_sliding_panel .timeZoneCitySelector .saveButton', 'css',
+                                           'create time zone on edit user panel')
+        self.hire_date_edit_user = Button('#editUserPanel_hireDatePlaceholder button', 'css',
+                                          'hire date on edit user panel')
+        self.hire_date_28_calendar = Button("//*[@class='x-date-active']/*//span[text()='28']", "xpath",
+                                            "28th date in calendar hire date")
+        self.confirm_hire_date = Button('.hireDateConfirmBtn', 'css', 'confirm changing hire date')
+        self.release_date_edit_user = Button('#editUserPanel_releaseDatePlaceholder button', 'css',
+                                             'release date on edit user panel')
+        self.today_calendar = Button("//*[text()='today']", "xpath", "today in calendar")
+        self.delete_release_date_edit_user = Button('#editUserPanel_delReleaseDateBtn', 'css',
+                                                    'delete release date on edit user panel')
+        self.work_schedule_first_cell = TextField('.edit_user_sliding_panel .workScheduleEditorCell .first input',
+                                                  'css', 'work schedule first cell on edit user panel')
+        self.default_schedule_chkbx = Button('.edit_user_sliding_panel .useDefaultScheduleCheckbox', 'css',
+                                             'default work schedule checkbox')
+        self.total_cell_schedule_edit_user = Element('.edit_user_sliding_panel .totalCell', 'css',
+                                                     'total cell work schedule on edit user panel')
+        self.new_schedule = Button("//*[text()='New Schedule']", "xpath", "new schedule")
+        self.current_schedule_edit_user = Element('.edit_user_sliding_panel .workScheduleRow .currentLabel', 'css',
+                                                  'current work schedule on edit user panel')
+        self.delete_schedule_edit_user = Button('.edit_user_sliding_panel .workScheduleRow .deleteButtonCell', 'css',
+                                                'delete work schedule on edit user panel')
+        self.confirm_delete = Button('//*[text()="Yes, Delete"]', 'xpath', 'confirm delete')
+        self.overtime_selector_edit_user = Button(
+            '.edit_user_sliding_panel .overtimeSelectorPlaceholder button b:first-of-type', 'css',
+            'overtime selector on edit user time')
+        self.auto_hidden_overtime_selector = Button('.overtimeSelectorMenu .x-menu-list-item:nth-of-type(2)', 'css',
+                                                    'auto hidden overtime in selector')
+        self.add_rate_edit_user = Button('.edit_user_sliding_panel .userRatesTable .label', 'css',
+                                         'add rates on edit user panel')
+        self.second_rate_regular = TextField('.userRatesList .userRatesRow:nth-of-type(2) .regularRateColumn input',
+                                             'css', 'second rate regular field')
+        self.first_rate_regular = TextField('.userRatesList .userRatesRow:nth-of-type(1) .regularRateColumn input',
+                                            'css', 'first rate regular field')
+        self.delete_second_row_rate = Button('.userRatesList .userRatesRow:nth-of-type(2) .deleteIcon', 'css',
+                                             'delete second row rate')
+        self.scroll_edit_user = Element(
+            '.edit_user_sliding_panel .scrollableContainer>div:nth-child(3) .iScrollIndicator', 'css',
+            'scroll on edit user panel')
+        self.username_field_edit_user = TextField('#editUserPanel_usernameField', 'css',
+                                                  'username field on edit user panel')
+        self.email_field_edit_user = TextField('editUserPanel_emailField', 'id', 'email field on edit user panel')
+        self.tt_approval_switcher = Button('.edit_user_sliding_panel .tumbler>div', 'css',
+                                           'tt approval switcher on edit user panel')
+        self.tt_approval_managers = Button('.edit_user_sliding_panel .autoApprovalRow .secondPart', 'css',
+                                           'tt approval managers on edit user panel')
+        self.approvers_pop_up = Element('.edit_user_sliding_panel .approversDialog', 'css',
+                                        'approvers pop-up on edit user panel')
+        self.cost_rate = Button('.edit_user_sliding_panel .sectionHeader', 'css', 'cost rate header')
+
+        # Permission tab
+        self.manage_accounts_edit_user = Button('.edit_user_sliding_panel .blockContent .firstGroup>div:nth-of-type(1)',
+                                                'css', 'manage accounts on edit user panel')
+        self.modify_tt_edit_user = Button('.edit_user_sliding_panel .blockContent .firstGroup>div:nth-of-type(2)',
+                                          'css', 'modify TT permission on edit user panel')
+        self.manage_scope_perm_edit_user = Button(
+            '.edit_user_sliding_panel .blockContent .firstGroup>div:nth-of-type(3)',
+            'css', 'manage scope permission on edit user panel')
+        self.manage_cost_edit_user = Button('.edit_user_sliding_panel .blockContent .firstGroup>div:nth-of-type(4)',
+                                            'css', 'manage cost permission on edit user panel')
+        self.enter_tt_edit_user = Button('.edit_user_sliding_panel .blockContent .secondGroup>div:nth-of-type(1)',
+                                         'css', 'enter tt permission on edit user panel')
+        self.lock_tt_edit_user = Button('.edit_user_sliding_panel .blockContent .secondGroup>div:nth-of-type(2)',
+                                        'css', 'lock tt permission on edit user panel')
+        self.manage_balances_edit_user = Button(
+            '.edit_user_sliding_panel .blockContent .secondGroup>div:nth-of-type(3)', 'css',
+            'manage balances permission on edit user panel')
+        self.manage_settings_edit_user = Button(
+            '.edit_user_sliding_panel .blockContent .secondGroup>div:nth-of-type(4)', 'css',
+            'manage settings permission on edit user panel')
+        self.team_scope_edit_user = Button('.edit_user_sliding_panel .teamScopeCellContainer>div', 'css',
+                                           'team scope on edit user panel')
+        self.manage_scope_edit_user = Button('.edit_user_sliding_panel .manageScopeCellContainer>div', 'css',
+                                             'manage scope box on edit user panel')
+        self.permission_info = Button('.edit_user_sliding_panel .permissionsInfoButton', 'css',
+                                      'permission info on edit user panel')
+        self.permission_info_popup = Element('#permissionsInfoLightBox', 'css', 'permission info pop-up')
+        self.permission_info_popup_close = Button('#permissionsInfoLightBox .closeButton', 'css',
+                                                  'close permission info pop-up')
 
         # Access to Users
         self.access_to_all_users = Button("//*[text()='Has Access to All Users']", "xpath", "has access to all users")
@@ -113,6 +236,7 @@ class UserListPage:
                                              "custom access to users")
         self.access_to_users_back_button = Button(".content .teamAssignmentsPanel .backButton", "css",
                                                   "access to users back button")
+        self.no_access_to_users = Button('.editTeamAssignmentsPanel .noAccessSection', 'css', 'no access to users')
 
         # Access to Scope of Work
         self.revoke_access_to_scope = Button("div.managementAssignmentsPanel div.revokeButton", "css",
@@ -125,6 +249,8 @@ class UserListPage:
                                                   "access to scope back button")
         self.tasks_counter_scope = Button("#editUserPanel .components_cptCounter.hierarchyClass_task>div", "css",
                                           "tasks counter in access to scope of work")
+        self.entire_access_to_scope = Button(".editManagementAssignmentsPanel .allSection", "css",
+                                             "has access to entire scope of work")
 
         # TimeZoneGroups pop-up
         self.time_zone_search_field = TextField("//*[@class='bottomRow']//*[@class='timeZonesSearchField']", "xpath",

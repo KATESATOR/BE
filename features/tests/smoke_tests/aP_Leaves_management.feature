@@ -2,7 +2,7 @@ Feature: AP Leaves Management by admin
 
   Background:
     Given I am logged in actiPLANS as admin
-    And I am on leaves_management page
+    And I am on ap_leaves_management page
     And ap_leaves_management is visible
 
   @Smoke
@@ -26,9 +26,7 @@ Feature: AP Leaves Management by admin
 
   @Smoke
   Scenario: Creating and deleting leave requests in chart
-    When I click sort_users_chart
-    And I wait 1 seconds for animation stops
-    And first_row_name_chart should contain Gibson, Maurice
+    When first_row_name_chart should contain Cruz, Gordman
     And I click week_start_day_cell_no_leave
     And I click first_element_in_menu
     And I wait 1 seconds for animation stops
@@ -52,7 +50,7 @@ Feature: AP Leaves Management by admin
     And I click seventh_element_in_menu
     And I click sort_users_chart
     And I wait 1 seconds for animation stops
-    And first_row_name_chart should contain Venson, Ronald
+    And first_row_name_chart should contain Wooster, Jennifer
     And I click week_start_day_cell_no_leave
     And I click ninth_element_in_menu
     And I wait 1 seconds for animation stops
@@ -78,8 +76,8 @@ Feature: AP Leaves Management by admin
     And I wait 1 seconds for animation stops
     And I click sort_users_chart
     And I wait 1 seconds for animation stops
-    And first_row_name_chart should contain Gibson, Maurice
-    Then first_row_planned_lt should contain 40
+    And first_row_name_chart should contain Cruz, Gordman
+    Then first_row_planned_lt should contain 45
 
   @Smoke
   Scenario: Pager on requests list
@@ -100,23 +98,48 @@ Feature: AP Leaves Management by admin
     Then selected_page should contain 1
 
   @Smoke
+  Scenario: Searching user in Chart
+    When I enter 123 in the search_field_chart
+    And I wait 1 seconds for animation stops
+    And first_row_name_chart should contain There are no users to review
+    And I click clear_search
+    And I wait 1 seconds for animation stops
+    And first_row_name_chart should contain Cruz, Gordman
+    And I enter Moss in the search_field_chart
+    And I wait 1 seconds for animation stops
+    Then search_result_chart should contain Moss
+
+  @Smoke
+  Scenario: Searching user in Table
+    When I click lt_requests_tab
+    And I enter 123 in the search_field_table
+    And I wait 2 seconds for animation stops
+    And no_leave_time_row should contain There are no leave time requests to process
+    And I click clear_search
+    And I wait 1 seconds for animation stops
+    And first_row_name_table should contain Cruz, Gordman
+    And I enter Wooster in the search_field_table
+    And I wait 1 seconds for animation stops
+    Then search_result_table should contain Wooste
+
+  @Smoke
   Scenario: Sorting and filtering in requests table
     When I click lt_requests_tab
     And I click sort_period
     And I wait 1 seconds for animation stops
     And sort_period should have class with descending
-    And first_row_name_table should contain Venson, Ronald
+    And first_row_name_table should contain Wooster, Jennifer
     And I click user_filter_table
     And I click selected_users
-    And I perform select in the design_in_user_filter
+    And I perform select in the administration_in_user_filter
     And I click apply_filter
     And I wait 1 seconds for animation stops
     And user_filter_table should contain 1 department
-    And first_row_name_table should contain Gibson, Maurice
+    And first_row_name_table should contain Wooster, Jennifer
     And I click user_filter_table
     And I click selected_users
-    And I perform select in the design_in_user_filter
     And I perform select in the administration_in_user_filter
+    And I perform select in the wo_dept_in_user_filter
     And I click apply_filter
     And I wait 1 seconds for animation stops
     And no_leave_time_row should contain There are no leave time requests to process
@@ -127,18 +150,16 @@ Feature: AP Leaves Management by admin
     And user_filter_table should contain All Users
     And I click sort_users
     And I wait 1 seconds for animation stops
-    And first_row_name_table should contain Gibson, Maurice
+    And first_row_name_table should contain Cruz, Gordman
     And I click sort_groups
     And I wait 1 seconds for animation stops
-    And first_row_name_table should contain Gibson, Maurice
-    And first_group_in_table should have title with Design
+    And first_row_name_table should contain Cruz, Gordman
+    And first_group_in_table should have title with Administration
     And I click sort_by_time_zone
     And I wait 1 seconds for animation stops
-    And I click sort_by_time_zone
-    And I wait 1 seconds for animation stops
-    And sort_by_time_zone should have class with descending
-    And first_row_name_table should contain Venson, Ronald
-    And first_group_in_table should have title with Sydney Office
+    And sort_by_time_zone should have class with ascending
+    And first_row_name_table should contain Wooster, Jennifer
+    And first_group_in_table should have title with New York Office
     And I click request_comment_button
     And I should see a web element request_comment
     And request_comment should contain Test comment
@@ -157,14 +178,14 @@ Feature: AP Leaves Management by admin
   Scenario: User Filter in leave time planning chart
     When I click user_filter
     And I click selected_users
-    And I perform select in the design_in_user_filter
+    And I perform select in the administration_in_user_filter
     And I click apply_filter
     And I wait 2 seconds for animation stops
     And user_filter should contain 1 department
-    And first_row_name_chart should contain Gibson, Maurice
+    And first_row_name_chart should contain Cruz, Gordman
     And I click user_filter
     And I click selected_users
-    And I perform select in the design_in_user_filter
+    And I perform select in the administration_in_user_filter
     And I click all_users
     And I click apply_filter
     And I wait 2 seconds for animation stops
@@ -187,7 +208,7 @@ Feature: AP Leaves Management by admin
     And I enter 2 in the lt_time_field
     And I click save_lt_edit
     And I wait 1 seconds for animation stops
-    And week_start_day_cell should have class with dayCell weekStartDay leaveType2 approved twentyFivePercentLeave
+    And week_start_day_cell should have class with dayCell weekStartDay leaveType2 approved tenPercentLeave
     And I click week_start_day_cell
     And I click second_element_in_menu
     And I click reject_button
@@ -204,7 +225,7 @@ Feature: AP Leaves Management by admin
     And I click first_row_request_date
     And I enter 2 in the request_duration_field
     And I click save_changes
-    And I wait 1 seconds for animation stops
+    And I wait 2 seconds for animation stops
     And first_row_period should contain 0.3d (2.03h)
     And I click leave_type_filter
     And I click selected_ltype_in_filter
