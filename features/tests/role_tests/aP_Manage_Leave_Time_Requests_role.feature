@@ -712,12 +712,6 @@ Feature: Manage Leave Time Requests role
     And I click lt_requests_tab
     And I wait 1 seconds for animation stops
     And first_row_name_table should contain Kloss, Barbara
-#    And I click sort_users
-#    And I perform select in the first_row_checkbox
-#    And I click reject_bulk
-#    And I click reject_ok_button
-#    And I wait 1 seconds for animation stops
-#    Then first_row_status should contain Rejected
 
   @Role
   Scenario: Other user and auto approved in LTB report
