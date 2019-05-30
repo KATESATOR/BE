@@ -54,7 +54,7 @@ Feature: aP General settings
     And I click save_button_top
     And I wait 2 seconds for animation stops
     And I choose 2 in tz_group_week_start_day_selector
-    And I click save_button_top
+    Then I click save_button_top
 
   @smoke
   Scenario: Change Pto Settings
@@ -76,7 +76,7 @@ Feature: aP General settings
     And I click pto_rule_accrue_balance_checkbox
     And I click pto_rule_cap_balance_checkbox
     And I click pto_default_control_mode_checkbox
-    And I click save_button_top
+    Then I click save_button_top
 
   @smoke
   Scenario: Change Sick Settings
@@ -98,7 +98,7 @@ Feature: aP General settings
     And I click sick_rule_accrue_balance_checkbox
     And I click sick_rule_cap_balance_checkbox
     And I click sick_default_control_mode_checkbox
-    And I click save_button_top
+    Then I click save_button_top
 
   @smoke
   Scenario: Change work schedule
@@ -122,7 +122,7 @@ Feature: aP General settings
     And I click ltm_show_auto_approved_checkbox
     And I click ltm_show_other_assigned_checkbox
     And I click save_button_top
-    And I wait 2 seconds for animation stops
+    Then I wait 2 seconds for animation stops
 
   @smoke
   Scenario: Change General settings
