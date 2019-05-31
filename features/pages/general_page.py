@@ -51,7 +51,7 @@ class GeneralPage:
         self.request_a_call = Button("sendPhoneButton_support", "id", "Phone number field")
         self.switch_product = Button("//div[@class='productName']", "xpath", "Product switcher")
 
-        self.leaves_management = Button(".content.corporate_schedule", "css", "leaves management tab")
+        self.ap_leaves_management = Button(".content.corporate_schedule", "css", "leaves management tab")
 
         # Settings pt.2
         self.leave_types_button = Link("Leave Types", "link text", "leave types button")

@@ -30,8 +30,10 @@ class ApLeavesManagement:
         self.user_filter = Button(".userGroupsFilterPlaceholder.filterBlock span", "css", "user filter button")
         self.selected_users = Button("*//b[text()='Show Selected Users']", "xpath", "selected users in user filter")
         self.design_in_user_filter = CheckBox("*//label[text()='Design']", "xpath", "Design department in user filter")
-        self.admin_in_user_filter = CheckBox("*//label[text()='Administration']", "xpath",
-                                             "Administration department in user filter")
+        self.wo_dept_in_user_filter = CheckBox("*//label[text()='Users Without Department']", "xpath",
+                                               "Users Without Department in user filter")
+        self.administration_in_user_filter = CheckBox("*//label[text()='Administration']", "xpath",
+                                                      "Administration department in user filter")
         self.apply_filter = Button("*//span[text()='Apply']", "xpath", "apply button in user filter")
         self.first_row_name_chart = Element(".firstRow .userNameCell>div", "css", "name in first row in planning chart")
         self.first_row_planned_lt = Element(".firstRow .timeTotalCell", "css",
@@ -45,6 +47,8 @@ class ApLeavesManagement:
                                                    'week start day cell in first row with no leave')
         self.week_second_day_cell_no_leave = Button('.firstRow .weekStartDay.noLeave:not(.pastDay):not(.today)+td',
                                                     'css', 'week start day cell in first row with no leave')
+        self.week_third_user_day_cell_no_leave = Button('table#leaveTimePlanningTable tr:nth-child(6) > td:nth-child('
+                                                        '12)', 'css', "third user leave")
         self.today_cell = Button('.firstRow .dayCell.today', 'css', 'today cell in first row')
         self.first_element_in_menu = Button("div:last-of-type>ul.x-menu-list>li:first-of-type", "css",
                                             "first row in pop-up menu list")
@@ -68,6 +72,9 @@ class ApLeavesManagement:
         self.lt_comment_field = TextField('leaveTimeRequestDialog_userComment', 'id', 'lt dialog comment field')
         self.save_lt_edit = Button(".greyButton.saveButton.noIcon", "css", "save button in leave time edit pop-up")
         self.reject_button = Button(".greyButton.rejectButton>span", "css", "reject button")
+        self.search_field_chart = TextField('employeesSearchField', 'id', 'search field in chart')
+        self.clear_search = Button('.filterIcon', 'css', 'clear search field')
+        self.search_result_chart = Element('.firstRow .userNameCell>div .highlightToken', 'css', 'first search result')
         # Leave Time Requests tab
         self.no_leave_time_row = Element('.actualContent .emptyRequest td', 'css', 'empty row in table')
         self.first_group_in_table = Element('.request.firstInGroup .user.group', 'css', 'first group in table')
@@ -113,3 +120,6 @@ class ApLeavesManagement:
         self.first_row_period = Element(".actualContent>tr:first-of-type .timeRequested", "css", "period in first row")
         self.balances_filter = Button('.balanceTypeFilterBlock a', 'css', 'balances filter in table')
         self.common_chkbx = CheckBox('.select .spacer+label input', 'css', 'select all checkbox in table')
+        self.search_field_table = TextField('requestsTableContainer_userNameFilter', 'id', 'search field in table')
+        self.search_result_table = Element('.actualContent>tr:first-of-type .user.name .highlightToken', 'css',
+                                           'first search result in table')

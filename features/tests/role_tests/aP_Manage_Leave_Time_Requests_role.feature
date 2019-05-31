@@ -109,6 +109,7 @@ Feature: Manage Leave Time Requests role
     And I click apply_user_selector
     And I wait 1 seconds for animation stops
     And user_selector should contain All users
+    And I wait 2 seconds for animation stops
     And colleague_first_row should contain Barber, Robert
     And I click user_selector
     And I click selected_users
@@ -116,6 +117,7 @@ Feature: Manage Leave Time Requests role
     And I click apply_user_selector
     And I wait 1 seconds for animation stops
     And user_selector should contain All users
+    And I wait 2 seconds for animation stops
     And colleague_first_row should contain Barber, Robert
     And I enter Moss in the users_search_field
     And I wait 1 seconds for animation stops
@@ -124,7 +126,7 @@ Feature: Manage Leave Time Requests role
     And I wait 1 seconds for animation stops
     And colleague_first_row should contain There are no users found
     And I click clear_search
-    And I wait 1 seconds for animation stops
+    And I wait 2 seconds for animation stops
     Then colleague_first_row should contain Barber, Robert
 
   @Role
@@ -201,7 +203,7 @@ Feature: Manage Leave Time Requests role
 
   @Role
   Scenario: Changing weeks in chart
-    When I am on leaves_management page
+    When I am on ap_leaves_management page
     And ap_leaves_management is visible
     And I click previous_week_button
     And I click return_to_cur_week
@@ -222,7 +224,7 @@ Feature: Manage Leave Time Requests role
 
   @Role
   Scenario: Creating and deleting leave requests in chart
-    When I am on leaves_management page
+    When I am on ap_leaves_management page
     And ap_leaves_management is visible
     And I click sort_users_chart
     And I wait 1 seconds for animation stops
@@ -281,7 +283,7 @@ Feature: Manage Leave Time Requests role
 
   @Role
   Scenario: Pager on requests list
-    When I am on leaves_management page
+    When I am on ap_leaves_management page
     And ap_leaves_management is visible
     And I click lt_requests_tab
     And I click page_selector
@@ -299,9 +301,9 @@ Feature: Manage Leave Time Requests role
     And I wait 1 seconds for animation stops
     Then selected_page should contain 1
 
-  @Role
+   @Role
   Scenario: Sorting and filtering in requests table
-    When I am on leaves_management page
+    When I am on ap_leaves_management page
     And ap_leaves_management is visible
     And I click lt_requests_tab
     And I click sort_period
@@ -310,15 +312,15 @@ Feature: Manage Leave Time Requests role
     And first_row_name_table should contain Wooster, Jennifer
     And I click user_filter_table
     And I click selected_users
-    And I perform select in the admin_in_user_filter
+    And I perform select in the administration_in_user_filter
     And I click apply_filter
     And I wait 1 seconds for animation stops
     And user_filter_table should contain 1 department
     And first_row_name_table should contain Wooster, Jennifer
     And I click user_filter_table
     And I click selected_users
-    And I perform select in the design_in_user_filter
-    And I perform select in the admin_in_user_filter
+    And I perform select in the administration_in_user_filter
+    And I perform select in the wo_dept_in_user_filter
     And I click apply_filter
     And I wait 1 seconds for animation stops
     And no_leave_time_row should contain There are no leave time requests to process
@@ -333,13 +335,11 @@ Feature: Manage Leave Time Requests role
     And I click sort_groups
     And I wait 1 seconds for animation stops
     And first_row_name_table should contain Barber, Robert
-    And first_group_in_table should have title with Administration
     And I click sort_by_time_zone
     And I wait 1 seconds for animation stops
-    And I click sort_by_time_zone
-    And I wait 1 seconds for animation stops
-    And sort_by_time_zone should have class with descending
-    And first_row_name_table should contain Cruz, Gordman
+    And sort_by_time_zone should have class with ascending
+    And first_row_name_table should contain Barber, Robert
+    And first_group_in_table should have title with New York Office
     And I click sort_leave_type
     And I wait 1 seconds for animation stops
     And first_row_leave_type should contain Sick Leave
@@ -352,7 +352,7 @@ Feature: Manage Leave Time Requests role
 
   @Role
   Scenario: User Filter in leave time planning chart
-    When I am on leaves_management page
+    When I am on ap_leaves_management page
     And ap_leaves_management is visible
     And I click user_filter
     And I click selected_users
@@ -371,7 +371,7 @@ Feature: Manage Leave Time Requests role
 
   @Role
   Scenario: Modifying leave request in chart
-    When I am on leaves_management page
+    When I am on ap_leaves_management page
     And ap_leaves_management is visible
     And I click week_start_day_cell
     And I click first_element_in_menu
@@ -397,7 +397,7 @@ Feature: Manage Leave Time Requests role
 
   @Role
   Scenario: Filtering by leave type and status, and edit request in table
-    When I am on leaves_management page
+    When I am on ap_leaves_management page
     And ap_leaves_management is visible
     And I click lt_requests_tab
     And I click first_row_status
@@ -459,7 +459,7 @@ Feature: Manage Leave Time Requests role
 
   @Role
   Scenario: Bulk actions in table
-    When I am on leaves_management page
+    When I am on ap_leaves_management page
     And ap_leaves_management is visible
     And I click lt_requests_tab
     And I perform select in the first_row_checkbox
@@ -706,12 +706,20 @@ Feature: Manage Leave Time Requests role
     And I perform select in the ltm_show_other_assigned_checkbox
     And I wait 1 seconds for animation stops
     And I click save_button_top
+    And I am on ap_leaves_management page
+    And ap_leaves_management is visible
+    And I click return_to_cur_week
+    And I refresh the page
+    And I wait 1 seconds for animation stops
+    And I click week_third_user_day_cell_no_leave
+    And I wait 2 seconds for animation stops
+    And I click first_element_in_menu
     And I am logged in actiPLANS as requestsap
-    And I am on leaves_management page
+    And I am on ap_leaves_management page
     And ap_leaves_management is visible
     And I click lt_requests_tab
     And I wait 1 seconds for animation stops
-    And first_row_name_table should contain Kloss, Barbara
+    Then first_row_name_table should contain Lock TT, Role
 
   @Role
   Scenario: Other user and auto approved in LTB report
