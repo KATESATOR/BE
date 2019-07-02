@@ -34,6 +34,8 @@ class UserListPage:
                                            'edited Cruz Gordman')
         self.stivers_melanie = Button("//*[@class='userNameSpan' and contains(text(), 'Stivers, Melanie')]", "xpath",
                                       "Stivers Melanie")
+        self.locktt_role = Button("//*[@class='userNameSpan' and contains(text(), 'Lock TT, Role')]", "xpath",
+                                  "Lock TT Role")
         self.sorting_by_users = Button(".userList_mainTableContainer .sortLinks>div:first-of-type", "css",
                                        "sorting by users button")
         self.sorting_by_group = Button(".userList_mainTableContainer .sortLinks>div:nth-of-type(2)", "css",
