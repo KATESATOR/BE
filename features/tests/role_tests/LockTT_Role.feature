@@ -6,6 +6,22 @@ Feature: Lock TT interface
     And lock_tt_page is visible
 
   @role
+  Scenario: Check interfaces unavailable
+    When I am logged in as admin
+    And general_page is visible
+    And I click settings_button
+    And I click general_settings
+    And general_settings_page is visible
+    And I perform select in the gs_dar_hide_not_assigned_users
+    And I click gs_save
+    And I wait 2 seconds for animation stops
+    And I am logged in as lock tt role
+    And general_page is visible
+    And I should not see a web element enter_tt
+    And I should not see a web element reports
+    Then I should not see a web element user_list
+
+  @role
   Scenario: Change sorting by Group
     When I click sort_by_group_button
     And I wait 1 seconds for animation stops
@@ -108,7 +124,6 @@ Feature: Lock TT interface
     And I wait 1 seconds for animation stops
     Then type_of_work_button should have title with Non-Billable
 
-
   @role
   Scenario: Check tasks when 3rd DAR setting on
     When I am logged in as admin
@@ -122,7 +137,6 @@ Feature: Lock TT interface
     And I am logged in as lock tt role
     And lock tt page is visible
     Then I should not see a web element expand_all_button
-
 
   @role
   Scenario: Lock/Unlock all dates
