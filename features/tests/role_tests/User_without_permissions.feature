@@ -15,6 +15,7 @@ Feature: User without Permissions Role
   Scenario: My Schedule creating, editing, deleting requests
     When ap_my_schedule is visible
     And I click week_start_day_cell
+    And I wait 2 seconds for animation stops
     And I click submit_request
     And I wait 1 seconds for animation stops
     And week_start_day_cell should have class with dayCell weekStartDay leaveType1 fullLeave
@@ -160,9 +161,11 @@ Feature: User without Permissions Role
     And I enter Test in the profile_first_name
     And I enter T in the profile_middle_name
     And I enter Smith in the profile_last_name
+    And I wait 2 seconds for animation stops
     And I click profile_save
-    And I wait 1 seconds for animation stops
+    And I wait 2 seconds for animation stops
     And I refresh the page
+    And I wait 2 seconds for animation stops
     And I should see a text Test on the page
     And I should see a text Smith on the page
     And I should see a text T. on the page
