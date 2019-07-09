@@ -40,6 +40,9 @@ class ReportsPage:
         self.download_chart_button = Button("createChartLightbox_downloadPdfBtn", "id", "download to pdf chart")
         self.download_chart = Button("#createChartLightbox_downloadPdfBtn", "css", "download to pdf chart")
         self.close_chart_button = Button("closeCreateChartLightboxButton", "id", "close chart button")
+        self.cost_of_work_chart_in_selector = Button('Cost of work', 'link', 'cost of work in chart selector')
+        self.billable_amounts_chart_in_selector = Button('Billable amounts', 'link',
+                                                         'billable amounts in chart selector')
 
         # Choose Report to Create Window
         self.choose_report_window = Button("createReportLightBox", "id", "choose report to create window")

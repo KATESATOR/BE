@@ -20,7 +20,7 @@ class TasksPage:
                                                 "confirm customer deletion")
         self.test_project = Button(".filteredContainer .projectNode > .title", "css",
                                    "test project")
-        self.test_project_settings = Button(".selected > .editButton", "css", "test customer settings")
+        self.test_project_settings = Button(".selected > .editButton", "css", "test project settings")
         self.project_actions = Button(".editProjectPanelHeader .action", "css", "project actions")
         self.delete_project = Button(".taskManagement_projectPanel .deleteButton > .title", "css", "delete project")
         self.confirm_project_deletion = Button(
@@ -145,3 +145,42 @@ class TasksPage:
         self.task_page_design_on_kanban = Button(
             "//*[@class='name gradientEllipsis']/text()[contains(.,'Page design')]/../../../../..", "xpath",
             "Page design task on kanban")
+        self.administration_left_panel = Button("//*[@class='text' and text()='Administration']", "xpath",
+                                                "project 'Administration' in left panel'")
+        self.our_company_left_panel = Button("//*[@class='text' and text()='Our Company']", "xpath",
+                                             "customer 'Our Company' in left panel'")
+        self.gear_left_panel = Button('.selected .editButton', 'css', 'gear button on left panel')
+        self.customer_users = Button('.taskManagement_customerPanel .assignedUsers', 'css',
+                                     'customer assigned users tab')
+        self.customer_users_assign = Button('.taskManagement_customerPanel .assignedUsersTab .assignUserButton', 'css',
+                                            'customer assign users button')
+        self.customer_managers = Button('.taskManagement_customerPanel .managers', 'css', 'customer managers tab')
+        self.customer_managers_add = Button('.taskManagement_customerPanel .managersTab .assignUserButton', 'css',
+                                            'customer add managers button')
+        self.cruz_in_selector = Button("//*[text()='Cruz, Gordman']", "xpath", "Cruz Gordman in selector")
+        self.close_selector = Button("//*[text()='Close']", "xpath", "close selector")
+        self.deletable_manager_title = Element('.withDeleteButton:not(.deleteButtonDisabled) .title', 'css',
+                                               'title of deletable manager')
+        self.delete_manager = Button('.withDeleteButton:not(.deleteButtonDisabled) .deleteButton', 'css',
+                                     'delete manager button')
+        self.project_users = Button('.taskManagement_projectPanel .assignedUsers', 'css', 'project assigned users tab')
+        self.project_users_assign = Button('.taskManagement_projectPanel .assignedUsersTab .assignUserButton', 'css',
+                                           'project assign users button')
+        self.project_managers = Button('.taskManagement_projectPanel .managers', 'css', 'project managers tab')
+        self.project_managers_add = Button('.taskManagement_projectPanel .managersTab .assignUserButton', 'css',
+                                           'project add managers button')
+        self.first_task_in_list = Button('.taskRow:first-of-type .title', 'css', 'first task title in list')
+        self.first_task_status = Button('.taskRow:first-of-type .name', 'css', 'first task in list status')
+        self.first_open_status_list = Button('.taskRowsTableContent .openStatuses .workflowStatusNode:nth-of-type(2)',
+                                             'css', 'first open status in selector on task list')
+        self.task_status_edit_panel = Button('.edit_task_sliding_panel .detailsTab .taskStatusButton .name', 'css',
+                                             'task status on edit panel')
+        self.edit_task_2nd_status = Button('.edit_task_sliding_panel .openStatuses .workflowStatusNode:nth-of-type(3)',
+                                           'css', 'second status in list on edit task panel')
+        self.edit_task_name = Button('.edit_task_sliding_panel .nameLabel', 'css', 'name on edit task panel')
+        self.task_users_tab = Button('.edit_task_sliding_panel .assignedUsers', 'css', 'task panel assigned users tab')
+        self.task_users_assign = Button('.edit_task_sliding_panel .assignedUsersTab .assignUserButton', 'css',
+                                        'task assign users button')
+        self.task_managers = Button('.edit_task_sliding_panel .managers', 'css', 'task panel managers tab')
+        self.task_managers_add = Button('.edit_task_sliding_panel .managersTab .assignUserButton', 'css',
+                                        'task panel add managers button')

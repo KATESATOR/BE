@@ -24,7 +24,7 @@ class GeneralPage:
         self.lock_tt = Link("Lock Time-Track", "link text", "lock tt page")
         self.approve_tt = Link("Approve Time-Track", "link", "approve tt interface")
         self.tasks = Button("container_tasks", "id", "Tasks menu")
-        self.reports = Button("container_reports']", "id", "Reports menu")
+        self.reports = Button("container_reports", "id", "Reports menu")
         self.user_list = Button("container_users", "id", "Users menu")
         self.features = Button("li#popup_menu_item_1 div.item_descr", "CSS", "Features")
         self.general_settings = Button("li#popup_menu_item_6 div.item_title", "CSS", "General Settings")
