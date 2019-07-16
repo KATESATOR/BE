@@ -67,6 +67,11 @@ Feature: Manage Cost and Billing Data Role
     And I click non_billable_in_selector
     And I wait 1 seconds for animation stops
     And type_of_work should have title with Non-Billable
+    And I click task_reported_time_tab
+    And I wait 1 seconds for animation stops
+    And I click other_users_reported_time_tab
+    And I should not see a web element other_user_row_reported_time_tab
+    And I should see a web element no_data_reported_time_tab
     And I click task_users_tab
     And I wait 1 seconds for animation stops
     And I should not see a web element task_users_assign
@@ -287,4 +292,38 @@ Feature: Manage Cost and Billing Data Role
     And I should not see a web element settings_button
     And My current URL should contain /accessdenied.jsp
     Then I should see a text You no longer have the permission to access this functionality. on the page
-    
+
+  @Role
+  Scenario: Tasks interface, DAR 1st checkbox is selected
+    When I wait 1 seconds for animation stops
+    And I am logged in as admin
+    And general_page is visible
+    And I click settings_button
+    And I click general_settings
+    And general_settings_page is visible
+    And I perform select in the gs_dar_see_all_tt
+    And I wait 1 seconds for animation stops
+    And I click gs_dar_see_all_tt_selector
+    And I click gs_dar_see_all_tt_selector_manage_cost_role
+    And I click gs_dar_see_all_tt_selector_apply
+    And I click gs_save
+    And I wait 1 seconds for animation stops
+    And general_page is visible
+    And I click settings_button
+    And I click features
+    And features_page is visible
+    And I click features_user_rates_cost
+    And I click features_hourly_billing
+    And I wait 1 seconds for animation stops
+    And I am logged in as manage cost and billing data role
+    And general_page is visible
+    And I click tasks
+    And tasks_page is visible
+    And I click administration_left_panel
+    And I wait 1 seconds for animation stops
+    And I click first_task_in_list
+    And I wait 1 seconds for animation stops
+    And I click task_reported_time_tab
+    And I wait 1 seconds for animation stops
+    And I click other_users_reported_time_tab
+    Then I should see a web element other_users_reported_time_tab

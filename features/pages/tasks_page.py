@@ -180,6 +180,14 @@ class TasksPage:
         self.edit_task_2nd_status = Button('.edit_task_sliding_panel .openStatuses .workflowStatusNode:nth-of-type(3)',
                                            'css', 'second status in list on edit task panel')
         self.edit_task_name = Button('.edit_task_sliding_panel .nameLabel', 'css', 'name on edit task panel')
+        self.task_reported_time_tab = Button('.edit_task_sliding_panel .reportedTime', 'css',
+                                             'task panel reported time tab')
+        self.no_data_reported_time_tab = Element('.edit_task_sliding_panel .tasksNotFoundMessage', 'css',
+                                                 'no data row in reported time tab')
+        self.other_users_reported_time_tab = Button('.edit_task_sliding_panel .othersSection', 'css',
+                                                    'other users in reported time tab')
+        self.other_user_row_reported_time_tab = Element('.edit_task_sliding_panel .othersRecords .label', 'css',
+                                                        'first other user in reported time tab')
         self.task_users_tab = Button('.edit_task_sliding_panel .assignedUsers', 'css', 'task panel assigned users tab')
         self.task_users_assign = Button('.edit_task_sliding_panel .assignedUsersTab .assignUserButton', 'css',
                                         'task assign users button')
