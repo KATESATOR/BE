@@ -149,6 +149,8 @@ class TasksPage:
                                                 "project 'Administration' in left panel'")
         self.our_company_left_panel = Button("//*[@class='text' and text()='Our Company']", "xpath",
                                              "customer 'Our Company' in left panel'")
+        self.architects_bureau_left_panel = Button("//*[@class='text' and text()='Architects Bureau']", "xpath",
+                                                   "customer 'Architects Bureau' in left panel'")
         self.gear_left_panel = Button('.selected .editButton', 'css', 'gear button on left panel')
         self.customer_users = Button('.taskManagement_customerPanel .assignedUsers', 'css',
                                      'customer assigned users tab')
@@ -178,9 +180,22 @@ class TasksPage:
         self.edit_task_2nd_status = Button('.edit_task_sliding_panel .openStatuses .workflowStatusNode:nth-of-type(3)',
                                            'css', 'second status in list on edit task panel')
         self.edit_task_name = Button('.edit_task_sliding_panel .nameLabel', 'css', 'name on edit task panel')
+        self.task_reported_time_tab = Button('.edit_task_sliding_panel .reportedTime', 'css',
+                                             'task panel reported time tab')
+        self.no_data_reported_time_tab = Element('.edit_task_sliding_panel .tasksNotFoundMessage', 'css',
+                                                 'no data row in reported time tab')
+        self.other_users_reported_time_tab = Button('.edit_task_sliding_panel .othersSection', 'css',
+                                                    'other users in reported time tab')
+        self.other_user_row_reported_time_tab = Element('.edit_task_sliding_panel .othersRecords .label', 'css',
+                                                        'first other user in reported time tab')
         self.task_users_tab = Button('.edit_task_sliding_panel .assignedUsers', 'css', 'task panel assigned users tab')
         self.task_users_assign = Button('.edit_task_sliding_panel .assignedUsersTab .assignUserButton', 'css',
                                         'task assign users button')
         self.task_managers = Button('.edit_task_sliding_panel .managers', 'css', 'task panel managers tab')
         self.task_managers_add = Button('.edit_task_sliding_panel .managersTab .assignUserButton', 'css',
                                         'task panel add managers button')
+        self.type_of_work = Button('.edit_task_sliding_panel .typeOfWorkButton', 'css',
+                                   'type of work selector on edit task panel')
+        self.non_billable_in_selector = Button('.edit_task_sliding_panel .typeOfWorkRow:nth-last-of-type(10)', 'css',
+                                               'non-billable in type of work selector')
+        self.scope_label = Element('.scopeAccessContainer .visible', 'css', 'scope access label')

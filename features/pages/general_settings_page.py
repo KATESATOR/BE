@@ -59,7 +59,10 @@ class GeneralSettings:
         self.gs_dar_see_all_tt_selector_white_jane = Button("//span[contains(@title,'White, Jane')]", "xpath",
                                                             "Select White Jane")
         self.gs_dar_see_all_tt_selector_entertt_role = Button("//span[contains(@title,'Enter TT, Role')]", "xpath",
-                                                              "Select White Jane")
+                                                              "Select Enter TT Role")
+        self.gs_dar_see_all_tt_selector_manage_cost_role = Button(
+            "//span[contains(@title,'Manage Cost & Billing Data, Role')]", "xpath",
+            "Select Manage Cost & Billing Data Role")
         self.gs_dar_see_all_tt_selector_apply = Button("//span[contains(text(),'Apply')]", "xpath",
                                                        "Click on apply button")
         self.gs_dar_hide_tt_lock_tt = CheckBox("//*[@id='accessToUserInfoSettingsBlock']/div/div[3]/div[1]/div["

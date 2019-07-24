@@ -43,6 +43,11 @@ class ReportsPage:
         self.cost_of_work_chart_in_selector = Button('Cost of work', 'link', 'cost of work in chart selector')
         self.billable_amounts_chart_in_selector = Button('Billable amounts', 'link',
                                                          'billable amounts in chart selector')
+        self.leave_hours_chart_in_selector = Button('Leave hours', 'link', 'Leave hours in chart selector')
+        self.pto_balance_chart_in_selector = Button('PTO Balance', 'link', 'PTO Balance in chart selector')
+        self.sick_days_balance_chart_in_selector = Button('Sick Days Balance', 'link',
+                                                          'Sick Days Balance in chart selector')
+        self.overtime_hours_chart_in_selector = Button('Overtime hours', 'link', 'Overtime hours in chart selector')
 
         # Choose Report to Create Window
         self.choose_report_window = Button("createReportLightBox", "id", "choose report to create window")

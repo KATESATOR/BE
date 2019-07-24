@@ -30,12 +30,16 @@ class UserListPage:
                                     "test user")
         self.user_cruz_gordman = Button("//*[@class='userNameSpan' and text()='Cruz, Gordman']", "xpath",
                                         "user Cruz Gordman")
+        self.user_manage_cost_role = Button("//*[@class='userNameSpan' and text()='Manage Cost & Billing Data, Role']",
+                                            "xpath", "user Manage Cost & Billing Data Role")
         self.edited_cruz_gordman = Element("//*[@class='userNameSpan' and text()='Cruz123, Gordman123']", "xpath",
                                            'edited Cruz Gordman')
         self.stivers_melanie = Button("//*[@class='userNameSpan' and contains(text(), 'Stivers, Melanie')]", "xpath",
                                       "Stivers Melanie")
         self.locktt_role = Button("//*[@class='userNameSpan' and contains(text(), 'Lock TT, Role')]", "xpath",
                                   "Lock TT Role")
+        self.user_entertt_role = Button("//*[@class='userNameSpan' and contains(text(), 'Enter TT, Role')]", "xpath",
+                                        "Enter TT, Role user")
         self.sorting_by_users = Button(".userList_mainTableContainer .sortLinks>div:first-of-type", "css",
                                        "sorting by users button")
         self.sorting_by_group = Button(".userList_mainTableContainer .sortLinks>div:nth-of-type(2)", "css",
@@ -182,6 +186,7 @@ class UserListPage:
                                                     'auto hidden overtime in selector')
         self.add_rate_edit_user = Button('.edit_user_sliding_panel .userRatesTable .label', 'css',
                                          'add rates on edit user panel')
+        self.cost_rate_table = Button('.edit_user_sliding_panel .userRatesTable', 'css', 'cost table')
         self.second_rate_regular = TextField('.userRatesList .userRatesRow:nth-of-type(2) .regularRateColumn input',
                                              'css', 'second rate regular field')
         self.first_rate_regular = TextField('.userRatesList .userRatesRow:nth-of-type(1) .regularRateColumn input',
